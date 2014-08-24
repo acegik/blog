@@ -1,0 +1,8 @@
+callback([
+
+  {
+    "text": "Tổng quan về Java Concurrency",
+    "href": "http://localhost:4000/java/tong-quan-ve-java-concurrency"
+  } 
+
+])
