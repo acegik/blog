@@ -4,37 +4,36 @@
 
 
   
-  
 
 <title type="text">Acegik's Blog</title>
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="http:/vi/feed.xml" />
-<link rel="alternate" type="text/html" href="http:/vi/" />
-<updated>2014-08-24T21:33:38+07:00</updated>
-<id>http:/vi/</id>
+<link rel="self" type="application/atom+xml" href="http://www.acegik.net/vi/feed.xml" />
+<link rel="alternate" type="text/html" href="http://www.acegik.net/vi/" />
+<updated>2014-08-25T08:26:37+07:00</updated>
+<id>http://www.acegik.net/vi/</id>
 <author>
   <name>Phạm Ngọc Hùng</name>
-  <uri>http:/vi/</uri>
+  <uri>http://www.acegik.net/vi/</uri>
   <email>pnhung177@drupalex.net</email>
 </author>
 
 
 <entry>
   <title type="html"><![CDATA[Tổng quan về Java Concurrency]]></title>
-  <link rel="alternate" type="text/html" href="http:/vi/java/tong-quan-ve-java-concurrency"/>
-  <id>http:/vi/java/tong-quan-ve-java-concurrency</id>
+  <link rel="alternate" type="text/html" href="http://www.acegik.net/vi/java/tong-quan-ve-java-concurrency"/>
+  <id>http://www.acegik.net/vi/java/tong-quan-ve-java-concurrency</id>
   <published>2014-08-20T00:00:00+07:00</published>
   <updated>2014-08-20T00:00:00-00:00</updated>
   
   <author>
     <name>Phạm Ngọc Hùng</name>
-    <uri>http:/vi</uri>
+    <uri>http://www.acegik.net/vi</uri>
     <email>pnhung177@drupalex.net</email>
   </author>
-  <category scheme="http:/vi/tags/#java%20concurrency" term="java concurrency" />
+  <category scheme="http://www.acegik.net/vi/tags/#java%20concurrency" term="java concurrency" />
   <content type="html">
   
-    &lt;p&gt;Tính toán đồng thời (Concurrency computing) là một trong các đặc trưng nổi bật đã tạo nên thế mạnh của ngôn ngữ Java. Nhờ có tính năng này, chúng ta có thể tạo ra các chương trình bằng Java xử lý nhiều nhiệm vụ cùng lúc, đồng thời tận dụng thời gian nhàn rỗi để tăng tốc độ và hiệu năng của chương trình.&lt;/p&gt;
+    &lt;p&gt;Tính toán đồng thời (&lt;a href=&quot;http://en.wikipedia.org/wiki/Concurrent_computing&quot; title=&quot;Concurrency Computing&quot;&gt;Concurrency computing&lt;/a&gt;) là một trong các đặc trưng nổi bật đã tạo nên thế mạnh của ngôn ngữ Java. Nhờ có tính năng này, chúng ta có thể tạo ra các chương trình bằng Java xử lý nhiều nhiệm vụ cùng lúc, đồng thời tận dụng thời gian nhàn rỗi để tăng tốc độ và hiệu năng của chương trình.&lt;/p&gt;
 
 &lt;h2 id=&quot;tnh-ton-ng-thi-l-g&quot;&gt;Tính toán đồng thời là gì?&lt;/h2&gt;
 
@@ -49,7 +48,7 @@
   &lt;li&gt;Cách (D). Một người nấu nhiều món, mỗi thời điểm chỉ nấu một món, nấu xong món này mới thực hiện món khác.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/vi/images/2014-08-20-tong-quan-ve-java-concurrency/java-concurrency-4-cooking-models.png&quot; alt=&quot;Hình 1. Bốn cách thực hiện nấu bữa ăn gồm ba món ăn&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://www.acegik.net/vi/images/2014-08-20-tong-quan-ve-java-concurrency/java-concurrency-4-cooking-models.png&quot; alt=&quot;Hình 1. Bốn cách thực hiện nấu bữa ăn gồm ba món ăn&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Nếu chúng ta tương ứng:&lt;/p&gt;
 
@@ -66,7 +65,7 @@
 
 &lt;p&gt;Cách (C) tương ứng với Tính toán đồng thời, trong đó một chương trình xử lý nhiều nhiệm vụ đồng thời theo cách chia nhỏ từng nhiệm vụ thành các thao tác, thực thi các thao tác (không phân biệt của nhiệm vụ nào) xen kẽ nhau trong khoảng thời gian được phân bổ hợp lý. Khái niệm “đồng thời” không áp dụng cho từng thao tác (tương ứng với lệnh thực thi trong máy tính), tức là không thể thực hiện các thao tác cùng một lúc (kiểu như người nấu ăn vừa băm thịt, vừa thái hành). Ở đây, khái niệm “đồng thời” được áp dụng cho nguyên cả nhiệm vụ, hiểu theo nghĩa có hai hay nhiều nhiệm vụ cùng “đang” trong quá trình được xử lý, nhưng các hành động cụ thể thực hiện các nhiệm vụ được diễn ra xen kẽ tuần tự (nhưng không đồng thời).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/vi/images/2014-08-20-tong-quan-ve-java-concurrency/java-concurrency-overview-one-chef-with-3-dishes1.png&quot; alt=&quot;Hình 2. Mô hình (C) tương ứng với Tính toán đồng thời (Concurrency) trong lập trình.&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://www.acegik.net/vi/images/2014-08-20-tong-quan-ve-java-concurrency/java-concurrency-overview-one-chef-with-3-dishes1.png&quot; alt=&quot;Hình 2. Mô hình (C) tương ứng với Tính toán đồng thời (Concurrency) trong lập trình.&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Cách (D) tương ứng với lập trình tuần tự, trong đó chương trình xử lý tuần tự hết nhiệm vụ này rồi mới bắt đầu xử lý nhiệm vụ khác. Mỗi thời điểm chỉ có một nhiệm vụ đang được xử lý.&lt;/p&gt;
 
@@ -74,11 +73,11 @@
 
 &lt;h2 id=&quot;lp-trnh-ng-thi-trong-java&quot;&gt;Lập trình đồng thời trong Java&lt;/h2&gt;
 
-&lt;p&gt;Trong Java, lập trình đồng thời được thiết kế theo mô hình Multithreading (xử lý đa luồng), trong đó chương trình bao gồm nhiều Thread (luồng), mỗi Thread chạy theo các bước thực thi lệnh của riêng mình, nhưng tất cả các luồng đều có khả năng truy cập được bất kỳ đối tượng và tài nguyên của chương trình. Người lập trình phải chịu trách nhiệm trong việc phân bổ và phối hợp chính xác giữa các Thread trong việc truy cập (đọc/ghi) các đối tượng và tài nguyên chung. Điều này cũng giống như người đầu bếp phân chia và phối hợp các thao tác chế biến nấu cho nhiều món ăn một cách nhịp nhàng, chính xác để tránh nhầm lẫn nguyên liệu và gia vị, đồng thời tận dụng được thời gian nhàn rỗi của dụng cụ và bếp để đạt hiệu quả cao nhất.&lt;/p&gt;
+&lt;p&gt;Trong &lt;a href=&quot;http://en.wikipedia.org/wiki/Java_concurrency&quot;&gt;Java&lt;/a&gt;, lập trình đồng thời được thiết kế theo mô hình Multithreading (xử lý đa luồng), trong đó chương trình bao gồm nhiều Thread (luồng), mỗi Thread chạy theo các bước thực thi lệnh của riêng mình, nhưng tất cả các luồng đều có khả năng truy cập được bất kỳ đối tượng và tài nguyên của chương trình. Người lập trình phải chịu trách nhiệm trong việc phân bổ và phối hợp chính xác giữa các Thread trong việc truy cập (đọc/ghi) các đối tượng và tài nguyên chung. Điều này cũng giống như người đầu bếp phân chia và phối hợp các thao tác chế biến nấu cho nhiều món ăn một cách nhịp nhàng, chính xác để tránh nhầm lẫn nguyên liệu và gia vị, đồng thời tận dụng được thời gian nhàn rỗi của dụng cụ và bếp để đạt hiệu quả cao nhất.&lt;/p&gt;
 
-&lt;p&gt;Mỗi chương trình Java được chạy trên nền một máy ảo Java (Java Virtual Machine – JVM). Máy ảo Java là dạng Máy ảo tiến trình (Process Virtual Machine)  (xem [2]), do đó mỗi chương trình Java là một tiến trình của hệ điều hành. Hàm main() trong chương trình Java sẽ tạo ra Thread mặc định (xem [3]). Một chương trình Java đơn giản chỉ có một Thread được tạo ra từ hàm main(). Máy ảo Java cho phép chương trình Java có thể tạo ra nhiều Thread khác. Nếu muốn xử lý đồng thời nhiều nhiệm vụ, người lập trình phải viết mã lệnh để hàm main() gọi đến để tạo ra các Thread khác.&lt;/p&gt;
+&lt;p&gt;Mỗi chương trình Java được chạy trên nền một máy ảo Java (&lt;a href=&quot;http://en.wikipedia.org/wiki/Java_virtual_machine&quot;&gt;Java Virtual Machine&lt;/a&gt;). Máy ảo Java là dạng Máy ảo tiến trình (Process Virtual Machine), do đó mỗi chương trình Java là một tiến trình của hệ điều hành. Hàm main() trong chương trình Java sẽ tạo ra &lt;a href=&quot;http://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html&quot;&gt;Thread&lt;/a&gt; mặc định. Một chương trình Java đơn giản chỉ có một Thread được tạo ra từ hàm main(). Máy ảo Java cho phép chương trình Java có thể tạo ra nhiều Thread khác. Nếu muốn xử lý đồng thời nhiều nhiệm vụ, người lập trình phải viết mã lệnh để hàm main() gọi đến để tạo ra các Thread khác.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/vi/images/2014-08-20-tong-quan-ve-java-concurrency/java-concurrency-one-process-with-3-threads1.png&quot; alt=&quot;Hình 3. Tiến trình Java với 3 Thread chạy đồng thời&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://www.acegik.net/vi/images/2014-08-20-tong-quan-ve-java-concurrency/java-concurrency-one-process-with-3-threads1.png&quot; alt=&quot;Hình 3. Tiến trình Java với 3 Thread chạy đồng thời&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Để tạo ra Thread, người lập trình cần thực hiện các bước sau:&lt;/p&gt;
 
@@ -137,10 +136,20 @@
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Các bạn có thể tải mã nguồn đầy đủ của ví dụ minh họa tại đây để chạy thử.&lt;/p&gt;
+&lt;p&gt;Các bạn có thể tải mã nguồn đầy đủ của &lt;a href=&quot;https://github.com/pnhung177/java-simple-threading&quot;&gt;ví dụ minh họa&lt;/a&gt; để chạy thử.&lt;/p&gt;
+
+&lt;h2 id=&quot;ti-liu-tham-kho&quot;&gt;Tài liệu tham khảo&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Concurrent_computing&quot; title=&quot;Concurrency Computing&quot;&gt;Wikipedia - Concurrency Computing&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Java_concurrency&quot;&gt;Wikipedia - Java concurrency&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Java_virtual_machine&quot;&gt;Wikipedia - Java Virtual Machine&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html&quot;&gt;Oracle JavaSE 7 API Reference Documentation - Class Thread&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
 
   
-  &lt;p&gt;&lt;a href=&quot;http:/vi/java/tong-quan-ve-java-concurrency&quot;&gt;Tổng quan về Java Concurrency&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/vi&quot;&gt;Acegik's Blog&lt;/a&gt; on August 20, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://www.acegik.net/vi/java/tong-quan-ve-java-concurrency&quot;&gt;Tổng quan về Java Concurrency&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://www.acegik.net/vi&quot;&gt;Acegik's Blog&lt;/a&gt; on August 20, 2014.&lt;/p&gt;</content>
 </entry>
 
 </feed>
