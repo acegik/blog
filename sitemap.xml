@@ -1,54 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>http://www.acegik.net/vi</loc>
+        <loc>/vi</loc>
     </url>
     
     
     <url>
-        <loc>http://www.acegik.net/vi/404.html</loc>
+        <loc>/vi/404.html</loc>
     </url>
     
     <url>
-        <loc>http://www.acegik.net/vi/about/index.html</loc>
+        <loc>/vi/about/index.html</loc>
     </url>
     
     <url>
-        <loc>http://www.acegik.net/vi/categories/index.html</loc>
+        <loc>/vi/categories/index.html</loc>
     </url>
     
     <url>
-        <loc>http://www.acegik.net/vi/featured/</loc>
+        <loc>/vi/featured/</loc>
     </url>
     
     <url>
-        <loc>http://www.acegik.net/vi/feed.xml</loc>
+        <loc>/vi/feed.xml</loc>
     </url>
     
     <url>
-        <loc>http://www.acegik.net/vi/index.html</loc>
+        <loc>/vi/index.html</loc>
     </url>
     
     <url>
-        <loc>http://www.acegik.net/vi/links.jsonp</loc>
+        <loc>/vi/links.jsonp</loc>
     </url>
     
     <url>
-        <loc>http://www.acegik.net/vi/search.json</loc>
+        <loc>/vi/search.json</loc>
     </url>
     
     <url>
-        <loc>http://www.acegik.net/vi/sitemap.xml</loc>
+        <loc>/vi/sitemap.xml</loc>
     </url>
     
     <url>
-        <loc>http://www.acegik.net/vi/tags/index.html</loc>
+        <loc>/vi/tags/index.html</loc>
     </url>
     
 
     
     <url>
-        <loc>http://www.acegik.net/vi/java/tong-quan-ve-java-concurrency</loc>
+        <loc>/vi/spring-framework/tong-quan-ve-ioc-trong-spring</loc>
+    </url>
+    
+    <url>
+        <loc>/vi/java-concurrency/tong-quan-ve-java-concurrency</loc>
     </url>
     
 </urlset>

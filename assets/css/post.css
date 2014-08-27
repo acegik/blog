@@ -475,7 +475,8 @@ html, body, .summer-post-container, .summer-post-header {
     .summer-page-content > div:not(.summer-page-title) p {
       margin: 0 auto 2em auto;
       max-width: 56.25rem;
-      font-size: 1.125rem; }
+      font-size: 1.125rem; 
+      text-align: justify; }
       .summer-page-content > div:not(.summer-page-title) p:first-child {
         font-size: 1.375rem;
         font-weight: 300; }

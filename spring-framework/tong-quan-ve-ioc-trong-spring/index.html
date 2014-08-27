@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>TổNG QUAN Về IOC TRONG SPRING FRAMEWORK &vert; ACEGIK'S BLOG</title>
+<meta name="description" content="Hãy thắp một ngọn nến nhỏ, thay vì nguyền rủa bóng đêm">
+<meta name="keywords" content="Java, Spring Framework">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/vi/images/logo.png">
+<meta name="twitter:title" content="Tổng quan về IoC trong Spring Framework">
+<meta name="twitter:description" content="Hãy thắp một ngọn nến nhỏ, thay vì nguyền rủa bóng đêm">
+<meta name="twitter:creator" content="@pnhung177">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tổng quan về IoC trong Spring Framework">
+<meta property="og:description" content="Hãy thắp một ngọn nến nhỏ, thay vì nguyền rủa bóng đêm">
+<meta property="og:url" content="/vi/spring-framework/tong-quan-ve-ioc-trong-spring">
+<meta property="og:site_name" content="Acegik's Blog">
+<meta property="og:image" content="/vi/images/">
+
+
+
+
+
+<link rel="canonical" href="/vi/spring-framework/tong-quan-ve-ioc-trong-spring">
+<link href="/vi/feed.xml" type="application/atom+xml" rel="alternate" title="Acegik's Blog Feed">
+<link rel="author" href="https://plus.google.com/u/3/115458186421626071505?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,600,300,800,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/vi/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vi/assets/css/vendor/normalize.css">
+    <link rel="stylesheet" href="/vi/assets/css/vendor/foundation.min.css">
+    <link rel="stylesheet" href="/vi/assets/css/style.css">
+    <link rel="stylesheet" href="/vi/assets/css/post.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/vi/assets/js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+    
+
+
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/vi/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/vi/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/vi/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/vi/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/vi/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/vi/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">  
+
+        <main id="summer-post-container-simple" class="summer-post-container-simple" role="main">
+            <header class="summer-post-header-simple">
+                <div class="summer-post-menu-header-simple">
+
+                    <a class="summer-blog-logo" href="/vi">
+                        <img src="/vi/images/logo.png" alt="Blog Logo" />
+                    </a>
+
+                <div class="summer-blog-menu">      
+    <div class="summer-mobile-menu show-for-small">
+        <a href="#"><i class="fa fa-bars"></i></a>
+    </div>
+    <ul class="summer-menu">
+        <li class="summer-mobile-close-btn show-for-small text-right">
+            <a href="#"><i class="fa fa-times"></i></a>
+        </li>
+
+            <li>
+                    <a href="/vi/">Trang bìa</a>
+                 </li>
+
+            <li>
+                    <a href="/vi/featured">Nổi bật</a>
+                 </li>
+
+            <li>
+                    <a href="/vi/tags">Thẻ đánh dấu</a>
+                 </li>
+
+            <li>
+                    <a href="/vi/about">Giới thiệu</a>
+                 </li>
+            
+           <li><a href="/vi/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+    </ul>
+
+</div>
+            </div>
+
+                <div class="summer-post-title-simple row">
+                    <div class="small-12 columns">
+                        <div class="summer-post-meta-simple">
+                            <h1>Tổng quan về IoC trong Spring Framework</h1>
+                            <p>by <strong>pnhung177</strong> &#8212; on <a href="/vi/tags/index.html#Java" data-toggle="tooltip" title="Posts tagged with Java" rel="tag">Java</a>&nbsp;&comma;&nbsp;<a href="/vi/tags/index.html#Spring Framework" data-toggle="tooltip" title="Posts tagged with Spring Framework" rel="tag">Spring Framework</a> &#8212; <strong><time datetime="2014-08-24T00:00:00+07:00">24/08/2014</time></strong></p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+        <article class="summer-post-content post tag-simple">
+            <div><p>Spring Framework ra đời như là một chọn lựa, thay thế cho mô hình chuẩn EJB trong việc phát triển ứng dụng JavaEE đã đánh dấu một bước ngoặt trong lịch sử phát triển của Enterprise Java. Spring không ngừng phát triển và ngày càng phổ biến trong cộng đồng Java. Theo thống kê của <a href="http://www.indeed.com/">trang web tìm kiếm việc làm Indeed</a> đến đầu năm 2014, tỉ lệ gia tăng việc làm trên Spring luôn cao hơn hẳn EJB.</p>
+
+<p><img src="/vi/images/2014-08-24-tong-quan-ve-ioc-trong-spring/spring-vs-ejb-jobgraph.png" alt="Hình 1. Tỉ lệ gia tăng việc làm giữa Spring và EJB" /> </p>
+
+<p>Một trong những thành phần chủ chốt, là nền tảng và tạo nên sức mạnh của Spring chính là IoC Container. IoC Container trong Spring được xây dựng dựa trên nguyên lý <a href="http://en.wikipedia.org/wiki/Inversion_of_control">Inversion of Control</a> (đảo ngược điều khiển), đã xuất hiện khá lâu trong các mẫu hình thiết kế (Design Pattern), và được phổ biến rộng rãi nhờ <a href="http://en.wikipedia.org/wiki/Dependency_inversion_principle">Robert C. Martin</a> và <a href="http://martinfowler.com/bliki/InversionOfControl.html">Martin Fowler</a>. Để hiểu về Spring, trước tiên chúng ta cần hiểu khái niệm Inversion of Control là gì? Muốn vậy, chúng ta cần trả lời câu hỏi: Control (điều khiển) trong chương trình phần mềm là gì, và Inversion (sự đảo ngược) đối với điều khiển trong ngữ cảnh này được hiểu như thế nào.</p>
+
+<p>Mặc dù đã có một số bài viết tiếng Việt về chủ đề này, chẳng hạn như <a href="http://congdongjava.com/forum/threads/inversion-of-control.1">Inversion of control tại trang congdongjava.com</a>, <a href="http://javadevelopervietnam.blogspot.com/2011/03/tu-xay-dung-1-ao-nguoc-ieu-khien-ioc.html">Tự xây dựng 1 framework đảo ngược điều khiển</a>, <a href="http://thietkewebno1.org/news/khai-niem-ve-inversion-of-control-ioc-va-dependency-injection-di-trong-spring/">Khái niệm về Inversion of Control (IoC) và Dependency Injection (DI) trong Spring</a> (hoặc các bạn có thể tìm kiếm thêm trên google), sau một thời gian suy nghĩ tôi cũng mạo muội viết lại và chia sẻ những hiểu biết của mình về IoC, mong những ai quan tâm cùng góp ý thảo luận để chúng ta hiểu rõ hơn về vấn đề này. </p>
+
+<h2 id="control-flow-trong-ng-dng-l-g">Control Flow trong ứng dụng là gì?</h2>
+
+<p>Khái niệm Control Flow (tạm dịch là luồng thực thi) được sử dụng cho trình tự thực hiện các câu lệnh, chỉ thị hoặc lời gọi hàm trong một chương trình, khi chương trình này thực thi.</p>
+
+<p>Do chương trình ngày càng phức tạp, nên người ta áp dụng phương pháp lập trình hướng đối tượng nhằm phân loại, chia tách các chức năng và gom thành các đối tượng. Người ta còn tạo dựng các thư viện tạo sẵn để có thể sử dụng lại. Luồng thực thi của chương trình, trong những tình huống cần xem xét ở mức tổng thể, không còn quan tâm đến các bước thực thi câu lệnh cụ thể nữa, mà chỉ xem xét đến quá trình gọi phương thức của các đối tượng trong ứng dụng cũng như các đối tượng của thư viện dựng sẵn.</p>
+
+<p><img src="/vi/images/2014-08-24-tong-quan-ve-ioc-trong-spring/oop_flow_of_control.png" alt="Hai nhiệm vụ của người lập trình khi xây dựng ứng dụng" /> </p>
+
+<p>Người lập trình, khi xây dựng ứng dụng từ đầu, đã thực hiện hai nhiệm vụ: trực tiếp điều khiển luồng thực thi của chương trình và xây dựng các chức năng để đáp ứng nghiệp vụ của ứng dụng. Thực tế, có nhiều chương trình hoặc bộ phận trong chương trình có luồng thực thi rất giống nhau, chẳng hạn phần tương tác với HTTP trong các ứng dụng web, phần unit testing trong các ứng dụng,… Việc trực tiếp tạo dựng và kiểm soát luồng thực thi của chương trình lặp đi lặp lại khi xây dựng nhiều ứng dụng sẽ làm mất nhiều công sức, chi phí, tạo ra sự nhàm chán và dễ phát sinh lỗi. Điều này tạo ra động lực cũng như môi trường để nguyên lý đảo ngược điều khiển nảy nở và phát triển.</p>
+
+<h2 id="inversion-c-hiu-theo-ngha-g">Inversion được hiểu theo nghĩa gì?</h2>
+
+<p>Một bạn đồng nghiệp của tôi trước đây đã hỏi tôi câu này, và tôi đã yêu cầu bạn ấy tìm kiếm trên Google các bài viết tiếng Anh lẫn tiếng Việt. Sau khi tìm kiếm và đọc cái bài viết, bạn ấy nói với tôi rằng vẫn còn rất mơ hồ và khó hiểu với những câu hỏi nghi vấn, đại loại như:</p>
+
+<ul>
+  <li>Đảo ngược điều khiển là đảo ngược cái gì: nếu hiểu điều khiển ở đây là luồng thực thi trong ứng dụng, thì đảo ngược điều khiển đâu phải là đảo ngược thứ tự thực thi? </li>
+  <li>Đảo ngược điều khiển có đồng nhất với khái niệm “bơm phụ thuộc” (Dependency Injection)? Nếu không đồng nhất thì chúng khác nhau ở chỗ nào?</li>
+</ul>
+
+<p>Tôi đã cố gắng tìm một vài ví dụ để giải thích một cách cụ thể. Tôi sẽ sử dụng lại ví dụ này để trình bày trong bài viết này.</p>
+
+<h3 id="v-d-1-ng-dng-web-trong-java-vi-java-servlet">Ví dụ 1: Ứng dụng web trong Java với Java Servlet</h3>
+
+<p>Hầu như tất cả chúng ta khi lập trình ứng dụng web bằng <a href="http://docs.oracle.com/javaee/6/tutorial/doc/bnafd.html">Java Servlet</a> đều hình dung rõ ràng các bước lập trình như sau: Tạo lớp đối tượng kế thừa từ HttpServlet, nạp đè các phương thức doGet() - doPost(), sau đó đăng ký trong file cấu hình Deployment Descriptor tương ứng Servlet này với đường dẫn xác định. Lớp đối tượng Servlet chúng ta tạo ra sẽ được gọi đến khi có một truy vấn HTTP có đường dẫn “khớp” với đường dẫn khai báo trong Deployment Descriptor.</p>
+
+<p><img src="/vi/images/2014-08-24-tong-quan-ve-ioc-trong-spring/ioc_example_servlet.png" alt="Đảo ngược điều khiển trong ứng dụng Servlet" /> </p>
+
+<p>Và đôi khi chúng ta cũng đã tự hỏi: vậy ai kích hoạt ứng dụng chúng ta viết để đáp ứng mỗi khi có Http Request gửi đến? ai chịu trách nhiệm chuyển đổi các thông điệp Http (HTTP Request và HTTP response) thành các đối tượng Java (HttpServletRequest và HttpServletResponse) để truyền cho các hàm doGet(), doPost()? Câu trả lời rõ ràng và ngay lập tức: chính là Servlet Container.</p>
+
+<h3 id="v-d-2-lp-trnh-unit-testing-bng-junit">Ví dụ 2: Lập trình Unit Testing bằng JUnit</h3>
+
+<p>Trong quá trình phát triển các thành phần chức năng của ứng dụng, chúng ta thường áp dụng kiểm thử thành phần (<a href="http://en.wikipedia.org/wiki/Unit_testing">Unit Testing</a>) để đảm bảo chức năng đó vẫn chạy đúng trong suốt quá trình ứng dụng được mở rộng và phát triển thêm. Để tạo bộ Unit Test, chúng ta chỉ cần tạo một lớp đối tượng, định nghĩa các phương thức khởi tạo, phương thức kết thúc và các phương thức test. Sau đó, chúng ta chỉ việc chạy bộ test để kiểm thử. </p>
+
+<p><img src="/vi/images/2014-08-24-tong-quan-ve-ioc-trong-spring/ioc_example_unit_testing.png" alt="Đảo ngược điều khiển trong quá trình chạy Unit Test" /> </p>
+
+<p>Việc điều khiển trình tự thực thi các phương thức được giao cho thư viện bên ngoài đảm nhiệm (chẳng hạn như TestNG hoặc <a href="http://junit.org/">JUnit</a>).</p>
+
+<p>Với hai ví dụ trên, chúng ta nhận thấy trong các ứng dụng đã có sự thay đổi vai trò: ứng dụng không còn ôm đồm vừa trực tiếp tạo dựng và kiểm soát luồng thực thi, vừa xây dựng chức năng nghiệp vụ. Việc kiểm soát luồng thực thi được tách khỏi chức năng nghiệp vụ và bị đẩy ra bên ngoài. Người lập trình đã ủy thác việc kiểm soát luồng thực thi ứng dụng cho một thành phần (thường là thư viện dựng sẵn) bên ngoài đảm nhiệm, chỉ còn tập trung vào chức năng chính của ứng dụng.</p>
+
+<p><img src="/vi/images/2014-08-24-tong-quan-ve-ioc-trong-spring/oop_app_ioc.png" alt="Tách việc kiểm soát luồng thực thi ra khỏi ứng dụng" /> </p>
+
+<p>Như vậy, khái niệm “đảo ngược” ở đây chính là chuyển nhiệm vụ kiểm soát lưu trình thực thi từ ứng dụng cho một thành phần chuyên trách (thường là một thư viện phần mềm khung - framework - dựng sẵn ở bên ngoài): ứng dụng chính chúng ta quan tâm phát triển không kiểm soát việc điều khiển luồng thực thi nữa, mà chỉ tập trung vào việc định nghĩa chức năng. Thư viện phần mềm khung chuyên trách kiểm soát điều khiển sẽ dựa trên mô tả trong cấu hình của ứng dụng để thay mặt ứng dụng điều phối luồng thực thi trong chương trình. Dễ dàng nhận thấy thư viện phần mềm khung này khác với các thư viện thông thường ở chỗ: thư viện thông thường cung cấp các chức năng và chờ được gọi đến, còn thư viện phần mềm khung tạo dựng luồng thực thi và gọi đến các chức năng của ứng dụng. Có lẽ sử dụng thuật ngữ “đảo ngược vai trò điều khiển luồng thực thi” thay cho “đảo ngược điều khiển” sẽ đầy đủ và phù hợp hơn cho khái niệm “Inversion of Control”. </p>
+
+<h2 id="ti-liu-tham-kho">Tài liệu tham khảo</h2>
+
+<ol>
+  <li><a href="http://en.wikipedia.org/wiki/Control_flow">Wikipedia - Control flow</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Inversion_of_control">Wikipedia - Inversion of control</a></li>
+  <li><a href="http://martinfowler.com/bliki/InversionOfControl.html">Inversion of Control - Martin Fowler - 2005</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Spring_Framework">Wikipedia - Spring Framework</a></li>
+  <li><a href="http://congdongjava.com/forum/threads/inversion-of-control.1">Inversion of control tại trang congdongjava.com</a></li>
+  <li><a href="http://javadevelopervietnam.blogspot.com/2011/03/tu-xay-dung-1-ao-nguoc-ieu-khien-ioc.html">Tự xây dựng 1 framework đảo ngược điều khiển</a></li>
+  <li><a href="http://thietkewebno1.org/news/khai-niem-ve-inversion-of-control-ioc-va-dependency-injection-di-trong-spring/">Khái niệm về Inversion of Control (IoC) và Dependency Injection (DI) trong Spring</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Unit_testing">Wikipedia - Unit testing</a></li>
+  <li><a href="http://junit.org/">Trang chủ JUnit</a></li>
+  <li><a href="http://docs.oracle.com/javaee/6/tutorial/doc/bnafd.html">Java Servlet Technology - The Java EE 6 Tutorial</a></li>
+</ol>
+
+
+            </div>
+        </article>
+        <div class="cf"></div>
+        <div class="row text-center">
+            <section class="summer-post-share">
+                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Tổng quan về IoC trong Spring Framework&quot;%20/vi/spring-framework/tong-quan-ve-ioc-trong-spring%20via%20&#64;pnhung177"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a class="facebook-icon" href="https://www.facebook.com/sharer/sharer.php?u=/vi/spring-framework/tong-quan-ve-ioc-trong-spring"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a class="google-icon" href="https://plus.google.com/share?url=/vi/spring-framework/tong-quan-ve-ioc-trong-spring"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </section>
+        </div>
+        <div class="cf"></div>
+        
+            <div class="summer-author-info">
+                <div class="row">
+                    <section class="summer-post-author small-12 columns">
+                        
+                            <img src="/vi/images/avatars/pnhung177.png" class="summer-post-author-avatar" alt="Phạm Ngọc Hùng's photo">
+                        
+                        
+                            <span class="author-label">Author</span>
+                            <h1>Phạm Ngọc Hùng</h1>
+                        
+                        
+                            <p><a href="mailto:pnhung177@drupalex.net" class="author-website">pnhung177@drupalex.net</a></p>
+                        
+                        
+                            <p>Hãy thắp một ngọn nến nhỏ, thay vì nguyền rủa bóng đêm</p>
+                        
+                    </section>
+                </div>
+            </div> 
+        
+        <div class="cf"></div>
+        
+        <section class="summer-disqus row">
+    <div class="small-12 columns">
+        <h1 class="summer-comments-header">Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'acegik'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+
+        <div class="cf"></div>
+
+    <footer class="summer-site-footer">
+    <div class="copyright">
+         <section>Bản quyền nội dung thuộc về <a href="/vi/about">Phạm Ngọc Hùng</a> &copy; 2014.</section>
+    </div>
+    <div class="social-icons">
+        
+        
+        <a href="http://twitter.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-twitter fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="https://plus.google.com/u/3/115458186421626071505">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-google-plus fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="http://github.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-github fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="http://facebook.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-facebook fa-stack-1x"></i>
+            </span>
+        </a>
+        
+    </div>
+    
+    <div class="cf"></div>
+</footer>
+ 
+</main>    
+    <script src="/vi/assets/js/vendor/modernizr.js"></script>
+    <script src="/vi/assets/js/foundation.min.js"></script>
+    <script src="/vi/assets/js/vendor/background-check.js"></script>
+    <script src="/vi/assets/js/vendor/post-header-animations.js"></script>
+    <script src="/vi/assets/js/summer.js"></script>
+
+    <script>
+      $(document).foundation();
+    </script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54128248-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+</script>
+ 
+</body>
+</html>

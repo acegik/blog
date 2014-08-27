@@ -2,7 +2,12 @@ callback([
 
   {
     "text": "Tổng quan về Java Concurrency",
-    "href": "http://www.acegik.net/vi/java/tong-quan-ve-java-concurrency"
+    "href": "/vi/java-concurrency/tong-quan-ve-java-concurrency"
+  } ,
+
+  {
+    "text": "Tổng quan về IoC trong Spring Framework",
+    "href": "/vi/spring-framework/tong-quan-ve-ioc-trong-spring"
   } 
 
 ])
