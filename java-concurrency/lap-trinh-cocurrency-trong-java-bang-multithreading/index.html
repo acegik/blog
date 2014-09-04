@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>LậP TRìNH CONCURRENCY TRONG JAVA BằNG MULTITHREADING &vert; ACEGIK'S BLOG</title>
+<meta name="description" content="Hãy thắp một ngọn nến nhỏ, thay vì nguyền rủa bóng đêm">
+<meta name="keywords" content="Java, Java Concurrency, Java Multithreading">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/vi/images/logo.png">
+<meta name="twitter:title" content="Lập trình Concurrency trong Java bằng multithreading">
+<meta name="twitter:description" content="Hãy thắp một ngọn nến nhỏ, thay vì nguyền rủa bóng đêm">
+<meta name="twitter:creator" content="@pnhung177">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lập trình Concurrency trong Java bằng multithreading">
+<meta property="og:description" content="Hãy thắp một ngọn nến nhỏ, thay vì nguyền rủa bóng đêm">
+<meta property="og:url" content="/vi/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading">
+<meta property="og:site_name" content="Acegik's Blog">
+<meta property="og:image" content="/vi/images/">
+
+
+
+
+
+<link rel="canonical" href="/vi/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading">
+<link href="/vi/feed.xml" type="application/atom+xml" rel="alternate" title="Acegik's Blog Feed">
+<link rel="author" href="https://plus.google.com/u/3/115458186421626071505?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,600,300,800,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/vi/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vi/assets/css/vendor/normalize.css">
+    <link rel="stylesheet" href="/vi/assets/css/vendor/foundation.min.css">
+    <link rel="stylesheet" href="/vi/assets/css/style.css">
+    <link rel="stylesheet" href="/vi/assets/css/post.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/vi/assets/js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+    
+
+
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/vi/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/vi/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/vi/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/vi/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/vi/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/vi/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">  
+
+        <main id="summer-post-container-simple" class="summer-post-container-simple" role="main">
+            <header class="summer-post-header-simple">
+                <div class="summer-post-menu-header-simple">
+
+                    <a class="summer-blog-logo" href="/vi">
+                        <img src="/vi/images/logo.png" alt="Blog Logo" />
+                    </a>
+
+                <div class="summer-blog-menu">      
+    <div class="summer-mobile-menu show-for-small">
+        <a href="#"><i class="fa fa-bars"></i></a>
+    </div>
+    <ul class="summer-menu">
+        <li class="summer-mobile-close-btn show-for-small text-right">
+            <a href="#"><i class="fa fa-times"></i></a>
+        </li>
+
+            <li>
+                    <a href="/vi/">Trang bìa</a>
+                 </li>
+
+            <li>
+                    <a href="/vi/featured">Nổi bật</a>
+                 </li>
+
+            <li>
+                    <a href="/vi/tags">Thẻ đánh dấu</a>
+                 </li>
+
+            <li>
+                    <a href="/vi/about">Giới thiệu</a>
+                 </li>
+            
+           <li><a href="/vi/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+    </ul>
+
+</div>
+            </div>
+
+                <div class="summer-post-title-simple row">
+                    <div class="small-12 columns">
+                        <div class="summer-post-meta-simple">
+                            <h1>Lập trình Concurrency trong Java bằng multithreading</h1>
+                            <p>by <strong>pnhung177</strong> &#8212; on <a href="/vi/tags/index.html#Java" data-toggle="tooltip" title="Posts tagged with Java" rel="tag">Java</a>&nbsp;&comma;&nbsp;<a href="/vi/tags/index.html#Java Concurrency" data-toggle="tooltip" title="Posts tagged with Java Concurrency" rel="tag">Java Concurrency</a>&nbsp;&comma;&nbsp;<a href="/vi/tags/index.html#Java Multithreading" data-toggle="tooltip" title="Posts tagged with Java Multithreading" rel="tag">Java Multithreading</a> &#8212; <strong><time datetime="2014-08-26T00:00:00+07:00">26/08/2014</time></strong></p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+        <article class="summer-post-content post tag-simple">
+            <div><p>Nền tảng Java được thiết kế ngay từ đầu <a href="http://docs.oracle.com/javase/tutorial/essential/concurrency/">hỗ trợ lập trình đồng thời</a> (concurrent programming), bao gồm các lệnh, từ khóa, lớp đối tượng ngay trong ngôn ngữ lập trình lẫn thông qua chức năng cung cấp bởi các thư viện hỗ trợ. Java là một trong những ngôn ngữ lập trình đầu tiên làm cho việc lập trình đồng thời trở nên dễ dàng và thuận tiện. Java sử dụng cơ chế multithreading để thực hiện lập trình đồng thời: trong một chương trình cho phép tạo và chạy nhiều Thread đồng thời. Mỗi thread, còn được gọi là một tiến trình gọn nhẹ (lightweight process), là luồng thực thi chạy trong lòng một chương trình và được phép sử dụng và chia sẻ với nhau tài nguyên chung của chương trình đó.  </p>
+
+<h2 id="vng-i-ca-mt-thread">Vòng đời của một Thread</h2>
+
+<p>Một Thread chạy trong một chương trình Java sẽ trải qua nhiều giai đoạn khác nhau, mỗi giai đoạn tương ứng với một trạng thái trong biểu đồ trạng thái trong hình dưới đây.</p>
+
+<p><img src="/vi/images/lap-trinh-cocurrency-trong-java-bang-multithreading/java_multithreading_lifecycle_of_a_thread.png" alt="Hình 1. Lược đồ trạng thái vòng đời của một Thread" /> </p>
+
+<ul>
+  <li>New: Khi một thread được tạo ra (bằng toán tử new) nó sẽ ở trạng thái New, là trạng thái đầu tiên trong vòng đời của nó. Thread giữ ở trạng thái này cho đến khi nó được chương trình kích hoạt thông qua lời gọi phương thức start().</li>
+  <li>Runnable: Sau khi được chương trình kích hoạt, thread chuyển sang trạng thái runnable. Ở trạng thái này, thread đang thực thi các lệnh của nó.</li>
+  <li>Waiting: Thread ở trạng thái waiting (chờ đợi) khi nó bị tạm thời ngừng thực thi và chờ trong khi một thread khác được thực thi. Thread này quay trở lại trạng thái runnable khi nhận được tín hiệu cho phép được thực thi tiếp.</li>
+  <li>Timed waiting: Thread ở trạng thái timed waiting khi nó bị tạm thời dừng thực thi trong một khoảng thời gian định trước. Thread này quay lại trạng thái runnable khi hết thời gian chờ hoặc nhận được tín hiệu cho phép được thực thi tiếp.</li>
+  <li>Blocked: Thread rơi vào trạng thái blocked khi nó thực thi đến lệnh/khối lệnh được đồng bộ (synchronized statement/block) mà lệnh/khối lệnh này đang được một thread khác thực thi. Thread này quay lại trạng thái runnable khi nó đến lượt thực thi khối lệnh được đồng bộ.</li>
+  <li>Terminated: Thread chuyển từ trạng thái runnable sang trạng thái terminated khi nó thực hiện xong công việc. Terminated là trạng thái cuối cùng trong vòng đời của thread. Những thread ở trạng thái này sẽ bị chương trình kết thúc và loại bỏ.</li>
+</ul>
+
+<h2 id="li-ch-khi-s-dng-multithreading">Lợi ích khi sử dụng multithreading</h2>
+
+<h3 id="chng-trnh-ch-ng-p-ng-tt-hn">Chương trình chủ động đáp ứng tốt hơn</h3>
+
+<p>Nhờ multithreading, chương trình có khả năng đáp ứng đồng thời nhiều yêu cầu cùng một lúc, tránh tình trạng các yêu cầu phải xếp hàng chờ đợi lẫn nhau. Các chức năng trong chương trình được “chuyên môn hóa” và phân công cho các Thread khác nhau, chẳng hạn Thread chuyên lắng nghe yêu cầu và phân phối yêu cầu vừa nhận được ngay cho các Thread chuyên xử lý, tăng khá năng tiếp nhận và đáp ứng yêu cầu.</p>
+
+<h3 id="gip-cho-ng-dng-chy-nhanh-hn">Giúp cho ứng dụng chạy nhanh hơn</h3>
+
+<p>Các thread trong ứng dụng chia sẻ và cạnh tranh sử dụng tài nguyên của ứng dụng do đó khai thác triệt để thời gian nhàn rỗi của bộ vi xử lý cũng như khai thác đồng thời nhiều bộ vi xử lý (nếu máy tính có nhiều bộ vi xử lý), do đó giúp cho ứng dụng chạy nhanh hơn. </p>
+
+<h2 id="bt-li-khi-s-dng-multithreading">Bất lợi khi sử dụng multithreading</h2>
+
+<h3 id="tn-km-do-chuyn-i-ng-cnh-thread">Tốn kém do chuyển đổi ngữ cảnh thread</h3>
+
+<p>Mỗi thread chạy trong chương trình đều có thông số trạng thái của nó: vị trí chỉ thị lệnh đang thực thi, dữ liệu cục bộ đang được xử lý,… Các thông số trạng thái này được gọi là ngữ cảnh (<a href="http://en.wikipedia.org/wiki/Context_(computing)">context</a>). Khi bộ xử lý hoán chuyển việc thực thi từ một thread cho một thread khác, nó sẽ lưu lại ngữ cảnh của thread hiện thời để đánh dấu hiện trạng, ngừng thực thi (còn gọi là ngắt - interrupt) thread này, nạp ngữ cảnh của thread đang chờ để thực thi nó. Thread bị ngắt sẽ tạm dừng và chờ đến lượt nó được tái nạp và thực thi tiếp từ vị trí đã được đánh dấu. Quá trình này được gọi là chuyển đổi ngữ cảnh (<a href="http://en.wikipedia.org/wiki/Context_switch">context switch</a>) của thread. Việc chuyện đổi ngữ cảnh rõ ràng cũng tốn kém thời gian, do đó chúng ta nên cân nhắc khi sử dụng multithreading nếu lợi ích thu được không nhiều so với những tốn kém của quá trình chuyển đổi ngữ cảnh trên.</p>
+
+<h3 id="tn-km-ti-nguyn-qun-l-thread">Tốn kém tài nguyên quản lý thread</h3>
+
+<p>Bên cạnh thời gian tốn kém cho việc chuyển đổi ngữ cảnh, chương trình còn phải tốn bộ nhớ để lưu trữ thông số trạng thái tạm thời. Ngoài ra, hệ điều hành cũng mất tài nguyên phục vụ cho việc quản lý các thread.</p>
+
+<h3 id="ng-dng-tr-nn-phc-tp-hn">Ứng dụng trở nên phức tạp hơn</h3>
+
+<p>Rõ ràng việc nấu nhiều món ăn đồng thời sẽ phức tạp hơn so với việc nấu tuần tự từng món ăn. Việc lập trình cho nhiều thread thực thi đồng thời cũng giống như vậy. Người lập trình phải đặc biệt lưu ý đến phần mã lệnh truy cập đến vùng dữ liệu chia sẻ được chạy trên nhiều thread. Các lệnh này, nếu không được đồng bộ, có thể cạnh tranh nhau hỗn loạn trong việc cập nhật dữ liệu dùng chung, dẫn đến sai lệch kết quả. Lỗi phát sinh từ đồng bộ hóa thread không chính xác có thể rất khó để phát hiện, tái tạo và sửa chữa.</p>
+
+<h2 id="cc-vn--thng-gp-vi-multithreading">Các vấn đề thường gặp với multithreading</h2>
+
+<p>Phần này mô tả sơ lược một số vấn đề thường gặp cũng như các kỹ thuật áp dụng để xử lý các vấn đề này. Mỗi vấn đề hoặc kỹ thuật sẽ được trình bày cụ thể trong chuỗi bài viết về Java Concurrency này.</p>
+
+<h3 id="tnh-hung-tng-tranh">Tình huống tương tranh</h3>
+
+<p>Tình huống tương tranh (<a href="http://en.wikipedia.org/wiki/Race_condition">Race condition</a>) xảy ra khi có hai hay nhiều thread cùng tranh giành truy cập vào tài nguyên chung của chương trình, trong khi tài nguyên chung này đòi hỏi phải được truy cập theo trình tự. Đoạn mã lệnh bên trong một thread gây ra tình huống tương tranh được gọi là đoạn mã tới hạn (<a href="http://en.wikipedia.org/wiki/Critical_section">critical section</a> - một số tài liệu gọi là vùng tương trực). Chúng ta có thể tránh được tình huống tương tranh bằng cách đồng bộ hóa các đoạn mã tới hạn một cách đúng đắn, sao cho tài nguyên chung không được phép truy cập đồng thời bởi nhiều hơn 1 thread.</p>
+
+<h3 id="tnh-trng-tc-nghn">Tình trạng tắc nghẽn</h3>
+
+<p>Tắc nghẽn (<a href="http://en.wikipedia.org/wiki/Deadlock">Deadlock</a>) là tình huống hai hay nhiều thread bị chặn để chờ được truy cập vào tài nguyên, trong khi tài nguyên này đang bị chiếm giữ bởi một thread cũng đang bị chặn. </p>
+
+<p><img src="/vi/images/lap-trinh-cocurrency-trong-java-bang-multithreading/deadlock.png" alt="Hình 2. Tình trạng tắc nghẽn giữa hai thread" /></p>
+
+<p>Hình vẽ bên trên minh họa trường hợp tắc nghẽn đơn giản nhất, trong đó hai thread đều bị chặn và chờ được sử dụng tài nguyên mà thread kia đang nắm giữ.</p>
+
+<h3 id="tnh-trng-i-ti-nguyn">Tình trạng đói tài nguyên</h3>
+
+<p>Khi một thread không được cấp đủ tài nguyên để thực thi do bị các thread khác chiếm đoạt hết tài nguyên, thì được gọi là đói tài nguyên (<a href="http://en.wikipedia.org/wiki/Resource_starvation">Resource starvation</a>). Giải pháp giải quyết cho tình trạng đói tài nguyên này là tạo ra sự công bằng, tức là tạo ra một cơ chế đồng bộ công bằng hơn để tất cả các thread đều có cơ hội thực thi.</p>
+
+<h3 id="cc-k-thut-ng-b-thread">Các kỹ thuật đồng bộ thread</h3>
+
+<ul>
+  <li>Đồng bộ hóa bằng khối lệnh synchronized: để đồng bộ các đoạn mã tới hạn nhằm giải quyết trình huống tương tranh, cách đơn giản nhất là sử dụng các khối lệnh synchronized bao bọc các đoạn mã tới hạn. </li>
+  <li>Đồng bộ hóa bằng cơ chế <a href="http://en.wikipedia.org/wiki/Monitor_(synchronization)">Monitor</a>: Sử dụng các phương thức wait(), notify(), notifyAll() sẵn có trong lớp Object để gửi tín hiệu đồng bộ giữa các thread.</li>
+  <li>Đồng bộ hóa bằng đối tượng Lock: Cơ chế đồng bộ thông qua đối tượng <a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/locks/Lock.html">Lock</a> tương tự như đồng bồ bằng synchronized, mặc dù việc thiết lập khoảng đồng bộ (khối lệnh từ lời gọi lock() đến unlock()) linh hoạt hơn khối synchronized, do đó có thể sử dụng để lập trình những đoạn mã phức tạp hơn. Một điều cần lưu ý là đối tượng Lock được tạo ra từ khối đồng bộ synchronized. Từ phiên bản Java 1.5, Java cung cấp gói thư viện java.util.concurrent.locks chứa sẵn các cài đặt Lock, thuận tiện cho người lập trình sử dụng.</li>
+  <li>Đồng bộ hóa bằng cơ chế Semaphore: <a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Semaphore.html">Semaphore</a> là một cấu trúc đồng bộ thread, được sử dụng để gửi tín hiệu qua lại giữa các thread (giống như Monitor), hoặc dùng để đảm bảo các đoạn mã tới hạn không bị xung đột với nhau (giống như đối tượng lock).</li>
+</ul>
+
+
+            </div>
+        </article>
+        <div class="cf"></div>
+        <div class="row text-center">
+            <section class="summer-post-share">
+                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Lập trình Concurrency trong Java bằng multithreading&quot;%20/vi/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading%20via%20&#64;pnhung177"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a class="facebook-icon" href="https://www.facebook.com/sharer/sharer.php?u=/vi/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a class="google-icon" href="https://plus.google.com/share?url=/vi/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </section>
+        </div>
+        <div class="cf"></div>
+        
+            <div class="summer-author-info">
+                <div class="row">
+                    <section class="summer-post-author small-12 columns">
+                        
+                            <img src="/vi/images/avatars/pnhung177.png" class="summer-post-author-avatar" alt="Phạm Ngọc Hùng's photo">
+                        
+                        
+                            <span class="author-label">Author</span>
+                            <h1>Phạm Ngọc Hùng</h1>
+                        
+                        
+                            <p><a href="mailto:pnhung177@drupalex.net" class="author-website">pnhung177@drupalex.net</a></p>
+                        
+                        
+                            <p>Hãy thắp một ngọn nến nhỏ, thay vì nguyền rủa bóng đêm</p>
+                        
+                    </section>
+                </div>
+            </div> 
+        
+        <div class="cf"></div>
+        
+        <section class="summer-disqus row">
+    <div class="small-12 columns">
+        <h1 class="summer-comments-header">Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'acegik'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+
+        <div class="cf"></div>
+
+    <footer class="summer-site-footer">
+    <div class="copyright">
+         <section>Bản quyền nội dung thuộc về <a href="/vi/about">Phạm Ngọc Hùng</a> &copy; 2014.</section>
+    </div>
+    <div class="social-icons">
+        
+        
+        <a href="http://twitter.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-twitter fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="https://plus.google.com/u/3/115458186421626071505">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-google-plus fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="http://github.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-github fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="http://facebook.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-facebook fa-stack-1x"></i>
+            </span>
+        </a>
+        
+    </div>
+    
+    <div class="cf"></div>
+</footer>
+ 
+</main>    
+    <script src="/vi/assets/js/vendor/modernizr.js"></script>
+    <script src="/vi/assets/js/foundation.min.js"></script>
+    <script src="/vi/assets/js/vendor/background-check.js"></script>
+    <script src="/vi/assets/js/vendor/post-header-animations.js"></script>
+    <script src="/vi/assets/js/summer.js"></script>
+
+    <script>
+      $(document).foundation();
+    </script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54128248-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+</script>
+ 
+</body>
+</html>
