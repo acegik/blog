@@ -10,13 +10,104 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http:/vi/feed.xml" />
 <link rel="alternate" type="text/html" href="http:/vi/" />
-<updated>2014-08-28T00:29:34+07:00</updated>
+<updated>2014-09-04T14:34:49+07:00</updated>
 <id>http:/vi/</id>
 <author>
   <name>Phạm Ngọc Hùng</name>
   <uri>http:/vi/</uri>
   <email>pnhung177@drupalex.net</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Lập trình Concurrency trong Java bằng multithreading]]></title>
+  <link rel="alternate" type="text/html" href="http:/vi/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading"/>
+  <id>http:/vi/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading</id>
+  <published>2014-08-26T00:00:00+07:00</published>
+  <updated>2014-08-26T00:00:00-00:00</updated>
+  
+  <author>
+    <name>Phạm Ngọc Hùng</name>
+    <uri>http:/vi</uri>
+    <email>pnhung177@drupalex.net</email>
+  </author>
+  <category scheme="http:/vi/tags/#Java" term="Java" /><category scheme="http:/vi/tags/#Java%20Concurrency" term="Java Concurrency" /><category scheme="http:/vi/tags/#Java%20Multithreading" term="Java Multithreading" />
+  <content type="html">
+  
+    &lt;p&gt;Nền tảng Java được thiết kế ngay từ đầu &lt;a href=&quot;http://docs.oracle.com/javase/tutorial/essential/concurrency/&quot;&gt;hỗ trợ lập trình đồng thời&lt;/a&gt; (concurrent programming), bao gồm các lệnh, từ khóa, lớp đối tượng ngay trong ngôn ngữ lập trình lẫn thông qua chức năng cung cấp bởi các thư viện hỗ trợ. Java là một trong những ngôn ngữ lập trình đầu tiên làm cho việc lập trình đồng thời trở nên dễ dàng và thuận tiện. Java sử dụng cơ chế multithreading để thực hiện lập trình đồng thời: trong một chương trình cho phép tạo và chạy nhiều Thread đồng thời. Mỗi thread, còn được gọi là một tiến trình gọn nhẹ (lightweight process), là luồng thực thi chạy trong lòng một chương trình và được phép sử dụng và chia sẻ với nhau tài nguyên chung của chương trình đó.  &lt;/p&gt;
+
+&lt;h2 id=&quot;vng-i-ca-mt-thread&quot;&gt;Vòng đời của một Thread&lt;/h2&gt;
+
+&lt;p&gt;Một Thread chạy trong một chương trình Java sẽ trải qua nhiều giai đoạn khác nhau, mỗi giai đoạn tương ứng với một trạng thái trong biểu đồ trạng thái trong hình dưới đây.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http:/vi/images/lap-trinh-cocurrency-trong-java-bang-multithreading/java_multithreading_lifecycle_of_a_thread.png&quot; alt=&quot;Hình 1. Lược đồ trạng thái vòng đời của một Thread&quot; /&gt; &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;New: Khi một thread được tạo ra (bằng toán tử new) nó sẽ ở trạng thái New, là trạng thái đầu tiên trong vòng đời của nó. Thread giữ ở trạng thái này cho đến khi nó được chương trình kích hoạt thông qua lời gọi phương thức start().&lt;/li&gt;
+  &lt;li&gt;Runnable: Sau khi được chương trình kích hoạt, thread chuyển sang trạng thái runnable. Ở trạng thái này, thread đang thực thi các lệnh của nó.&lt;/li&gt;
+  &lt;li&gt;Waiting: Thread ở trạng thái waiting (chờ đợi) khi nó bị tạm thời ngừng thực thi và chờ trong khi một thread khác được thực thi. Thread này quay trở lại trạng thái runnable khi nhận được tín hiệu cho phép được thực thi tiếp.&lt;/li&gt;
+  &lt;li&gt;Timed waiting: Thread ở trạng thái timed waiting khi nó bị tạm thời dừng thực thi trong một khoảng thời gian định trước. Thread này quay lại trạng thái runnable khi hết thời gian chờ hoặc nhận được tín hiệu cho phép được thực thi tiếp.&lt;/li&gt;
+  &lt;li&gt;Blocked: Thread rơi vào trạng thái blocked khi nó thực thi đến lệnh/khối lệnh được đồng bộ (synchronized statement/block) mà lệnh/khối lệnh này đang được một thread khác thực thi. Thread này quay lại trạng thái runnable khi nó đến lượt thực thi khối lệnh được đồng bộ.&lt;/li&gt;
+  &lt;li&gt;Terminated: Thread chuyển từ trạng thái runnable sang trạng thái terminated khi nó thực hiện xong công việc. Terminated là trạng thái cuối cùng trong vòng đời của thread. Những thread ở trạng thái này sẽ bị chương trình kết thúc và loại bỏ.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;li-ch-khi-s-dng-multithreading&quot;&gt;Lợi ích khi sử dụng multithreading&lt;/h2&gt;
+
+&lt;h3 id=&quot;chng-trnh-ch-ng-p-ng-tt-hn&quot;&gt;Chương trình chủ động đáp ứng tốt hơn&lt;/h3&gt;
+
+&lt;p&gt;Nhờ multithreading, chương trình có khả năng đáp ứng đồng thời nhiều yêu cầu cùng một lúc, tránh tình trạng các yêu cầu phải xếp hàng chờ đợi lẫn nhau. Các chức năng trong chương trình được “chuyên môn hóa” và phân công cho các Thread khác nhau, chẳng hạn Thread chuyên lắng nghe yêu cầu và phân phối yêu cầu vừa nhận được ngay cho các Thread chuyên xử lý, tăng khá năng tiếp nhận và đáp ứng yêu cầu.&lt;/p&gt;
+
+&lt;h3 id=&quot;gip-cho-ng-dng-chy-nhanh-hn&quot;&gt;Giúp cho ứng dụng chạy nhanh hơn&lt;/h3&gt;
+
+&lt;p&gt;Các thread trong ứng dụng chia sẻ và cạnh tranh sử dụng tài nguyên của ứng dụng do đó khai thác triệt để thời gian nhàn rỗi của bộ vi xử lý cũng như khai thác đồng thời nhiều bộ vi xử lý (nếu máy tính có nhiều bộ vi xử lý), do đó giúp cho ứng dụng chạy nhanh hơn. &lt;/p&gt;
+
+&lt;h2 id=&quot;bt-li-khi-s-dng-multithreading&quot;&gt;Bất lợi khi sử dụng multithreading&lt;/h2&gt;
+
+&lt;h3 id=&quot;tn-km-do-chuyn-i-ng-cnh-thread&quot;&gt;Tốn kém do chuyển đổi ngữ cảnh thread&lt;/h3&gt;
+
+&lt;p&gt;Mỗi thread chạy trong chương trình đều có thông số trạng thái của nó: vị trí chỉ thị lệnh đang thực thi, dữ liệu cục bộ đang được xử lý,… Các thông số trạng thái này được gọi là ngữ cảnh (&lt;a href=&quot;http://en.wikipedia.org/wiki/Context_(computing)&quot;&gt;context&lt;/a&gt;). Khi bộ xử lý hoán chuyển việc thực thi từ một thread cho một thread khác, nó sẽ lưu lại ngữ cảnh của thread hiện thời để đánh dấu hiện trạng, ngừng thực thi (còn gọi là ngắt - interrupt) thread này, nạp ngữ cảnh của thread đang chờ để thực thi nó. Thread bị ngắt sẽ tạm dừng và chờ đến lượt nó được tái nạp và thực thi tiếp từ vị trí đã được đánh dấu. Quá trình này được gọi là chuyển đổi ngữ cảnh (&lt;a href=&quot;http://en.wikipedia.org/wiki/Context_switch&quot;&gt;context switch&lt;/a&gt;) của thread. Việc chuyện đổi ngữ cảnh rõ ràng cũng tốn kém thời gian, do đó chúng ta nên cân nhắc khi sử dụng multithreading nếu lợi ích thu được không nhiều so với những tốn kém của quá trình chuyển đổi ngữ cảnh trên.&lt;/p&gt;
+
+&lt;h3 id=&quot;tn-km-ti-nguyn-qun-l-thread&quot;&gt;Tốn kém tài nguyên quản lý thread&lt;/h3&gt;
+
+&lt;p&gt;Bên cạnh thời gian tốn kém cho việc chuyển đổi ngữ cảnh, chương trình còn phải tốn bộ nhớ để lưu trữ thông số trạng thái tạm thời. Ngoài ra, hệ điều hành cũng mất tài nguyên phục vụ cho việc quản lý các thread.&lt;/p&gt;
+
+&lt;h3 id=&quot;ng-dng-tr-nn-phc-tp-hn&quot;&gt;Ứng dụng trở nên phức tạp hơn&lt;/h3&gt;
+
+&lt;p&gt;Rõ ràng việc nấu nhiều món ăn đồng thời sẽ phức tạp hơn so với việc nấu tuần tự từng món ăn. Việc lập trình cho nhiều thread thực thi đồng thời cũng giống như vậy. Người lập trình phải đặc biệt lưu ý đến phần mã lệnh truy cập đến vùng dữ liệu chia sẻ được chạy trên nhiều thread. Các lệnh này, nếu không được đồng bộ, có thể cạnh tranh nhau hỗn loạn trong việc cập nhật dữ liệu dùng chung, dẫn đến sai lệch kết quả. Lỗi phát sinh từ đồng bộ hóa thread không chính xác có thể rất khó để phát hiện, tái tạo và sửa chữa.&lt;/p&gt;
+
+&lt;h2 id=&quot;cc-vn--thng-gp-vi-multithreading&quot;&gt;Các vấn đề thường gặp với multithreading&lt;/h2&gt;
+
+&lt;p&gt;Phần này mô tả sơ lược một số vấn đề thường gặp cũng như các kỹ thuật áp dụng để xử lý các vấn đề này. Mỗi vấn đề hoặc kỹ thuật sẽ được trình bày cụ thể trong chuỗi bài viết về Java Concurrency này.&lt;/p&gt;
+
+&lt;h3 id=&quot;tnh-hung-tng-tranh&quot;&gt;Tình huống tương tranh&lt;/h3&gt;
+
+&lt;p&gt;Tình huống tương tranh (&lt;a href=&quot;http://en.wikipedia.org/wiki/Race_condition&quot;&gt;Race condition&lt;/a&gt;) xảy ra khi có hai hay nhiều thread cùng tranh giành truy cập vào tài nguyên chung của chương trình, trong khi tài nguyên chung này đòi hỏi phải được truy cập theo trình tự. Đoạn mã lệnh bên trong một thread gây ra tình huống tương tranh được gọi là đoạn mã tới hạn (&lt;a href=&quot;http://en.wikipedia.org/wiki/Critical_section&quot;&gt;critical section&lt;/a&gt; - một số tài liệu gọi là vùng tương trực). Chúng ta có thể tránh được tình huống tương tranh bằng cách đồng bộ hóa các đoạn mã tới hạn một cách đúng đắn, sao cho tài nguyên chung không được phép truy cập đồng thời bởi nhiều hơn 1 thread.&lt;/p&gt;
+
+&lt;h3 id=&quot;tnh-trng-tc-nghn&quot;&gt;Tình trạng tắc nghẽn&lt;/h3&gt;
+
+&lt;p&gt;Tắc nghẽn (&lt;a href=&quot;http://en.wikipedia.org/wiki/Deadlock&quot;&gt;Deadlock&lt;/a&gt;) là tình huống hai hay nhiều thread bị chặn để chờ được truy cập vào tài nguyên, trong khi tài nguyên này đang bị chiếm giữ bởi một thread cũng đang bị chặn. &lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http:/vi/images/lap-trinh-cocurrency-trong-java-bang-multithreading/deadlock.png&quot; alt=&quot;Hình 2. Tình trạng tắc nghẽn giữa hai thread&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Hình vẽ bên trên minh họa trường hợp tắc nghẽn đơn giản nhất, trong đó hai thread đều bị chặn và chờ được sử dụng tài nguyên mà thread kia đang nắm giữ.&lt;/p&gt;
+
+&lt;h3 id=&quot;tnh-trng-i-ti-nguyn&quot;&gt;Tình trạng đói tài nguyên&lt;/h3&gt;
+
+&lt;p&gt;Khi một thread không được cấp đủ tài nguyên để thực thi do bị các thread khác chiếm đoạt hết tài nguyên, thì được gọi là đói tài nguyên (&lt;a href=&quot;http://en.wikipedia.org/wiki/Resource_starvation&quot;&gt;Resource starvation&lt;/a&gt;). Giải pháp giải quyết cho tình trạng đói tài nguyên này là tạo ra sự công bằng, tức là tạo ra một cơ chế đồng bộ công bằng hơn để tất cả các thread đều có cơ hội thực thi.&lt;/p&gt;
+
+&lt;h3 id=&quot;cc-k-thut-ng-b-thread&quot;&gt;Các kỹ thuật đồng bộ thread&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Đồng bộ hóa bằng khối lệnh synchronized: để đồng bộ các đoạn mã tới hạn nhằm giải quyết trình huống tương tranh, cách đơn giản nhất là sử dụng các khối lệnh synchronized bao bọc các đoạn mã tới hạn. &lt;/li&gt;
+  &lt;li&gt;Đồng bộ hóa bằng cơ chế &lt;a href=&quot;http://en.wikipedia.org/wiki/Monitor_(synchronization)&quot;&gt;Monitor&lt;/a&gt;: Sử dụng các phương thức wait(), notify(), notifyAll() sẵn có trong lớp Object để gửi tín hiệu đồng bộ giữa các thread.&lt;/li&gt;
+  &lt;li&gt;Đồng bộ hóa bằng đối tượng Lock: Cơ chế đồng bộ thông qua đối tượng &lt;a href=&quot;http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/locks/Lock.html&quot;&gt;Lock&lt;/a&gt; tương tự như đồng bồ bằng synchronized, mặc dù việc thiết lập khoảng đồng bộ (khối lệnh từ lời gọi lock() đến unlock()) linh hoạt hơn khối synchronized, do đó có thể sử dụng để lập trình những đoạn mã phức tạp hơn. Một điều cần lưu ý là đối tượng Lock được tạo ra từ khối đồng bộ synchronized. Từ phiên bản Java 1.5, Java cung cấp gói thư viện java.util.concurrent.locks chứa sẵn các cài đặt Lock, thuận tiện cho người lập trình sử dụng.&lt;/li&gt;
+  &lt;li&gt;Đồng bộ hóa bằng cơ chế Semaphore: &lt;a href=&quot;http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Semaphore.html&quot;&gt;Semaphore&lt;/a&gt; là một cấu trúc đồng bộ thread, được sử dụng để gửi tín hiệu qua lại giữa các thread (giống như Monitor), hoặc dùng để đảm bảo các đoạn mã tới hạn không bị xung đột với nhau (giống như đối tượng lock).&lt;/li&gt;
+&lt;/ul&gt;
+
+
+  
+  &lt;p&gt;&lt;a href=&quot;http:/vi/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading&quot;&gt;Lập trình Concurrency trong Java bằng multithreading&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/vi&quot;&gt;Acegik's Blog&lt;/a&gt; on August 26, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -69,7 +160,7 @@
 
 &lt;p&gt;&lt;img src=&quot;http:/vi/images/2014-08-24-tong-quan-ve-ioc-trong-spring/ioc_example_servlet.png&quot; alt=&quot;Đảo ngược điều khiển trong ứng dụng Servlet&quot; /&gt; &lt;/p&gt;
 
-&lt;p&gt;Và đôi khi chúng ta cũng đã tự hỏi: vậy ai kích hoạt ứng dụng chúng ta viết để đáp ứng mỗi khi có Http Request gửi đến? ai chịu trách nhiệm chuyển đổi các thông điệp Http (HTTP Request và HTTP response) thành các đối tượng Java (HttpServletRequest và HttpServletResponse) để truyền cho các hàm doGet(), doPost()? Câu trả lời rõ ràng và ngay lập tức: chính là Servlet Container.&lt;/p&gt;
+&lt;p&gt;Đôi khi chúng ta cũng đã tự hỏi: vậy ai kích hoạt ứng dụng chúng ta viết để đáp ứng mỗi khi có Http Request gửi đến? ai chịu trách nhiệm chuyển đổi các thông điệp Http (HTTP Request và HTTP response) thành các đối tượng Java (HttpServletRequest và HttpServletResponse) để truyền cho các hàm doGet(), doPost()? Câu trả lời rõ ràng và ngay lập tức: chính là Servlet Container.&lt;/p&gt;
 
 &lt;h3 id=&quot;v-d-2-lp-trnh-unit-testing-bng-junit&quot;&gt;Ví dụ 2: Lập trình Unit Testing bằng JUnit&lt;/h3&gt;
 
@@ -238,6 +329,68 @@
 
   
   &lt;p&gt;&lt;a href=&quot;http:/vi/java-concurrency/tong-quan-ve-java-concurrency&quot;&gt;Tổng quan về Java Concurrency&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/vi&quot;&gt;Acegik's Blog&lt;/a&gt; on August 20, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Giã từ ... Wordpress]]></title>
+  <link rel="alternate" type="text/html" href="http:/vi/jekyll/gia-tu-wordpress"/>
+  <id>http:/vi/jekyll/gia-tu-wordpress</id>
+  <published>2014-07-01T00:00:00+07:00</published>
+  <updated>2014-07-01T00:00:00-00:00</updated>
+  
+  <author>
+    <name>Phạm Ngọc Hùng</name>
+    <uri>http:/vi</uri>
+    <email>pnhung177@drupalex.net</email>
+  </author>
+  <category scheme="http:/vi/tags/#jekyll" term="jekyll" /><category scheme="http:/vi/tags/#wordpress" term="wordpress" /><category scheme="http:/vi/tags/#markdown" term="markdown" />
+  <content type="html">
+  
+    &lt;p&gt;Trong các công cụ tạo blog, có lẽ wordress là công cụ hàng đầu trên thế giới hiện nay. Wordpress là CMS mã nguồn mở bằng PHP được sử dụng rộng rãi không chỉ để viết blog mà còn dùng cho các trang web bán hàng, nền tảng để xây dựng các ứng dụng dưới dạng các plugin. So với Joomla và Drupal, Wordpress có phần nổi trội hơn về tính đơn giản, số lượng plugin nhiều cũng như sự dễ dùng của nó.&lt;/p&gt;
+
+&lt;p&gt;Mặc dù đã gắn bó với Wordpress một thời gian dài (và khá hài lòng với CMS này), tuy nhiên cuối cùng tôi cũng giã từ để chuyển blog của mình sang một “nền tảng” khác là Jekyll. Tại sao là Jekyll? Dưới đây là một số lý do:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Đầu tiên phải kể đến là cách Jekyll tạo bài viết: người viết bài chỉ cần soạn thảo bài viết theo định dạng &lt;a href=&quot;http://daringfireball.net/projects/markdown/&quot;&gt;Markdown&lt;/a&gt; hoặc &lt;a href=&quot;http://en.wikipedia.org/wiki/Textile_(markup_language)&quot;&gt;Textile&lt;/a&gt;, sau đó sử dụng Jekyll để biên dịch thành trang web tĩnh.&lt;/li&gt;
+  &lt;li&gt;Blog tạo ra bằng Jekyll là trang web tĩnh, không cần đến CSDL, không cần đến engine xử lý ngôn ngữ lập trình như PHP, Java, .NET,v.v. nên trang web nhẹ, nhanh, dễ dàng triển khai, cập nhật.&lt;/li&gt;
+  &lt;li&gt;Do blog có thể biên dịch thành trang web tĩnh, nên không kén chọn web-host để lưu trữ, có thể sử dụng github để lưu trữ trang web.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Với những ai đồng quan điểm với tôi và có ý đồ chuyển blog từ Wordpress sang Jekyll, tôi chia sẻ một số kinh nghiệm dưới đây.&lt;/p&gt;
+
+&lt;h2 id=&quot;bc-tch-bi-vit-t-wordpress&quot;&gt;Bóc tách bài viết từ Wordpress&lt;/h2&gt;
+
+&lt;p&gt;Giả sử bạn đã có trang web hoặc blog trên wordpress. Việc chuyển đổi bài viết từ wordpress qua Jekyll được thực hiện theo các bước sau:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cài đặt plugin &lt;a href=&quot;http://wordpress.org/plugins/disqus-comment-system/&quot;&gt;Disqus Comment System&lt;/a&gt; và thực hiện di chuyển các bình luận nội bộ trong Wordpress sang Disqus.&lt;/li&gt;
+  &lt;li&gt;Cài đặt plugin chuyển đổi &lt;a href=&quot;https://github.com/benbalter/wordpress-to-jekyll-exporter&quot;&gt;Wordpress to Jekyll Exporter&lt;/a&gt; để chuyển đổi bài viết và các thông tin khác (converts all posts, pages, taxonomies, metadata, and settings to Markdown and YAML which can be dropped into Jekyll) từ Wordpress sang Jekyll.&lt;/li&gt;
+  &lt;li&gt;Phần hình ảnh cần chuyển đổi bằng tay. Trước tiên bạn chép các tệp hình ảnh từ Wordpress vào thư mục chứa hình ảnh của Jekyll, sau đó sử dụng công cụ Find &amp;amp; Replace dựa trên RegExp để tìm và thay thế đường dẫn thư mục hình ảnh trong các bài viết.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Việc này áp dụng không chỉ với wordpress mà cả với các CMS khác.&lt;/p&gt;
+
+&lt;h2 id=&quot;xut-bn-bi-vit-bng-jekyll&quot;&gt;Xuất bản bài viết bằng Jekyll&lt;/h2&gt;
+
+&lt;p&gt;Nếu bạn muốn giữ lại themes cũ, hãy dành một chút thời gian để chỉnh sửa giao diện phù hợp với Jekyll. Nếu không, bạn có thể chọn các themes có sẵn, chẳng hạn như từ &lt;a href=&quot;http://themes.jekyllbootstrap.com/&quot;&gt;kho theme của Jekyllbootstrap&lt;/a&gt;. Thông thường, bạn chuyển vào thư mục gốc của mã nguồn Jekyll của trang web, chỉnh sửa thông số cấu hình trong tệp &lt;em&gt;_config.yml&lt;/em&gt;, sau đó sử dụng Jekyll để biên dịch thành một trang web tĩnh và upload trang web tĩnh này lên web-host riêng của bạn hoặc lên github. Các bạn có thể tìm hiểu chi tiết và đầy đủ về Jekyll từ trang tài liệu &lt;a href=&quot;http://jekyllrb.com/docs/home/&quot;&gt;Jekyll Documentation&lt;/a&gt; của công cụ này.&lt;/p&gt;
+
+&lt;h2 id=&quot;kt-lun&quot;&gt;Kết luận&lt;/h2&gt;
+
+&lt;p&gt;Với các nhà phát triển ứng dụng, có lẽ Jekyll hoặc các công cụ tương tự phù hợp hơn Wordpress trong việc viết blog. Do thường xuyên viết tài liệu bằng Markdown, Textile nên việc viết blog bằng Jekyll sẽ thấy quen thuộc, dễ kiểm soát hơn. Chưa kể đến tốc độ và những thuận lợi mà trang web tĩnh mang lại.&lt;/p&gt;
+
+&lt;h2 id=&quot;ti-liu-tham-kho&quot;&gt;Tài liệu tham khảo&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;http://jekyllrb.com/docs/home/&quot;&gt;Tài liệu hướng dẫn sử dụng Jekyll&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://wordpress.org/plugins/disqus-comment-system/&quot;&gt;Disqus plugin cho Wordpress&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/benbalter/wordpress-to-jekyll-exporter&quot;&gt;Wordpress to Jekyll Exporter&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://themes.jekyllbootstrap.com/&quot;&gt;Jekyllbootstrap Themes&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+  
+  &lt;p&gt;&lt;a href=&quot;http:/vi/jekyll/gia-tu-wordpress&quot;&gt;Giã từ ... Wordpress&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/vi&quot;&gt;Acegik's Blog&lt;/a&gt; on July 01, 2014.&lt;/p&gt;</content>
 </entry>
 
 </feed>

@@ -48,11 +48,19 @@
 
     
     <url>
+        <loc>/vi/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading</loc>
+    </url>
+    
+    <url>
         <loc>/vi/spring-framework/tong-quan-ve-ioc-trong-spring</loc>
     </url>
     
     <url>
         <loc>/vi/java-concurrency/tong-quan-ve-java-concurrency</loc>
+    </url>
+    
+    <url>
+        <loc>/vi/jekyll/gia-tu-wordpress</loc>
     </url>
     
 </urlset>

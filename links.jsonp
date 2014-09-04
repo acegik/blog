@@ -1,6 +1,11 @@
 callback([
 
   {
+    "text": "Giã từ ... Wordpress",
+    "href": "/vi/jekyll/gia-tu-wordpress"
+  } ,
+
+  {
     "text": "Tổng quan về Java Concurrency",
     "href": "/vi/java-concurrency/tong-quan-ve-java-concurrency"
   } ,
@@ -8,6 +13,11 @@ callback([
   {
     "text": "Tổng quan về IoC trong Spring Framework",
     "href": "/vi/spring-framework/tong-quan-ve-ioc-trong-spring"
+  } ,
+
+  {
+    "text": "Lập trình Concurrency trong Java bằng multithreading",
+    "href": "/vi/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading"
   } 
 
 ])
