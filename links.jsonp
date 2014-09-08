@@ -1,6 +1,11 @@
 callback([
 
   {
+    "text": "Lập trình phân tách nội dung XML trong Java",
+    "href": "/vi/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java"
+  } ,
+
+  {
     "text": "Giã từ ... Wordpress",
     "href": "/vi/jekyll/gia-tu-wordpress"
   } ,

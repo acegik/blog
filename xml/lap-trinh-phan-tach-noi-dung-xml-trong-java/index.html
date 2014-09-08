@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>LậP TRìNH PHâN TáCH NộI DUNG XML TRONG JAVA &vert; ACEGIK'S BLOG</title>
+<meta name="description" content="Hãy thắp một ngọn nến nhỏ, thay vì nguyền rủa bóng đêm">
+<meta name="keywords" content="XML, XML Parser">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/vi/images/logo.png">
+<meta name="twitter:title" content="Lập trình phân tách nội dung XML trong Java">
+<meta name="twitter:description" content="Hãy thắp một ngọn nến nhỏ, thay vì nguyền rủa bóng đêm">
+<meta name="twitter:creator" content="@pnhung177">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lập trình phân tách nội dung XML trong Java">
+<meta property="og:description" content="Hãy thắp một ngọn nến nhỏ, thay vì nguyền rủa bóng đêm">
+<meta property="og:url" content="/vi/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java">
+<meta property="og:site_name" content="Acegik's Blog">
+<meta property="og:image" content="/vi/images/">
+
+
+
+
+
+<link rel="canonical" href="/vi/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java">
+<link href="/vi/feed.xml" type="application/atom+xml" rel="alternate" title="Acegik's Blog Feed">
+<link rel="author" href="https://plus.google.com/u/3/115458186421626071505?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,600,300,800,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/vi/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vi/assets/css/vendor/normalize.css">
+    <link rel="stylesheet" href="/vi/assets/css/vendor/foundation.min.css">
+    <link rel="stylesheet" href="/vi/assets/css/style.css">
+    <link rel="stylesheet" href="/vi/assets/css/post.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/vi/assets/js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+    
+
+
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/vi/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/vi/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/vi/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/vi/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/vi/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/vi/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">  
+
+        <main id="summer-post-container-simple" class="summer-post-container-simple" role="main">
+            <header class="summer-post-header-simple">
+                <div class="summer-post-menu-header-simple">
+
+                    <a class="summer-blog-logo" href="/vi">
+                        <img src="/vi/images/logo.png" alt="Blog Logo" />
+                    </a>
+
+                <div class="summer-blog-menu">      
+    <div class="summer-mobile-menu show-for-small">
+        <a href="#"><i class="fa fa-bars"></i></a>
+    </div>
+    <ul class="summer-menu">
+        <li class="summer-mobile-close-btn show-for-small text-right">
+            <a href="#"><i class="fa fa-times"></i></a>
+        </li>
+
+            <li>
+                    <a href="/vi/">Trang bìa</a>
+                 </li>
+
+            <li>
+                    <a href="/vi/featured">Nổi bật</a>
+                 </li>
+
+            <li>
+                    <a href="/vi/tags">Thẻ đánh dấu</a>
+                 </li>
+
+            <li>
+                    <a href="/vi/about">Giới thiệu</a>
+                 </li>
+            
+           <li><a href="/vi/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+    </ul>
+
+</div>
+            </div>
+
+                <div class="summer-post-title-simple row">
+                    <div class="small-12 columns">
+                        <div class="summer-post-meta-simple">
+                            <h1>Lập trình phân tách nội dung XML trong Java</h1>
+                            <p>by <strong>pnhung177</strong> &#8212; on <a href="/vi/tags/index.html#XML" data-toggle="tooltip" title="Posts tagged with XML" rel="tag">XML</a>&nbsp;&comma;&nbsp;<a href="/vi/tags/index.html#XML Parser" data-toggle="tooltip" title="Posts tagged with XML Parser" rel="tag">XML Parser</a> &#8212; <strong><time datetime="2013-07-05T00:00:00+07:00">05/07/2013</time></strong></p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+        <article class="summer-post-content post tag-simple">
+            <div><p>XML được sử dụng rộng rãi và đóng vai trò hết sức quan trọng trong các ứng dụng hiện nay. XML được sử dụng để cấu hình ứng dụng, lưu trữ dữ liệu, định dạng và trao đổi dữ liệu trong nội bộ cũng như giữa các ứng dụng. Do đó, hầu hết các ứng dụng đều trực tiếp hoặc gián tiếp xử lý dữ liệu theo định dạng XML. Với Java có rất nhiều thư viện hỗ trợ việc đọc/ghi dữ liệu theo định dạng XML, bao gồm các thư viện dựng sẵn trong Java cũng như các thư viện bên ngoài như jdom, xerces, axiom, woodstox,… Bài viết này đề cập đến việc sử dụng các thư viện dựng sẵn trong Java để phân tách đọc nội dung XML bằng 3 cách: dựa trên mô hình <a href="http://en.wikipedia.org/wiki/Document_Object_Model">DOM</a>, sử dụng <a href="http://en.wikipedia.org/wiki/Simple_API_for_XML">SAX</a> và sử dụng <a href="http://en.wikipedia.org/wiki/StAX">StAX</a>.</p>
+
+<p>Để thuận tiện cho việc trình bày, chúng ta sẽ xem xét ví dụ minh họa có 3 lớp đối tượng xử lý XML tương ứng với 3 cách ở trên: DemoDOMParser, DemoSAXParser, DemoStAXParser. Các lớp đối tượng xử lý này đều áp dụng cho tệp XML với nội dung có dạng như sau:</p>
+
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;students&gt;</span>
+    <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;fullname&gt;</span>Nguyen Anh Minh<span class="nt">&lt;/fullname&gt;</span>
+        <span class="nt">&lt;email&gt;</span>minhna@gmail.com<span class="nt">&lt;/email&gt;</span>
+        <span class="nt">&lt;address&gt;</span>345, Hung Vuong, Da Nang<span class="nt">&lt;/address&gt;</span>
+    <span class="nt">&lt;/student&gt;</span>
+    <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;fullname&gt;</span>Tram Tu Thieng<span class="nt">&lt;/fullname&gt;</span>
+        <span class="nt">&lt;email&gt;</span>ttt.thieng@gmail.com<span class="nt">&lt;/email&gt;</span>
+        <span class="nt">&lt;address&gt;</span>450 Doi Can, Ha Noi<span class="nt">&lt;/address&gt;</span>
+    <span class="nt">&lt;/student&gt;</span>
+    <span class="nt">&lt;student</span> <span class="na">id=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;fullname&gt;</span>Duong Minh Tuan<span class="nt">&lt;/fullname&gt;</span>
+        <span class="nt">&lt;email&gt;</span>tuandm@gmail.com<span class="nt">&lt;/email&gt;</span>
+        <span class="nt">&lt;address&gt;</span>144, Phan Dang Luu, Tp. Ho Chi Minh<span class="nt">&lt;/address&gt;</span>
+    <span class="nt">&lt;/student&gt;</span>
+<span class="nt">&lt;/students&gt;</span></code></pre></div>
+
+<p>Lớp đối tượng java Student mô tả thông tin tương ứng trong thẻ &lt;student&gt; được định nghĩa như sau:</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Student</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">id</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">fullname</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">email</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">address</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="n">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getAddress</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">address</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAddress</span><span class="o">(</span><span class="n">String</span> <span class="n">address</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">address</span> <span class="o">=</span> <span class="n">address</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getEmail</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">email</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setEmail</span><span class="o">(</span><span class="n">String</span> <span class="n">email</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">email</span> <span class="o">=</span> <span class="n">email</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getFullname</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">fullname</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setFullname</span><span class="o">(</span><span class="n">String</span> <span class="n">fullname</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">fullname</span> <span class="o">=</span> <span class="n">fullname</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">StringBuilder</span><span class="o">();</span>
+        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&quot;{&quot;</span><span class="o">);</span>
+        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&quot;id:&quot;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">&quot;\&quot;&quot;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">id</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">&quot;\&quot;,&quot;</span><span class="o">);</span>
+        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&quot;fullname:&quot;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">&quot;\&quot;&quot;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">fullname</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">&quot;\&quot;,&quot;</span><span class="o">);</span>
+        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&quot;email:&quot;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">&quot;\&quot;&quot;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">email</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">&quot;\&quot;,&quot;</span><span class="o">);</span>
+        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&quot;address:&quot;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">&quot;\&quot;&quot;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">address</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">&quot;\&quot;&quot;</span><span class="o">);</span>
+        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&quot;}&quot;</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
+
+<p>Cả ba lớp đối tượng Parser đều sử dụng interface chung, có tên là DemoXmlParser, định nghĩa phương thức getAllStudents(). Phương thức này có chức năng đọc các phần tử <student> từ tệp XML, tạo đối tượng Student tương ứng và trả về danh sách đối tượng List<student>: </student></student></p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">DemoXmlParser</span> <span class="o">{</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="nf">getAllStudents</span><span class="o">();</span>
+<span class="o">}</span></code></pre></div>
+
+<p>Ngoài phương thức chung getAllStudents(), cả ba bộ Parser đều có chung dữ liệu đầu vào giống nhau là đường dẫn đến tệp XML, được định nghĩa trong lớp đối tượng trừu tượng DemoAbstractParser:</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">DemoAbstractParser</span> <span class="kd">implements</span> <span class="n">DemoXmlParser</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="nf">DemoAbstractParser</span><span class="o">(</span><span class="n">String</span> <span class="n">filename</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">filename</span> <span class="o">=</span> <span class="n">filename</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">protected</span> <span class="n">String</span> <span class="n">filename</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getFilename</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">filename</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
+
+<p>Các lớp đối tượng DemoDOMParser, DemoSAXParser, DemoStAXParser trong bài viết này đều kế thừa từ lớp DemoAbstractParser.</p>
+
+<h2 id="phn-tch-ni-dung-xml-theo-m-hnh-dom">Phân tách nội dung XML theo mô hình DOM</h2>
+
+<p>Theo cách này, chúng ta sử dụng đối tượng DocumentBuilder sẵn có trong Java. Nhiệm vụ của DocumentBuilder là phân tách nội dung tệp XML và chuyển đổi nội dung này thành cấu trúc DOM (Document Object Model) lưu trữ trong bộ nhớ, cho phép người lập trình sử dụng các hàm đã định nghĩa sẵn duyệt (traversing) cấu trúc phân cấp DOM để truy vấn dữ liệu.</p>
+
+<p><img src="/vi/images/lap-trinh-phan-tach-noi-dung-xml-trong-java/xml_parsing_in_java_dom_parser.png" alt="Hình 1. Cơ chế hoạt động của DOM Parser" /> </p>
+
+<p>Để minh họa, chúng ta xem xét lớp đối tượng DemoDOMParser, sử dụng DocumentBuilder để phân tách nội dung XML thành đối tượng Document theo mô hình DOM:</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoDOMParser</span> <span class="kd">extends</span> <span class="n">DemoAbstractParser</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="nf">DemoDOMParser</span><span class="o">(</span><span class="n">String</span> <span class="n">filename</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">filename</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="nf">getAllStudents</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">DocumentBuilderFactory</span> <span class="n">factory</span> <span class="o">=</span> <span class="n">DocumentBuilderFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span>
+            <span class="n">DocumentBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="na">newDocumentBuilder</span><span class="o">();</span>
+            <span class="n">Document</span> <span class="n">document</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span>
+                    <span class="n">ClassLoader</span><span class="o">.</span><span class="na">getSystemResourceAsStream</span><span class="o">(</span><span class="n">getFilename</span><span class="o">()));</span>
+
+            <span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="n">studentList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+            <span class="n">NodeList</span> <span class="n">nodeList</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="na">getDocumentElement</span><span class="o">().</span><span class="na">getChildNodes</span><span class="o">();</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">nodeList</span><span class="o">.</span><span class="na">getLength</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="n">Node</span> <span class="n">node</span> <span class="o">=</span> <span class="n">nodeList</span><span class="o">.</span><span class="na">item</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">node</span> <span class="k">instanceof</span> <span class="n">Element</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">Student</span> <span class="n">student</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Student</span><span class="o">();</span>
+                    <span class="n">student</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">node</span><span class="o">.</span><span class="na">getAttributes</span><span class="o">().</span><span class="na">getNamedItem</span><span class="o">(</span><span class="s">&quot;id&quot;</span><span class="o">).</span><span class="na">getNodeValue</span><span class="o">());</span>
+
+                    <span class="n">NodeList</span> <span class="n">childNodes</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="na">getChildNodes</span><span class="o">();</span>
+                    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">childNodes</span><span class="o">.</span><span class="na">getLength</span><span class="o">();</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+                        <span class="n">Node</span> <span class="n">childNode</span> <span class="o">=</span> <span class="n">childNodes</span><span class="o">.</span><span class="na">item</span><span class="o">(</span><span class="n">j</span><span class="o">);</span>
+                        <span class="k">if</span> <span class="o">(</span><span class="n">childNode</span> <span class="k">instanceof</span> <span class="n">Element</span><span class="o">)</span> <span class="o">{</span>
+                            <span class="n">String</span> <span class="n">content</span> <span class="o">=</span> <span class="n">childNode</span><span class="o">.</span><span class="na">getLastChild</span><span class="o">().</span><span class="na">getTextContent</span><span class="o">().</span><span class="na">trim</span><span class="o">();</span>
+                            <span class="n">String</span> <span class="n">nodeName</span> <span class="o">=</span> <span class="n">childNode</span><span class="o">.</span><span class="na">getNodeName</span><span class="o">();</span>
+
+                            <span class="k">if</span> <span class="o">(</span><span class="s">&quot;fullname&quot;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">nodeName</span><span class="o">))</span> <span class="o">{</span>
+                                <span class="n">student</span><span class="o">.</span><span class="na">setFullname</span><span class="o">(</span><span class="n">content</span><span class="o">);</span>
+                            <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="s">&quot;email&quot;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">nodeName</span><span class="o">))</span> <span class="o">{</span>
+                                <span class="n">student</span><span class="o">.</span><span class="na">setEmail</span><span class="o">(</span><span class="n">content</span><span class="o">);</span>
+                            <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="s">&quot;address&quot;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">nodeName</span><span class="o">))</span> <span class="o">{</span>
+                                <span class="n">student</span><span class="o">.</span><span class="na">setAddress</span><span class="o">(</span><span class="n">content</span><span class="o">);</span>
+                            <span class="o">}</span>
+                        <span class="o">}</span>
+                    <span class="o">}</span>
+                    <span class="n">studentList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">student</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+
+            <span class="k">return</span> <span class="n">studentList</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
+
+<h2 id="phn-tch-ni-dung-xml-bng-sax">Phân tách nội dung XML bằng SAX</h2>
+
+<p>Khác với việc phân tách XML theo mô hình DOM, quá trình phân tách nội dung XML bằng SAX sẽ không lưu trữ toàn bộ nội dung của tài liệu XML vào bộ nhớ, thay vào đó mỗi khi đọc đến một vị trí đặc biệt chẳng hạn như đầu tài liệu (start document), đầu thẻ (start element), nội dung văn bản (characters) bên trong thẻ, cuối thẻ hoặc cuối tài liệu XML, bộ xử lý của SAX (SAX Parser) sẽ phát sinh một sự kiện tương ứng với vị trí đồng thời gọi đến phương thức xử lý sự kiện trong lớp đối tượng Handler. Người lập trình có thể kế thừa lớp đối tượng DefaultHandler và nạp đè (override) các phương thức xử lý sự kiện trong lớp đối tượng này để xử lý theo cách của mình.</p>
+
+<p><img src="/vi/images/lap-trinh-phan-tach-noi-dung-xml-trong-java/xml_parsing_in_java_sax_parser.png" alt="Hình 2. Cơ chế hoạt động của SAX" /> </p>
+
+<p>Lớp đối tượng DemoSAXParser dưới đây minh họa cho việc phân tách nội dung tệp student.xml theo cơ chế SAX. Lưu ý bên trong lớp đối tượng DemoSAXParser có chứa định nghĩa lớp đối tượng SAXHandler. Lớp SAXHandler này kế thừa từ DefaultHandler và nạp đè các phương thức xử lý sự kiện của SAX.</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoSAXParser</span> <span class="kd">extends</span> <span class="n">DemoAbstractParser</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="nf">DemoSAXParser</span><span class="o">(</span><span class="n">String</span> <span class="n">filename</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">filename</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="nf">getAllStudents</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">SAXParserFactory</span> <span class="n">parserFactor</span> <span class="o">=</span> <span class="n">SAXParserFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span>
+            <span class="n">SAXParser</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">parserFactor</span><span class="o">.</span><span class="na">newSAXParser</span><span class="o">();</span>
+            <span class="n">SAXHandler</span> <span class="n">handler</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">SAXHandler</span><span class="o">();</span>
+            <span class="n">parser</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">ClassLoader</span><span class="o">.</span><span class="na">getSystemResourceAsStream</span><span class="o">(</span><span class="n">getFilename</span><span class="o">()),</span> 
+                    <span class="n">handler</span><span class="o">);</span>
+            <span class="k">return</span> <span class="n">handler</span><span class="o">.</span><span class="na">getResult</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">class</span> <span class="nc">SAXHandler</span> <span class="kd">extends</span> <span class="n">DefaultHandler</span> <span class="o">{</span>
+
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="n">studentList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">Student</span> <span class="n">student</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">content</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">startElement</span><span class="o">(</span><span class="n">String</span> <span class="n">uri</span><span class="o">,</span> <span class="n">String</span> <span class="n">localName</span><span class="o">,</span>
+                <span class="n">String</span> <span class="n">qName</span><span class="o">,</span> <span class="n">Attributes</span> <span class="n">attributes</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">SAXException</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="s">&quot;student&quot;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">qName</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">student</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Student</span><span class="o">();</span>
+                <span class="n">student</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">attributes</span><span class="o">.</span><span class="na">getValue</span><span class="o">(</span><span class="s">&quot;id&quot;</span><span class="o">));</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">endElement</span><span class="o">(</span><span class="n">String</span> <span class="n">uri</span><span class="o">,</span> <span class="n">String</span> <span class="n">localName</span><span class="o">,</span>
+                <span class="n">String</span> <span class="n">qName</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">SAXException</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="s">&quot;student&quot;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">qName</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">studentList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">student</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="s">&quot;fullname&quot;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">qName</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">student</span><span class="o">.</span><span class="na">setFullname</span><span class="o">(</span><span class="n">content</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="s">&quot;email&quot;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">qName</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">student</span><span class="o">.</span><span class="na">setEmail</span><span class="o">(</span><span class="n">content</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="s">&quot;address&quot;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">qName</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">student</span><span class="o">.</span><span class="na">setAddress</span><span class="o">(</span><span class="n">content</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">characters</span><span class="o">(</span><span class="kt">char</span><span class="o">[]</span> <span class="n">ch</span><span class="o">,</span> <span class="kt">int</span> <span class="n">start</span><span class="o">,</span> <span class="kt">int</span> <span class="n">length</span><span class="o">)</span>
+                <span class="kd">throws</span> <span class="n">SAXException</span> <span class="o">{</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">copyValueOf</span><span class="o">(</span><span class="n">ch</span><span class="o">,</span> <span class="n">start</span><span class="o">,</span> <span class="n">length</span><span class="o">).</span><span class="na">trim</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="nf">getResult</span><span class="o">()</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">studentList</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
+
+<h2 id="phn-tch-ni-dung-xml-bng-stax">Phân tách nội dung XML bằng StAX</h2>
+
+<p>Cách thứ ba để xử lý tài liệu XML chính là StAX. Tương tự như SAX, StAX cũng áp dụng cơ chế xử lý sự kiện trong việc phân tách nội dung XML. Tuy nhiên, giữa SAX và StAX có sự khác biệt cơ bản: bộ xử lý SAX (SAX Parser) chủ động gọi và “đẩy” dữ liệu cho phương thức xử lý mỗi khi có sự kiện phát sinh, trong khi bộ xử lý StAX (StAX Reader) chờ chương trình gọi đến sự kiện tiếp theo và chuẩn bị sẵn dữ liệu để chương trình “kéo” dữ liệu ra xử lý.</p>
+
+<p><img src="/vi/images/lap-trinh-phan-tach-noi-dung-xml-trong-java/xml_parsing_in_java_stax_parser.png" alt="Hình 3. Cơ chế hoạt động của StAX" /> </p>
+
+<p>Ta có thể so sánh SAX với StAX giống như cách nhà hàng phục vụ thực khách trong tiệc cưới với cách nhà hàng phục vụ thực khách đơn lẻ. Trường hợp tiệc cưới, giống như cơ chế SAX, món ăn nào cũng như thời điểm phục vụ món ăn đó đã được gia chủ định sẵn (giống như lập trình trước các phương thức xử lý sự kiện trong SAXHandler vậy), do đó đến giờ là nhà hàng “đẩy” đồ ăn ra bàn phục vụ một cách chủ động, không phải chờ gọi. Còn với thực khách đơn lẻ, sẽ có người phục vụ luôn lắng nghe, thụ động chờ khách gọi món như thể khách “kéo” món ăn ra mỗi khi thấy cần.</p>
+
+<p>Lớp đối tượng DemoStAXParser dưới đây minh họa cho việc phân tách nội dung tệp student.xml theo mô hình StAX.</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DemoStAXParser</span> <span class="kd">extends</span> <span class="n">DemoAbstractParser</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="nf">DemoStAXParser</span><span class="o">(</span><span class="n">String</span> <span class="n">filename</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">filename</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="nf">getAllStudents</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="n">studentList</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+            <span class="n">Student</span> <span class="n">current</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+            <span class="n">String</span> <span class="n">tagContent</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+            <span class="n">XMLInputFactory</span> <span class="n">factory</span> <span class="o">=</span> <span class="n">XMLInputFactory</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span>
+            <span class="n">XMLStreamReader</span> <span class="n">reader</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="na">createXMLStreamReader</span><span class="o">(</span>
+                    <span class="n">ClassLoader</span><span class="o">.</span><span class="na">getSystemResourceAsStream</span><span class="o">(</span><span class="n">getFilename</span><span class="o">()));</span>
+
+            <span class="k">while</span> <span class="o">(</span><span class="n">reader</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">event</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="na">next</span><span class="o">();</span>
+                
+                <span class="k">switch</span> <span class="o">(</span><span class="n">event</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">case</span> <span class="n">XMLStreamConstants</span><span class="o">.</span><span class="na">START_ELEMENT</span><span class="o">:</span>
+                        <span class="n">String</span> <span class="n">localName</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="na">getLocalName</span><span class="o">();</span>
+                        <span class="k">if</span> <span class="o">(</span><span class="s">&quot;students&quot;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">localName</span><span class="o">))</span> <span class="o">{</span>
+                            <span class="n">studentList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;();</span>
+                        <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="s">&quot;student&quot;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">localName</span><span class="o">))</span> <span class="o">{</span>
+                            <span class="n">current</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Student</span><span class="o">();</span>
+                            <span class="n">current</span><span class="o">.</span><span class="na">setId</span><span class="o">(</span><span class="n">reader</span><span class="o">.</span><span class="na">getAttributeValue</span><span class="o">(</span><span class="mi">0</span><span class="o">));</span>
+                        <span class="o">}</span>
+                        <span class="k">break</span><span class="o">;</span>
+
+                    <span class="k">case</span> <span class="n">XMLStreamConstants</span><span class="o">.</span><span class="na">CHARACTERS</span><span class="o">:</span>
+                        <span class="n">tagContent</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">trim</span><span class="o">();</span>
+                        <span class="k">break</span><span class="o">;</span>
+
+                    <span class="k">case</span> <span class="n">XMLStreamConstants</span><span class="o">.</span><span class="na">END_ELEMENT</span><span class="o">:</span>
+                        <span class="n">localName</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="na">getLocalName</span><span class="o">();</span>
+                        <span class="k">if</span> <span class="o">(</span><span class="s">&quot;student&quot;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">localName</span><span class="o">))</span> <span class="o">{</span>
+                            <span class="n">studentList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">current</span><span class="o">);</span>
+                        <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="s">&quot;fullname&quot;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">localName</span><span class="o">))</span> <span class="o">{</span>
+                            <span class="n">current</span><span class="o">.</span><span class="na">setFullname</span><span class="o">(</span><span class="n">tagContent</span><span class="o">);</span>
+                        <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="s">&quot;email&quot;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">localName</span><span class="o">))</span> <span class="o">{</span>
+                            <span class="n">current</span><span class="o">.</span><span class="na">setEmail</span><span class="o">(</span><span class="n">tagContent</span><span class="o">);</span>
+                        <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="s">&quot;address&quot;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">localName</span><span class="o">))</span> <span class="o">{</span>
+                            <span class="n">current</span><span class="o">.</span><span class="na">setAddress</span><span class="o">(</span><span class="n">tagContent</span><span class="o">);</span>
+                        <span class="o">}</span>
+                        <span class="k">break</span><span class="o">;</span>
+                <span class="o">}</span>
+
+            <span class="o">}</span>
+            <span class="k">return</span> <span class="n">studentList</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
+
+<h2 id="p-dng-ba-b-phn-tch-c-php-trn">Áp dụng ba bộ phân tách cú pháp trên</h2>
+
+<p>Dưới đây là đoạn chương trình ngắn minh họa việc sử dụng ba bộ phân tách cú pháp XML trên để đọc nội dung tệp student.xml. Kết quả được in ra màn hình console để so sánh.</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">App</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span> <span class="n">String</span><span class="o">[]</span> <span class="n">args</span> <span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">xmlFilename</span> <span class="o">=</span> <span class="s">&quot;xml/student.xml&quot;</span><span class="o">;</span>
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">DemoXmlParser</span><span class="o">&gt;</span> <span class="n">parsers</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedHashMap</span><span class="o">&lt;&gt;();</span>
+
+        <span class="n">parsers</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;DOMParser&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="nf">DemoDOMParser</span><span class="o">(</span><span class="n">xmlFilename</span><span class="o">));</span>
+        <span class="n">parsers</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;SAXParser&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="nf">DemoSAXParser</span><span class="o">(</span><span class="n">xmlFilename</span><span class="o">));</span>
+        <span class="n">parsers</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;StAXParser&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="nf">DemoStAXParser</span><span class="o">(</span><span class="n">xmlFilename</span><span class="o">));</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">DemoXmlParser</span><span class="o">&gt;</span> <span class="nl">entry:</span><span class="n">parsers</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Parsing student.xml using &quot;</span> <span class="o">+</span> <span class="n">entry</span><span class="o">.</span><span class="na">getKey</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot;:&quot;</span><span class="o">);</span>
+            <span class="n">List</span><span class="o">&lt;</span><span class="n">Student</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">entry</span><span class="o">.</span><span class="na">getValue</span><span class="o">().</span><span class="na">getAllStudents</span><span class="o">();</span>
+            <span class="k">for</span> <span class="o">(</span><span class="n">Student</span> <span class="n">student</span> <span class="o">:</span> <span class="n">result</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">student</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
+
+<p>Kết quả chạy chương trình:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">Parsing student.xml using DOMParser:
+<span class="o">{</span>id:<span class="s2">&quot;1&quot;</span>,fullname:<span class="s2">&quot;Nguyen Anh Minh&quot;</span>,email:<span class="s2">&quot;minhna@gmail.com&quot;</span>,
+        address:<span class="s2">&quot;345, Hung Vuong, Da Nang&quot;</span><span class="o">}</span>
+<span class="o">{</span>id:<span class="s2">&quot;2&quot;</span>,fullname:<span class="s2">&quot;Tram Tu Thieng&quot;</span>,email:<span class="s2">&quot;ttt.thieng@gmail.com&quot;</span>,
+        address:<span class="s2">&quot;450 Doi Can, Ha Noi&quot;</span><span class="o">}</span>
+<span class="o">{</span>id:<span class="s2">&quot;3&quot;</span>,fullname:<span class="s2">&quot;Duong Minh Tuan&quot;</span>,email:<span class="s2">&quot;tuandm@gmail.com&quot;</span>,
+        address:<span class="s2">&quot;144, Phan Dang Luu, Tp. Ho Chi Minh&quot;</span><span class="o">}</span>
+
+Parsing student.xml using SAXParser:
+<span class="o">{</span>id:<span class="s2">&quot;1&quot;</span>,fullname:<span class="s2">&quot;Nguyen Anh Minh&quot;</span>,email:<span class="s2">&quot;minhna@gmail.com&quot;</span>,
+        address:<span class="s2">&quot;345, Hung Vuong, Da Nang&quot;</span><span class="o">}</span>
+<span class="o">{</span>id:<span class="s2">&quot;2&quot;</span>,fullname:<span class="s2">&quot;Tram Tu Thieng&quot;</span>,email:<span class="s2">&quot;ttt.thieng@gmail.com&quot;</span>,
+        address:<span class="s2">&quot;450 Doi Can, Ha Noi&quot;</span><span class="o">}</span>
+<span class="o">{</span>id:<span class="s2">&quot;3&quot;</span>,fullname:<span class="s2">&quot;Duong Minh Tuan&quot;</span>,email:<span class="s2">&quot;tuandm@gmail.com&quot;</span>,
+        address:<span class="s2">&quot;144, Phan Dang Luu, Tp. Ho Chi Minh&quot;</span><span class="o">}</span>
+
+Parsing student.xml using StAXParser:
+<span class="o">{</span>id:<span class="s2">&quot;1&quot;</span>,fullname:<span class="s2">&quot;Nguyen Anh Minh&quot;</span>,email:<span class="s2">&quot;minhna@gmail.com&quot;</span>,
+        address:<span class="s2">&quot;345, Hung Vuong, Da Nang&quot;</span><span class="o">}</span>
+<span class="o">{</span>id:<span class="s2">&quot;2&quot;</span>,fullname:<span class="s2">&quot;Tram Tu Thieng&quot;</span>,email:<span class="s2">&quot;ttt.thieng@gmail.com&quot;</span>,
+        address:<span class="s2">&quot;450 Doi Can, Ha Noi&quot;</span><span class="o">}</span>
+<span class="o">{</span>id:<span class="s2">&quot;3&quot;</span>,fullname:<span class="s2">&quot;Duong Minh Tuan&quot;</span>,email:<span class="s2">&quot;tuandm@gmail.com&quot;</span>,
+        address:<span class="s2">&quot;144, Phan Dang Luu, Tp. Ho Chi Minh&quot;</span><span class="o">}</span></code></pre></div>
+
+<p>Các bạn có thể tải mã nguồn đầy đủ của <a href="https://github.com/pnhung177/xml-parsing-in-java">ví dụ minh họa</a> để chạy thử.</p>
+
+<h2 id="ti-liu-tham-kho">Tài liệu tham khảo</h2>
+
+<ol>
+  <li><a href="http://en.wikipedia.org/wiki/Document_Object_Model">Document Object Model (DOM) - Wikipedia</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Simple_API_for_XML">Simple API for XML (SAX) - Wikipedia</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/StAX">Streaming API for XML (StAX) - Wikipedia</a></li>
+</ol>
+
+
+            </div>
+        </article>
+        <div class="cf"></div>
+        <div class="row text-center">
+            <section class="summer-post-share">
+                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Lập trình phân tách nội dung XML trong Java&quot;%20/vi/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java%20via%20&#64;pnhung177"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a class="facebook-icon" href="https://www.facebook.com/sharer/sharer.php?u=/vi/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a class="google-icon" href="https://plus.google.com/share?url=/vi/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </section>
+        </div>
+        <div class="cf"></div>
+        
+            <div class="summer-author-info">
+                <div class="row">
+                    <section class="summer-post-author small-12 columns">
+                        
+                            <img src="/vi/images/avatars/pnhung177.png" class="summer-post-author-avatar" alt="Phạm Ngọc Hùng's photo">
+                        
+                        
+                            <span class="author-label">Author</span>
+                            <h1>Phạm Ngọc Hùng</h1>
+                        
+                        
+                            <p><a href="mailto:pnhung177@drupalex.net" class="author-website">pnhung177@drupalex.net</a></p>
+                        
+                        
+                            <p>Hãy thắp một ngọn nến nhỏ, thay vì nguyền rủa bóng đêm</p>
+                        
+                    </section>
+                </div>
+            </div> 
+        
+        <div class="cf"></div>
+        
+        <section class="summer-disqus row">
+    <div class="small-12 columns">
+        <h1 class="summer-comments-header">Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'acegik'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+
+        <div class="cf"></div>
+
+    <footer class="summer-site-footer">
+    <div class="copyright">
+         <section>Bản quyền nội dung thuộc về <a href="/vi/about">Phạm Ngọc Hùng</a> &copy; 2014.</section>
+    </div>
+    <div class="social-icons">
+        
+        
+        <a href="http://twitter.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-twitter fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="https://plus.google.com/u/3/115458186421626071505">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-google-plus fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="http://github.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-github fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="http://facebook.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-facebook fa-stack-1x"></i>
+            </span>
+        </a>
+        
+    </div>
+    
+    <div class="cf"></div>
+</footer>
+ 
+</main>    
+    <script src="/vi/assets/js/vendor/modernizr.js"></script>
+    <script src="/vi/assets/js/foundation.min.js"></script>
+    <script src="/vi/assets/js/vendor/background-check.js"></script>
+    <script src="/vi/assets/js/vendor/post-header-animations.js"></script>
+    <script src="/vi/assets/js/summer.js"></script>
+
+    <script>
+      $(document).foundation();
+    </script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54128248-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+</script>
+ 
+</body>
+</html>

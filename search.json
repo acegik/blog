@@ -30,6 +30,14 @@
 		  "url"        : "/vi/jekyll/gia-tu-wordpress",
 		  "date"       : "2014-07-01 00:00:00 +0700",
 		  "shortdate"  : "July 01, 2014"
+		} ,
+	
+		{
+		  "title"      : "Lập trình phân tách nội dung XML trong Java",
+		  "category"   : "xml",
+		  "url"        : "/vi/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java",
+		  "date"       : "2013-07-05 00:00:00 +0700",
+		  "shortdate"  : "July 05, 2013"
 		} 
 	
 ]
