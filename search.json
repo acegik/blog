@@ -1,9 +1,17 @@
 [
 	
 		{
+		  "title"      : "Xây dựng IoC Container đơn giản cấu hình bằng XML",
+		  "category"   : "spring-framework",
+		  "url"        : "/blog/spring-framework/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml",
+		  "date"       : "2014-09-06 00:00:00 +0700",
+		  "shortdate"  : "September 06, 2014"
+		} ,
+	
+		{
 		  "title"      : "Lập trình Concurrency trong Java bằng multithreading",
 		  "category"   : "java-concurrency",
-		  "url"        : "/vi/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading",
+		  "url"        : "/blog/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading",
 		  "date"       : "2014-08-26 00:00:00 +0700",
 		  "shortdate"  : "August 26, 2014"
 		} ,
@@ -11,7 +19,7 @@
 		{
 		  "title"      : "Tổng quan về IoC trong Spring Framework",
 		  "category"   : "spring-framework",
-		  "url"        : "/vi/spring-framework/tong-quan-ve-ioc-trong-spring",
+		  "url"        : "/blog/spring-framework/tong-quan-ve-ioc-trong-spring",
 		  "date"       : "2014-08-24 00:00:00 +0700",
 		  "shortdate"  : "August 24, 2014"
 		} ,
@@ -19,7 +27,7 @@
 		{
 		  "title"      : "Tổng quan về Java Concurrency",
 		  "category"   : "java-concurrency",
-		  "url"        : "/vi/java-concurrency/tong-quan-ve-java-concurrency",
+		  "url"        : "/blog/java-concurrency/tong-quan-ve-java-concurrency",
 		  "date"       : "2014-08-20 00:00:00 +0700",
 		  "shortdate"  : "August 20, 2014"
 		} ,
@@ -27,7 +35,7 @@
 		{
 		  "title"      : "Giã từ ... Wordpress",
 		  "category"   : "jekyll",
-		  "url"        : "/vi/jekyll/gia-tu-wordpress",
+		  "url"        : "/blog/jekyll/gia-tu-wordpress",
 		  "date"       : "2014-07-01 00:00:00 +0700",
 		  "shortdate"  : "July 01, 2014"
 		} ,
@@ -35,7 +43,7 @@
 		{
 		  "title"      : "Lập trình phân tách nội dung XML trong Java",
 		  "category"   : "xml",
-		  "url"        : "/vi/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java",
+		  "url"        : "/blog/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java",
 		  "date"       : "2013-07-05 00:00:00 +0700",
 		  "shortdate"  : "July 05, 2013"
 		} 

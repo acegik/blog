@@ -8,39 +8,463 @@
 
 <title type="text">Acegik's Blog</title>
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="http:/vi/feed.xml" />
-<link rel="alternate" type="text/html" href="http:/vi/" />
-<updated>2014-09-08T17:15:43+07:00</updated>
-<id>http:/vi/</id>
+<link rel="self" type="application/atom+xml" href="http:/blog/feed.xml" />
+<link rel="alternate" type="text/html" href="http:/blog/" />
+<updated>2014-09-15T14:56:09+07:00</updated>
+<id>http:/blog/</id>
 <author>
   <name>Phạm Ngọc Hùng</name>
-  <uri>http:/vi/</uri>
+  <uri>http:/blog/</uri>
   <email>pnhung177@drupalex.net</email>
 </author>
 
 
 <entry>
+  <title type="html"><![CDATA[Xây dựng IoC Container đơn giản cấu hình bằng XML]]></title>
+  <link rel="alternate" type="text/html" href="http:/blog/spring-framework/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml"/>
+  <id>http:/blog/spring-framework/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml</id>
+  <published>2014-09-06T00:00:00+07:00</published>
+  <updated>2014-09-06T00:00:00-00:00</updated>
+  
+  <author>
+    <name>Phạm Ngọc Hùng</name>
+    <uri>http:/blog</uri>
+    <email>pnhung177@drupalex.net</email>
+  </author>
+  <category scheme="http:/blog/tags/#Spring" term="Spring" /><category scheme="http:/blog/tags/#IoC%20Container" term="IoC Container" />
+  <content type="html">
+  
+    &lt;p&gt;Để nắm vững và sử dụng thành thạo Spring, chúng ta cần hiểu cách thức Spring IoC Container vận hành. Bài viết này trình bày về việc xây dựng một IoC Container đơn giản, có tên là Simple IoC Container, mô phỏng những nét cơ bản nhất của Spring IoC Container. Thông qua cấu trúc và quá trình xây dựng Simple IoC Container, chúng ta có thể đối chiếu và hình dung về cách thức mà Spring IoC Container làm việc.&lt;/p&gt;
+
+&lt;p&gt;Chúng ta minh họa bài viết bằng ví dụ đơn giản sau: lập trình đếm tổng số lượng hàng hóa và tổng số tiền hàng của một cửa hàng trực tuyến.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http:/blog/images/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml/simple_ioc_container_diagram.png&quot; alt=&quot;Hình 1. Sơ đồ tổng quan của Simple IoC Container&quot; /&gt; &lt;/p&gt;
+
+&lt;h2 id=&quot;cc-lp-i-tng-m-hnh-nghip-v&quot;&gt;Các lớp đối tượng mô hình nghiệp vụ&lt;/h2&gt;
+
+&lt;p&gt;Thông tin của một mặt hàng được lưu trong một đối tượng Product. Mỗi mặt hàng có 2 tính chất tương ứng với 2 thuộc tính của đối tượng Product liên quan đến tính toán của chúng ta: amount là số lượng của mặt hàng, price là đơn giá của mặt hàng này. Ngoài 2 thuộc tính trên, lớp đối tượng Product còn có thêm thuộc tính label chứa tên của mặt hàng, và sku là mã đánh số duy nhất của mặt hàng trong kho. Lớp đối tượng Product được khai báo như sau:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Serializable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sku&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;amount&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;price&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sku&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;amount&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;price&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;label&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;sku&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sku&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;amount&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;amount&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;price&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;price&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getAmount&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;amount&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setAmount&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;amount&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;amount&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;amount&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getLabel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setLabel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;label&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getPrice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;price&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setPrice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;price&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;price&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;price&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getSku&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sku&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setSku&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sku&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;sku&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sku&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Tất cả mặt hàng được lưu trong danh sách có tên products, bên trong lớp đối tượng StoreRepository. Trong thực tế, các mặt hàng được lưu trữ trong cơ sở dữ liệu và được nạp lên đối tượng Product khi cần. Tuy nhiên, trong ví dụ này chúng ta tạo sẵn danh sách products trong bộ nhớ ngay khi tạo đối tượng StoreRepository bằng cách tạo ra một số dữ liệu giả cố định ngay trong cấu tử của lớp đối tượng StoreRepository.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;StoreRepository&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;StoreRepository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;products&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Asus Zenfone 5&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s&quot;&gt;&amp;quot;ASZF-105&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;200.0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;products&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Samsung Galaxy V&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s&quot;&gt;&amp;quot;SSGL-PV&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;110.0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;products&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Sony Xperia Z Ultra C6802&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s&quot;&gt;&amp;quot;SXZU-C6802&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;450.0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;products&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Sony Xperia Z Ultra C6802&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s&quot;&gt;&amp;quot;IPAD-MW16&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;350.0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;products&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;HTC Desire 210 Dual SIM&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s&quot;&gt;&amp;quot;HTC-210&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;115.0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;products&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getProducts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;products&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Để tính tổng số hàng hóa và tổng lượng tiền hàng của cửa hàng, chúng ta tạo lớp đối tượng StoreService có 2 phương thức countProducts() và totalAssets(). Phương thức countProducts() duyệt từng phần tử danh sách products, cộng dồn giá trị thuộc tính amount trong từng phần tử. Tương tự, phương thức totalAssets() tính tổng lượng tiền hàng bằng cách cộng dồn tích (amount x price) của tất cả phần tử trong danh sách. Để có thể truy cập và duyệt danh sách, lớp đối tượng StoreService định nghĩa thuộc tính repository thuộc kiểu StoreRepository, tham chiếu đến đối tượng thuộc lớp StoreRepository. Việc tạo các đối tượng StoreService, StoreRepository cũng như gán nó cho biến repository của đối tượng StoreService sẽ được IoC Container thực hiện. Các phương thức countProducts() và totalAssets() sử dụng biến repository để truy cập đến danh sách products.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;StoreService&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;StoreRepository&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;repository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setRepository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StoreRepository&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;storeRepository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;repository&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;storeRepository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;countProducts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;total&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;products&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;repository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getProducts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;product:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;products&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;total&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getAmount&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;total&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;totalAssets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;assets&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;products&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;repository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getProducts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;product:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;products&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;assets&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getPrice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getAmount&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;assets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Các lớp đối tượng Product, StoreRepository, StoreService được tạo ra nhằm để thử nghiệm Simple IoC Container, do đó chúng ta lưu các tệp mã nguồn trong thư mục mã nguồn dành cho kiểm thử: src/test/java.&lt;/p&gt;
+
+&lt;p&gt;Ngoài các lớp đối tượng trên, chúng ta còn tạo một tệp cấu hình có định dạng XML nhằm khai báo với Simple IoC Container thông tin về các đối tượng cần tạo (storeService, storeRepository) và mối quan hệ giữa chúng (thuộc tính repository của đối tượng storeService trỏ đến đối tượng storeRepository):&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;beans&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;storeService&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;net.acegik.simpleioccontainer.StoreService&amp;quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Foo and Bar Company&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;repository&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;storeRepository&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;storeRepository&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;net.acegik.simpleioccontainer.StoreRepository&amp;quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/beans&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;cc-lp-i-tng-ca-simple-ioc-container&quot;&gt;Các lớp đối tượng của simple-ioc-container&lt;/h2&gt;
+
+&lt;p&gt;Chức năng của Simple IoC Container là tạo và móc nối các đối tượng nghiệp vụ với nhau dựa trên mô tả trong tệp cấu hình XML.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http:/blog/images/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml/simple_ioc_container_inside.png&quot; alt=&quot;Hình 2. Cấu trúc bên trong của Simple IoC Container&quot; /&gt; &lt;/p&gt;
+
+&lt;p&gt;Để lưu trữ thông tin mô tả một đối tượng được simple-ioc-container quản lý, chúng ta cần định nghĩa 2 lớp đối tượng: BeanObject và BeanProperty. &lt;/p&gt;
+
+&lt;p&gt;Lớp đối tượng BeanObject chứa thông tin của đối tượng được Simple IoC Container tạo ra và quản lý (để thuận tiện chúng ta tạm gọi đối tượng này là managed-object), có các thuộc tính cơ bản sau:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;id: chứa định danh (tên duy nhất) của đối tượng managed-object, cho phép Simple IoC Container tìm và trả lại đối tượng cho ứng dụng khi được gọi đến;&lt;/li&gt;
+  &lt;li&gt;clazz: tên lớp đầy đủ của lớp đối tượng dùng để tạo ra đối tượng;&lt;/li&gt;
+  &lt;li&gt;properties: danh sách các đối tượng BeanProperty, mỗi đối tượng BeanProperty mô tả một thuộc tính của đối tượng managed-object.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BeanObject&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clazz&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BeanProperty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;properties&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BeanProperty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getClazz&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clazz&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setClazz&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clazz&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;clazz&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clazz&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BeanProperty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getProperties&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;properties&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setProperties&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BeanProperty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;properties&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;properties&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;properties&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Lớp đối tượng BeanProperty chứa thông tin mô tả của một thuộc tính của managed-object. Mỗi thuộc tính của managed-object bao gồm các thông tin sau: &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;tên thuộc tính: khai báo trong thuộc tính name của BeanProperty;&lt;/li&gt;
+  &lt;li&gt;giá trị thuộc tính: cung cấp bởi thuộc tính value hoặc ref của BeanProperty. Nếu giá trị của thuộc tính thuộc kiểu giá trị thông thường (kiểu int, float, double, boolean, String,…) thì được chứa trong value; Nếu giá trị của thuộc tính là một đối tượng khác thì chúng ta sử dụng ref để chứa định danh của đối tượng được tham chiếu đó.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BeanProperty&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ref&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getRef&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ref&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setRef&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ref&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ref&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ref&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Sau khi đã có các lớp đối tượng BeanObject và BeanProperty, chúng ta định nghĩa lớp đối tượng BeanXmlParser dùng để chuyển đổi tệp cấu hình XML thành danh sách các đối tượng BeanObject. Lưu ý ở đây chúng ta sử dụng SAX để phân tách nội dung XML. Lớp đối tượng BeanXmlParser được định nghĩa như sau:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BeanXmlParser&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xmlFilename&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;BeanXmlParser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;xmlFilename&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BeanObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getAllBeanObjects&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;SAXParserFactory&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parserFactor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SAXParserFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newInstance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;SAXParser&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parser&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parserFactor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newSAXParser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;SAXHandler&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;SAXHandler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;parser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ClassLoader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getSystemResourceAsStream&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xmlFilename&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getResult&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;RuntimeException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SAXHandler&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DefaultHandler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BeanObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;beanList&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BeanObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;BeanObject&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bean&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;BeanProperty&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;startElement&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;localName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;qName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Attributes&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;attributes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SAXException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;bean&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;bean&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;BeanObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;bean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;attributes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;id&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;bean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setClazz&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;attributes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;class&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;property&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;property&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;BeanProperty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;property&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;attributes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;property&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setRef&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;attributes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;ref&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;property&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;attributes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;value&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;endElement&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uri&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;localName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;qName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SAXException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;bean&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;beanList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;property&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;bean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getProperties&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;property&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;characters&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SAXException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;copyValueOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;trim&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BeanObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getResult&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;beanList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Sau khi đã có lớp đối tượng BeanXmlParser phân tách tệp cấu hình XML thành danh sách các đối tượng BeanObject, chúng ta xem xét cách thức simple-ioc-container tạo và trả lại các đối tượng managed-object. Nhiệm vụ này được thực hiện thông qua phương thức getBean() định nghĩa trong lớp đối tượng BeanFactory.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BeanFactory&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BeanObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;beanList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;beanMap&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HashMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;();&lt;/span&gt;
+    
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;BeanFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;BeanXmlParser&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parser&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;BeanXmlParser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;beanList&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getAllBeanObjects&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;beanMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;containsKey&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;beanMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BeanObject&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;bean:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;beanList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;createBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;beanMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;createBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BeanObject&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;beanInfo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;className&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;beanInfo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getClazz&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;beanInstance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;forName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newInstance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+            &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BeanProperty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;propertyList&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;beanInfo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getProperties&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;propertyList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;Class&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;beanClass&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;beanInstance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getClass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+                &lt;span class=&quot;n&quot;&gt;Map&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;methodMap&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;HashMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;Method&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;methods&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;beanClass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getMethods&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;methodName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;methodName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;startsWith&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;set&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;methodName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Character&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toLowerCase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;methodName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;charAt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+                                &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;methodName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;substring&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;methodMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;methodName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]);&lt;/span&gt;
+                    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+                &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BeanProperty&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;propertyElement:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;propertyList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;propertyElement&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pRef&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;propertyElement&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getRef&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pValue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;propertyElement&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+                    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;methodMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;containsKey&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;Method&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;method&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Method&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;methodMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+                        &lt;span class=&quot;n&quot;&gt;Class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parameterTypes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getParameterTypes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parameterName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parameterTypes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getCanonicalName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+                        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parameterName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;java.lang.String&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                            &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+                        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parameterName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;boolean&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                            &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Boolean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;parseBoolean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+                        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parameterName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;int&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                            &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+                        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parameterName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;float&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                            &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Float&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;parseFloat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+                        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parameterName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;double&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                            &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Double&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;parseDouble&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+                        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pRef&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                                &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pRef&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+                            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+                        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;invoke&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;beanInstance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+                    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;beanInstance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;RuntimeException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Lớp đối tượng BeanFactory có một hàm cấu tử (constructor) với tham số đầu vào là đường dẫn đến tệp cấu hình XML. Hàm cấu tử của BeanFactory sử dụng BeanXmlParser để phân tách tệp XML thành danh sách BeanObject. Khi chương trình gọi phương thức getBean() với tham số là định danh của managed-object, nó sẽ kiểm tra xem đối tượng managed-object này đã tồn tại chưa? nếu không tìm thấy, nó sẽ dựa trên thông tin mô tả trong BeanObject để tạo managed-object. Cuối cùng, getBean() trả về cho chương trình đối tượng managed-object mà nó đã tạo và quản lý.  &lt;/p&gt;
+
+&lt;h2 id=&quot;chng-trnh-minh-ha&quot;&gt;Chương trình minh họa&lt;/h2&gt;
+
+&lt;p&gt;Cũng giống như các lớp đối tượng mô hình nghiệp vụ (Product, StoreRepository, StoreService), lớp đối tượng AppTest chứa chương trình thử nghiệm cũng được tạo ra trong thư mục test của dự án (thư mục src/test/java). Lớp đối tượng này chỉ có một phương thức tên là testApp() chứa đoạn chương trình minh họa. Bên trong phương thức testApp(), chúng ta tạo một đối tượng có kiểu BeanFactory tham chiếu bởi biến factory. Đối tượng này phân tách tệp config.xml (trong thư mục src/test/resources) và tạo danh sách các đối tượng BeanObject mô tả các đối tượng managed-object. Chương trình gọi phương thức getBean() để lấy đối tượng storeService và lưu vào biến có tên myService. Cuối cùng, thông qua biến myService, chúng ta có thể gọi các phương thức countProducts() và totalAssets() để thực hiện yêu cầu bài toán.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AppTest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Test&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;testApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;BeanFactory&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;factory&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;BeanFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;config.xml&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;StoreService&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myService&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;StoreService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;factory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getBean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;storeService&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;=================================================&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Store Name:&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Total number of products:&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;countProducts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Total Assets:&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;myService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;totalAssets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Chương trình chạy cho kết quả như sau:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;=================================================&lt;/span&gt;
+Store Name:Foo and Bar Company
+Total number of products:200
+Total Assets:67750.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Các bạn có thể tải mã nguồn đầy đủ của &lt;a href=&quot;https://github.com/pnhung177/simple-ioc-container&quot;&gt;ví dụ minh họa&lt;/a&gt; để chạy thử.&lt;/p&gt;
+
+
+  
+  &lt;p&gt;&lt;a href=&quot;http:/blog/spring-framework/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml&quot;&gt;Xây dựng IoC Container đơn giản cấu hình bằng XML&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on September 06, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
   <title type="html"><![CDATA[Lập trình Concurrency trong Java bằng multithreading]]></title>
-  <link rel="alternate" type="text/html" href="http:/vi/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading"/>
-  <id>http:/vi/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading</id>
+  <link rel="alternate" type="text/html" href="http:/blog/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading"/>
+  <id>http:/blog/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading</id>
   <published>2014-08-26T00:00:00+07:00</published>
   <updated>2014-08-26T00:00:00-00:00</updated>
   
   <author>
     <name>Phạm Ngọc Hùng</name>
-    <uri>http:/vi</uri>
+    <uri>http:/blog</uri>
     <email>pnhung177@drupalex.net</email>
   </author>
-  <category scheme="http:/vi/tags/#Java" term="Java" /><category scheme="http:/vi/tags/#Java%20Concurrency" term="Java Concurrency" /><category scheme="http:/vi/tags/#Java%20Multithreading" term="Java Multithreading" />
+  <category scheme="http:/blog/tags/#Java" term="Java" /><category scheme="http:/blog/tags/#Java%20Concurrency" term="Java Concurrency" /><category scheme="http:/blog/tags/#Java%20Multithreading" term="Java Multithreading" />
   <content type="html">
   
-    &lt;p&gt;Nền tảng Java được thiết kế ngay từ đầu &lt;a href=&quot;http://docs.oracle.com/javase/tutorial/essential/concurrency/&quot;&gt;hỗ trợ lập trình đồng thời&lt;/a&gt; (concurrent programming), bao gồm các lệnh, từ khóa, lớp đối tượng ngay trong ngôn ngữ lập trình lẫn thông qua chức năng cung cấp bởi các thư viện hỗ trợ. Java là một trong những ngôn ngữ lập trình đầu tiên làm cho việc lập trình đồng thời trở nên dễ dàng và thuận tiện. Java sử dụng cơ chế multithreading để thực hiện lập trình đồng thời: trong một chương trình cho phép tạo và chạy nhiều Thread đồng thời. Mỗi thread, còn được gọi là một tiến trình gọn nhẹ (lightweight process), là luồng thực thi chạy trong lòng một chương trình và được phép sử dụng và chia sẻ với nhau tài nguyên chung của chương trình đó.  &lt;/p&gt;
+    &lt;p&gt;Nền tảng Java được thiết kế ngay từ đầu &lt;a href=&quot;http://docs.oracle.com/javase/tutorial/essential/concurrency/&quot;&gt;hỗ trợ lập trình đồng thời&lt;/a&gt; (concurrent programming), bao gồm các lệnh, từ khóa, lớp đối tượng ngay trong ngôn ngữ lập trình lẫn thông qua chức năng cung cấp bởi các thư viện hỗ trợ. Java là một trong những ngôn ngữ lập trình đầu tiên làm cho việc lập trình đồng thời trở nên dễ dàng và thuận tiện. Java sử dụng cơ chế multithreading để thực hiện lập trình đồng thời: trong một chương trình cho phép tạo và chạy nhiều Thread đồng thời. Mỗi thread, còn được gọi là một tiến trình gọn nhẹ (lightweight process), là luồng thực thi chạy trong lòng một chương trình và được phép sử dụng và chia sẻ với nhau tài nguyên chung của chương trình đó.&lt;/p&gt;
 
 &lt;h2 id=&quot;vng-i-ca-mt-thread&quot;&gt;Vòng đời của một Thread&lt;/h2&gt;
 
 &lt;p&gt;Một Thread chạy trong một chương trình Java sẽ trải qua nhiều giai đoạn khác nhau, mỗi giai đoạn tương ứng với một trạng thái trong biểu đồ trạng thái trong hình dưới đây.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/vi/images/lap-trinh-cocurrency-trong-java-bang-multithreading/java_multithreading_lifecycle_of_a_thread.png&quot; alt=&quot;Hình 1. Lược đồ trạng thái vòng đời của một Thread&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/images/lap-trinh-cocurrency-trong-java-bang-multithreading/java_multithreading_lifecycle_of_a_thread.png&quot; alt=&quot;Hình 1. Lược đồ trạng thái vòng đời của một Thread&quot; /&gt; &lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;New: Khi một thread được tạo ra (bằng toán tử new) nó sẽ ở trạng thái New, là trạng thái đầu tiên trong vòng đời của nó. Thread giữ ở trạng thái này cho đến khi nó được chương trình kích hoạt thông qua lời gọi phương thức start().&lt;/li&gt;
@@ -87,7 +511,7 @@
 
 &lt;p&gt;Tắc nghẽn (&lt;a href=&quot;http://en.wikipedia.org/wiki/Deadlock&quot;&gt;Deadlock&lt;/a&gt;) là tình huống hai hay nhiều thread bị chặn để chờ được truy cập vào tài nguyên, trong khi tài nguyên này đang bị chiếm giữ bởi một thread cũng đang bị chặn. &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/vi/images/lap-trinh-cocurrency-trong-java-bang-multithreading/deadlock.png&quot; alt=&quot;Hình 2. Tình trạng tắc nghẽn giữa hai thread&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/images/lap-trinh-cocurrency-trong-java-bang-multithreading/deadlock.png&quot; alt=&quot;Hình 2. Tình trạng tắc nghẽn giữa hai thread&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Hình vẽ bên trên minh họa trường hợp tắc nghẽn đơn giản nhất, trong đó hai thread đều bị chặn và chờ được sử dụng tài nguyên mà thread kia đang nắm giữ.&lt;/p&gt;
 
@@ -106,28 +530,28 @@
 
 
   
-  &lt;p&gt;&lt;a href=&quot;http:/vi/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading&quot;&gt;Lập trình Concurrency trong Java bằng multithreading&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/vi&quot;&gt;Acegik's Blog&lt;/a&gt; on August 26, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http:/blog/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading&quot;&gt;Lập trình Concurrency trong Java bằng multithreading&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on August 26, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Tổng quan về IoC trong Spring Framework]]></title>
-  <link rel="alternate" type="text/html" href="http:/vi/spring-framework/tong-quan-ve-ioc-trong-spring"/>
-  <id>http:/vi/spring-framework/tong-quan-ve-ioc-trong-spring</id>
+  <link rel="alternate" type="text/html" href="http:/blog/spring-framework/tong-quan-ve-ioc-trong-spring"/>
+  <id>http:/blog/spring-framework/tong-quan-ve-ioc-trong-spring</id>
   <published>2014-08-24T00:00:00+07:00</published>
   <updated>2014-08-24T00:00:00-00:00</updated>
   
   <author>
     <name>Phạm Ngọc Hùng</name>
-    <uri>http:/vi</uri>
+    <uri>http:/blog</uri>
     <email>pnhung177@drupalex.net</email>
   </author>
-  <category scheme="http:/vi/tags/#Java" term="Java" /><category scheme="http:/vi/tags/#Spring%20Framework" term="Spring Framework" />
+  <category scheme="http:/blog/tags/#Java" term="Java" /><category scheme="http:/blog/tags/#Spring%20Framework" term="Spring Framework" />
   <content type="html">
   
     &lt;p&gt;Spring Framework ra đời như là một chọn lựa, thay thế cho mô hình chuẩn EJB trong việc phát triển ứng dụng JavaEE đã đánh dấu một bước ngoặt trong lịch sử phát triển của Enterprise Java. Spring không ngừng phát triển và ngày càng phổ biến trong cộng đồng Java. Theo thống kê của &lt;a href=&quot;http://www.indeed.com/&quot;&gt;trang web tìm kiếm việc làm Indeed&lt;/a&gt; đến đầu năm 2014, tỉ lệ gia tăng việc làm trên Spring luôn cao hơn hẳn EJB.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/vi/images/2014-08-24-tong-quan-ve-ioc-trong-spring/spring-vs-ejb-jobgraph.png&quot; alt=&quot;Hình 1. Tỉ lệ gia tăng việc làm giữa Spring và EJB&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/images/2014-08-24-tong-quan-ve-ioc-trong-spring/spring-vs-ejb-jobgraph.png&quot; alt=&quot;Hình 1. Tỉ lệ gia tăng việc làm giữa Spring và EJB&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Một trong những thành phần chủ chốt, là nền tảng và tạo nên sức mạnh của Spring chính là IoC Container. IoC Container trong Spring được xây dựng dựa trên nguyên lý &lt;a href=&quot;http://en.wikipedia.org/wiki/Inversion_of_control&quot;&gt;Inversion of Control&lt;/a&gt; (đảo ngược điều khiển), đã xuất hiện khá lâu trong các mẫu hình thiết kế (Design Pattern), và được phổ biến rộng rãi nhờ &lt;a href=&quot;http://en.wikipedia.org/wiki/Dependency_inversion_principle&quot;&gt;Robert C. Martin&lt;/a&gt; và &lt;a href=&quot;http://martinfowler.com/bliki/InversionOfControl.html&quot;&gt;Martin Fowler&lt;/a&gt;. Để hiểu về Spring, trước tiên chúng ta cần hiểu khái niệm Inversion of Control là gì? Muốn vậy, chúng ta cần trả lời câu hỏi: Control (điều khiển) trong chương trình phần mềm là gì, và Inversion (sự đảo ngược) đối với điều khiển trong ngữ cảnh này được hiểu như thế nào.&lt;/p&gt;
 
@@ -139,7 +563,7 @@
 
 &lt;p&gt;Do chương trình ngày càng phức tạp, nên người ta áp dụng phương pháp lập trình hướng đối tượng nhằm phân loại, chia tách các chức năng và gom thành các đối tượng. Người ta còn tạo dựng các thư viện tạo sẵn để có thể sử dụng lại. Luồng thực thi của chương trình, trong những tình huống cần xem xét ở mức tổng thể, không còn quan tâm đến các bước thực thi câu lệnh cụ thể nữa, mà chỉ xem xét đến quá trình gọi phương thức của các đối tượng trong ứng dụng cũng như các đối tượng của thư viện dựng sẵn.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/vi/images/2014-08-24-tong-quan-ve-ioc-trong-spring/oop_flow_of_control.png&quot; alt=&quot;Hai nhiệm vụ của người lập trình khi xây dựng ứng dụng&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/images/2014-08-24-tong-quan-ve-ioc-trong-spring/oop_flow_of_control.png&quot; alt=&quot;Hai nhiệm vụ của người lập trình khi xây dựng ứng dụng&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Người lập trình, khi xây dựng ứng dụng từ đầu, đã thực hiện hai nhiệm vụ: trực tiếp điều khiển luồng thực thi của chương trình và xây dựng các chức năng để đáp ứng nghiệp vụ của ứng dụng. Thực tế, có nhiều chương trình hoặc bộ phận trong chương trình có luồng thực thi rất giống nhau, chẳng hạn phần tương tác với HTTP trong các ứng dụng web, phần unit testing trong các ứng dụng,… Việc trực tiếp tạo dựng và kiểm soát luồng thực thi của chương trình lặp đi lặp lại khi xây dựng nhiều ứng dụng sẽ làm mất nhiều công sức, chi phí, tạo ra sự nhàm chán và dễ phát sinh lỗi. Điều này tạo ra động lực cũng như môi trường để nguyên lý đảo ngược điều khiển nảy nở và phát triển.&lt;/p&gt;
 
@@ -158,7 +582,7 @@
 
 &lt;p&gt;Hầu như tất cả chúng ta khi lập trình ứng dụng web bằng &lt;a href=&quot;http://docs.oracle.com/javaee/6/tutorial/doc/bnafd.html&quot;&gt;Java Servlet&lt;/a&gt; đều hình dung rõ ràng các bước lập trình như sau: Tạo lớp đối tượng kế thừa từ HttpServlet, nạp đè các phương thức doGet() - doPost(), sau đó đăng ký trong file cấu hình Deployment Descriptor tương ứng Servlet này với đường dẫn xác định. Lớp đối tượng Servlet chúng ta tạo ra sẽ được gọi đến khi có một truy vấn HTTP có đường dẫn “khớp” với đường dẫn khai báo trong Deployment Descriptor.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/vi/images/2014-08-24-tong-quan-ve-ioc-trong-spring/ioc_example_servlet.png&quot; alt=&quot;Đảo ngược điều khiển trong ứng dụng Servlet&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/images/2014-08-24-tong-quan-ve-ioc-trong-spring/ioc_example_servlet.png&quot; alt=&quot;Đảo ngược điều khiển trong ứng dụng Servlet&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Đôi khi chúng ta cũng đã tự hỏi: vậy ai kích hoạt ứng dụng chúng ta viết để đáp ứng mỗi khi có Http Request gửi đến? ai chịu trách nhiệm chuyển đổi các thông điệp Http (HTTP Request và HTTP response) thành các đối tượng Java (HttpServletRequest và HttpServletResponse) để truyền cho các hàm doGet(), doPost()? Câu trả lời rõ ràng và ngay lập tức: chính là Servlet Container.&lt;/p&gt;
 
@@ -166,13 +590,13 @@
 
 &lt;p&gt;Trong quá trình phát triển các thành phần chức năng của ứng dụng, chúng ta thường áp dụng kiểm thử thành phần (&lt;a href=&quot;http://en.wikipedia.org/wiki/Unit_testing&quot;&gt;Unit Testing&lt;/a&gt;) để đảm bảo chức năng đó vẫn chạy đúng trong suốt quá trình ứng dụng được mở rộng và phát triển thêm. Để tạo bộ Unit Test, chúng ta chỉ cần tạo một lớp đối tượng, định nghĩa các phương thức khởi tạo, phương thức kết thúc và các phương thức test. Sau đó, chúng ta chỉ việc chạy bộ test để kiểm thử. &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/vi/images/2014-08-24-tong-quan-ve-ioc-trong-spring/ioc_example_unit_testing.png&quot; alt=&quot;Đảo ngược điều khiển trong quá trình chạy Unit Test&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/images/2014-08-24-tong-quan-ve-ioc-trong-spring/ioc_example_unit_testing.png&quot; alt=&quot;Đảo ngược điều khiển trong quá trình chạy Unit Test&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Việc điều khiển trình tự thực thi các phương thức được giao cho thư viện bên ngoài đảm nhiệm (chẳng hạn như TestNG hoặc &lt;a href=&quot;http://junit.org/&quot;&gt;JUnit&lt;/a&gt;).&lt;/p&gt;
 
 &lt;p&gt;Với hai ví dụ trên, chúng ta nhận thấy trong các ứng dụng đã có sự thay đổi vai trò: ứng dụng không còn ôm đồm vừa trực tiếp tạo dựng và kiểm soát luồng thực thi, vừa xây dựng chức năng nghiệp vụ. Việc kiểm soát luồng thực thi được tách khỏi chức năng nghiệp vụ và bị đẩy ra bên ngoài. Người lập trình đã ủy thác việc kiểm soát luồng thực thi ứng dụng cho một thành phần (thường là thư viện dựng sẵn) bên ngoài đảm nhiệm, chỉ còn tập trung vào chức năng chính của ứng dụng.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/vi/images/2014-08-24-tong-quan-ve-ioc-trong-spring/oop_app_ioc.png&quot; alt=&quot;Tách việc kiểm soát luồng thực thi ra khỏi ứng dụng&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/images/2014-08-24-tong-quan-ve-ioc-trong-spring/oop_app_ioc.png&quot; alt=&quot;Tách việc kiểm soát luồng thực thi ra khỏi ứng dụng&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Như vậy, khái niệm “đảo ngược” ở đây chính là chuyển nhiệm vụ kiểm soát lưu trình thực thi từ ứng dụng cho một thành phần chuyên trách (thường là một thư viện phần mềm khung - framework - dựng sẵn ở bên ngoài): ứng dụng chính chúng ta quan tâm phát triển không kiểm soát việc điều khiển luồng thực thi nữa, mà chỉ tập trung vào việc định nghĩa chức năng. Thư viện phần mềm khung chuyên trách kiểm soát điều khiển sẽ dựa trên mô tả trong cấu hình của ứng dụng để thay mặt ứng dụng điều phối luồng thực thi trong chương trình. Dễ dàng nhận thấy thư viện phần mềm khung này khác với các thư viện thông thường ở chỗ: thư viện thông thường cung cấp các chức năng và chờ được gọi đến, còn thư viện phần mềm khung tạo dựng luồng thực thi và gọi đến các chức năng của ứng dụng. Có lẽ sử dụng thuật ngữ “đảo ngược vai trò điều khiển luồng thực thi” thay cho “đảo ngược điều khiển” sẽ đầy đủ và phù hợp hơn cho khái niệm “Inversion of Control”. &lt;/p&gt;
 
@@ -193,23 +617,23 @@
 
 
   
-  &lt;p&gt;&lt;a href=&quot;http:/vi/spring-framework/tong-quan-ve-ioc-trong-spring&quot;&gt;Tổng quan về IoC trong Spring Framework&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/vi&quot;&gt;Acegik's Blog&lt;/a&gt; on August 24, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http:/blog/spring-framework/tong-quan-ve-ioc-trong-spring&quot;&gt;Tổng quan về IoC trong Spring Framework&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on August 24, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Tổng quan về Java Concurrency]]></title>
-  <link rel="alternate" type="text/html" href="http:/vi/java-concurrency/tong-quan-ve-java-concurrency"/>
-  <id>http:/vi/java-concurrency/tong-quan-ve-java-concurrency</id>
+  <link rel="alternate" type="text/html" href="http:/blog/java-concurrency/tong-quan-ve-java-concurrency"/>
+  <id>http:/blog/java-concurrency/tong-quan-ve-java-concurrency</id>
   <published>2014-08-20T00:00:00+07:00</published>
   <updated>2014-08-20T00:00:00-00:00</updated>
   
   <author>
     <name>Phạm Ngọc Hùng</name>
-    <uri>http:/vi</uri>
+    <uri>http:/blog</uri>
     <email>pnhung177@drupalex.net</email>
   </author>
-  <category scheme="http:/vi/tags/#Java" term="Java" /><category scheme="http:/vi/tags/#Java%20Concurrency" term="Java Concurrency" /><category scheme="http:/vi/tags/#Java%20Multithread" term="Java Multithread" />
+  <category scheme="http:/blog/tags/#Java" term="Java" /><category scheme="http:/blog/tags/#Java%20Concurrency" term="Java Concurrency" /><category scheme="http:/blog/tags/#Java%20Multithread" term="Java Multithread" />
   <content type="html">
   
     &lt;p&gt;Tính toán đồng thời (&lt;a href=&quot;http://en.wikipedia.org/wiki/Concurrent_computing&quot; title=&quot;Concurrency Computing&quot;&gt;Concurrency computing&lt;/a&gt;) là một trong các đặc trưng nổi bật đã tạo nên thế mạnh của ngôn ngữ Java. Nhờ có tính năng này, chúng ta có thể tạo ra các chương trình bằng Java xử lý nhiều nhiệm vụ cùng lúc, đồng thời tận dụng thời gian nhàn rỗi để tăng tốc độ và hiệu năng của chương trình.&lt;/p&gt;
@@ -227,7 +651,7 @@
   &lt;li&gt;Cách (D). Một người nấu nhiều món, mỗi thời điểm chỉ nấu một món, nấu xong món này mới thực hiện món khác.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/vi/images/2014-08-20-tong-quan-ve-java-concurrency/java-concurrency-4-cooking-models.png&quot; alt=&quot;Hình 1. Bốn cách thực hiện nấu bữa ăn gồm ba món ăn&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/images/2014-08-20-tong-quan-ve-java-concurrency/java-concurrency-4-cooking-models.png&quot; alt=&quot;Hình 1. Bốn cách thực hiện nấu bữa ăn gồm ba món ăn&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Nếu chúng ta tương ứng:&lt;/p&gt;
 
@@ -244,7 +668,7 @@
 
 &lt;p&gt;Cách (C) tương ứng với Tính toán đồng thời, trong đó một chương trình xử lý nhiều nhiệm vụ đồng thời theo cách chia nhỏ từng nhiệm vụ thành các thao tác, thực thi các thao tác (không phân biệt của nhiệm vụ nào) xen kẽ nhau trong khoảng thời gian được phân bổ hợp lý. Khái niệm “đồng thời” không áp dụng cho từng thao tác (tương ứng với lệnh thực thi trong máy tính), tức là không thể thực hiện các thao tác cùng một lúc (kiểu như người nấu ăn vừa băm thịt, vừa thái hành). Ở đây, khái niệm “đồng thời” được áp dụng cho nguyên cả nhiệm vụ, hiểu theo nghĩa có hai hay nhiều nhiệm vụ cùng “đang” trong quá trình được xử lý, nhưng các hành động cụ thể thực hiện các nhiệm vụ được diễn ra xen kẽ tuần tự (nhưng không đồng thời).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/vi/images/2014-08-20-tong-quan-ve-java-concurrency/java-concurrency-overview-one-chef-with-3-dishes1.png&quot; alt=&quot;Hình 2. Mô hình (C) tương ứng với Tính toán đồng thời (Concurrency) trong lập trình.&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/images/2014-08-20-tong-quan-ve-java-concurrency/java-concurrency-overview-one-chef-with-3-dishes1.png&quot; alt=&quot;Hình 2. Mô hình (C) tương ứng với Tính toán đồng thời (Concurrency) trong lập trình.&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Cách (D) tương ứng với lập trình tuần tự, trong đó chương trình xử lý tuần tự hết nhiệm vụ này rồi mới bắt đầu xử lý nhiệm vụ khác. Mỗi thời điểm chỉ có một nhiệm vụ đang được xử lý.&lt;/p&gt;
 
@@ -256,7 +680,7 @@
 
 &lt;p&gt;Mỗi chương trình Java được chạy trên nền một máy ảo Java (&lt;a href=&quot;http://en.wikipedia.org/wiki/Java_virtual_machine&quot;&gt;Java Virtual Machine&lt;/a&gt;). Máy ảo Java là dạng Máy ảo tiến trình (Process Virtual Machine), do đó mỗi chương trình Java là một tiến trình của hệ điều hành. Hàm main() trong chương trình Java sẽ tạo ra &lt;a href=&quot;http://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html&quot;&gt;Thread&lt;/a&gt; mặc định. Một chương trình Java đơn giản chỉ có một Thread được tạo ra từ hàm main(). Máy ảo Java cho phép chương trình Java có thể tạo ra nhiều Thread khác. Nếu muốn xử lý đồng thời nhiều nhiệm vụ, người lập trình phải viết mã lệnh để hàm main() gọi đến để tạo ra các Thread khác.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/vi/images/2014-08-20-tong-quan-ve-java-concurrency/java-concurrency-one-process-with-3-threads1.png&quot; alt=&quot;Hình 3. Tiến trình Java với 3 Thread chạy đồng thời&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/images/2014-08-20-tong-quan-ve-java-concurrency/java-concurrency-one-process-with-3-threads1.png&quot; alt=&quot;Hình 3. Tiến trình Java với 3 Thread chạy đồng thời&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Để tạo ra Thread, người lập trình cần thực hiện các bước sau:&lt;/p&gt;
 
@@ -328,23 +752,23 @@
 
 
   
-  &lt;p&gt;&lt;a href=&quot;http:/vi/java-concurrency/tong-quan-ve-java-concurrency&quot;&gt;Tổng quan về Java Concurrency&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/vi&quot;&gt;Acegik's Blog&lt;/a&gt; on August 20, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http:/blog/java-concurrency/tong-quan-ve-java-concurrency&quot;&gt;Tổng quan về Java Concurrency&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on August 20, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Giã từ ... Wordpress]]></title>
-  <link rel="alternate" type="text/html" href="http:/vi/jekyll/gia-tu-wordpress"/>
-  <id>http:/vi/jekyll/gia-tu-wordpress</id>
+  <link rel="alternate" type="text/html" href="http:/blog/jekyll/gia-tu-wordpress"/>
+  <id>http:/blog/jekyll/gia-tu-wordpress</id>
   <published>2014-07-01T00:00:00+07:00</published>
   <updated>2014-07-01T00:00:00-00:00</updated>
   
   <author>
     <name>Phạm Ngọc Hùng</name>
-    <uri>http:/vi</uri>
+    <uri>http:/blog</uri>
     <email>pnhung177@drupalex.net</email>
   </author>
-  <category scheme="http:/vi/tags/#jekyll" term="jekyll" /><category scheme="http:/vi/tags/#wordpress" term="wordpress" /><category scheme="http:/vi/tags/#markdown" term="markdown" />
+  <category scheme="http:/blog/tags/#jekyll" term="jekyll" /><category scheme="http:/blog/tags/#wordpress" term="wordpress" /><category scheme="http:/blog/tags/#markdown" term="markdown" />
   <content type="html">
   
     &lt;p&gt;Trong các công cụ tạo blog, có lẽ wordress là công cụ hàng đầu trên thế giới hiện nay. Wordpress là CMS mã nguồn mở bằng PHP được sử dụng rộng rãi không chỉ để viết blog mà còn dùng cho các trang web bán hàng, nền tảng để xây dựng các ứng dụng dưới dạng các plugin. So với Joomla và Drupal, Wordpress có phần nổi trội hơn về tính đơn giản, số lượng plugin nhiều cũng như sự dễ dùng của nó.&lt;/p&gt;
@@ -390,23 +814,23 @@
 
 
   
-  &lt;p&gt;&lt;a href=&quot;http:/vi/jekyll/gia-tu-wordpress&quot;&gt;Giã từ ... Wordpress&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/vi&quot;&gt;Acegik's Blog&lt;/a&gt; on July 01, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http:/blog/jekyll/gia-tu-wordpress&quot;&gt;Giã từ ... Wordpress&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on July 01, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Lập trình phân tách nội dung XML trong Java]]></title>
-  <link rel="alternate" type="text/html" href="http:/vi/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java"/>
-  <id>http:/vi/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java</id>
+  <link rel="alternate" type="text/html" href="http:/blog/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java"/>
+  <id>http:/blog/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java</id>
   <published>2013-07-05T00:00:00+07:00</published>
   <updated>2013-07-05T00:00:00-00:00</updated>
   
   <author>
     <name>Phạm Ngọc Hùng</name>
-    <uri>http:/vi</uri>
+    <uri>http:/blog</uri>
     <email>pnhung177@drupalex.net</email>
   </author>
-  <category scheme="http:/vi/tags/#XML" term="XML" /><category scheme="http:/vi/tags/#XML%20Parser" term="XML Parser" />
+  <category scheme="http:/blog/tags/#XML" term="XML" /><category scheme="http:/blog/tags/#XML%20Parser" term="XML Parser" />
   <content type="html">
   
     &lt;p&gt;XML được sử dụng rộng rãi và đóng vai trò hết sức quan trọng trong các ứng dụng hiện nay. XML được sử dụng để cấu hình ứng dụng, lưu trữ dữ liệu, định dạng và trao đổi dữ liệu trong nội bộ cũng như giữa các ứng dụng. Do đó, hầu hết các ứng dụng đều trực tiếp hoặc gián tiếp xử lý dữ liệu theo định dạng XML. Với Java có rất nhiều thư viện hỗ trợ việc đọc/ghi dữ liệu theo định dạng XML, bao gồm các thư viện dựng sẵn trong Java cũng như các thư viện bên ngoài như jdom, xerces, axiom, woodstox,… Bài viết này đề cập đến việc sử dụng các thư viện dựng sẵn trong Java để phân tách đọc nội dung XML bằng 3 cách: dựa trên mô hình &lt;a href=&quot;http://en.wikipedia.org/wiki/Document_Object_Model&quot;&gt;DOM&lt;/a&gt;, sử dụng &lt;a href=&quot;http://en.wikipedia.org/wiki/Simple_API_for_XML&quot;&gt;SAX&lt;/a&gt; và sử dụng &lt;a href=&quot;http://en.wikipedia.org/wiki/StAX&quot;&gt;StAX&lt;/a&gt;.&lt;/p&gt;
@@ -511,7 +935,7 @@
 
 &lt;p&gt;Theo cách này, chúng ta sử dụng đối tượng DocumentBuilder sẵn có trong Java. Nhiệm vụ của DocumentBuilder là phân tách nội dung tệp XML và chuyển đổi nội dung này thành cấu trúc DOM (Document Object Model) lưu trữ trong bộ nhớ, cho phép người lập trình sử dụng các hàm đã định nghĩa sẵn duyệt (traversing) cấu trúc phân cấp DOM để truy vấn dữ liệu.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/vi/images/lap-trinh-phan-tach-noi-dung-xml-trong-java/xml_parsing_in_java_dom_parser.png&quot; alt=&quot;Hình 1. Cơ chế hoạt động của DOM Parser&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/images/lap-trinh-phan-tach-noi-dung-xml-trong-java/xml_parsing_in_java_dom_parser.png&quot; alt=&quot;Hình 1. Cơ chế hoạt động của DOM Parser&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Để minh họa, chúng ta xem xét lớp đối tượng DemoDOMParser, sử dụng DocumentBuilder để phân tách nội dung XML thành đối tượng Document theo mô hình DOM:&lt;/p&gt;
 
@@ -567,7 +991,7 @@
 
 &lt;p&gt;Khác với việc phân tách XML theo mô hình DOM, quá trình phân tách nội dung XML bằng SAX sẽ không lưu trữ toàn bộ nội dung của tài liệu XML vào bộ nhớ, thay vào đó mỗi khi đọc đến một vị trí đặc biệt chẳng hạn như đầu tài liệu (start document), đầu thẻ (start element), nội dung văn bản (characters) bên trong thẻ, cuối thẻ hoặc cuối tài liệu XML, bộ xử lý của SAX (SAX Parser) sẽ phát sinh một sự kiện tương ứng với vị trí đồng thời gọi đến phương thức xử lý sự kiện trong lớp đối tượng Handler. Người lập trình có thể kế thừa lớp đối tượng DefaultHandler và nạp đè (override) các phương thức xử lý sự kiện trong lớp đối tượng này để xử lý theo cách của mình.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/vi/images/lap-trinh-phan-tach-noi-dung-xml-trong-java/xml_parsing_in_java_sax_parser.png&quot; alt=&quot;Hình 2. Cơ chế hoạt động của SAX&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/images/lap-trinh-phan-tach-noi-dung-xml-trong-java/xml_parsing_in_java_sax_parser.png&quot; alt=&quot;Hình 2. Cơ chế hoạt động của SAX&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Lớp đối tượng DemoSAXParser dưới đây minh họa cho việc phân tách nội dung tệp student.xml theo cơ chế SAX. Lưu ý bên trong lớp đối tượng DemoSAXParser có chứa định nghĩa lớp đối tượng SAXHandler. Lớp SAXHandler này kế thừa từ DefaultHandler và nạp đè các phương thức xử lý sự kiện của SAX.&lt;/p&gt;
 
@@ -636,7 +1060,7 @@
 
 &lt;p&gt;Cách thứ ba để xử lý tài liệu XML chính là StAX. Tương tự như SAX, StAX cũng áp dụng cơ chế xử lý sự kiện trong việc phân tách nội dung XML. Tuy nhiên, giữa SAX và StAX có sự khác biệt cơ bản: bộ xử lý SAX (SAX Parser) chủ động gọi và “đẩy” dữ liệu cho phương thức xử lý mỗi khi có sự kiện phát sinh, trong khi bộ xử lý StAX (StAX Reader) chờ chương trình gọi đến sự kiện tiếp theo và chuẩn bị sẵn dữ liệu để chương trình “kéo” dữ liệu ra xử lý.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/vi/images/lap-trinh-phan-tach-noi-dung-xml-trong-java/xml_parsing_in_java_stax_parser.png&quot; alt=&quot;Hình 3. Cơ chế hoạt động của StAX&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/images/lap-trinh-phan-tach-noi-dung-xml-trong-java/xml_parsing_in_java_stax_parser.png&quot; alt=&quot;Hình 3. Cơ chế hoạt động của StAX&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Ta có thể so sánh SAX với StAX giống như cách nhà hàng phục vụ thực khách trong tiệc cưới với cách nhà hàng phục vụ thực khách đơn lẻ. Trường hợp tiệc cưới, giống như cơ chế SAX, món ăn nào cũng như thời điểm phục vụ món ăn đó đã được gia chủ định sẵn (giống như lập trình trước các phương thức xử lý sự kiện trong SAXHandler vậy), do đó đến giờ là nhà hàng “đẩy” đồ ăn ra bàn phục vụ một cách chủ động, không phải chờ gọi. Còn với thực khách đơn lẻ, sẽ có người phục vụ luôn lắng nghe, thụ động chờ khách gọi món như thể khách “kéo” món ăn ra mỗi khi thấy cần.&lt;/p&gt;
 
@@ -759,7 +1183,7 @@ Parsing student.xml using StAXParser:
 
 
   
-  &lt;p&gt;&lt;a href=&quot;http:/vi/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java&quot;&gt;Lập trình phân tách nội dung XML trong Java&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/vi&quot;&gt;Acegik's Blog&lt;/a&gt; on July 05, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http:/blog/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java&quot;&gt;Lập trình phân tách nội dung XML trong Java&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on July 05, 2013.&lt;/p&gt;</content>
 </entry>
 
 </feed>

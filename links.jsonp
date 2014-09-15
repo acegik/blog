@@ -2,27 +2,32 @@ callback([
 
   {
     "text": "Lập trình phân tách nội dung XML trong Java",
-    "href": "/vi/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java"
+    "href": "/blog/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java"
   } ,
 
   {
     "text": "Giã từ ... Wordpress",
-    "href": "/vi/jekyll/gia-tu-wordpress"
+    "href": "/blog/jekyll/gia-tu-wordpress"
   } ,
 
   {
     "text": "Tổng quan về Java Concurrency",
-    "href": "/vi/java-concurrency/tong-quan-ve-java-concurrency"
+    "href": "/blog/java-concurrency/tong-quan-ve-java-concurrency"
   } ,
 
   {
     "text": "Tổng quan về IoC trong Spring Framework",
-    "href": "/vi/spring-framework/tong-quan-ve-ioc-trong-spring"
+    "href": "/blog/spring-framework/tong-quan-ve-ioc-trong-spring"
   } ,
 
   {
     "text": "Lập trình Concurrency trong Java bằng multithreading",
-    "href": "/vi/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading"
+    "href": "/blog/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading"
+  } ,
+
+  {
+    "text": "Xây dựng IoC Container đơn giản cấu hình bằng XML",
+    "href": "/blog/spring-framework/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml"
   } 
 
 ])

@@ -1,70 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>/vi</loc>
+        <loc>/blog</loc>
     </url>
     
     
     <url>
-        <loc>/vi/404.html</loc>
+        <loc>/blog/404.html</loc>
     </url>
     
     <url>
-        <loc>/vi/about/index.html</loc>
+        <loc>/blog/about/index.html</loc>
     </url>
     
     <url>
-        <loc>/vi/categories/index.html</loc>
+        <loc>/blog/categories/index.html</loc>
     </url>
     
     <url>
-        <loc>/vi/featured/</loc>
+        <loc>/blog/featured/</loc>
     </url>
     
     <url>
-        <loc>/vi/feed.xml</loc>
+        <loc>/blog/feed.xml</loc>
     </url>
     
     <url>
-        <loc>/vi/index.html</loc>
+        <loc>/blog/index.html</loc>
     </url>
     
     <url>
-        <loc>/vi/links.jsonp</loc>
+        <loc>/blog/links.jsonp</loc>
     </url>
     
     <url>
-        <loc>/vi/search.json</loc>
+        <loc>/blog/search.json</loc>
     </url>
     
     <url>
-        <loc>/vi/sitemap.xml</loc>
+        <loc>/blog/sitemap.xml</loc>
     </url>
     
     <url>
-        <loc>/vi/tags/index.html</loc>
+        <loc>/blog/tags/index.html</loc>
+    </url>
+    
+    <url>
+        <loc>/blog/page2/index.html</loc>
     </url>
     
 
     
     <url>
-        <loc>/vi/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading</loc>
+        <loc>/blog/spring-framework/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml</loc>
     </url>
     
     <url>
-        <loc>/vi/spring-framework/tong-quan-ve-ioc-trong-spring</loc>
+        <loc>/blog/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading</loc>
     </url>
     
     <url>
-        <loc>/vi/java-concurrency/tong-quan-ve-java-concurrency</loc>
+        <loc>/blog/spring-framework/tong-quan-ve-ioc-trong-spring</loc>
     </url>
     
     <url>
-        <loc>/vi/jekyll/gia-tu-wordpress</loc>
+        <loc>/blog/java-concurrency/tong-quan-ve-java-concurrency</loc>
     </url>
     
     <url>
-        <loc>/vi/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java</loc>
+        <loc>/blog/jekyll/gia-tu-wordpress</loc>
+    </url>
+    
+    <url>
+        <loc>/blog/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java</loc>
     </url>
     
 </urlset>
