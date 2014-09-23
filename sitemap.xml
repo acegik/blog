@@ -52,27 +52,35 @@
 
     
     <url>
-        <loc>/blog/spring-framework/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml</loc>
+        <loc>/blog/puzzle/lap-trinh-giai-bai-toan-do-cua-einstein.html</loc>
     </url>
     
     <url>
-        <loc>/blog/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading</loc>
+        <loc>/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html</loc>
     </url>
     
     <url>
-        <loc>/blog/spring-framework/tong-quan-ve-ioc-trong-spring</loc>
+        <loc>/blog/java/concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading.html</loc>
     </url>
     
     <url>
-        <loc>/blog/java-concurrency/tong-quan-ve-java-concurrency</loc>
+        <loc>/blog/java/spring/core/tong-quan-ve-ioc-trong-spring.html</loc>
     </url>
     
     <url>
-        <loc>/blog/jekyll/gia-tu-wordpress</loc>
+        <loc>/blog/java/concurrency/tong-quan-ve-java-concurrency.html</loc>
     </url>
     
     <url>
-        <loc>/blog/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java</loc>
+        <loc>/blog/jekyll/migration/gia-tu-wordpress.html</loc>
+    </url>
+    
+    <url>
+        <loc>/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java.html</loc>
+    </url>
+    
+    <url>
+        <loc>/blog/java/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java.html</loc>
     </url>
     
 </urlset>

@@ -10,7 +10,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http:/blog/feed.xml" />
 <link rel="alternate" type="text/html" href="http:/blog/" />
-<updated>2014-09-15T15:23:47+07:00</updated>
+<updated>2014-09-23T09:38:21+07:00</updated>
 <id>http:/blog/</id>
 <author>
   <name>Phạm Ngọc Hùng</name>
@@ -20,9 +20,444 @@
 
 
 <entry>
+  <title type="html"><![CDATA[Lập trình giải bài toán đố năm ngôi nhà của Albert Einstein]]></title>
+  <link rel="alternate" type="text/html" href="http:/blog/puzzle/lap-trinh-giai-bai-toan-do-cua-einstein.html"/>
+  <id>http:/blog/puzzle/lap-trinh-giai-bai-toan-do-cua-einstein</id>
+  <published>2014-09-20T00:00:00+07:00</published>
+  <updated>2013-06-20T00:00:00-00:00</updated>
+  
+  <author>
+    <name>Phạm Ngọc Hùng</name>
+    <uri>http:/blog</uri>
+    <email>pnhung177@drupalex.net</email>
+  </author>
+  <category scheme="http:/blog/tags/#Java" term="Java" /><category scheme="http:/blog/tags/#Logical%20Puzzle" term="Logical Puzzle" />
+  <content type="html">
+  
+    &lt;p&gt;Đây là bài toán đố khá nổi tiếng xuất hiện trên mạng với nhiều biến thể khác nhau. Các bài viết đều cho rằng Albert Einstein chính là tác giả của bài toán đố này. Các bài viết cũng tuyên bố rằng 98% dân số (trên trái đất này?) không giải được nó. Một số nhà bình luận cho rằng Einstein tạo ra các câu đố kiểu như vậy không phải để kiểm tra trí thông minh của những sinh viên muốn được ông nhận làm học trò nghiên cứu sinh, mà là thách đố để từ chối yêu cầu của họ. Tất cả những câu chuyện trên không có gì để đảm bảo sự thật cả. Riêng tôi nghĩ, tác giả bài viết khơi mào (và những người sau dựa vào bài viết đó để lan truyền đi) khẳng định 98% dân số không giải được chỉ là chiêu trò thu hút người đọc, và bài toán đố nếu thực sự do Einstein đưa ra thì có lẽ cũng chỉ là câu đố vui trong giờ giảng bài của ông mà thôi. Tuy nhiên, bất kể nguồn gốc như thế nào, thì đây cũng là một bài toán đố rất thú vị.&lt;/p&gt;
+
+&lt;h2 id=&quot;ni-dung-bi-ton-&quot;&gt;Nội dung bài toán đố&lt;/h2&gt;
+
+&lt;p&gt;Bài toán đố này có nhiều biến thể khác nhau ở vài chi tiết. Dưới đây là nội dung biến thể khá phổ biến đã được dịch ra tiếng Việt mà tôi chọn để trình bày trong bài viết này:&lt;/p&gt;
+
+&lt;p&gt;Có 5 ngôi nhà, mỗi nhà có một màu khác nhau. Trong mỗi nhà có một người có quốc tịch khác nhau ở. Mỗi người này đều thích một loại nước uống, hút một loại thuốc lá và nuôi một con vật trong nhà. Cả 5 người đều không có người nào cùng thích loại nước uống, hút loại thuốc lá hay có vật nuôi trong nhà giống như những người hàng xóm của mình. Ngoài ra, sở thích của những người này còn thỏa mãn các điều kiện sau:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Người Anh ở trong nhà màu đỏ.&lt;/li&gt;
+  &lt;li&gt;Người Thuỵ Điển nuôi chó.&lt;/li&gt;
+  &lt;li&gt;Người Đan-mạch thích uống chè.&lt;/li&gt;
+  &lt;li&gt;Ngôi nhà màu xanh lá cây nằm bên trái ngôi nhà màu trắng.&lt;/li&gt;
+  &lt;li&gt;Người ở nhà màu xanh lá cây thích uống cafe.&lt;/li&gt;
+  &lt;li&gt;Người hút thuốc hiệu Pall Mall nuôi chim.&lt;/li&gt;
+  &lt;li&gt;Người ở nhà nằm giữa thích uống sữa. &lt;/li&gt;
+  &lt;li&gt;Người ở nhà màu vàng hút thuốc hiệu Dunhill.&lt;/li&gt;
+  &lt;li&gt;Người Na-uy ở nhà đầu tiên.&lt;/li&gt;
+  &lt;li&gt;Người hút thuốc hiệu Blend ở cạnh nhà ngườì có nuôi mèo.&lt;/li&gt;
+  &lt;li&gt;Người có nuôi ngựa ở cạnh nhà người hút thuốc hiệu Dunhill.&lt;/li&gt;
+  &lt;li&gt;Người hút thuốc hiệu BlueMaster thích uống bia.&lt;/li&gt;
+  &lt;li&gt;Người Na-uy ở cạnh nhà màu xanh nước biển.&lt;/li&gt;
+  &lt;li&gt;Người Đức hút thuốc hiệu Prince.&lt;/li&gt;
+  &lt;li&gt;Người hút thuốc hiệu Blend có ngườì hàng xóm thích uống nước lọc.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Câu hỏi: Ai là người nuôi cá ?&lt;/p&gt;
+
+&lt;p&gt;Cách giải phổ biến là kẻ bảng và loại trừ. Tôi đã thử giải bài toán này bằng cách dùng bút chì màu nối các điểm (kiểu mindmap) và mất khoảng 30 phút. Thử search trên google, tôi nhận thấy trong tất cả các kết quả tìm kiếm đều cho đáp án là “người Đức nuôi cá”. Tự hỏi rằng ngoài đáp án trên liệu còn có khả năng nào khác không? Nếu có thì có tất cả bao nhiêu đáp án? Tôi quyết định dùng công cụ phổ biến bây giờ mà khi Einstein đặt ra bài toán chưa có, đó là máy tính, để giải đáp thắc mắc của mình (chứ không phải giải bài toán đâu nhé, dùng giấy bút là đủ tìm được một đáp án rồi bạn ạ).&lt;/p&gt;
+
+&lt;h2 id=&quot;lp-trnh-gii-bi-ton-&quot;&gt;Lập trình giải bài toán đố&lt;/h2&gt;
+
+&lt;p&gt;Phương pháp đơn giản nhất (và cũng là dở nhất) để lập trình giải bài toán đố này chính là vét cạn (brute force), tức là kiểm tra tất cả các khả năng kết hợp có thể có. May mắn cho tôi là bài toán đố này có số chiều không lớn - 5 ngôi nhà với 5 đặc điểm khác nhau - nên số lượng các khả năng kết hợp cũng không quá lớn (chính xác là (5!)^5 = 24883200000 trường hợp). Đối với chúng ta, số trường hợp này quả là lớn, nhưng với máy tính, số lượng này chỉ là … muỗi.&lt;/p&gt;
+
+&lt;h3 id=&quot;t-chc-d-liu&quot;&gt;Tổ chức dữ liệu&lt;/h3&gt;
+
+&lt;p&gt;Sử dụng một mảng hai chiều (tạm gọi là mảng &lt;em&gt;P&lt;/em&gt;) để lưu trữ một phương án kết hợp màu sắc, người, đồ uống, thuốc lá, vật nuôi cho các ngôi nhà. Mảng này chứa tên của các đặc điểm, mỗi dòng tương ứng với một đặc điểm, mỗi cột tương ứng với một ngôi nhà.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_data_structure_using_name.png&quot; alt=&quot;Hình 1. Mảng hai chiều chứa phương án kết hợp các đặc điểm&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Để thuận tiện cho lập trình, chúng ta dùng số thay cho tên của các đối tượng. Chẳng hạn với màu sắc: “Red”-0, “White”-1, “Yellow”-2, “Green”-3, “Blue”-4; với đồ uống: “Tea”-0, “Coffee”-1, “Milk”-2, “Beer”-3, “Water”-4; tương tự với thuốc lá, vật nuôi và quốc tịch. Chúng ta sử dụng một mảng 2 chiều (tạm gọi là mảng &lt;em&gt;name_matrix&lt;/em&gt;) để tương ứng tên đối tượng với số như sau:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_name2number_mapping.png&quot; alt=&quot;Hình 2. Bảng chuyển đổi giữa tên và số&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Với tương ứng giữa tên và số ở trên, mảng phương án kết hợp &lt;em&gt;P&lt;/em&gt; có dạng như sau:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_data_structure_using_number.png&quot; alt=&quot;Hình 3. Mảng hai chiều chứa phương án kết hợp các đặc điểm (dạng số)&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Với phương án kết hợp đang có trong &lt;em&gt;P&lt;/em&gt;, chúng ta kiểm tra xem phương án này có thỏa mãn các quy tắc của bài toán hay không. Nếu thỏa mãn, chúng ta in kết quả ra màn hình. Sau đó chuyển sang phương án kết hợp tiếp theo.&lt;/p&gt;
+
+&lt;h3 id=&quot;to-phng-n-kt-hp-tip-theo&quot;&gt;Tạo phương án kết hợp tiếp theo&lt;/h3&gt;
+
+&lt;p&gt;Mỗi phương án kết hợp trong &lt;em&gt;P&lt;/em&gt; bao gồm 5 mảng con 5 phần tử, mỗi mảng con thể hiện cho một cách sắp đặt các giá trị của một đặc điểm cho các ngôi nhà. Viết 5 mảng con thành 5 dòng. Giả sử chúng ta đã có cách sinh ra các hoán vị liên tiếp của một mảng 5 phẩn tử (sẽ trình bày bên dưới, trong phần “&lt;em&gt;Thuật toán sinh hoán vị liên tiếp&lt;/em&gt;”). Khi đó, hãy hình dung chúng ta viết các hoán vị liên tiếp của 5 mảng con này lần lượt ra bên phải, theo chiều ngang. Chúng ta sẽ có tất cả 120 cột tương ứng với 120 hoán vị của mảng 5 phần tử.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_combination_diagram_001-002-058-057-118.png&quot; alt=&quot;Hình 4. Dãy 120 hoán vị của 5 đặc điểm&quot; /&gt; &lt;/p&gt;
+
+&lt;p&gt;Trong hình vẽ minh họa ở trên, đường mũi tên đỏ &amp;amp; xanh xác định phương án kết hợp hiện tại của ma trận &lt;em&gt;P&lt;/em&gt;, là sự kết hợp của hoán vị 1 của Nationalities, 2 của Colors, 58 của Drinks, 57 của Pets và 118 của Cigarettes (1 - 2 - 58 - 57 - 118). Phương án tiếp theo sẽ là kết hợp 1 - 2 - 58 - 57 - 119, tức là dịch chuyển mũi tên xanh về bên phải 1 vị trí. Cứ tiếp tục như vậy cho đến hoán vị cuối cùng của Cigarettes.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_combination_diagram_001-002-058-057-120.png&quot; alt=&quot;Hình 5. Hoán vị cuối cùng của cigarettes&quot; /&gt; &lt;/p&gt;
+
+&lt;p&gt;Sau khi duyệt đến hoán vị cuối cùng, mũi tên đỏ trỏ vào Pets sẽ chuyển đến hoán vị tiếp theo của Pets, và mũi tên xanh lại trỏ về hoán vị đầu tiên của Cigarettes, bắt đầu chu kỳ mới trên dãy hoán vị này. &lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_combination_diagram_001-002-058-058-001.png&quot; alt=&quot;Hình 6. Hoán vị Pets tiếp theo trong khi Cigarettes trở về đầu&quot; /&gt; &lt;/p&gt;
+
+&lt;p&gt;Với sự kết hợp này, chúng ta có thể hình dung các phương án kết hợp của &lt;em&gt;P&lt;/em&gt; thay đổi như sau:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_combination_chain.png&quot; alt=&quot;Hình 7. Chuỗi các phương án kết hợp liên tiếp&quot; /&gt; &lt;/p&gt;
+
+&lt;p&gt;Tương ứng mũi tên màu xanh duyệt từ hoán vị đầu đến hoán vị cuối của dãy hoán vị Cigarettes (có chỉ số dòng trong ma trận là &lt;strong&gt;N_CI=4&lt;/strong&gt;) chính là vòng lặp:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_CI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// thực hiện kiểm tra các ràng buộc bài toán&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;genNextPermutation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_CI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]));&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Trong đó, hàm &lt;strong&gt;genNextPermutation(a)&lt;/strong&gt; có nhiệm vụ tạo ra các hoán vị liên tiếp của mảng &lt;strong&gt;a&lt;/strong&gt;. Kết hợp với mũi tên màu đỏ duyệt từ hoán vị đầu đến cuối dãy hoán vị Pets (với chỉ số dòng trong ma trận là &lt;strong&gt;N_PE=3&lt;/strong&gt;), đoạn mã lệnh tương ứng sẽ là 2 vòng lặp lồng nhau:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_PE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;// do something ...&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_CI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;// thực hiện kiểm tra các ràng buộc bài toán&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;// nếu thỏa mãn thì in kết quả ra màn hình&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;genNextPermutation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_CI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]));&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;genNextPermutation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_PE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]));&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Kết hợp quá trình duyệt trên các dãy hoán vị còn lại, chúng ta có vòng lặp tạo các phương án kết hợp liên tiếp như sau:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_CO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;c1&quot;&gt;// do something ...&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_DR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;// do something ...&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_NA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;c1&quot;&gt;// do something ...&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_PE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;c1&quot;&gt;// do something ...&lt;/span&gt;
+				&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_CI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
+				&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+					&lt;span class=&quot;c1&quot;&gt;// thực hiện kiểm tra các ràng buộc bài toán&lt;/span&gt;
+					&lt;span class=&quot;c1&quot;&gt;// nếu thỏa mãn thì in kết quả ra màn hình&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;genNextPermutation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_CI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]));&lt;/span&gt;
+			&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;genNextPermutation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_PE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]));&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;genNextPermutation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_NA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]));&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;genNextPermutation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_DR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]));&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;genNextPermutation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_CO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]));&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Vấn đề còn lại ở đây là cơ chế vận hành của hàm sinh hoán vị liên tiếp &lt;strong&gt;genNextPermutation(a)&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;thut-ton-sinh-hon-v-lin-tip&quot;&gt;Thuật toán sinh hoán vị liên tiếp&lt;/h3&gt;
+
+&lt;p&gt;Có nhiều thuật toán sinh hoán vị liên tiếp (bạn nào quan tâm xem thêm trong bài viết &lt;a href=&quot;http://en.wikipedia.org/wiki/Permutation&quot;&gt;Permutation&lt;/a&gt;). Để thuận lợi cho việc diễn đạt, trong bài viết này tôi chọn thuật toán sinh hoán vị liên tiếp theo &lt;a href=&quot;http://en.wikipedia.org/wiki/Lexicographical_order&quot;&gt;thứ tự từ điển&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Thuật toán tìm hoán vị tiếp theo của mảng &lt;em&gt;a&lt;/em&gt; theo thứ tự từ điển được mô tả như sau:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Bước 1: tìm chỉ số j lớn nhất sao cho a(j) &amp;lt; a(j+1). Nếu không tìm thấy, thì đây là hoán vị cuối cùng, thoát khỏi thuật toán.&lt;/li&gt;
+  &lt;li&gt;Bước 2: tìm chỉ số k lớn nhất sao cho a(j) &amp;lt; a(k).&lt;/li&gt;
+  &lt;li&gt;Bước 3: hoán đổi giá trị a(j) và a(k).&lt;/li&gt;
+  &lt;li&gt;Bước 4: đảo ngược danh sách từ phần tử a(j+1) đến phần tử cuối mảng.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Như vậy, để sinh toàn bộ các hoán vị của một mảng, chúng ta bắt đầu từ mảng có thứ tự từ điển nhỏ nhất, trong trường hợp bài toán của chúng ta là {0, 1, 2, 3, 4}. Lặp các bước trong thuật toán mô tả ở trên cho đến khi thuật toán dừng: không tìm thấy j sao cho a(j) &amp;lt; a(j+1), tức là mảng số của chúng ta được sắp theo thứ tự giảm dần {4, 3, 2, 1, 0}.&lt;/p&gt;
+
+&lt;p&gt;Theo thuật toán này, hàm &lt;strong&gt;genNextPermutation(a)&lt;/strong&gt; được lập trình như sau:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;genNextPermutation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;c1&quot;&gt;// tìm j là chỉ số lớn nhất mà a[j] &amp;lt; a[j+1]&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;--)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;c1&quot;&gt;// tìm k là chỉ số lớn nhất mà a[j] &amp;lt; a[k]&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;--)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;c1&quot;&gt;// hoán đổi giá trị a[j] và a[k]&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;c1&quot;&gt;// đảo danh sách sau a[j] (từ a[j+1] đến hết)&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;--;&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++;&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Lưu ý trong chương trình mẫu có &lt;a href=&quot;https://github.com/pnhung177/einstein-five-houses-puzzle/blob/master/src/test/java/net/acegik/einsteinpuzzle/NextPermutationTest.java&quot;&gt;phần Unit Test&lt;/a&gt; để kiểm thử hàm &lt;strong&gt;genNextPermutation(a)&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;vit-chng-trnh&quot;&gt;Viết chương trình&lt;/h3&gt;
+
+&lt;p&gt;Chương trình gồm có 3 phần mã lệnh. Phần thứ nhất là phương thức sinh hoán vị liên tiếp (đã trình bày ở phần phía trên). Phần tiếp theo là khai báo cấu trúc dữ liệu và các hàm truy cập giá trị, in kết quả ra màn hình:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_NA&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_CO&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_DR&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_PE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_CI&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[][]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name_matrix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Englishman&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Dane&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Swede&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;German&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Norwegian&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;},&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Red&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;White&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Yellow&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Green&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Blue&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;},&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Tea&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Coffee&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Milk&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Beer&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Water&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;},&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Dog&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Cat&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Horse&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Fish&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Bird&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;},&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;PallMall&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Dunhill&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Prince&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;BlueMaster&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Blend&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HashMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name2number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getNameOfNumber&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name_matrix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getNumberOfName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name2number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;name2number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HashMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name_matrix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name_matrix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;name2number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HashMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;();&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name2number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;containsKey&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name_matrix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name_matrix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;equals&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;n&quot;&gt;name2number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+			&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name2number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[][]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getNumberOfName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;IllegalArgumentException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;findIndexOf() error!&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;printHouse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;%10d | &amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;\n&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;printNames&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nameType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;%10s | &amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getNameOfNumber&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nameType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;\n&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Phần cuối cùng làm hàm main() chứa các vòng lặp lồng nhau để vét cạn tất cả các trường hợp:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[][]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;},&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;},&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;},&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;},&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_CO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;//13. nguoi Na-uy o canh nha mau xanh nuoc bien va&lt;/span&gt;
+		&lt;span class=&quot;c1&quot;&gt;//9. nguoi Na-uy o nha dau tien&lt;/span&gt;
+		&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;co_blue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Blue&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_CO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;co_blue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+		&lt;span class=&quot;c1&quot;&gt;//4. ngoi nha xanh la cay nam ben trai nha mau trang&lt;/span&gt;
+		&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;co_green&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Green&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_CO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;co_white&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;White&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_CO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;co_green&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;co_white&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+		&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;co_yellow&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Yellow&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_CO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;co_red&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Red&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_CO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+		&lt;span class=&quot;c1&quot;&gt;//Drinks&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_DR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+			&lt;span class=&quot;c1&quot;&gt;//5. nguoi nha xanh la cay thich uong ca phe&lt;/span&gt;
+			&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dr_cafe&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Coffee&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_DR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dr_cafe&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;co_green&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+			&lt;span class=&quot;c1&quot;&gt;//7. nguoi o nha giua thich uong sua&lt;/span&gt;
+			&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dr_milk&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Milk&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_DR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dr_milk&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+			&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dr_beer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Beer&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_DR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+			&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dr_tea&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Tea&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_DR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+			&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dr_water&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Water&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_DR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+			&lt;span class=&quot;c1&quot;&gt;//Cigarettes&lt;/span&gt;
+			&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_CI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
+			&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+				&lt;span class=&quot;c1&quot;&gt;//8.nguoi o nha mau vang hut thuoc hieu Dunhill&lt;/span&gt;
+				&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ci_dunhill&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Dunhill&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_CI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+				&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ci_dunhill&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;co_yellow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+				&lt;span class=&quot;c1&quot;&gt;//12. nguoi hut thuoc hieu bluemaster thich uong bia&lt;/span&gt;
+				&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ci_bluemaster&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;BlueMaster&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_CI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+				&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ci_bluemaster&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dr_beer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+				&lt;span class=&quot;c1&quot;&gt;//15. nguoi hut thuoc Blend co hang xom thich uong nuoc&lt;/span&gt;
+				&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ci_blend&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Blend&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_CI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+				&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dr_water&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ci_blend&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+						&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dr_water&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ci_blend&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+				&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ci_pallmall&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;PallMall&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_CI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+				&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ci_prince&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Prince&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_CI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+				&lt;span class=&quot;c1&quot;&gt;// Pets&lt;/span&gt;
+				&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_PE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
+				&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+					&lt;span class=&quot;c1&quot;&gt;//6. nguoi hut thuoc la hieu PallMall nuoi chim&lt;/span&gt;
+					&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pe_bird&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Bird&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_PE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+					&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ci_pallmall&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pe_bird&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+					&lt;span class=&quot;c1&quot;&gt;//10. nguoi hut thuoc Blend o canh nha nguoi nuoi meo&lt;/span&gt;
+					&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pe_cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Cat&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_PE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+					&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pe_cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ci_blend&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+							&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pe_cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ci_blend&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+					&lt;span class=&quot;c1&quot;&gt;//11. nguoi nuoi ngua o canh nha nguoi hut thuoc Dunhill&lt;/span&gt;
+					&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pe_horse&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Horse&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_PE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+					&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pe_horse&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ci_dunhill&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+							&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pe_horse&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ci_dunhill&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+					&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pe_dog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Dog&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_PE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+					&lt;span class=&quot;c1&quot;&gt;//Nationalities&lt;/span&gt;
+					&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_NA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]{&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
+					&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+						&lt;span class=&quot;c1&quot;&gt;//9. nguoi na-uy o nha dau tien&lt;/span&gt;
+						&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;na_norwe&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Norwegian&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_NA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+						&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;na_norwe&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+						&lt;span class=&quot;c1&quot;&gt;//1. nguoi anh o nha mau do&lt;/span&gt;
+						&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;na_engman&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Englishman&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_NA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+						&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;na_engman&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;co_red&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+						&lt;span class=&quot;c1&quot;&gt;//2. nguoi thuy dien nuoi cho&lt;/span&gt;
+						&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;na_swede&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Swede&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_NA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+						&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;na_swede&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pe_dog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+						&lt;span class=&quot;c1&quot;&gt;//3. nguoi dan mach thich uong che&lt;/span&gt;
+						&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;na_dane&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Dane&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_NA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+						&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;na_dane&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dr_tea&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+						&lt;span class=&quot;c1&quot;&gt;//14. nguoi duc hut thuoc hieu Prince&lt;/span&gt;
+						&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;na_german&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findIndexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;German&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;N_NA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+						&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;na_german&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ci_prince&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+						&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++;&lt;/span&gt;
+						&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Solution #%d:%n&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+						&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;%13s:&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Houses&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+						&lt;span class=&quot;n&quot;&gt;printHouse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_CO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]);&lt;/span&gt;
+						&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;%13s:&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Colors&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+						&lt;span class=&quot;n&quot;&gt;printNames&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_CO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_CO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]);&lt;/span&gt;
+						&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;%13s:&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Drinks&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+						&lt;span class=&quot;n&quot;&gt;printNames&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_DR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_DR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]);&lt;/span&gt;
+						&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;%13s:&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Cigarettes&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+						&lt;span class=&quot;n&quot;&gt;printNames&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_CI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_CI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]);&lt;/span&gt;
+						&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;%13s:&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Pets&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+						&lt;span class=&quot;n&quot;&gt;printNames&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_PE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_PE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]);&lt;/span&gt;
+						&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;%13s:&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Nationalities&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+						&lt;span class=&quot;n&quot;&gt;printNames&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_NA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_NA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]);&lt;/span&gt;
+						&lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+					&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;genNextPermutation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_NA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]));&lt;/span&gt;
+				&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;genNextPermutation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_PE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]));&lt;/span&gt;
+			&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;genNextPermutation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_CI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]));&lt;/span&gt;
+		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;genNextPermutation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_DR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]));&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;genNextPermutation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;N_CO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]));&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;kt-qu-chy-chng-trnh&quot;&gt;Kết quả chạy chương trình&lt;/h2&gt;
+
+&lt;p&gt;Ấn tượng đầu tiên đó là cảm giác vui sướng vì biết được bài toán đố trên (biến thể tiếng Việt mà tôi mô tả ở trên) có tất cả 7 khả năng, với 3 đáp án cho câu hỏi “ai là người nuôi cá”: Đức, Đan Mạch và Nauy.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;Solution &lt;span class=&quot;c&quot;&gt;#1:&lt;/span&gt;
+       Houses:         &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+       Colors:    Yellow &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Blue &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Red &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Green &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      White &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+       Drinks:     Water &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Tea &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Milk &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     Coffee &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Beer &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+   Cigarettes:   Dunhill &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Blend &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;   PallMall &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     Prince &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; BlueMaster &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+         Pets:       Cat &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Horse &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Bird &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Fish &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Dog &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+Nationalities: Norwegian &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Dane &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; Englishman &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     German &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Swede &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+
+Solution &lt;span class=&quot;c&quot;&gt;#2:&lt;/span&gt;
+       Houses:         &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+       Colors:     Green &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Blue &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Red &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     Yellow &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      White &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+       Drinks:    Coffee &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Water &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Milk &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Tea &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Beer &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+   Cigarettes:  PallMall &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     Prince &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Blend &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;    Dunhill &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; BlueMaster &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+         Pets:      Bird &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Cat &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Horse &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Fish &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Dog &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+Nationalities: Norwegian &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     German &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; Englishman &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Dane &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Swede &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+
+Solution &lt;span class=&quot;c&quot;&gt;#3:&lt;/span&gt;
+       Houses:         &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+       Colors:     Green &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Blue &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Red &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     Yellow &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      White &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+       Drinks:    Coffee &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Water &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Milk &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Tea &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Beer &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+   Cigarettes:  PallMall &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     Prince &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Blend &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;    Dunhill &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; BlueMaster &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+         Pets:      Bird &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Fish &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Horse &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Cat &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Dog &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+Nationalities: Norwegian &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     German &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; Englishman &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Dane &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Swede &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+
+Solution &lt;span class=&quot;c&quot;&gt;#4:&lt;/span&gt;
+       Houses:         &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+       Colors:     Green &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Blue &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      White &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Red &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     Yellow &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+       Drinks:    Coffee &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Water &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Milk &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Beer &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Tea &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+   Cigarettes:  PallMall &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     Prince &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Blend &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; BlueMaster &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;    Dunhill &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+         Pets:      Bird &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Cat &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Dog &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Horse &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Fish &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+Nationalities: Norwegian &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     German &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Swede &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; Englishman &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Dane &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+
+Solution &lt;span class=&quot;c&quot;&gt;#5:&lt;/span&gt;
+       Houses:         &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+       Colors:     Green &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Blue &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      White &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     Yellow &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Red &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+       Drinks:    Coffee &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Water &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Milk &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Tea &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Beer &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+   Cigarettes:  PallMall &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     Prince &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Blend &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;    Dunhill &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; BlueMaster &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+         Pets:      Bird &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Cat &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Dog &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Fish &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Horse &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+Nationalities: Norwegian &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     German &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Swede &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Dane &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; Englishman &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+
+Solution &lt;span class=&quot;c&quot;&gt;#6:&lt;/span&gt;
+       Houses:         &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+       Colors:     Green &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Blue &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      White &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     Yellow &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Red &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+       Drinks:    Coffee &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Water &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Milk &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Tea &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Beer &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+   Cigarettes:  PallMall &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     Prince &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Blend &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;    Dunhill &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; BlueMaster &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+         Pets:      Bird &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Fish &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Dog &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Cat &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Horse &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+Nationalities: Norwegian &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     German &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Swede &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Dane &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; Englishman &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+
+Solution &lt;span class=&quot;c&quot;&gt;#7:&lt;/span&gt;
+       Houses:         &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;          &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+       Colors:     Green &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Blue &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     Yellow &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Red &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      White &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+       Drinks:    Coffee &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Water &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Milk &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Beer &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Tea &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+   Cigarettes:     Blend &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     Prince &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;    Dunhill &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; BlueMaster &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;   PallMall &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+         Pets:      Fish &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Cat &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;        Dog &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Horse &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Bird &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; 
+Nationalities: Norwegian &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     German &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;      Swede &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; Englishman &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;       Dane &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Các bạn có thể tải mã nguồn đầy đủ của &lt;a href=&quot;https://github.com/pnhung177/einstein-five-houses-puzzle/archive/simple.zip&quot;&gt;ví dụ minh họa&lt;/a&gt; để chạy thử.&lt;/p&gt;
+
+
+  
+  &lt;p&gt;&lt;a href=&quot;http:/blog/puzzle/lap-trinh-giai-bai-toan-do-cua-einstein.html&quot;&gt;Lập trình giải bài toán đố năm ngôi nhà của Albert Einstein&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on September 20, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
   <title type="html"><![CDATA[Xây dựng IoC Container đơn giản cấu hình bằng XML]]></title>
-  <link rel="alternate" type="text/html" href="http:/blog/spring-framework/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml"/>
-  <id>http:/blog/spring-framework/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml</id>
+  <link rel="alternate" type="text/html" href="http:/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html"/>
+  <id>http:/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml</id>
   <published>2014-09-06T00:00:00+07:00</published>
   <updated>2014-09-06T00:00:00-00:00</updated>
   
@@ -38,7 +473,7 @@
 
 &lt;p&gt;Chúng ta minh họa bài viết bằng ví dụ đơn giản sau: lập trình đếm tổng số lượng hàng hóa và tổng số tiền hàng của một cửa hàng trực tuyến.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/images/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml/simple_ioc_container_diagram.png&quot; alt=&quot;Hình 1. Sơ đồ tổng quan của Simple IoC Container&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/c8ade22a-a842-4dd3-844a-505364f3169e/simple_ioc_container_diagram.png&quot; alt=&quot;Hình 1. Sơ đồ tổng quan của Simple IoC Container&quot; /&gt; &lt;/p&gt;
 
 &lt;h2 id=&quot;cc-lp-i-tng-m-hnh-nghip-v&quot;&gt;Các lớp đối tượng mô hình nghiệp vụ&lt;/h2&gt;
 
@@ -174,7 +609,7 @@
 
 &lt;p&gt;Chức năng của Simple IoC Container là tạo và móc nối các đối tượng nghiệp vụ với nhau dựa trên mô tả trong tệp cấu hình XML.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/images/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml/simple_ioc_container_inside.png&quot; alt=&quot;Hình 2. Cấu trúc bên trong của Simple IoC Container&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/c8ade22a-a842-4dd3-844a-505364f3169e/simple_ioc_container_inside.png&quot; alt=&quot;Hình 2. Cấu trúc bên trong của Simple IoC Container&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Để lưu trữ thông tin mô tả một đối tượng được simple-ioc-container quản lý, chúng ta cần định nghĩa 2 lớp đối tượng: BeanObject và BeanProperty. &lt;/p&gt;
 
@@ -439,14 +874,14 @@ Total Assets:67750.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
   
-  &lt;p&gt;&lt;a href=&quot;http:/blog/spring-framework/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml&quot;&gt;Xây dựng IoC Container đơn giản cấu hình bằng XML&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on September 06, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http:/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html&quot;&gt;Xây dựng IoC Container đơn giản cấu hình bằng XML&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on September 06, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Lập trình Concurrency trong Java bằng multithreading]]></title>
-  <link rel="alternate" type="text/html" href="http:/blog/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading"/>
-  <id>http:/blog/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading</id>
+  <link rel="alternate" type="text/html" href="http:/blog/java/concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading.html"/>
+  <id>http:/blog/java/concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading</id>
   <published>2014-08-26T00:00:00+07:00</published>
   <updated>2014-08-26T00:00:00-00:00</updated>
   
@@ -464,7 +899,7 @@ Total Assets:67750.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Một Thread chạy trong một chương trình Java sẽ trải qua nhiều giai đoạn khác nhau, mỗi giai đoạn tương ứng với một trạng thái trong biểu đồ trạng thái trong hình dưới đây.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/images/lap-trinh-cocurrency-trong-java-bang-multithreading/java_multithreading_lifecycle_of_a_thread.png&quot; alt=&quot;Hình 1. Lược đồ trạng thái vòng đời của một Thread&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/f1f39615-0c6b-4d61-abfd-9e48235460d9/java_multithreading_lifecycle_of_a_thread.png&quot; alt=&quot;Hình 1. Lược đồ trạng thái vòng đời của một Thread&quot; /&gt; &lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;New: Khi một thread được tạo ra (bằng toán tử new) nó sẽ ở trạng thái New, là trạng thái đầu tiên trong vòng đời của nó. Thread giữ ở trạng thái này cho đến khi nó được chương trình kích hoạt thông qua lời gọi phương thức start().&lt;/li&gt;
@@ -511,7 +946,7 @@ Total Assets:67750.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Tắc nghẽn (&lt;a href=&quot;http://en.wikipedia.org/wiki/Deadlock&quot;&gt;Deadlock&lt;/a&gt;) là tình huống hai hay nhiều thread bị chặn để chờ được truy cập vào tài nguyên, trong khi tài nguyên này đang bị chiếm giữ bởi một thread cũng đang bị chặn. &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/images/lap-trinh-cocurrency-trong-java-bang-multithreading/deadlock.png&quot; alt=&quot;Hình 2. Tình trạng tắc nghẽn giữa hai thread&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/f1f39615-0c6b-4d61-abfd-9e48235460d9/deadlock.png&quot; alt=&quot;Hình 2. Tình trạng tắc nghẽn giữa hai thread&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Hình vẽ bên trên minh họa trường hợp tắc nghẽn đơn giản nhất, trong đó hai thread đều bị chặn và chờ được sử dụng tài nguyên mà thread kia đang nắm giữ.&lt;/p&gt;
 
@@ -530,14 +965,14 @@ Total Assets:67750.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
   
-  &lt;p&gt;&lt;a href=&quot;http:/blog/java-concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading&quot;&gt;Lập trình Concurrency trong Java bằng multithreading&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on August 26, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http:/blog/java/concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading.html&quot;&gt;Lập trình Concurrency trong Java bằng multithreading&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on August 26, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Tổng quan về IoC trong Spring Framework]]></title>
-  <link rel="alternate" type="text/html" href="http:/blog/spring-framework/tong-quan-ve-ioc-trong-spring"/>
-  <id>http:/blog/spring-framework/tong-quan-ve-ioc-trong-spring</id>
+  <link rel="alternate" type="text/html" href="http:/blog/java/spring/core/tong-quan-ve-ioc-trong-spring.html"/>
+  <id>http:/blog/java/spring/core/tong-quan-ve-ioc-trong-spring</id>
   <published>2014-08-24T00:00:00+07:00</published>
   <updated>2014-08-24T00:00:00-00:00</updated>
   
@@ -551,7 +986,7 @@ Total Assets:67750.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   
     &lt;p&gt;Spring Framework ra đời như là một chọn lựa, thay thế cho mô hình chuẩn EJB trong việc phát triển ứng dụng JavaEE đã đánh dấu một bước ngoặt trong lịch sử phát triển của Enterprise Java. Spring không ngừng phát triển và ngày càng phổ biến trong cộng đồng Java. Theo thống kê của &lt;a href=&quot;http://www.indeed.com/&quot;&gt;trang web tìm kiếm việc làm Indeed&lt;/a&gt; đến đầu năm 2014, tỉ lệ gia tăng việc làm trên Spring luôn cao hơn hẳn EJB.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/images/2014-08-24-tong-quan-ve-ioc-trong-spring/spring-vs-ejb-jobgraph.png&quot; alt=&quot;Hình 1. Tỉ lệ gia tăng việc làm giữa Spring và EJB&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/spring-vs-ejb-jobgraph.png&quot; alt=&quot;Hình 1. Tỉ lệ gia tăng việc làm giữa Spring và EJB&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Một trong những thành phần chủ chốt, là nền tảng và tạo nên sức mạnh của Spring chính là IoC Container. IoC Container trong Spring được xây dựng dựa trên nguyên lý &lt;a href=&quot;http://en.wikipedia.org/wiki/Inversion_of_control&quot;&gt;Inversion of Control&lt;/a&gt; (đảo ngược điều khiển), đã xuất hiện khá lâu trong các mẫu hình thiết kế (Design Pattern), và được phổ biến rộng rãi nhờ &lt;a href=&quot;http://en.wikipedia.org/wiki/Dependency_inversion_principle&quot;&gt;Robert C. Martin&lt;/a&gt; và &lt;a href=&quot;http://martinfowler.com/bliki/InversionOfControl.html&quot;&gt;Martin Fowler&lt;/a&gt;. Để hiểu về Spring, trước tiên chúng ta cần hiểu khái niệm Inversion of Control là gì? Muốn vậy, chúng ta cần trả lời câu hỏi: Control (điều khiển) trong chương trình phần mềm là gì, và Inversion (sự đảo ngược) đối với điều khiển trong ngữ cảnh này được hiểu như thế nào.&lt;/p&gt;
 
@@ -563,7 +998,7 @@ Total Assets:67750.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Do chương trình ngày càng phức tạp, nên người ta áp dụng phương pháp lập trình hướng đối tượng nhằm phân loại, chia tách các chức năng và gom thành các đối tượng. Người ta còn tạo dựng các thư viện tạo sẵn để có thể sử dụng lại. Luồng thực thi của chương trình, trong những tình huống cần xem xét ở mức tổng thể, không còn quan tâm đến các bước thực thi câu lệnh cụ thể nữa, mà chỉ xem xét đến quá trình gọi phương thức của các đối tượng trong ứng dụng cũng như các đối tượng của thư viện dựng sẵn.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/images/2014-08-24-tong-quan-ve-ioc-trong-spring/oop_flow_of_control.png&quot; alt=&quot;Hai nhiệm vụ của người lập trình khi xây dựng ứng dụng&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/oop_flow_of_control.png&quot; alt=&quot;Hai nhiệm vụ của người lập trình khi xây dựng ứng dụng&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Người lập trình, khi xây dựng ứng dụng từ đầu, đã thực hiện hai nhiệm vụ: trực tiếp điều khiển luồng thực thi của chương trình và xây dựng các chức năng để đáp ứng nghiệp vụ của ứng dụng. Thực tế, có nhiều chương trình hoặc bộ phận trong chương trình có luồng thực thi rất giống nhau, chẳng hạn phần tương tác với HTTP trong các ứng dụng web, phần unit testing trong các ứng dụng,… Việc trực tiếp tạo dựng và kiểm soát luồng thực thi của chương trình lặp đi lặp lại khi xây dựng nhiều ứng dụng sẽ làm mất nhiều công sức, chi phí, tạo ra sự nhàm chán và dễ phát sinh lỗi. Điều này tạo ra động lực cũng như môi trường để nguyên lý đảo ngược điều khiển nảy nở và phát triển.&lt;/p&gt;
 
@@ -582,7 +1017,7 @@ Total Assets:67750.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Hầu như tất cả chúng ta khi lập trình ứng dụng web bằng &lt;a href=&quot;http://docs.oracle.com/javaee/6/tutorial/doc/bnafd.html&quot;&gt;Java Servlet&lt;/a&gt; đều hình dung rõ ràng các bước lập trình như sau: Tạo lớp đối tượng kế thừa từ HttpServlet, nạp đè các phương thức doGet() - doPost(), sau đó đăng ký trong file cấu hình Deployment Descriptor tương ứng Servlet này với đường dẫn xác định. Lớp đối tượng Servlet chúng ta tạo ra sẽ được gọi đến khi có một truy vấn HTTP có đường dẫn “khớp” với đường dẫn khai báo trong Deployment Descriptor.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/images/2014-08-24-tong-quan-ve-ioc-trong-spring/ioc_example_servlet.png&quot; alt=&quot;Đảo ngược điều khiển trong ứng dụng Servlet&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/ioc_example_servlet.png&quot; alt=&quot;Đảo ngược điều khiển trong ứng dụng Servlet&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Đôi khi chúng ta cũng đã tự hỏi: vậy ai kích hoạt ứng dụng chúng ta viết để đáp ứng mỗi khi có Http Request gửi đến? ai chịu trách nhiệm chuyển đổi các thông điệp Http (HTTP Request và HTTP response) thành các đối tượng Java (HttpServletRequest và HttpServletResponse) để truyền cho các hàm doGet(), doPost()? Câu trả lời rõ ràng và ngay lập tức: chính là Servlet Container.&lt;/p&gt;
 
@@ -590,13 +1025,13 @@ Total Assets:67750.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Trong quá trình phát triển các thành phần chức năng của ứng dụng, chúng ta thường áp dụng kiểm thử thành phần (&lt;a href=&quot;http://en.wikipedia.org/wiki/Unit_testing&quot;&gt;Unit Testing&lt;/a&gt;) để đảm bảo chức năng đó vẫn chạy đúng trong suốt quá trình ứng dụng được mở rộng và phát triển thêm. Để tạo bộ Unit Test, chúng ta chỉ cần tạo một lớp đối tượng, định nghĩa các phương thức khởi tạo, phương thức kết thúc và các phương thức test. Sau đó, chúng ta chỉ việc chạy bộ test để kiểm thử. &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/images/2014-08-24-tong-quan-ve-ioc-trong-spring/ioc_example_unit_testing.png&quot; alt=&quot;Đảo ngược điều khiển trong quá trình chạy Unit Test&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/ioc_example_unit_testing.png&quot; alt=&quot;Đảo ngược điều khiển trong quá trình chạy Unit Test&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Việc điều khiển trình tự thực thi các phương thức được giao cho thư viện bên ngoài đảm nhiệm (chẳng hạn như TestNG hoặc &lt;a href=&quot;http://junit.org/&quot;&gt;JUnit&lt;/a&gt;).&lt;/p&gt;
 
 &lt;p&gt;Với hai ví dụ trên, chúng ta nhận thấy trong các ứng dụng đã có sự thay đổi vai trò: ứng dụng không còn ôm đồm vừa trực tiếp tạo dựng và kiểm soát luồng thực thi, vừa xây dựng chức năng nghiệp vụ. Việc kiểm soát luồng thực thi được tách khỏi chức năng nghiệp vụ và bị đẩy ra bên ngoài. Người lập trình đã ủy thác việc kiểm soát luồng thực thi ứng dụng cho một thành phần (thường là thư viện dựng sẵn) bên ngoài đảm nhiệm, chỉ còn tập trung vào chức năng chính của ứng dụng.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/images/2014-08-24-tong-quan-ve-ioc-trong-spring/oop_app_ioc.png&quot; alt=&quot;Tách việc kiểm soát luồng thực thi ra khỏi ứng dụng&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/oop_app_ioc.png&quot; alt=&quot;Tách việc kiểm soát luồng thực thi ra khỏi ứng dụng&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Như vậy, khái niệm “đảo ngược” ở đây chính là chuyển nhiệm vụ kiểm soát lưu trình thực thi từ ứng dụng cho một thành phần chuyên trách (thường là một thư viện phần mềm khung - framework - dựng sẵn ở bên ngoài): ứng dụng chính chúng ta quan tâm phát triển không kiểm soát việc điều khiển luồng thực thi nữa, mà chỉ tập trung vào việc định nghĩa chức năng. Thư viện phần mềm khung chuyên trách kiểm soát điều khiển sẽ dựa trên mô tả trong cấu hình của ứng dụng để thay mặt ứng dụng điều phối luồng thực thi trong chương trình. Dễ dàng nhận thấy thư viện phần mềm khung này khác với các thư viện thông thường ở chỗ: thư viện thông thường cung cấp các chức năng và chờ được gọi đến, còn thư viện phần mềm khung tạo dựng luồng thực thi và gọi đến các chức năng của ứng dụng. Có lẽ sử dụng thuật ngữ “đảo ngược vai trò điều khiển luồng thực thi” thay cho “đảo ngược điều khiển” sẽ đầy đủ và phù hợp hơn cho khái niệm “Inversion of Control”. &lt;/p&gt;
 
@@ -617,14 +1052,14 @@ Total Assets:67750.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
   
-  &lt;p&gt;&lt;a href=&quot;http:/blog/spring-framework/tong-quan-ve-ioc-trong-spring&quot;&gt;Tổng quan về IoC trong Spring Framework&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on August 24, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http:/blog/java/spring/core/tong-quan-ve-ioc-trong-spring.html&quot;&gt;Tổng quan về IoC trong Spring Framework&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on August 24, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Tổng quan về Java Concurrency]]></title>
-  <link rel="alternate" type="text/html" href="http:/blog/java-concurrency/tong-quan-ve-java-concurrency"/>
-  <id>http:/blog/java-concurrency/tong-quan-ve-java-concurrency</id>
+  <link rel="alternate" type="text/html" href="http:/blog/java/concurrency/tong-quan-ve-java-concurrency.html"/>
+  <id>http:/blog/java/concurrency/tong-quan-ve-java-concurrency</id>
   <published>2014-08-20T00:00:00+07:00</published>
   <updated>2014-08-20T00:00:00-00:00</updated>
   
@@ -633,7 +1068,7 @@ Total Assets:67750.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     <uri>http:/blog</uri>
     <email>pnhung177@drupalex.net</email>
   </author>
-  <category scheme="http:/blog/tags/#Java" term="Java" /><category scheme="http:/blog/tags/#Java%20Concurrency" term="Java Concurrency" /><category scheme="http:/blog/tags/#Java%20Multithread" term="Java Multithread" />
+  <category scheme="http:/blog/tags/#Java" term="Java" /><category scheme="http:/blog/tags/#Java%20Concurrency" term="Java Concurrency" /><category scheme="http:/blog/tags/#Java%20Multithreading" term="Java Multithreading" />
   <content type="html">
   
     &lt;p&gt;Tính toán đồng thời (&lt;a href=&quot;http://en.wikipedia.org/wiki/Concurrent_computing&quot; title=&quot;Concurrency Computing&quot;&gt;Concurrency computing&lt;/a&gt;) là một trong các đặc trưng nổi bật đã tạo nên thế mạnh của ngôn ngữ Java. Nhờ có tính năng này, chúng ta có thể tạo ra các chương trình bằng Java xử lý nhiều nhiệm vụ cùng lúc, đồng thời tận dụng thời gian nhàn rỗi để tăng tốc độ và hiệu năng của chương trình.&lt;/p&gt;
@@ -651,7 +1086,7 @@ Total Assets:67750.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &lt;li&gt;Cách (D). Một người nấu nhiều món, mỗi thời điểm chỉ nấu một món, nấu xong món này mới thực hiện món khác.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/images/2014-08-20-tong-quan-ve-java-concurrency/java-concurrency-4-cooking-models.png&quot; alt=&quot;Hình 1. Bốn cách thực hiện nấu bữa ăn gồm ba món ăn&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/69320106-30e4-42d0-a670-061fe894d286/java-concurrency-4-cooking-models.png&quot; alt=&quot;Hình 1. Bốn cách thực hiện nấu bữa ăn gồm ba món ăn&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Nếu chúng ta tương ứng:&lt;/p&gt;
 
@@ -668,7 +1103,7 @@ Total Assets:67750.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Cách (C) tương ứng với Tính toán đồng thời, trong đó một chương trình xử lý nhiều nhiệm vụ đồng thời theo cách chia nhỏ từng nhiệm vụ thành các thao tác, thực thi các thao tác (không phân biệt của nhiệm vụ nào) xen kẽ nhau trong khoảng thời gian được phân bổ hợp lý. Khái niệm “đồng thời” không áp dụng cho từng thao tác (tương ứng với lệnh thực thi trong máy tính), tức là không thể thực hiện các thao tác cùng một lúc (kiểu như người nấu ăn vừa băm thịt, vừa thái hành). Ở đây, khái niệm “đồng thời” được áp dụng cho nguyên cả nhiệm vụ, hiểu theo nghĩa có hai hay nhiều nhiệm vụ cùng “đang” trong quá trình được xử lý, nhưng các hành động cụ thể thực hiện các nhiệm vụ được diễn ra xen kẽ tuần tự (nhưng không đồng thời).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/images/2014-08-20-tong-quan-ve-java-concurrency/java-concurrency-overview-one-chef-with-3-dishes1.png&quot; alt=&quot;Hình 2. Mô hình (C) tương ứng với Tính toán đồng thời (Concurrency) trong lập trình.&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/69320106-30e4-42d0-a670-061fe894d286/java-concurrency-overview-one-chef-with-3-dishes1.png&quot; alt=&quot;Hình 2. Mô hình (C) tương ứng với Tính toán đồng thời (Concurrency) trong lập trình.&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Cách (D) tương ứng với lập trình tuần tự, trong đó chương trình xử lý tuần tự hết nhiệm vụ này rồi mới bắt đầu xử lý nhiệm vụ khác. Mỗi thời điểm chỉ có một nhiệm vụ đang được xử lý.&lt;/p&gt;
 
@@ -680,7 +1115,7 @@ Total Assets:67750.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Mỗi chương trình Java được chạy trên nền một máy ảo Java (&lt;a href=&quot;http://en.wikipedia.org/wiki/Java_virtual_machine&quot;&gt;Java Virtual Machine&lt;/a&gt;). Máy ảo Java là dạng Máy ảo tiến trình (Process Virtual Machine), do đó mỗi chương trình Java là một tiến trình của hệ điều hành. Hàm main() trong chương trình Java sẽ tạo ra &lt;a href=&quot;http://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html&quot;&gt;Thread&lt;/a&gt; mặc định. Một chương trình Java đơn giản chỉ có một Thread được tạo ra từ hàm main(). Máy ảo Java cho phép chương trình Java có thể tạo ra nhiều Thread khác. Nếu muốn xử lý đồng thời nhiều nhiệm vụ, người lập trình phải viết mã lệnh để hàm main() gọi đến để tạo ra các Thread khác.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/images/2014-08-20-tong-quan-ve-java-concurrency/java-concurrency-one-process-with-3-threads1.png&quot; alt=&quot;Hình 3. Tiến trình Java với 3 Thread chạy đồng thời&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/69320106-30e4-42d0-a670-061fe894d286/java-concurrency-one-process-with-3-threads1.png&quot; alt=&quot;Hình 3. Tiến trình Java với 3 Thread chạy đồng thời&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Để tạo ra Thread, người lập trình cần thực hiện các bước sau:&lt;/p&gt;
 
@@ -752,14 +1187,14 @@ Total Assets:67750.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
   
-  &lt;p&gt;&lt;a href=&quot;http:/blog/java-concurrency/tong-quan-ve-java-concurrency&quot;&gt;Tổng quan về Java Concurrency&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on August 20, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http:/blog/java/concurrency/tong-quan-ve-java-concurrency.html&quot;&gt;Tổng quan về Java Concurrency&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on August 20, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Giã từ ... Wordpress]]></title>
-  <link rel="alternate" type="text/html" href="http:/blog/jekyll/gia-tu-wordpress"/>
-  <id>http:/blog/jekyll/gia-tu-wordpress</id>
+  <link rel="alternate" type="text/html" href="http:/blog/jekyll/migration/gia-tu-wordpress.html"/>
+  <id>http:/blog/jekyll/migration/gia-tu-wordpress</id>
   <published>2014-07-01T00:00:00+07:00</published>
   <updated>2014-07-01T00:00:00-00:00</updated>
   
@@ -814,14 +1249,105 @@ Total Assets:67750.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
   
-  &lt;p&gt;&lt;a href=&quot;http:/blog/jekyll/gia-tu-wordpress&quot;&gt;Giã từ ... Wordpress&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on July 01, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http:/blog/jekyll/migration/gia-tu-wordpress.html&quot;&gt;Giã từ ... Wordpress&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on July 01, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Các kỹ thuật dùng để cải tiến hiệu năng trong lập trình Java]]></title>
+  <link rel="alternate" type="text/html" href="http:/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java.html"/>
+  <id>http:/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java</id>
+  <published>2014-06-15T00:00:00+07:00</published>
+  <updated>2014-06-15T00:00:00-00:00</updated>
+  
+  <author>
+    <name>Phạm Ngọc Hùng</name>
+    <uri>http:/blog</uri>
+    <email>pnhung177@drupalex.net</email>
+  </author>
+  <category scheme="http:/blog/tags/#Java" term="Java" /><category scheme="http:/blog/tags/#Java%20Performance" term="Java Performance" />
+  <content type="html">
+  
+    &lt;p&gt;Một ứng dụng có thể hoạt động rất tốt trong môi trường phát triển, tuy nhiên sau khi triển khai vào môi trường thực tế (production environment), ứng dụng hoạt động ngày càng kém đi do có sự gia tăng của tải trọng (số lượng người dùng hoặc lượng dữ liệu tăng lên). Chính vì vậy, việc đánh giá tình trạng cũng như thực hiện các giải pháp cải tiến hiệu năng là rất quan trọng không chỉ trong quá trình phát triển mà còn trong toàn bộ vòng đời của ứng dụng.&lt;/p&gt;
+
+&lt;h2 id=&quot;hiu-nng-ca-ng-dng-l-g&quot;&gt;Hiệu năng của ứng dụng là gì?&lt;/h2&gt;
+
+&lt;p&gt;Hiệu năng của ứng dụng, là tính chất thể hiện mức độ hiệu quả trong việc thực thi mã lệnh của ứng dụng, được đặc trưng bởi số lượng công việc mà ứng dụng thực hiện được trong một khoảng thời gian và với một lượng tài nguyên máy tính xác định. Hiệu năng của ứng dụng được đánh giá thông qua một số các khía cạnh đặc trưng sau:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Vùng phủ bộ nhớ (Memory Footprint)&lt;/strong&gt;: là lượng bộ nhớ được sử dụng bởi ứng dụng (kể cả máy ảo Java (JVM) mà ứng dụng chạy trên đó). Trong ứng dụng Java, cần chú ý tình huống khi vùng phủ bộ nhớ tăng lên có tác động đến bộ nhớ ảo (Virtual Memory) không? Việc hoán đổi dữ liệu giữa bộ nhớ ảo và bộ nhớ vật lý (RAM) cần được hạn chế tối đa trong các ứng dụng Java. Thử hình dung trường hợp bộ thu dọn rác (Garbage Collector) thu hồi một khối lớn vùng nhớ heap đang nằm trong bộ nhớ ảo, việc quét xem các đối tượng có còn được tham chiếu hay không sẽ mất nhiều thời gian hơn rất nhiều so với trường hợp vùng nhớ heap đang nằm trong bộ nhớ vật lý.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Thời gian kích hoạt (Startup Time)&lt;/strong&gt;: là khoảng thời gian cần thiết để ứng dụng khởi động. Thời gian kích hoạt đối với các ứng dụng Client thường phải ngắn, càng ngắn càng tốt, điều này rất quan trọng do sự tác động trực tiếp đến tâm lý người sử dụng. Ngược lại, đối với các ứng dụng Server thời gian kích hoạt ít quan trọng hơn.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Khả năng mở rộng (Scalability)&lt;/strong&gt;: là mức độ ứng dụng vẫn còn đáp ứng tốt khi có sự gia tăng về tải trọng sử dụng (do số người dùng hoặc lượng dữ liệu tăng lên). Nếu thời gian phản hồi của ứng dụng tăng theo cấp số mũ của tải trọng, khi đó ta nói ứng dụng có khả năng mở rộng kém. Ngược lại, nếu thời gian phản hồi của ứng dụng tăng theo mức độ tuyến tính đối với tại trọng, khi đó ta nói ứng dụng có khả năng mở rộng tốt.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Khả năng sẵn sàng đáp ứng (Responsiveness)&lt;/strong&gt;: thể hiện ở mức độ nhanh chóng của ứng dụng trong việc phản hồi một yêu cầu dữ liệu.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Thông lượng (Throughput)&lt;/strong&gt;: của một ứng dụng là lượng tối đa công việc mà ứng dụng xử lý được trong một khoảng thời gian xác định.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Đây là các khía cạnh đặc trưng cho hiệu năng ứng dụng nói chung. Riêng với các ứng dụng Java, chúng ta tập trung nhiều hơn vào việc tối ưu hóa JVM để tăng &lt;em&gt;khả năng sẵn sàng đáp ứng&lt;/em&gt; và &lt;em&gt;thông lượng&lt;/em&gt;. Để làm được điều này, chúng ta cần phát hiện, xử lý, điều chỉnh các vấn đề hiệu năng nảy sinh trong ứng dụng Java. Các ứng dụng Java thường gặp phải các vấn đề hiệu năng thuộc các loại sau:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Rò rỉ bộ nhớ (Memory Leaks)&lt;/strong&gt;: là những tình huống xảy ra khi có các đối tượng hết sử dụng, không còn tham chiếu trỏ đến nhưng vẫn tồn tại trong bộ nhớ mà không bị thu dọn rác (Garbage Collector) thu hồi.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Cạnh tranh khóa (Lock contention)&lt;/strong&gt;: tình trạng xảy ra khi một thread cố giành lấy khóa (lock) đang bị chiếm giữ bởi một thread khác. Nếu càng nhiều thread phải dừng lại chờ trong thời gian kéo dài sẽ làm giảm hiệu năng của ứng dụng. Thiết lập cơ chế quản lý khóa càng mịn, thì tình trạng thread phải chờ để nhận khóa từ tiến trình khác càng ít xảy ra. &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Điều chỉnh kích cỡ vùng nhớ heap (Tuning heap size)&lt;/strong&gt;: kích cỡ vùng nhớ heap ảnh hưởng đến vấn đề hoán đổi dữ liệu giữa bộ nhớ ảo và bộ nhớ vật lý. Dành quá ít hoặc quá nhiều bộ nhớ cho vùng nhớ heap đều ảnh hưởng đến hiệu năng của ứng dụng.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Tối ưu hóa thu gom rác trong JVM (Optimizing JVM garbage collection)&lt;/strong&gt;: việc hiểu rõ cơ chế vận hành của bộ thu gom rác (Garbage Collector) và điều chỉnh cho phù hợp với đặc điểm của ứng dụng sẽ giúp cải thiện rất lớn đến hiệu năng của ứng dụng.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;qu-trnh-ci-tin-hiu-nng&quot;&gt;Quá trình cải tiến hiệu năng&lt;/h2&gt;
+
+&lt;p&gt;Cải tiến hiệu năng là quá trình thu thập thông tin về hiệu năng của ứng dụng, phân tích xác định nguyên nhân ảnh hưởng đến hiệu năng, từ đó chỉnh sửa mã nguồn hoặc điều chỉnh thông số của phần mềm để làm tăng hiệu năng của ứng dụng, đáp ứng được yêu cầu đưa ra. Quá trình cải tiến hiệu năng được thực hiện thông qua 3 hoạt động: Theo dõi hiệu năng&lt;sup id=&quot;fnref:performance_monitoring&quot;&gt;&lt;a href=&quot;#fn:performance_monitoring&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; (Performance monitoring), Đo đạc hiệu năng&lt;sup id=&quot;fnref:performance_profiling&quot;&gt;&lt;a href=&quot;#fn:performance_profiling&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; (Performance profiling) và Điều chỉnh hiệu năng (Performance tuning).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/java-performance-management.png&quot; alt=&quot;Chu trình cải tiến hiệu năng cho ứng dụng Java&quot; /&gt; &lt;/p&gt;
+
+&lt;h3 id=&quot;theo-di-hiu-nng&quot;&gt;Theo dõi hiệu năng&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;Theo dõi hiệu năng&lt;/em&gt; là một hành động quan sát và thu thập - một cách không can thiệp (nonintrusive) - dữ liệu hiệu năng từ một ứng dụng đang vận hành. Trong hầu hết các trường hợp, theo dõi thường là dạng hành động mang tính phòng ngừa và chủ động, được thực hiện trong tất cả các môi trường của ứng dụng: môi trường thực, môi trường giám định chất lượng, hoặc môi trường phát triển. Tuy nhiên, theo dõi cũng thường là bước đầu tiên trong các hành động phản ứng lại tình huống xuất hiện báo cáo có vấn đề về hiệu năng của ứng dụng từ người dùng hoặc những người có liên quan, nhưng không cung cấp đầy đủ thông tin hoặc những đầu mối đề tìm ra nguyên nhân gốc rễ vấn đề. Theo dõi giúp xác định và cách ly các vấn đề tiềm năng mà không ảnh hưởng nghiêm trọng đến sự sẵn sàng đáp ứng hoặc thông lượng của một ứng dụng hiện đang chạy.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/performance-monitoring-comparison.png&quot; alt=&quot;So sánh giữa Performance Monitoring với chẩn đoán lâm sàng&quot; /&gt; &lt;/p&gt;
+
+&lt;p&gt;Theo dõi hiệu năng tương tự như quá trình chẩn đoán bệnh trong y học: bác sỹ thực hiện các kiểm tra sơ bộ, đo các chỉ số sinh hiệu (huyết áp, nhịp tim, v.v.), tác động cơ học lên cơ thể bệnh nhân, yêu cầu bệnh nhân mô tả các triệu chứng, từ đó chẩn đoán và khoanh vùng các nghi vấn về tình trạng bệnh tật. Việc khám bệnh có thể được thực hiện theo định kỳ để phòng ngừa, trong môi trường sinh hoạt bệnh nhân (bác sỹ đến khám tại nhà) hoặc bệnh nhân tự đến gặp bác sỹ để yêu cầu được khám bệnh khi phát hiện có triệu chứng bị ốm.&lt;/p&gt;
+
+&lt;h3 id=&quot;o-c-hiu-nng&quot;&gt;Đo đạc hiệu năng&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;Đo đạc hiệu năng&lt;/em&gt; cũng là một hành động thu thập dữ liệu hiệu năng từ một ứng dụng đang vận hành. Tuy nhiên, khác với theo dõi hiệu năng, việc lập hồ sơ hiệu năng có thể tác động hoặc can thiệp nhiều hơn đến ứng dụng. Đo đạc hiệu năng thường tập trung có chủ đích vào phạm vi hẹp hơn so với theo dõi hiệu năng. Đo đạc rất hiếm khi được thực hiện trong môi trường thực, mà nó thường được thực hiện trong các môi trường giám định chất lượng, kiểm thử hoặc phát triển. Đo đạc thường chỉ xảy ra sau hoạt động theo dõi kết thúc hoặc khi những yêu cầu về hiệu năng được xác định rõ (well-defined).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/performance-profiling-comparison.png&quot; alt=&quot;So sánh giữa Performance Profiling với xét nghiệm cận lâm sàng&quot; /&gt; &lt;/p&gt;
+
+&lt;p&gt;Chúng ta có thể hình dung việc lập hồ sơ hiệu năng giống như quá trình xét nghiệm cận lâm sàng trong y học: sau khi đã chẩn đoán thông qua các triệu chứng lâm sàng, bác sỹ sẽ khoanh vùng căn bệnh và yêu cầu bệnh nhân thực hiện các xét nghiệm sâu hơn và cụ thể hơn. Ví dụ, sau khi khám và nghe mô tả của bệnh nhân: đau và hạn chế vận động cột sống, bả vai, ái phát từng đợt, thường sau khi vận động nhiều, bác sỹ chẩn đoán bệnh nhân bị loãng xương. Để xác định chính xác và chắc chắn hơn, bác sỹ sẽ chỉ định xét nghiệm cận lâm sàng: chụp X-Quang và đo chỉ số T-score. Với các thông tin thu được, bác sỹ có thể xác định nguyên nhân và đưa ra phát đồ điều trị bệnh.&lt;/p&gt;
+
+&lt;h3 id=&quot;iu-chnh-hiu-nng&quot;&gt;Điều chỉnh hiệu năng&lt;/h3&gt;
+
+&lt;p&gt;&lt;em&gt;Điều chỉnh hiệu năng&lt;/em&gt; là hoạt động chỉnh sửa mã nguồn hoặc thông số cấu hình của ứng dụng nhằm mục đích tăng cường khả năng sẵn sàng đáp ứng và nâng cao thông lượng của ứng dụng. Điều chỉnh hiệu năng thường được thực hiện sau các bước theo dõi hiệu năng và lập hồ sơ hiệu năng.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/performance-tuning-comparison.png&quot; alt=&quot;So sánh giữa Performance Tuning với điều trị bệnh&quot; /&gt; &lt;/p&gt;
+
+&lt;p&gt;Tương ứng trong y tế, đây là quá trình bác sỹ áp dụng các phác đồ điều trị cũng như những cán thiệp y học (phẫu thuật, tiêm/uống thuốc, vật lý trị liệu, v.v.) để khắc phục các nguyên nhân gây bệnh, từ đó phục hồi và tăng cường sức khỏe cho người bệnh.&lt;/p&gt;
+
+&lt;h2 id=&quot;kt-lun&quot;&gt;Kết luận&lt;/h2&gt;
+
+&lt;p&gt;Bài viết này&lt;sup id=&quot;fnref:PS&quot;&gt;&lt;a href=&quot;#fn:PS&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; trình bày khái niệm về hiệu năng của ứng dụng, các khía cạnh đặc trưng và các vấn đề liên quan đến hiệu năng trong ứng dụng Java. Bài viết cũng trình bày sơ lược 3 bước của quá trình cải tiến hiệu năng: theo dõi, đo đạc và hiệu chỉnh.&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:performance_monitoring&quot;&gt;
+      &lt;p&gt;Từ &lt;em&gt;monitoring&lt;/em&gt; có thể dịch thành các từ &lt;em&gt;giám sát&lt;/em&gt;, &lt;em&gt;quan sát&lt;/em&gt;, &lt;em&gt;theo dõi&lt;/em&gt;. Tôi chọn từ &lt;em&gt;theo dõi&lt;/em&gt;. &lt;a href=&quot;#fnref:performance_monitoring&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:performance_profiling&quot;&gt;
+      &lt;p&gt;Các bạn có thể tra từ điển từ &lt;em&gt;profiling&lt;/em&gt; có nghĩa &lt;em&gt;lập hồ sơ&lt;/em&gt;, &lt;em&gt;định hình&lt;/em&gt;. Ở đây tôi dịch là &lt;em&gt;đo đạc&lt;/em&gt; vì cảm thấy từ này hợp nghĩa nhất. &lt;a href=&quot;#fnref:performance_profiling&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:PS&quot;&gt;
+      &lt;p&gt;Bài viết này là bài mở đầu cho loạt bài viết về cải tiến hiệu năng cho ứng dụng Java (Java Performance).  &lt;a href=&quot;#fnref:PS&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+
+  
+  &lt;p&gt;&lt;a href=&quot;http:/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java.html&quot;&gt;Các kỹ thuật dùng để cải tiến hiệu năng trong lập trình Java&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on June 15, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Lập trình phân tách nội dung XML trong Java]]></title>
-  <link rel="alternate" type="text/html" href="http:/blog/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java"/>
-  <id>http:/blog/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java</id>
+  <link rel="alternate" type="text/html" href="http:/blog/java/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java.html"/>
+  <id>http:/blog/java/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java</id>
   <published>2013-07-05T00:00:00+07:00</published>
   <updated>2013-07-05T00:00:00-00:00</updated>
   
@@ -935,7 +1461,7 @@ Total Assets:67750.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Theo cách này, chúng ta sử dụng đối tượng DocumentBuilder sẵn có trong Java. Nhiệm vụ của DocumentBuilder là phân tách nội dung tệp XML và chuyển đổi nội dung này thành cấu trúc DOM (Document Object Model) lưu trữ trong bộ nhớ, cho phép người lập trình sử dụng các hàm đã định nghĩa sẵn duyệt (traversing) cấu trúc phân cấp DOM để truy vấn dữ liệu.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/images/lap-trinh-phan-tach-noi-dung-xml-trong-java/xml_parsing_in_java_dom_parser.png&quot; alt=&quot;Hình 1. Cơ chế hoạt động của DOM Parser&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/ae9e2b7d-eb00-43a5-b7a5-ff11db897b9f/xml_parsing_in_java_dom_parser.png&quot; alt=&quot;Hình 1. Cơ chế hoạt động của DOM Parser&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Để minh họa, chúng ta xem xét lớp đối tượng DemoDOMParser, sử dụng DocumentBuilder để phân tách nội dung XML thành đối tượng Document theo mô hình DOM:&lt;/p&gt;
 
@@ -991,7 +1517,7 @@ Total Assets:67750.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Khác với việc phân tách XML theo mô hình DOM, quá trình phân tách nội dung XML bằng SAX sẽ không lưu trữ toàn bộ nội dung của tài liệu XML vào bộ nhớ, thay vào đó mỗi khi đọc đến một vị trí đặc biệt chẳng hạn như đầu tài liệu (start document), đầu thẻ (start element), nội dung văn bản (characters) bên trong thẻ, cuối thẻ hoặc cuối tài liệu XML, bộ xử lý của SAX (SAX Parser) sẽ phát sinh một sự kiện tương ứng với vị trí đồng thời gọi đến phương thức xử lý sự kiện trong lớp đối tượng Handler. Người lập trình có thể kế thừa lớp đối tượng DefaultHandler và nạp đè (override) các phương thức xử lý sự kiện trong lớp đối tượng này để xử lý theo cách của mình.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/images/lap-trinh-phan-tach-noi-dung-xml-trong-java/xml_parsing_in_java_sax_parser.png&quot; alt=&quot;Hình 2. Cơ chế hoạt động của SAX&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/ae9e2b7d-eb00-43a5-b7a5-ff11db897b9f/xml_parsing_in_java_sax_parser.png&quot; alt=&quot;Hình 2. Cơ chế hoạt động của SAX&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Lớp đối tượng DemoSAXParser dưới đây minh họa cho việc phân tách nội dung tệp student.xml theo cơ chế SAX. Lưu ý bên trong lớp đối tượng DemoSAXParser có chứa định nghĩa lớp đối tượng SAXHandler. Lớp SAXHandler này kế thừa từ DefaultHandler và nạp đè các phương thức xử lý sự kiện của SAX.&lt;/p&gt;
 
@@ -1060,7 +1586,7 @@ Total Assets:67750.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Cách thứ ba để xử lý tài liệu XML chính là StAX. Tương tự như SAX, StAX cũng áp dụng cơ chế xử lý sự kiện trong việc phân tách nội dung XML. Tuy nhiên, giữa SAX và StAX có sự khác biệt cơ bản: bộ xử lý SAX (SAX Parser) chủ động gọi và “đẩy” dữ liệu cho phương thức xử lý mỗi khi có sự kiện phát sinh, trong khi bộ xử lý StAX (StAX Reader) chờ chương trình gọi đến sự kiện tiếp theo và chuẩn bị sẵn dữ liệu để chương trình “kéo” dữ liệu ra xử lý.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/images/lap-trinh-phan-tach-noi-dung-xml-trong-java/xml_parsing_in_java_stax_parser.png&quot; alt=&quot;Hình 3. Cơ chế hoạt động của StAX&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/ae9e2b7d-eb00-43a5-b7a5-ff11db897b9f/xml_parsing_in_java_stax_parser.png&quot; alt=&quot;Hình 3. Cơ chế hoạt động của StAX&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Ta có thể so sánh SAX với StAX giống như cách nhà hàng phục vụ thực khách trong tiệc cưới với cách nhà hàng phục vụ thực khách đơn lẻ. Trường hợp tiệc cưới, giống như cơ chế SAX, món ăn nào cũng như thời điểm phục vụ món ăn đó đã được gia chủ định sẵn (giống như lập trình trước các phương thức xử lý sự kiện trong SAXHandler vậy), do đó đến giờ là nhà hàng “đẩy” đồ ăn ra bàn phục vụ một cách chủ động, không phải chờ gọi. Còn với thực khách đơn lẻ, sẽ có người phục vụ luôn lắng nghe, thụ động chờ khách gọi món như thể khách “kéo” món ăn ra mỗi khi thấy cần.&lt;/p&gt;
 
@@ -1183,7 +1709,7 @@ Parsing student.xml using StAXParser:
 
 
   
-  &lt;p&gt;&lt;a href=&quot;http:/blog/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java&quot;&gt;Lập trình phân tách nội dung XML trong Java&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on July 05, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http:/blog/java/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java.html&quot;&gt;Lập trình phân tách nội dung XML trong Java&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on July 05, 2013.&lt;/p&gt;</content>
 </entry>
 
 </feed>
