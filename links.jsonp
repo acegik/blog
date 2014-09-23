@@ -38,6 +38,11 @@ callback([
   {
     "text": "Lập trình giải bài toán đố năm ngôi nhà của Albert Einstein",
     "href": "/blog/puzzle/lap-trinh-giai-bai-toan-do-cua-einstein.html"
+  } ,
+
+  {
+    "text": "Sử dụng Dependency Injection để phân rã chương trình giải bài toán đố của Einstein",
+    "href": "/blog/puzzle/su-dung-dependency-injection-phan-ra-bai-toan-do-cua-einstein.html"
   } 
 
 ])

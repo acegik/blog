@@ -1,6 +1,14 @@
 [
 	
 		{
+		  "title"      : "Sử dụng Dependency Injection để phân rã chương trình giải bài toán đố của Einstein",
+		  "category"   : "puzzle",
+		  "url"        : "/blog/puzzle/su-dung-dependency-injection-phan-ra-bai-toan-do-cua-einstein.html",
+		  "date"       : "2014-09-23 00:00:00 +0700",
+		  "shortdate"  : "September 23, 2014"
+		} ,
+	
+		{
 		  "title"      : "Lập trình giải bài toán đố năm ngôi nhà của Albert Einstein",
 		  "category"   : "puzzle",
 		  "url"        : "/blog/puzzle/lap-trinh-giai-bai-toan-do-cua-einstein.html",
