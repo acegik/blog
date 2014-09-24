@@ -31,6 +31,11 @@ callback([
   } ,
 
   {
+    "text": "Hướng dẫn cài đặt Jekyll trên Ubuntu",
+    "href": "/blog/ruby/jekyll/setup/huong-dan-cai-dat-jekyll-tren-ubuntu.html"
+  } ,
+
+  {
     "text": "Xây dựng IoC Container đơn giản cấu hình bằng XML",
     "href": "/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html"
   } ,

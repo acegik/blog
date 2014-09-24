@@ -10,7 +10,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http:/blog/feed.xml" />
 <link rel="alternate" type="text/html" href="http:/blog/" />
-<updated>2014-09-24T02:35:09+07:00</updated>
+<updated>2014-09-24T09:50:05+07:00</updated>
 <id>http:/blog/</id>
 <author>
   <name>Phạm Ngọc Hùng</name>
@@ -34,7 +34,7 @@
   <category scheme="http:/blog/tags/#Java" term="Java" /><category scheme="http:/blog/tags/#Logical%20Puzzle" term="Logical Puzzle" />
   <content type="html">
   
-    &lt;p&gt;Trong bài “Lập trình giải bài toán đố năm ngôi nhà của Albert Einstein” tôi đã giới thiệu nội dung, thuật toán cũng như trình bày cách lập trình theo phương pháp vét cạn để tìm tất cả lời giải của bài toán này. Bài viết này trình bày một khía cạnh khác của bài toán: áp dụng Dependency Injection để phân rã nhỏ mã lệnh chương trình giải bài toán đố ở trên.&lt;/p&gt;
+    &lt;p&gt;Trong bài “Lập trình giải bài toán đố năm ngôi nhà của Albert Einstein” tôi đã giới thiệu nội dung, thuật toán cũng như trình bày cách lập trình theo phương pháp vét cạn để tìm tất cả lời giải của bài toán này. Bài viết này đề cập đến một khía cạnh khác của bài toán: áp dụng Dependency Injection để phân rã nhỏ mã lệnh chương trình giải bài toán đố ở trên.&lt;/p&gt;
 
 &lt;p&gt;Việc cải tiến trên nhằm hai mục đích: 1- giúp mã nguồn chương trình rõ ràng, sáng sủa hơn; 2- giới thiệu về việc áp dụng Dependency Injection như thế nào để phân rã chương trình thành các thành phần và lắp ghép các thành phần với nhau lại thành chương trình hoàn chỉnh.&lt;/p&gt;
 
@@ -153,7 +153,7 @@
 &lt;ul&gt;
   &lt;li&gt;Lợi ích đầu tiên đó là chương trình được tổ chức lại rõ ràng và mạch lạc hơn rất nhiều, các đoạn mã lệnh được phân tách nhỏ thành các lớp đối tượng chức năng cụ thể nên dễ đọc, dễ hiểu.&lt;/li&gt;
   &lt;li&gt;Các lớp đối tượng kiểm tra ràng buộc được phát triển riêng lẻ, độc lập nhau và có thể áp dụng Unit Testing để đảm bảo tính đúng đắn trước khi được ghép nối với nhau thành chương trình hoàn chỉnh. Việc điều chỉnh thứ tự kiểm tra ràng buộc cũng được thực hiện dễ dàng, chúng ta chỉ việc “tháo khớp” và lắp ghép lại theo trật tự mới trong tệp cấu hình &lt;em&gt;application-context.xml&lt;/em&gt;.&lt;/li&gt;
-  &lt;li&gt;Dễ dàng cải tiến, tùy chỉnh Một ví dụ đơn giản ở đây là chúng ta có thể lập trình tạo thêm lớp đối tượng ResultToFileWriter để ghi kết quả ra tệp thay thế cho lớp đối tượng ResultToConsoleWriter mà không phải lo lắng làm thay đổi nội dung tệp hoặc sai lệch những phần mã nguồn khác. Chúng ta có thể phát triển và test đối tượng ResultToFileWriter đến khi hoàn chỉnh rồi mới sử dụng. Để thay thế đối tượng ResultToConsoleWriter bằng ResultToFileWriter, chúng ta chỉ việc chỉnh sửa khai báo trong tệp &lt;em&gt;application-context.xml&lt;/em&gt; là xong.&lt;/li&gt;
+  &lt;li&gt;Dễ dàng cải tiến, tùy chỉnh. Một ví dụ đơn giản ở đây là chúng ta có thể lập trình tạo thêm lớp đối tượng ResultToFileWriter để ghi kết quả ra tệp thay thế cho lớp đối tượng ResultToConsoleWriter mà không phải lo lắng sẽ làm thay đổi nội dung tệp hoặc sai lệch những phần mã nguồn khác. Chúng ta có thể phát triển và test đối tượng ResultToFileWriter đến khi hoàn chỉnh rồi mới sử dụng. Để thay thế đối tượng ResultToConsoleWriter bằng ResultToFileWriter, chúng ta chỉ việc chỉnh sửa khai báo trong tệp &lt;em&gt;application-context.xml&lt;/em&gt; là xong.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;vi-li-kt&quot;&gt;Vài lời kết&lt;/h2&gt;
@@ -1021,6 +1021,151 @@ Total Assets:67750.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
   
   &lt;p&gt;&lt;a href=&quot;http:/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html&quot;&gt;Xây dựng IoC Container đơn giản cấu hình bằng XML&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on September 06, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Hướng dẫn cài đặt Jekyll trên Ubuntu]]></title>
+  <link rel="alternate" type="text/html" href="http:/blog/ruby/jekyll/setup/huong-dan-cai-dat-jekyll-tren-ubuntu.html"/>
+  <id>http:/blog/ruby/jekyll/setup/huong-dan-cai-dat-jekyll-tren-ubuntu</id>
+  <published>2014-08-30T00:00:00+07:00</published>
+  <updated>2014-08-30T00:00:00-00:00</updated>
+  
+  <author>
+    <name>Phạm Ngọc Hùng</name>
+    <uri>http:/blog</uri>
+    <email>pnhung177@drupalex.net</email>
+  </author>
+  <category scheme="http:/blog/tags/#Jekyll" term="Jekyll" /><category scheme="http:/blog/tags/#Markdown" term="Markdown" /><category scheme="http:/blog/tags/#Textile" term="Textile" />
+  <content type="html">
+  
+    &lt;p&gt;Jekyll là công cụ được sử dụng phổ biến hiện nay trong việc chuyển đổi nội dung văn bản từ Markdown/Textile thành trang web HTML tĩnh. Để hỗ trợ cho các bạn đang gặp khó khăn trong việc sử dụng Jekyll với các plugin mở rộng, bài viết này tôi hướng dẫn cách cài đặt Jekyll trên hệ điều hành Ubuntu.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; là ứng dụng phát triển trên nền tảng Ruby. Có nhiều cách cài đặt môi trường phát triển ứng dụng Ruby, trong đó linh hoạt nhất phải kể đến cách sử dụng &lt;em&gt;RVM&lt;/em&gt; (Ruby Version Manager) để cài đặt và quản lý Ruby cũng như các phần mềm chạy trên Ruby.&lt;/p&gt;
+
+&lt;h2 id=&quot;rvm-l-g&quot;&gt;RVM là gì?&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;RVM&lt;/em&gt; (Ruby Version Manager) là một công cụ dòng lệnh trên Linux dùng để quản lý các phiên bản Ruby khác nhau chạy trên cùng một máy tính. Các bạn có thể tìm hiểu thêm về &lt;em&gt;RVM&lt;/em&gt; bằng cách vào trang web &lt;a href=&quot;http://rvm.io/&quot;&gt;rvm.io&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;ci-t-rvm&quot;&gt;Cài đặt RVM&lt;/h3&gt;
+
+&lt;p&gt;Để cài đặt &lt;em&gt;rvm&lt;/em&gt; trong Ubuntu (Linux nói chung) chúng ta cần có sẵn phần mềm &lt;a href=&quot;http://curl.haxx.se/&quot;&gt;curl&lt;/a&gt;. Các bạn có thể kiểm tra xem phần mềm này đã được cài đặt hay chưa bằng lệnh đơn giản sau (lưu ý dấu $ là dấu nhắc đợi lệnh, không nằm trong lệnh trên):&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;curl --version
+curl 7.19.3 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;i686-pc-linux-gnu&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; libcurl/7.19.3 OpenSSL/0.9.8k zlib/1.2.3
+Protocols: tftp ftp telnet dict ldap http file https ftps 
+Features: IPv6 Largefile NTLM SSL libz&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Nếu kết qủa hiển thị phiên bản của curl như trên, thì hệ điều hành của bạn đã được cài đặt. Nếu không, cũng đừng lo lắng, bạn chỉ việc chạy lệnh sau để cài và chờ một vài phút để quá trình tải và cài đặt hoàn tất:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;sudo apt-get install curl&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Sau khi đã có &lt;em&gt;curl&lt;/em&gt;, các bạn cài đặt &lt;em&gt;rvm&lt;/em&gt; vào môi trường của &lt;em&gt;tài khoản đăng nhập hiện thời&lt;/em&gt; (lưu ý cài đặt này không dùng cho toàn bộ hệ thống) như sau:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\c&lt;/span&gt;url -sSL https://get.rvm.io &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; bash -s stable&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Lệnh cài đặt &lt;em&gt;rvm&lt;/em&gt; ở trên có thể có thêm các tùy chọn cài đặt &lt;em&gt;--ruby&lt;/em&gt;, &lt;em&gt;--rail&lt;/em&gt;, &lt;em&gt;--puma&lt;/em&gt;,… tuy nhiên chúng ta sẽ đợi &lt;em&gt;rvm&lt;/em&gt; cài đặt thành công xong rồi mới chọn phiên bản &lt;em&gt;ruby&lt;/em&gt; để cài đặt.&lt;/p&gt;
+
+&lt;p&gt;Sau khi cài đặt, khi chưa khởi động lại máy, chúng ta phải nạp khai báo môi trường &lt;em&gt;rvm&lt;/em&gt; trước khi sử dụng:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; ~/.rvm/scripts/rvm&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Sau khi nạp xong thông số môi trường, kiểm tra thử &lt;em&gt;rvm&lt;/em&gt; có chạy được từ dòng lệnh không, bằng lệnh hiển thị phiên bản như sau:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rvm --version
+rvm 1.25.25 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;stable&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; by Wayne E. Seguin &amp;lt;wayneeseguin@gmail.com&amp;gt;, 
+Michal Papis &amp;lt;mpapis@gmail.com&amp;gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;https://rvm.io/&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;ci-t-ruby&quot;&gt;Cài đặt Ruby&lt;/h3&gt;
+
+&lt;p&gt;Sau khi cài đặt và chạy được &lt;em&gt;rvm&lt;/em&gt;, cài đặt &lt;em&gt;ruby&lt;/em&gt; phiên bản 2.1.1 như sau:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rvm install ruby 2.1.1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Chờ vài phút để quá trình cài đặt thực hiện xong. Trong quá trình cài, có thể trình cài đặt yêu cầu nhập mật khẩu &lt;em&gt;root&lt;/em&gt; do hệ thống phải ở trạng thái cập nhật mới nhất trước khi cài đặt &lt;em&gt;ruby&lt;/em&gt;. Sau khi cài đặt xong, thiết lập phiên bản 2.1.1 làm phiên bản mặc định:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rvm --default use 2.1.1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Khai báo sử dụng &lt;em&gt;ruby&lt;/em&gt; bằng lệnh sau:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rvm use ruby default
+Using /home/pnhung177/.rvm/gems/ruby-2.1.1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Nếu &lt;em&gt;rvm&lt;/em&gt; không hiển thị thông báo kết quả thực hiện lệnh là “Using …”, mà thay vào đó hiển thị thông báo:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;RVM is not a &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;, selecting rubies with &lt;span class=&quot;s1&quot;&gt;&amp;#39;rvm use ...&amp;#39;&lt;/span&gt; will not work.
+
+You need to change your terminal emulator preferences to allow login shell.
+Sometimes it is required to use &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;/bin/bash --login&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; as the command.
+Please visit https://rvm.io/integration/gnome-terminal/ &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; a example.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Trường hợp này phát sinh là do mặc định &lt;em&gt;gnome-terminal&lt;/em&gt; chạy với chế độ cửa sổ không login (non-login shell), do đó nó bỏ qua việc khởi tạo &lt;strong&gt;/etc/profile.d&lt;/strong&gt; (và cả &lt;strong&gt;~/.bash_profile&lt;/strong&gt; nữa), nên &lt;em&gt;RVM&lt;/em&gt; không được khởi tạo đầy đủ và từ đó xuất hiện lỗi “RVM is not a function”.&lt;/p&gt;
+
+&lt;p&gt;Để khắc phục tình trạng này, chúng ta cần mở cửa sổ tùy chọn “Edit &amp;gt; Profile Preferences” của &lt;em&gt;gnome-terminal&lt;/em&gt;, check vào lựa chọn “Run command as login shell” như trong hình vẽ.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http:/blog/media/e8082567-e8e5-4c56-8310-d5ecc5938822/gnome-terminal-run-command-as-login-shell.png&quot; alt=&quot;Thiết lập tùy chọn &amp;quot;Run command as login shell&amp;quot; cho Gnome Terminal&quot; /&gt; &lt;/p&gt;
+
+&lt;p&gt;Đóng cửa sổ tùy chọn, đóng cửa sổ dòng lệnh và mở cửa sổ dòng lệnh mới, sau đó chạy lại lệnh sau:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rvm use ruby default
+Using /home/pnhung177/.rvm/gems/ruby-2.1.1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Kỳ vọng là bạn sẽ nhận được thông báo kết quả thực thi lệnh như ở trên. Nếu vẫn không được, hãy chạy thử lệnh &lt;em&gt;bash –login&lt;/em&gt; trước khi nạp &lt;em&gt;ruby&lt;/em&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bash --login
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rvm use ruby default
+Using /home/pnhung177/.rvm/gems/ruby-2.1.1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Nếu vẫn không được, vui lòng search google và đăng câu hỏi vào stackoverflow.com để nhờ cộng đồng trợ giúp.&lt;/p&gt;
+
+&lt;h3 id=&quot;ci-t-jekyll&quot;&gt;Cài đặt Jekyll&lt;/h3&gt;
+
+&lt;p&gt;Sau khi chạy xong &lt;em&gt;ruby&lt;/em&gt;, chúng ta có thể cài đặt &lt;em&gt;Jekyll&lt;/em&gt; bằng lệnh đơn giản sau:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gem install jekyll&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Đợi vài phút để &lt;em&gt;gem&lt;/em&gt; cài đặt hết &lt;em&gt;Jekyll&lt;/em&gt; và các thư viện liên quan. Tương tự như với &lt;em&gt;rvm&lt;/em&gt; và &lt;em&gt;ruby&lt;/em&gt;, chúng ta có thể kiểm tra việc cài đặt &lt;em&gt;Jekyll&lt;/em&gt; đã hoàn chỉnh chưa bằng lệnh sau:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;jekyll --version
+jekyll 2.3.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;s-dng-jekyll&quot;&gt;Sử dụng Jekyll&lt;/h2&gt;
+
+&lt;p&gt;Đầu tiên, mở cửa sổ dòng lệnh (Gnome Terminal) mới, khai báo sử dụng phiên bản &lt;em&gt;ruby&lt;/em&gt; default:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;rvm use ruby default
+Using /home/pnhung177/.rvm/gems/ruby-2.1.1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Chuyển đến thư mục chứa mã nguồn trang web &lt;em&gt;Jekyll&lt;/em&gt; của bạn:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /path/to/your/jekyllhttp:/blog/folder&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Bên trong thư mục mã nguồn trang web của bạn, chạy thử Server của &lt;em&gt;Jekyll&lt;/em&gt; tại cổng mặc định &lt;em&gt;4000&lt;/em&gt; bằng lệnh:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;jekyll serve --watch
+Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
+            Source: /path/to/your/jekyllhttp:/blog/folder
+       Destination: /path/to/your/jekyllhttp:/blog/folder/_site
+      Generating... 
+     Build Warning: Layout &lt;span class=&quot;s1&quot;&gt;&amp;#39;none&amp;#39;&lt;/span&gt; requested in feed.xml does not exist.
+     Build Warning: Layout &lt;span class=&quot;s1&quot;&gt;&amp;#39;nil&amp;#39;&lt;/span&gt; requested in sitemap.xml does not exist.
+                    &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;.
+ Auto-regeneration: enabled &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;/path/to/your/jekyllhttp:/blog/folder&amp;#39;&lt;/span&gt;
+Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
+    Server address: http://0.0.0.0:4000/
+  Server running... press ctrl-c to stop.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Mở trình duyệt web và nhập địa chỉ http://localhost:4000/ để xem trang web. Tham số &lt;em&gt;--watch&lt;/em&gt; nhằm yêu cầu &lt;em&gt;Jekyll&lt;/em&gt; biên dịch lại mỗi khi có thay đổi trong nội dung bài viết. Các trang HTML được tạo ra mặc định trong thư mục con _site.&lt;/p&gt;
+
+&lt;p&gt;Để biên dịch nội dung HTML vào một thư mục khác (chẳng hạn trong thư mục bên trong htdocs của trình chủ Apache Web Server), chúng ta sử dụng lệnh &lt;em&gt;build&lt;/em&gt; với tham số &lt;em&gt;--destination&lt;/em&gt; như sau:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;jekyll build --destination&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/var/www/htdocshttp:/blog&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Các bạn có thể tìm hiểu thêm các tính năng khác của &lt;em&gt;Jekyll&lt;/em&gt; trong &lt;a href=&quot;http://jekyllrb.com/docs/home/&quot;&gt;trang tài liệu&lt;/a&gt; của dự án này.&lt;/p&gt;
+
+
+  
+  &lt;p&gt;&lt;a href=&quot;http:/blog/ruby/jekyll/setup/huong-dan-cai-dat-jekyll-tren-ubuntu.html&quot;&gt;Hướng dẫn cài đặt Jekyll trên Ubuntu&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on August 30, 2014.&lt;/p&gt;</content>
 </entry>
 
 

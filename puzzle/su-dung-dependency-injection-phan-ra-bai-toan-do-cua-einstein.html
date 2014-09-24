@@ -117,7 +117,7 @@
             </header>
 
         <article class="summer-post-content post tag-simple">
-            <div><p>Trong bài “Lập trình giải bài toán đố năm ngôi nhà của Albert Einstein” tôi đã giới thiệu nội dung, thuật toán cũng như trình bày cách lập trình theo phương pháp vét cạn để tìm tất cả lời giải của bài toán này. Bài viết này trình bày một khía cạnh khác của bài toán: áp dụng Dependency Injection để phân rã nhỏ mã lệnh chương trình giải bài toán đố ở trên.</p>
+            <div><p>Trong bài “Lập trình giải bài toán đố năm ngôi nhà của Albert Einstein” tôi đã giới thiệu nội dung, thuật toán cũng như trình bày cách lập trình theo phương pháp vét cạn để tìm tất cả lời giải của bài toán này. Bài viết này đề cập đến một khía cạnh khác của bài toán: áp dụng Dependency Injection để phân rã nhỏ mã lệnh chương trình giải bài toán đố ở trên.</p>
 
 <p>Việc cải tiến trên nhằm hai mục đích: 1- giúp mã nguồn chương trình rõ ràng, sáng sủa hơn; 2- giới thiệu về việc áp dụng Dependency Injection như thế nào để phân rã chương trình thành các thành phần và lắp ghép các thành phần với nhau lại thành chương trình hoàn chỉnh.</p>
 
@@ -236,7 +236,7 @@
 <ul>
   <li>Lợi ích đầu tiên đó là chương trình được tổ chức lại rõ ràng và mạch lạc hơn rất nhiều, các đoạn mã lệnh được phân tách nhỏ thành các lớp đối tượng chức năng cụ thể nên dễ đọc, dễ hiểu.</li>
   <li>Các lớp đối tượng kiểm tra ràng buộc được phát triển riêng lẻ, độc lập nhau và có thể áp dụng Unit Testing để đảm bảo tính đúng đắn trước khi được ghép nối với nhau thành chương trình hoàn chỉnh. Việc điều chỉnh thứ tự kiểm tra ràng buộc cũng được thực hiện dễ dàng, chúng ta chỉ việc “tháo khớp” và lắp ghép lại theo trật tự mới trong tệp cấu hình <em>application-context.xml</em>.</li>
-  <li>Dễ dàng cải tiến, tùy chỉnh Một ví dụ đơn giản ở đây là chúng ta có thể lập trình tạo thêm lớp đối tượng ResultToFileWriter để ghi kết quả ra tệp thay thế cho lớp đối tượng ResultToConsoleWriter mà không phải lo lắng làm thay đổi nội dung tệp hoặc sai lệch những phần mã nguồn khác. Chúng ta có thể phát triển và test đối tượng ResultToFileWriter đến khi hoàn chỉnh rồi mới sử dụng. Để thay thế đối tượng ResultToConsoleWriter bằng ResultToFileWriter, chúng ta chỉ việc chỉnh sửa khai báo trong tệp <em>application-context.xml</em> là xong.</li>
+  <li>Dễ dàng cải tiến, tùy chỉnh. Một ví dụ đơn giản ở đây là chúng ta có thể lập trình tạo thêm lớp đối tượng ResultToFileWriter để ghi kết quả ra tệp thay thế cho lớp đối tượng ResultToConsoleWriter mà không phải lo lắng sẽ làm thay đổi nội dung tệp hoặc sai lệch những phần mã nguồn khác. Chúng ta có thể phát triển và test đối tượng ResultToFileWriter đến khi hoàn chỉnh rồi mới sử dụng. Để thay thế đối tượng ResultToConsoleWriter bằng ResultToFileWriter, chúng ta chỉ việc chỉnh sửa khai báo trong tệp <em>application-context.xml</em> là xong.</li>
 </ul>
 
 <h2 id="vi-li-kt">Vài lời kết</h2>
