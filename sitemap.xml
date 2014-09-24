@@ -49,6 +49,10 @@
         <loc>/blog/page2/index.html</loc>
     </url>
     
+    <url>
+        <loc>/blog/page3/index.html</loc>
+    </url>
+    
 
     
     <url>
@@ -81,6 +85,10 @@
     
     <url>
         <loc>/blog/jekyll/migration/gia-tu-wordpress.html</loc>
+    </url>
+    
+    <url>
+        <loc>/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html</loc>
     </url>
     
     <url>

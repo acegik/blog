@@ -11,6 +11,11 @@ callback([
   } ,
 
   {
+    "text": "Cải thiện từng bước tốc độ chương trình bằng Profiler",
+    "href": "/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html"
+  } ,
+
+  {
     "text": "Giã từ ... Wordpress",
     "href": "/blog/jekyll/migration/gia-tu-wordpress.html"
   } ,

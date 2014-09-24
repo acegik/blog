@@ -65,6 +65,14 @@
 		} ,
 	
 		{
+		  "title"      : "Cải thiện từng bước tốc độ chương trình bằng Profiler",
+		  "category"   : "javaperformance",
+		  "url"        : "/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html",
+		  "date"       : "2014-06-19 00:00:00 +0700",
+		  "shortdate"  : "June 19, 2014"
+		} ,
+	
+		{
 		  "title"      : "Các kỹ thuật dùng để cải tiến hiệu năng trong lập trình Java",
 		  "category"   : "javaperformance",
 		  "url"        : "/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java.html",
