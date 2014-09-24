@@ -3,31 +3,31 @@
 <head>
 <meta charset="utf-8">
 <title>XâY DựNG IOC CONTAINER đơN GIảN CấU HìNH BằNG XML &vert; ACEGIK'S BLOG</title>
-<meta name="description" content="Hãy thắp một ngọn nến nhỏ, thay vì nguyền rủa bóng đêm">
+<meta name="description" content="... when the sun comes up, you better be running!">
 <meta name="keywords" content="Spring, IoC Container">
 
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="/blog/images/logo.png">
+<meta name="twitter:image" content="http://acegik.net/blog/images/logo.png">
 <meta name="twitter:title" content="Xây dựng IoC Container đơn giản cấu hình bằng XML">
-<meta name="twitter:description" content="Hãy thắp một ngọn nến nhỏ, thay vì nguyền rủa bóng đêm">
+<meta name="twitter:description" content="... when the sun comes up, you better be running!">
 <meta name="twitter:creator" content="@pnhung177">
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Xây dựng IoC Container đơn giản cấu hình bằng XML">
-<meta property="og:description" content="Hãy thắp một ngọn nến nhỏ, thay vì nguyền rủa bóng đêm">
-<meta property="og:url" content="/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html">
+<meta property="og:description" content="... when the sun comes up, you better be running!">
+<meta property="og:url" content="http://acegik.net/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html">
 <meta property="og:site_name" content="Acegik's Blog">
-<meta property="og:image" content="/blog/images/">
+<meta property="og:image" content="http://acegik.net/blog/images/">
 
 
 
 
 
-<link rel="canonical" href="/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html">
-<link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Acegik's Blog Feed">
+<link rel="canonical" href="http://acegik.net/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html">
+<link href="http://acegik.net/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Acegik's Blog Feed">
 <link rel="author" href="https://plus.google.com/u/3/115458186421626071505?rel=author">
 
 <!-- http://t.co/dKP3o1e -->
@@ -37,13 +37,13 @@
 
 
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,600,300,800,700' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="/blog/assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/blog/assets/css/vendor/normalize.css">
-    <link rel="stylesheet" href="/blog/assets/css/vendor/foundation.min.css">
-    <link rel="stylesheet" href="/blog/assets/css/style.css">
-    <link rel="stylesheet" href="/blog/assets/css/post.css">
+	<link rel="stylesheet" href="http://acegik.net/blog/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://acegik.net/blog/assets/css/vendor/normalize.css">
+    <link rel="stylesheet" href="http://acegik.net/blog/assets/css/vendor/foundation.min.css">
+    <link rel="stylesheet" href="http://acegik.net/blog/assets/css/style.css">
+    <link rel="stylesheet" href="http://acegik.net/blog/assets/css/post.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="/blog/assets/js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+    <script>window.jQuery || document.write('<script src="http://acegik.net/blog/assets/js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
     
 
 
@@ -52,17 +52,17 @@
 
 <!-- Icons -->
 <!-- 16x16 -->
-<link rel="shortcut icon" href="/blog/favicon.ico">
+<link rel="shortcut icon" href="http://acegik.net/blog/favicon.ico">
 <!-- 32x32 -->
-<link rel="shortcut icon" href="/blog/favicon.png">
+<link rel="shortcut icon" href="http://acegik.net/blog/favicon.png">
 <!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
-<link rel="apple-touch-icon-precomposed" href="/blog/images/apple-touch-icon-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="http://acegik.net/blog/images/apple-touch-icon-precomposed.png">
 <!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/blog/images/apple-touch-icon-72x72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://acegik.net/blog/images/apple-touch-icon-72x72-precomposed.png">
 <!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/blog/images/apple-touch-icon-114x114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://acegik.net/blog/images/apple-touch-icon-114x114-precomposed.png">
 <!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/blog/images/apple-touch-icon-144x144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://acegik.net/blog/images/apple-touch-icon-144x144-precomposed.png">
 
 </head>
 <body class="post-template" itemscope itemtype="http://schema.org/WebPage">  
@@ -71,8 +71,8 @@
             <header class="summer-post-header-simple">
                 <div class="summer-post-menu-header-simple">
 
-                    <a class="summer-blog-logo" href="/blog">
-                        <img src="/blog/images/logo.png" alt="Blog Logo" />
+                    <a class="summer-blog-logo" href="http://acegik.net/blog">
+                        <img src="http://acegik.net/blog/images/logo.png" alt="Blog Logo" />
                     </a>
 
                 <div class="summer-blog-menu">      
@@ -85,22 +85,22 @@
         </li>
 
             <li>
-                    <a href="/blog/">Trang bìa</a>
+                    <a href="http://acegik.net/blog/">Trang bìa</a>
                  </li>
 
             <li>
-                    <a href="/blog/featured">Nổi bật</a>
+                    <a href="http://acegik.net/blog/featured">Nổi bật</a>
                  </li>
 
             <li>
-                    <a href="/blog/categories">Danh mục</a>
+                    <a href="http://acegik.net/blog/categories">Danh mục</a>
                  </li>
 
             <li>
-                    <a href="/blog/about">Giới thiệu</a>
+                    <a href="http://acegik.net/blog/about">Giới thiệu</a>
                  </li>
             
-           <li><a href="/blog/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+           <li><a href="http://acegik.net/blog/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
     </ul>
 
 </div>
@@ -110,7 +110,7 @@
                     <div class="small-12 columns">
                         <div class="summer-post-meta-simple">
                             <h1>Xây dựng IoC Container đơn giản cấu hình bằng XML</h1>
-                            <p>by <strong>pnhung177</strong> &#8212; on <a href="/blog/tags/index.html#Spring" data-toggle="tooltip" title="Posts tagged with Spring" rel="tag">Spring</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#IoC Container" data-toggle="tooltip" title="Posts tagged with IoC Container" rel="tag">IoC Container</a> &#8212; <strong><time datetime="2014-09-06T00:00:00+07:00">06/09/2014</time></strong></p>
+                            <p>by <strong>pnhung177</strong> &#8212; on <a href="http://acegik.net/blog/tags/index.html#Spring" data-toggle="tooltip" title="Posts tagged with Spring" rel="tag">Spring</a>&nbsp;&comma;&nbsp;<a href="http://acegik.net/blog/tags/index.html#IoC Container" data-toggle="tooltip" title="Posts tagged with IoC Container" rel="tag">IoC Container</a> &#8212; <strong><time datetime="2014-09-06T00:00:00+07:00">06/09/2014</time></strong></p>
                         </div>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
 
 <p>Chúng ta minh họa bài viết bằng ví dụ đơn giản sau: lập trình đếm tổng số lượng hàng hóa và tổng số tiền hàng của một cửa hàng trực tuyến.</p>
 
-<p><img src="/blog/media/c8ade22a-a842-4dd3-844a-505364f3169e/simple_ioc_container_diagram.png" alt="Hình 1. Sơ đồ tổng quan của Simple IoC Container" /> </p>
+<p><img src="http://acegik.net/blog/media/c8ade22a-a842-4dd3-844a-505364f3169e/simple_ioc_container_diagram.png" alt="Hình 1. Sơ đồ tổng quan của Simple IoC Container" /> </p>
 
 <h2 id="cc-lp-i-tng-m-hnh-nghip-v">Các lớp đối tượng mô hình nghiệp vụ</h2>
 
@@ -257,7 +257,7 @@
 
 <p>Chức năng của Simple IoC Container là tạo và móc nối các đối tượng nghiệp vụ với nhau dựa trên mô tả trong tệp cấu hình XML.</p>
 
-<p><img src="/blog/media/c8ade22a-a842-4dd3-844a-505364f3169e/simple_ioc_container_inside.png" alt="Hình 2. Cấu trúc bên trong của Simple IoC Container" /> </p>
+<p><img src="http://acegik.net/blog/media/c8ade22a-a842-4dd3-844a-505364f3169e/simple_ioc_container_inside.png" alt="Hình 2. Cấu trúc bên trong của Simple IoC Container" /> </p>
 
 <p>Để lưu trữ thông tin mô tả một đối tượng được simple-ioc-container quản lý, chúng ta cần định nghĩa 2 lớp đối tượng: BeanObject và BeanProperty. </p>
 
@@ -526,15 +526,15 @@ Total Assets:67750.0</code></pre></div>
         <div class="cf"></div>
         <div class="row text-center">
             <section class="summer-post-share">
-                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Xây dựng IoC Container đơn giản cấu hình bằng XML&quot;%20/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html%20via%20&#64;pnhung177"
+                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Xây dựng IoC Container đơn giản cấu hình bằng XML&quot;%20http://acegik.net/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html%20via%20&#64;pnhung177"
                     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
                     <i class="fa fa-twitter"></i>
                 </a>
-                <a class="facebook-icon" href="https://www.facebook.com/sharer/sharer.php?u=/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html"
+                <a class="facebook-icon" href="https://www.facebook.com/sharer/sharer.php?u=http://acegik.net/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html"
                     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
                     <i class="fa fa-facebook"></i>
                 </a>
-                <a class="google-icon" href="https://plus.google.com/share?url=/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html"
+                <a class="google-icon" href="https://plus.google.com/share?url=http://acegik.net/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html"
                    onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
                     <i class="fa fa-google-plus"></i>
                 </a>
@@ -546,7 +546,7 @@ Total Assets:67750.0</code></pre></div>
                 <div class="row">
                     <section class="summer-post-author small-12 columns">
                         
-                            <img src="/blog/images/avatars/pnhung177.png" class="summer-post-author-avatar" alt="Phạm Ngọc Hùng's photo">
+                            <img src="http://acegik.net/blog/images/avatars/pnhung177.png" class="summer-post-author-avatar" alt="Phạm Ngọc Hùng's photo">
                         
                         
                             <span class="author-label">Author</span>
@@ -556,7 +556,7 @@ Total Assets:67750.0</code></pre></div>
                             <p><a href="mailto:pnhung177@drupalex.net" class="author-website">pnhung177@drupalex.net</a></p>
                         
                         
-                            <p>Hãy thắp một ngọn nến nhỏ, thay vì nguyền rủa bóng đêm</p>
+                            <p>... when the sun comes up, you better be running!</p>
                         
                     </section>
                 </div>
@@ -595,7 +595,7 @@ Total Assets:67750.0</code></pre></div>
 
     <footer class="summer-site-footer">
     <div class="copyright">
-         <section>Bản quyền nội dung thuộc về <a href="/blog/about">Phạm Ngọc Hùng</a> &copy; 2014.</section>
+         <section>Bản quyền nội dung thuộc về <a href="http://acegik.net/blog/about">Phạm Ngọc Hùng</a> &copy; 2014.</section>
     </div>
     <div class="social-icons">
         
@@ -637,11 +637,11 @@ Total Assets:67750.0</code></pre></div>
 </footer>
  
 </main>    
-    <script src="/blog/assets/js/vendor/modernizr.js"></script>
-    <script src="/blog/assets/js/foundation.min.js"></script>
-    <script src="/blog/assets/js/vendor/background-check.js"></script>
-    <script src="/blog/assets/js/vendor/post-header-animations.js"></script>
-    <script src="/blog/assets/js/summer.js"></script>
+    <script src="http://acegik.net/blog/assets/js/vendor/modernizr.js"></script>
+    <script src="http://acegik.net/blog/assets/js/foundation.min.js"></script>
+    <script src="http://acegik.net/blog/assets/js/vendor/background-check.js"></script>
+    <script src="http://acegik.net/blog/assets/js/vendor/post-header-animations.js"></script>
+    <script src="http://acegik.net/blog/assets/js/summer.js"></script>
 
     <script>
       $(document).foundation();

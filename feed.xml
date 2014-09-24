@@ -4,34 +4,33 @@
 
 
   
-  
 
 <title type="text">Acegik's Blog</title>
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="http:/blog/feed.xml" />
-<link rel="alternate" type="text/html" href="http:/blog/" />
-<updated>2014-09-24T17:30:28+07:00</updated>
-<id>http:/blog/</id>
+<link rel="self" type="application/atom+xml" href="http://acegik.net/blog/feed.xml" />
+<link rel="alternate" type="text/html" href="http://acegik.net/blog/" />
+<updated>2014-09-24T21:19:47+07:00</updated>
+<id>http://acegik.net/blog/</id>
 <author>
   <name>Phạm Ngọc Hùng</name>
-  <uri>http:/blog/</uri>
+  <uri>http://acegik.net/blog/</uri>
   <email>pnhung177@drupalex.net</email>
 </author>
 
 
 <entry>
   <title type="html"><![CDATA[Sử dụng Dependency Injection để phân rã chương trình giải bài toán đố của Einstein]]></title>
-  <link rel="alternate" type="text/html" href="http:/blog/puzzle/su-dung-dependency-injection-phan-ra-bai-toan-do-cua-einstein.html"/>
-  <id>http:/blog/puzzle/su-dung-dependency-injection-phan-ra-bai-toan-do-cua-einstein</id>
+  <link rel="alternate" type="text/html" href="http://acegik.net/blog/puzzle/su-dung-dependency-injection-phan-ra-bai-toan-do-cua-einstein.html"/>
+  <id>http://acegik.net/blog/puzzle/su-dung-dependency-injection-phan-ra-bai-toan-do-cua-einstein</id>
   <published>2014-09-23T00:00:00+07:00</published>
   <updated>2014-09-23T00:00:00-00:00</updated>
   
   <author>
     <name>Phạm Ngọc Hùng</name>
-    <uri>http:/blog</uri>
+    <uri>http://acegik.net/blog</uri>
     <email>pnhung177@drupalex.net</email>
   </author>
-  <category scheme="http:/blog/tags/#Java" term="Java" /><category scheme="http:/blog/tags/#Logical%20Puzzle" term="Logical Puzzle" />
+  <category scheme="http://acegik.net/blog/tags/#Java" term="Java" /><category scheme="http://acegik.net/blog/tags/#Logical%20Puzzle" term="Logical Puzzle" />
   <content type="html">
   
     &lt;p&gt;Trong bài “Lập trình giải bài toán đố năm ngôi nhà của Albert Einstein” tôi đã giới thiệu nội dung, thuật toán cũng như trình bày cách lập trình theo phương pháp vét cạn để tìm tất cả lời giải của bài toán này. Bài viết này đề cập đến một khía cạnh khác của bài toán: áp dụng Dependency Injection để phân rã nhỏ mã lệnh chương trình giải bài toán đố ở trên.&lt;/p&gt;
@@ -161,23 +160,23 @@
 &lt;p&gt;Theo tôi, chương trình giải bài toán đố này đủ nhỏ nhưng không quá ngắn để minh họa cho những ưu điểm của việc áp dụng Dependency Injection trong quá trình phát triển ứng dụng. Hy vọng các bạn tìm thấy được những điều thú vị và bổ ích trong bài viết này.&lt;/p&gt;
 
   
-  &lt;p&gt;&lt;a href=&quot;http:/blog/puzzle/su-dung-dependency-injection-phan-ra-bai-toan-do-cua-einstein.html&quot;&gt;Sử dụng Dependency Injection để phân rã chương trình giải bài toán đố của Einstein&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on September 23, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/puzzle/su-dung-dependency-injection-phan-ra-bai-toan-do-cua-einstein.html&quot;&gt;Sử dụng Dependency Injection để phân rã chương trình giải bài toán đố của Einstein&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on September 23, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Lập trình giải bài toán đố năm ngôi nhà của Albert Einstein]]></title>
-  <link rel="alternate" type="text/html" href="http:/blog/puzzle/lap-trinh-giai-bai-toan-do-cua-einstein.html"/>
-  <id>http:/blog/puzzle/lap-trinh-giai-bai-toan-do-cua-einstein</id>
+  <link rel="alternate" type="text/html" href="http://acegik.net/blog/puzzle/lap-trinh-giai-bai-toan-do-cua-einstein.html"/>
+  <id>http://acegik.net/blog/puzzle/lap-trinh-giai-bai-toan-do-cua-einstein</id>
   <published>2014-09-20T00:00:00+07:00</published>
   <updated>2013-06-20T00:00:00-00:00</updated>
   
   <author>
     <name>Phạm Ngọc Hùng</name>
-    <uri>http:/blog</uri>
+    <uri>http://acegik.net/blog</uri>
     <email>pnhung177@drupalex.net</email>
   </author>
-  <category scheme="http:/blog/tags/#Java" term="Java" /><category scheme="http:/blog/tags/#Logical%20Puzzle" term="Logical Puzzle" />
+  <category scheme="http://acegik.net/blog/tags/#Java" term="Java" /><category scheme="http://acegik.net/blog/tags/#Logical%20Puzzle" term="Logical Puzzle" />
   <content type="html">
   
     &lt;p&gt;Đây là bài toán đố khá nổi tiếng xuất hiện trên mạng với nhiều biến thể khác nhau. Các bài viết đều cho rằng Albert Einstein chính là tác giả của bài toán đố này. Các bài viết cũng tuyên bố rằng 98% dân số (trên trái đất này?) không giải được nó. Một số nhà bình luận cho rằng Einstein tạo ra các câu đố kiểu như vậy không phải để kiểm tra trí thông minh của những sinh viên muốn được ông nhận làm học trò nghiên cứu sinh, mà là thách đố để từ chối yêu cầu của họ. Tất cả những câu chuyện trên không có gì để đảm bảo sự thật cả. Riêng tôi nghĩ, tác giả bài viết khơi mào (và những người sau dựa vào bài viết đó để lan truyền đi) khẳng định 98% dân số không giải được chỉ là chiêu trò thu hút người đọc, và bài toán đố nếu thực sự do Einstein đưa ra thì có lẽ cũng chỉ là câu đố vui trong giờ giảng bài của ông mà thôi. Tuy nhiên, bất kể nguồn gốc như thế nào, thì đây cũng là một bài toán đố rất thú vị.&lt;/p&gt;
@@ -218,15 +217,15 @@
 
 &lt;p&gt;Sử dụng một mảng hai chiều (tạm gọi là mảng &lt;em&gt;P&lt;/em&gt;) để lưu trữ một phương án kết hợp màu sắc, người, đồ uống, thuốc lá, vật nuôi cho các ngôi nhà. Mảng này chứa tên của các đặc điểm, mỗi dòng tương ứng với một đặc điểm, mỗi cột tương ứng với một ngôi nhà.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_data_structure_using_name.png&quot; alt=&quot;Hình 1. Mảng hai chiều chứa phương án kết hợp các đặc điểm&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_data_structure_using_name.png&quot; alt=&quot;Hình 1. Mảng hai chiều chứa phương án kết hợp các đặc điểm&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Để thuận tiện cho lập trình, chúng ta dùng số thay cho tên của các đối tượng. Chẳng hạn với màu sắc: “Red”-0, “White”-1, “Yellow”-2, “Green”-3, “Blue”-4; với đồ uống: “Tea”-0, “Coffee”-1, “Milk”-2, “Beer”-3, “Water”-4; tương tự với thuốc lá, vật nuôi và quốc tịch. Chúng ta sử dụng một mảng 2 chiều (tạm gọi là mảng &lt;em&gt;name_matrix&lt;/em&gt;) để tương ứng tên đối tượng với số như sau:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_name2number_mapping.png&quot; alt=&quot;Hình 2. Bảng chuyển đổi giữa tên và số&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_name2number_mapping.png&quot; alt=&quot;Hình 2. Bảng chuyển đổi giữa tên và số&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Với tương ứng giữa tên và số ở trên, mảng phương án kết hợp &lt;em&gt;P&lt;/em&gt; có dạng như sau:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_data_structure_using_number.png&quot; alt=&quot;Hình 3. Mảng hai chiều chứa phương án kết hợp các đặc điểm (dạng số)&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_data_structure_using_number.png&quot; alt=&quot;Hình 3. Mảng hai chiều chứa phương án kết hợp các đặc điểm (dạng số)&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Với phương án kết hợp đang có trong &lt;em&gt;P&lt;/em&gt;, chúng ta kiểm tra xem phương án này có thỏa mãn các quy tắc của bài toán hay không. Nếu thỏa mãn, chúng ta in kết quả ra màn hình. Sau đó chuyển sang phương án kết hợp tiếp theo.&lt;/p&gt;
 
@@ -234,19 +233,19 @@
 
 &lt;p&gt;Mỗi phương án kết hợp trong &lt;em&gt;P&lt;/em&gt; bao gồm 5 mảng con 5 phần tử, mỗi mảng con thể hiện cho một cách sắp đặt các giá trị của một đặc điểm cho các ngôi nhà. Viết 5 mảng con thành 5 dòng. Giả sử chúng ta đã có cách sinh ra các hoán vị liên tiếp của một mảng 5 phẩn tử (sẽ trình bày bên dưới, trong phần “&lt;em&gt;Thuật toán sinh hoán vị liên tiếp&lt;/em&gt;”). Khi đó, hãy hình dung chúng ta viết các hoán vị liên tiếp của 5 mảng con này lần lượt ra bên phải, theo chiều ngang. Chúng ta sẽ có tất cả 120 cột tương ứng với 120 hoán vị của mảng 5 phần tử.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_combination_diagram_001-002-058-057-118.png&quot; alt=&quot;Hình 4. Dãy 120 hoán vị của 5 đặc điểm&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_combination_diagram_001-002-058-057-118.png&quot; alt=&quot;Hình 4. Dãy 120 hoán vị của 5 đặc điểm&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Trong hình vẽ minh họa ở trên, đường mũi tên đỏ &amp;amp; xanh xác định phương án kết hợp hiện tại của ma trận &lt;em&gt;P&lt;/em&gt;, là sự kết hợp của hoán vị 1 của Nationalities, 2 của Colors, 58 của Drinks, 57 của Pets và 118 của Cigarettes (1 - 2 - 58 - 57 - 118). Phương án tiếp theo sẽ là kết hợp 1 - 2 - 58 - 57 - 119, tức là dịch chuyển mũi tên xanh về bên phải 1 vị trí. Cứ tiếp tục như vậy cho đến hoán vị cuối cùng của Cigarettes.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_combination_diagram_001-002-058-057-120.png&quot; alt=&quot;Hình 5. Hoán vị cuối cùng của cigarettes&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_combination_diagram_001-002-058-057-120.png&quot; alt=&quot;Hình 5. Hoán vị cuối cùng của cigarettes&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Sau khi duyệt đến hoán vị cuối cùng, mũi tên đỏ trỏ vào Pets sẽ chuyển đến hoán vị tiếp theo của Pets, và mũi tên xanh lại trỏ về hoán vị đầu tiên của Cigarettes, bắt đầu chu kỳ mới trên dãy hoán vị này. &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_combination_diagram_001-002-058-058-001.png&quot; alt=&quot;Hình 6. Hoán vị Pets tiếp theo trong khi Cigarettes trở về đầu&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_combination_diagram_001-002-058-058-001.png&quot; alt=&quot;Hình 6. Hoán vị Pets tiếp theo trong khi Cigarettes trở về đầu&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Với sự kết hợp này, chúng ta có thể hình dung các phương án kết hợp của &lt;em&gt;P&lt;/em&gt; thay đổi như sau:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_combination_chain.png&quot; alt=&quot;Hình 7. Chuỗi các phương án kết hợp liên tiếp&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_combination_chain.png&quot; alt=&quot;Hình 7. Chuỗi các phương án kết hợp liên tiếp&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Tương ứng mũi tên màu xanh duyệt từ hoán vị đầu đến hoán vị cuối của dãy hoán vị Cigarettes (có chỉ số dòng trong ma trận là &lt;strong&gt;N_CI=4&lt;/strong&gt;) chính là vòng lặp:&lt;/p&gt;
 
@@ -596,30 +595,30 @@ Nationalities: Norwegian &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     Germ
 
 
   
-  &lt;p&gt;&lt;a href=&quot;http:/blog/puzzle/lap-trinh-giai-bai-toan-do-cua-einstein.html&quot;&gt;Lập trình giải bài toán đố năm ngôi nhà của Albert Einstein&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on September 20, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/puzzle/lap-trinh-giai-bai-toan-do-cua-einstein.html&quot;&gt;Lập trình giải bài toán đố năm ngôi nhà của Albert Einstein&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on September 20, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Xây dựng IoC Container đơn giản cấu hình bằng XML]]></title>
-  <link rel="alternate" type="text/html" href="http:/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html"/>
-  <id>http:/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml</id>
+  <link rel="alternate" type="text/html" href="http://acegik.net/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html"/>
+  <id>http://acegik.net/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml</id>
   <published>2014-09-06T00:00:00+07:00</published>
   <updated>2014-09-06T00:00:00-00:00</updated>
   
   <author>
     <name>Phạm Ngọc Hùng</name>
-    <uri>http:/blog</uri>
+    <uri>http://acegik.net/blog</uri>
     <email>pnhung177@drupalex.net</email>
   </author>
-  <category scheme="http:/blog/tags/#Spring" term="Spring" /><category scheme="http:/blog/tags/#IoC%20Container" term="IoC Container" />
+  <category scheme="http://acegik.net/blog/tags/#Spring" term="Spring" /><category scheme="http://acegik.net/blog/tags/#IoC%20Container" term="IoC Container" />
   <content type="html">
   
     &lt;p&gt;Để nắm vững và sử dụng thành thạo Spring, chúng ta cần hiểu cách thức Spring IoC Container vận hành. Bài viết này trình bày về việc xây dựng một IoC Container đơn giản, có tên là Simple IoC Container, mô phỏng những nét cơ bản nhất của Spring IoC Container. Thông qua cấu trúc và quá trình xây dựng Simple IoC Container, chúng ta có thể đối chiếu và hình dung về cách thức mà Spring IoC Container làm việc.&lt;/p&gt;
 
 &lt;p&gt;Chúng ta minh họa bài viết bằng ví dụ đơn giản sau: lập trình đếm tổng số lượng hàng hóa và tổng số tiền hàng của một cửa hàng trực tuyến.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/c8ade22a-a842-4dd3-844a-505364f3169e/simple_ioc_container_diagram.png&quot; alt=&quot;Hình 1. Sơ đồ tổng quan của Simple IoC Container&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/c8ade22a-a842-4dd3-844a-505364f3169e/simple_ioc_container_diagram.png&quot; alt=&quot;Hình 1. Sơ đồ tổng quan của Simple IoC Container&quot; /&gt; &lt;/p&gt;
 
 &lt;h2 id=&quot;cc-lp-i-tng-m-hnh-nghip-v&quot;&gt;Các lớp đối tượng mô hình nghiệp vụ&lt;/h2&gt;
 
@@ -755,7 +754,7 @@ Nationalities: Norwegian &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     Germ
 
 &lt;p&gt;Chức năng của Simple IoC Container là tạo và móc nối các đối tượng nghiệp vụ với nhau dựa trên mô tả trong tệp cấu hình XML.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/c8ade22a-a842-4dd3-844a-505364f3169e/simple_ioc_container_inside.png&quot; alt=&quot;Hình 2. Cấu trúc bên trong của Simple IoC Container&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/c8ade22a-a842-4dd3-844a-505364f3169e/simple_ioc_container_inside.png&quot; alt=&quot;Hình 2. Cấu trúc bên trong của Simple IoC Container&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Để lưu trữ thông tin mô tả một đối tượng được simple-ioc-container quản lý, chúng ta cần định nghĩa 2 lớp đối tượng: BeanObject và BeanProperty. &lt;/p&gt;
 
@@ -1020,23 +1019,23 @@ Total Assets:67750.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
   
-  &lt;p&gt;&lt;a href=&quot;http:/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html&quot;&gt;Xây dựng IoC Container đơn giản cấu hình bằng XML&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on September 06, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html&quot;&gt;Xây dựng IoC Container đơn giản cấu hình bằng XML&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on September 06, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Hướng dẫn cài đặt Jekyll trên Ubuntu]]></title>
-  <link rel="alternate" type="text/html" href="http:/blog/ruby/jekyll/setup/huong-dan-cai-dat-jekyll-tren-ubuntu.html"/>
-  <id>http:/blog/ruby/jekyll/setup/huong-dan-cai-dat-jekyll-tren-ubuntu</id>
+  <link rel="alternate" type="text/html" href="http://acegik.net/blog/ruby/jekyll/setup/huong-dan-cai-dat-jekyll-tren-ubuntu.html"/>
+  <id>http://acegik.net/blog/ruby/jekyll/setup/huong-dan-cai-dat-jekyll-tren-ubuntu</id>
   <published>2014-08-30T00:00:00+07:00</published>
   <updated>2014-08-30T00:00:00-00:00</updated>
   
   <author>
     <name>Phạm Ngọc Hùng</name>
-    <uri>http:/blog</uri>
+    <uri>http://acegik.net/blog</uri>
     <email>pnhung177@drupalex.net</email>
   </author>
-  <category scheme="http:/blog/tags/#Jekyll" term="Jekyll" /><category scheme="http:/blog/tags/#Markdown" term="Markdown" /><category scheme="http:/blog/tags/#Textile" term="Textile" />
+  <category scheme="http://acegik.net/blog/tags/#Jekyll" term="Jekyll" /><category scheme="http://acegik.net/blog/tags/#Markdown" term="Markdown" /><category scheme="http://acegik.net/blog/tags/#Textile" term="Textile" />
   <content type="html">
   
     &lt;p&gt;Jekyll là công cụ được sử dụng phổ biến hiện nay trong việc chuyển đổi nội dung văn bản từ Markdown/Textile thành trang web HTML tĩnh. Để hỗ trợ cho các bạn đang gặp khó khăn trong việc sử dụng Jekyll với các plugin mở rộng, bài viết này tôi hướng dẫn cách cài đặt Jekyll trên hệ điều hành Ubuntu.&lt;/p&gt;
@@ -1103,7 +1102,7 @@ Please visit https://rvm.io/integration/gnome-terminal/ &lt;span class=&quot;k&q
 
 &lt;p&gt;Để khắc phục tình trạng này, chúng ta cần mở cửa sổ tùy chọn “Edit &amp;gt; Profile Preferences” của &lt;em&gt;gnome-terminal&lt;/em&gt;, check vào lựa chọn “Run command as login shell” như trong hình vẽ.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/e8082567-e8e5-4c56-8310-d5ecc5938822/gnome-terminal-run-command-as-login-shell.png&quot; alt=&quot;Thiết lập tùy chọn &amp;quot;Run command as login shell&amp;quot; cho Gnome Terminal&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/e8082567-e8e5-4c56-8310-d5ecc5938822/gnome-terminal-run-command-as-login-shell.png&quot; alt=&quot;Thiết lập tùy chọn &amp;quot;Run command as login shell&amp;quot; cho Gnome Terminal&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Đóng cửa sổ tùy chọn, đóng cửa sổ dòng lệnh và mở cửa sổ dòng lệnh mới, sau đó chạy lại lệnh sau:&lt;/p&gt;
 
@@ -1138,20 +1137,20 @@ Using /home/pnhung177/.rvm/gems/ruby-2.1.1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Chuyển đến thư mục chứa mã nguồn trang web &lt;em&gt;Jekyll&lt;/em&gt; của bạn:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /path/to/your/jekyllhttp:/blog/folder&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /path/to/your/jekyll/blog/folder&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Bên trong thư mục mã nguồn trang web của bạn, chạy thử Server của &lt;em&gt;Jekyll&lt;/em&gt; tại cổng mặc định &lt;em&gt;4000&lt;/em&gt; bằng lệnh:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;jekyll serve --watch
-Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
-            Source: /path/to/your/jekyllhttp:/blog/folder
-       Destination: /path/to/your/jekyllhttp:/blog/folder/_site
+Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
+            Source: /path/to/your/jekyll/blog/folder
+       Destination: /path/to/your/jekyll/blog/folder/_site
       Generating... 
      Build Warning: Layout &lt;span class=&quot;s1&quot;&gt;&amp;#39;none&amp;#39;&lt;/span&gt; requested in feed.xml does not exist.
      Build Warning: Layout &lt;span class=&quot;s1&quot;&gt;&amp;#39;nil&amp;#39;&lt;/span&gt; requested in sitemap.xml does not exist.
                     &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;.
- Auto-regeneration: enabled &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;/path/to/your/jekyllhttp:/blog/folder&amp;#39;&lt;/span&gt;
-Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
+ Auto-regeneration: enabled &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;/path/to/your/jekyll/blog/folder&amp;#39;&lt;/span&gt;
+Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
     Server address: http://0.0.0.0:4000/
   Server running... press ctrl-c to stop.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -1159,29 +1158,29 @@ Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
 
 &lt;p&gt;Để biên dịch nội dung HTML vào một thư mục khác (chẳng hạn trong thư mục bên trong htdocs của trình chủ Apache Web Server), chúng ta sử dụng lệnh &lt;em&gt;build&lt;/em&gt; với tham số &lt;em&gt;--destination&lt;/em&gt; như sau:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;jekyll build --destination&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/var/www/htdocshttp:/blog&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;jekyll build --destination&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/var/www/htdocs/blog&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Các bạn có thể tìm hiểu thêm các tính năng khác của &lt;em&gt;Jekyll&lt;/em&gt; trong &lt;a href=&quot;http://jekyllrb.com/docs/home/&quot;&gt;trang tài liệu&lt;/a&gt; của dự án này.&lt;/p&gt;
 
 
   
-  &lt;p&gt;&lt;a href=&quot;http:/blog/ruby/jekyll/setup/huong-dan-cai-dat-jekyll-tren-ubuntu.html&quot;&gt;Hướng dẫn cài đặt Jekyll trên Ubuntu&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on August 30, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/ruby/jekyll/setup/huong-dan-cai-dat-jekyll-tren-ubuntu.html&quot;&gt;Hướng dẫn cài đặt Jekyll trên Ubuntu&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on August 30, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Lập trình Concurrency trong Java bằng multithreading]]></title>
-  <link rel="alternate" type="text/html" href="http:/blog/java/concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading.html"/>
-  <id>http:/blog/java/concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading</id>
+  <link rel="alternate" type="text/html" href="http://acegik.net/blog/java/concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading.html"/>
+  <id>http://acegik.net/blog/java/concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading</id>
   <published>2014-08-26T00:00:00+07:00</published>
   <updated>2014-08-26T00:00:00-00:00</updated>
   
   <author>
     <name>Phạm Ngọc Hùng</name>
-    <uri>http:/blog</uri>
+    <uri>http://acegik.net/blog</uri>
     <email>pnhung177@drupalex.net</email>
   </author>
-  <category scheme="http:/blog/tags/#Java" term="Java" /><category scheme="http:/blog/tags/#Java%20Concurrency" term="Java Concurrency" /><category scheme="http:/blog/tags/#Java%20Multithreading" term="Java Multithreading" />
+  <category scheme="http://acegik.net/blog/tags/#Java" term="Java" /><category scheme="http://acegik.net/blog/tags/#Java%20Concurrency" term="Java Concurrency" /><category scheme="http://acegik.net/blog/tags/#Java%20Multithreading" term="Java Multithreading" />
   <content type="html">
   
     &lt;p&gt;Nền tảng Java được thiết kế ngay từ đầu &lt;a href=&quot;http://docs.oracle.com/javase/tutorial/essential/concurrency/&quot;&gt;hỗ trợ lập trình đồng thời&lt;/a&gt; (concurrent programming), bao gồm các lệnh, từ khóa, lớp đối tượng ngay trong ngôn ngữ lập trình lẫn thông qua chức năng cung cấp bởi các thư viện hỗ trợ. Java là một trong những ngôn ngữ lập trình đầu tiên làm cho việc lập trình đồng thời trở nên dễ dàng và thuận tiện. Java sử dụng cơ chế multithreading để thực hiện lập trình đồng thời: trong một chương trình cho phép tạo và chạy nhiều Thread đồng thời. Mỗi thread, còn được gọi là một tiến trình gọn nhẹ (lightweight process), là luồng thực thi chạy trong lòng một chương trình và được phép sử dụng và chia sẻ với nhau tài nguyên chung của chương trình đó.&lt;/p&gt;
@@ -1190,7 +1189,7 @@ Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
 
 &lt;p&gt;Một Thread chạy trong một chương trình Java sẽ trải qua nhiều giai đoạn khác nhau, mỗi giai đoạn tương ứng với một trạng thái trong biểu đồ trạng thái trong hình dưới đây.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/f1f39615-0c6b-4d61-abfd-9e48235460d9/java_multithreading_lifecycle_of_a_thread.png&quot; alt=&quot;Hình 1. Lược đồ trạng thái vòng đời của một Thread&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/f1f39615-0c6b-4d61-abfd-9e48235460d9/java_multithreading_lifecycle_of_a_thread.png&quot; alt=&quot;Hình 1. Lược đồ trạng thái vòng đời của một Thread&quot; /&gt; &lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;New: Khi một thread được tạo ra (bằng toán tử new) nó sẽ ở trạng thái New, là trạng thái đầu tiên trong vòng đời của nó. Thread giữ ở trạng thái này cho đến khi nó được chương trình kích hoạt thông qua lời gọi phương thức start().&lt;/li&gt;
@@ -1237,7 +1236,7 @@ Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
 
 &lt;p&gt;Tắc nghẽn (&lt;a href=&quot;http://en.wikipedia.org/wiki/Deadlock&quot;&gt;Deadlock&lt;/a&gt;) là tình huống hai hay nhiều thread bị chặn để chờ được truy cập vào tài nguyên, trong khi tài nguyên này đang bị chiếm giữ bởi một thread cũng đang bị chặn. &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/f1f39615-0c6b-4d61-abfd-9e48235460d9/deadlock.png&quot; alt=&quot;Hình 2. Tình trạng tắc nghẽn giữa hai thread&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/f1f39615-0c6b-4d61-abfd-9e48235460d9/deadlock.png&quot; alt=&quot;Hình 2. Tình trạng tắc nghẽn giữa hai thread&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Hình vẽ bên trên minh họa trường hợp tắc nghẽn đơn giản nhất, trong đó hai thread đều bị chặn và chờ được sử dụng tài nguyên mà thread kia đang nắm giữ.&lt;/p&gt;
 
@@ -1256,28 +1255,28 @@ Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
 
 
   
-  &lt;p&gt;&lt;a href=&quot;http:/blog/java/concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading.html&quot;&gt;Lập trình Concurrency trong Java bằng multithreading&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on August 26, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/java/concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading.html&quot;&gt;Lập trình Concurrency trong Java bằng multithreading&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on August 26, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Tổng quan về IoC trong Spring Framework]]></title>
-  <link rel="alternate" type="text/html" href="http:/blog/java/spring/core/tong-quan-ve-ioc-trong-spring.html"/>
-  <id>http:/blog/java/spring/core/tong-quan-ve-ioc-trong-spring</id>
+  <link rel="alternate" type="text/html" href="http://acegik.net/blog/java/spring/core/tong-quan-ve-ioc-trong-spring.html"/>
+  <id>http://acegik.net/blog/java/spring/core/tong-quan-ve-ioc-trong-spring</id>
   <published>2014-08-24T00:00:00+07:00</published>
   <updated>2014-08-24T00:00:00-00:00</updated>
   
   <author>
     <name>Phạm Ngọc Hùng</name>
-    <uri>http:/blog</uri>
+    <uri>http://acegik.net/blog</uri>
     <email>pnhung177@drupalex.net</email>
   </author>
-  <category scheme="http:/blog/tags/#Java" term="Java" /><category scheme="http:/blog/tags/#Spring%20Framework" term="Spring Framework" />
+  <category scheme="http://acegik.net/blog/tags/#Java" term="Java" /><category scheme="http://acegik.net/blog/tags/#Spring%20Framework" term="Spring Framework" />
   <content type="html">
   
     &lt;p&gt;Spring Framework ra đời như là một chọn lựa, thay thế cho mô hình chuẩn EJB trong việc phát triển ứng dụng JavaEE đã đánh dấu một bước ngoặt trong lịch sử phát triển của Enterprise Java. Spring không ngừng phát triển và ngày càng phổ biến trong cộng đồng Java. Theo thống kê của &lt;a href=&quot;http://www.indeed.com/&quot;&gt;trang web tìm kiếm việc làm Indeed&lt;/a&gt; đến đầu năm 2014, tỉ lệ gia tăng việc làm trên Spring luôn cao hơn hẳn EJB.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/spring-vs-ejb-jobgraph.png&quot; alt=&quot;Hình 1. Tỉ lệ gia tăng việc làm giữa Spring và EJB&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/spring-vs-ejb-jobgraph.png&quot; alt=&quot;Hình 1. Tỉ lệ gia tăng việc làm giữa Spring và EJB&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Một trong những thành phần chủ chốt, là nền tảng và tạo nên sức mạnh của Spring chính là IoC Container. IoC Container trong Spring được xây dựng dựa trên nguyên lý &lt;a href=&quot;http://en.wikipedia.org/wiki/Inversion_of_control&quot;&gt;Inversion of Control&lt;/a&gt; (đảo ngược điều khiển), đã xuất hiện khá lâu trong các mẫu hình thiết kế (Design Pattern), và được phổ biến rộng rãi nhờ &lt;a href=&quot;http://en.wikipedia.org/wiki/Dependency_inversion_principle&quot;&gt;Robert C. Martin&lt;/a&gt; và &lt;a href=&quot;http://martinfowler.com/bliki/InversionOfControl.html&quot;&gt;Martin Fowler&lt;/a&gt;. Để hiểu về Spring, trước tiên chúng ta cần hiểu khái niệm Inversion of Control là gì? Muốn vậy, chúng ta cần trả lời câu hỏi: Control (điều khiển) trong chương trình phần mềm là gì, và Inversion (sự đảo ngược) đối với điều khiển trong ngữ cảnh này được hiểu như thế nào.&lt;/p&gt;
 
@@ -1289,7 +1288,7 @@ Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
 
 &lt;p&gt;Do chương trình ngày càng phức tạp, nên người ta áp dụng phương pháp lập trình hướng đối tượng nhằm phân loại, chia tách các chức năng và gom thành các đối tượng. Người ta còn tạo dựng các thư viện tạo sẵn để có thể sử dụng lại. Luồng thực thi của chương trình, trong những tình huống cần xem xét ở mức tổng thể, không còn quan tâm đến các bước thực thi câu lệnh cụ thể nữa, mà chỉ xem xét đến quá trình gọi phương thức của các đối tượng trong ứng dụng cũng như các đối tượng của thư viện dựng sẵn.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/oop_flow_of_control.png&quot; alt=&quot;Hai nhiệm vụ của người lập trình khi xây dựng ứng dụng&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/oop_flow_of_control.png&quot; alt=&quot;Hai nhiệm vụ của người lập trình khi xây dựng ứng dụng&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Người lập trình, khi xây dựng ứng dụng từ đầu, đã thực hiện hai nhiệm vụ: trực tiếp điều khiển luồng thực thi của chương trình và xây dựng các chức năng để đáp ứng nghiệp vụ của ứng dụng. Thực tế, có nhiều chương trình hoặc bộ phận trong chương trình có luồng thực thi rất giống nhau, chẳng hạn phần tương tác với HTTP trong các ứng dụng web, phần unit testing trong các ứng dụng,… Việc trực tiếp tạo dựng và kiểm soát luồng thực thi của chương trình lặp đi lặp lại khi xây dựng nhiều ứng dụng sẽ làm mất nhiều công sức, chi phí, tạo ra sự nhàm chán và dễ phát sinh lỗi. Điều này tạo ra động lực cũng như môi trường để nguyên lý đảo ngược điều khiển nảy nở và phát triển.&lt;/p&gt;
 
@@ -1308,7 +1307,7 @@ Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
 
 &lt;p&gt;Hầu như tất cả chúng ta khi lập trình ứng dụng web bằng &lt;a href=&quot;http://docs.oracle.com/javaee/6/tutorial/doc/bnafd.html&quot;&gt;Java Servlet&lt;/a&gt; đều hình dung rõ ràng các bước lập trình như sau: Tạo lớp đối tượng kế thừa từ HttpServlet, nạp đè các phương thức doGet() - doPost(), sau đó đăng ký trong file cấu hình Deployment Descriptor tương ứng Servlet này với đường dẫn xác định. Lớp đối tượng Servlet chúng ta tạo ra sẽ được gọi đến khi có một truy vấn HTTP có đường dẫn “khớp” với đường dẫn khai báo trong Deployment Descriptor.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/ioc_example_servlet.png&quot; alt=&quot;Đảo ngược điều khiển trong ứng dụng Servlet&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/ioc_example_servlet.png&quot; alt=&quot;Đảo ngược điều khiển trong ứng dụng Servlet&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Đôi khi chúng ta cũng đã tự hỏi: vậy ai kích hoạt ứng dụng chúng ta viết để đáp ứng mỗi khi có Http Request gửi đến? ai chịu trách nhiệm chuyển đổi các thông điệp Http (HTTP Request và HTTP response) thành các đối tượng Java (HttpServletRequest và HttpServletResponse) để truyền cho các hàm doGet(), doPost()? Câu trả lời rõ ràng và ngay lập tức: chính là Servlet Container.&lt;/p&gt;
 
@@ -1316,13 +1315,13 @@ Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
 
 &lt;p&gt;Trong quá trình phát triển các thành phần chức năng của ứng dụng, chúng ta thường áp dụng kiểm thử thành phần (&lt;a href=&quot;http://en.wikipedia.org/wiki/Unit_testing&quot;&gt;Unit Testing&lt;/a&gt;) để đảm bảo chức năng đó vẫn chạy đúng trong suốt quá trình ứng dụng được mở rộng và phát triển thêm. Để tạo bộ Unit Test, chúng ta chỉ cần tạo một lớp đối tượng, định nghĩa các phương thức khởi tạo, phương thức kết thúc và các phương thức test. Sau đó, chúng ta chỉ việc chạy bộ test để kiểm thử. &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/ioc_example_unit_testing.png&quot; alt=&quot;Đảo ngược điều khiển trong quá trình chạy Unit Test&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/ioc_example_unit_testing.png&quot; alt=&quot;Đảo ngược điều khiển trong quá trình chạy Unit Test&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Việc điều khiển trình tự thực thi các phương thức được giao cho thư viện bên ngoài đảm nhiệm (chẳng hạn như TestNG hoặc &lt;a href=&quot;http://junit.org/&quot;&gt;JUnit&lt;/a&gt;).&lt;/p&gt;
 
 &lt;p&gt;Với hai ví dụ trên, chúng ta nhận thấy trong các ứng dụng đã có sự thay đổi vai trò: ứng dụng không còn ôm đồm vừa trực tiếp tạo dựng và kiểm soát luồng thực thi, vừa xây dựng chức năng nghiệp vụ. Việc kiểm soát luồng thực thi được tách khỏi chức năng nghiệp vụ và bị đẩy ra bên ngoài. Người lập trình đã ủy thác việc kiểm soát luồng thực thi ứng dụng cho một thành phần (thường là thư viện dựng sẵn) bên ngoài đảm nhiệm, chỉ còn tập trung vào chức năng chính của ứng dụng.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/oop_app_ioc.png&quot; alt=&quot;Tách việc kiểm soát luồng thực thi ra khỏi ứng dụng&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/oop_app_ioc.png&quot; alt=&quot;Tách việc kiểm soát luồng thực thi ra khỏi ứng dụng&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Như vậy, khái niệm “đảo ngược” ở đây chính là chuyển nhiệm vụ kiểm soát lưu trình thực thi từ ứng dụng cho một thành phần chuyên trách (thường là một thư viện phần mềm khung - framework - dựng sẵn ở bên ngoài): ứng dụng chính chúng ta quan tâm phát triển không kiểm soát việc điều khiển luồng thực thi nữa, mà chỉ tập trung vào việc định nghĩa chức năng. Thư viện phần mềm khung chuyên trách kiểm soát điều khiển sẽ dựa trên mô tả trong cấu hình của ứng dụng để thay mặt ứng dụng điều phối luồng thực thi trong chương trình. Dễ dàng nhận thấy thư viện phần mềm khung này khác với các thư viện thông thường ở chỗ: thư viện thông thường cung cấp các chức năng và chờ được gọi đến, còn thư viện phần mềm khung tạo dựng luồng thực thi và gọi đến các chức năng của ứng dụng. Có lẽ sử dụng thuật ngữ “đảo ngược vai trò điều khiển luồng thực thi” thay cho “đảo ngược điều khiển” sẽ đầy đủ và phù hợp hơn cho khái niệm “Inversion of Control”. &lt;/p&gt;
 
@@ -1343,23 +1342,23 @@ Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
 
 
   
-  &lt;p&gt;&lt;a href=&quot;http:/blog/java/spring/core/tong-quan-ve-ioc-trong-spring.html&quot;&gt;Tổng quan về IoC trong Spring Framework&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on August 24, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/java/spring/core/tong-quan-ve-ioc-trong-spring.html&quot;&gt;Tổng quan về IoC trong Spring Framework&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on August 24, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Tổng quan về Java Concurrency]]></title>
-  <link rel="alternate" type="text/html" href="http:/blog/java/concurrency/tong-quan-ve-java-concurrency.html"/>
-  <id>http:/blog/java/concurrency/tong-quan-ve-java-concurrency</id>
+  <link rel="alternate" type="text/html" href="http://acegik.net/blog/java/concurrency/tong-quan-ve-java-concurrency.html"/>
+  <id>http://acegik.net/blog/java/concurrency/tong-quan-ve-java-concurrency</id>
   <published>2014-08-20T00:00:00+07:00</published>
   <updated>2014-08-20T00:00:00-00:00</updated>
   
   <author>
     <name>Phạm Ngọc Hùng</name>
-    <uri>http:/blog</uri>
+    <uri>http://acegik.net/blog</uri>
     <email>pnhung177@drupalex.net</email>
   </author>
-  <category scheme="http:/blog/tags/#Java" term="Java" /><category scheme="http:/blog/tags/#Java%20Concurrency" term="Java Concurrency" /><category scheme="http:/blog/tags/#Java%20Multithreading" term="Java Multithreading" />
+  <category scheme="http://acegik.net/blog/tags/#Java" term="Java" /><category scheme="http://acegik.net/blog/tags/#Java%20Concurrency" term="Java Concurrency" /><category scheme="http://acegik.net/blog/tags/#Java%20Multithreading" term="Java Multithreading" />
   <content type="html">
   
     &lt;p&gt;Tính toán đồng thời (&lt;a href=&quot;http://en.wikipedia.org/wiki/Concurrent_computing&quot; title=&quot;Concurrency Computing&quot;&gt;Concurrency computing&lt;/a&gt;) là một trong các đặc trưng nổi bật đã tạo nên thế mạnh của ngôn ngữ Java. Nhờ có tính năng này, chúng ta có thể tạo ra các chương trình bằng Java xử lý nhiều nhiệm vụ cùng lúc, đồng thời tận dụng thời gian nhàn rỗi để tăng tốc độ và hiệu năng của chương trình.&lt;/p&gt;
@@ -1377,7 +1376,7 @@ Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
   &lt;li&gt;Cách (D). Một người nấu nhiều món, mỗi thời điểm chỉ nấu một món, nấu xong món này mới thực hiện món khác.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/69320106-30e4-42d0-a670-061fe894d286/java-concurrency-4-cooking-models.png&quot; alt=&quot;Hình 1. Bốn cách thực hiện nấu bữa ăn gồm ba món ăn&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/69320106-30e4-42d0-a670-061fe894d286/java-concurrency-4-cooking-models.png&quot; alt=&quot;Hình 1. Bốn cách thực hiện nấu bữa ăn gồm ba món ăn&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Nếu chúng ta tương ứng:&lt;/p&gt;
 
@@ -1394,7 +1393,7 @@ Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
 
 &lt;p&gt;Cách (C) tương ứng với Tính toán đồng thời, trong đó một chương trình xử lý nhiều nhiệm vụ đồng thời theo cách chia nhỏ từng nhiệm vụ thành các thao tác, thực thi các thao tác (không phân biệt của nhiệm vụ nào) xen kẽ nhau trong khoảng thời gian được phân bổ hợp lý. Khái niệm “đồng thời” không áp dụng cho từng thao tác (tương ứng với lệnh thực thi trong máy tính), tức là không thể thực hiện các thao tác cùng một lúc (kiểu như người nấu ăn vừa băm thịt, vừa thái hành). Ở đây, khái niệm “đồng thời” được áp dụng cho nguyên cả nhiệm vụ, hiểu theo nghĩa có hai hay nhiều nhiệm vụ cùng “đang” trong quá trình được xử lý, nhưng các hành động cụ thể thực hiện các nhiệm vụ được diễn ra xen kẽ tuần tự (nhưng không đồng thời).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/69320106-30e4-42d0-a670-061fe894d286/java-concurrency-overview-one-chef-with-3-dishes1.png&quot; alt=&quot;Hình 2. Mô hình (C) tương ứng với Tính toán đồng thời (Concurrency) trong lập trình.&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/69320106-30e4-42d0-a670-061fe894d286/java-concurrency-overview-one-chef-with-3-dishes1.png&quot; alt=&quot;Hình 2. Mô hình (C) tương ứng với Tính toán đồng thời (Concurrency) trong lập trình.&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Cách (D) tương ứng với lập trình tuần tự, trong đó chương trình xử lý tuần tự hết nhiệm vụ này rồi mới bắt đầu xử lý nhiệm vụ khác. Mỗi thời điểm chỉ có một nhiệm vụ đang được xử lý.&lt;/p&gt;
 
@@ -1406,7 +1405,7 @@ Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
 
 &lt;p&gt;Mỗi chương trình Java được chạy trên nền một máy ảo Java (&lt;a href=&quot;http://en.wikipedia.org/wiki/Java_virtual_machine&quot;&gt;Java Virtual Machine&lt;/a&gt;). Máy ảo Java là dạng Máy ảo tiến trình (Process Virtual Machine), do đó mỗi chương trình Java là một tiến trình của hệ điều hành. Hàm main() trong chương trình Java sẽ tạo ra &lt;a href=&quot;http://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html&quot;&gt;Thread&lt;/a&gt; mặc định. Một chương trình Java đơn giản chỉ có một Thread được tạo ra từ hàm main(). Máy ảo Java cho phép chương trình Java có thể tạo ra nhiều Thread khác. Nếu muốn xử lý đồng thời nhiều nhiệm vụ, người lập trình phải viết mã lệnh để hàm main() gọi đến để tạo ra các Thread khác.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/69320106-30e4-42d0-a670-061fe894d286/java-concurrency-one-process-with-3-threads1.png&quot; alt=&quot;Hình 3. Tiến trình Java với 3 Thread chạy đồng thời&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/69320106-30e4-42d0-a670-061fe894d286/java-concurrency-one-process-with-3-threads1.png&quot; alt=&quot;Hình 3. Tiến trình Java với 3 Thread chạy đồng thời&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Để tạo ra Thread, người lập trình cần thực hiện các bước sau:&lt;/p&gt;
 
@@ -1478,23 +1477,23 @@ Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
 
 
   
-  &lt;p&gt;&lt;a href=&quot;http:/blog/java/concurrency/tong-quan-ve-java-concurrency.html&quot;&gt;Tổng quan về Java Concurrency&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on August 20, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/java/concurrency/tong-quan-ve-java-concurrency.html&quot;&gt;Tổng quan về Java Concurrency&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on August 20, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Giã từ ... Wordpress]]></title>
-  <link rel="alternate" type="text/html" href="http:/blog/jekyll/migration/gia-tu-wordpress.html"/>
-  <id>http:/blog/jekyll/migration/gia-tu-wordpress</id>
+  <link rel="alternate" type="text/html" href="http://acegik.net/blog/jekyll/migration/gia-tu-wordpress.html"/>
+  <id>http://acegik.net/blog/jekyll/migration/gia-tu-wordpress</id>
   <published>2014-07-01T00:00:00+07:00</published>
   <updated>2014-07-01T00:00:00-00:00</updated>
   
   <author>
     <name>Phạm Ngọc Hùng</name>
-    <uri>http:/blog</uri>
+    <uri>http://acegik.net/blog</uri>
     <email>pnhung177@drupalex.net</email>
   </author>
-  <category scheme="http:/blog/tags/#jekyll" term="jekyll" /><category scheme="http:/blog/tags/#wordpress" term="wordpress" /><category scheme="http:/blog/tags/#markdown" term="markdown" />
+  <category scheme="http://acegik.net/blog/tags/#jekyll" term="jekyll" /><category scheme="http://acegik.net/blog/tags/#wordpress" term="wordpress" /><category scheme="http://acegik.net/blog/tags/#markdown" term="markdown" />
   <content type="html">
   
     &lt;p&gt;Trong các công cụ tạo blog, có lẽ wordress là công cụ hàng đầu trên thế giới hiện nay. Wordpress là CMS mã nguồn mở bằng PHP được sử dụng rộng rãi không chỉ để viết blog mà còn dùng cho các trang web bán hàng, nền tảng để xây dựng các ứng dụng dưới dạng các plugin. So với Joomla và Drupal, Wordpress có phần nổi trội hơn về tính đơn giản, số lượng plugin nhiều cũng như sự dễ dùng của nó.&lt;/p&gt;
@@ -1540,23 +1539,23 @@ Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
 
 
   
-  &lt;p&gt;&lt;a href=&quot;http:/blog/jekyll/migration/gia-tu-wordpress.html&quot;&gt;Giã từ ... Wordpress&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on July 01, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/jekyll/migration/gia-tu-wordpress.html&quot;&gt;Giã từ ... Wordpress&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on July 01, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Cải thiện từng bước tốc độ chương trình bằng Profiler]]></title>
-  <link rel="alternate" type="text/html" href="http:/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html"/>
-  <id>http:/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler</id>
+  <link rel="alternate" type="text/html" href="http://acegik.net/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html"/>
+  <id>http://acegik.net/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler</id>
   <published>2014-06-19T00:00:00+07:00</published>
   <updated>2014-06-19T00:00:00-00:00</updated>
   
   <author>
     <name>Phạm Ngọc Hùng</name>
-    <uri>http:/blog</uri>
+    <uri>http://acegik.net/blog</uri>
     <email>pnhung177@drupalex.net</email>
   </author>
-  <category scheme="http:/blog/tags/#Java%20Performance" term="Java Performance" /><category scheme="http:/blog/tags/#Refactoring" term="Refactoring" /><category scheme="http:/blog/tags/#Profiling" term="Profiling" />
+  <category scheme="http://acegik.net/blog/tags/#Java%20Performance" term="Java Performance" /><category scheme="http://acegik.net/blog/tags/#Refactoring" term="Refactoring" /><category scheme="http://acegik.net/blog/tags/#Profiling" term="Profiling" />
   <content type="html">
   
     &lt;p&gt;Trong bài viết này, thông qua một số ví dụ nhỏ, tôi muốn đề cập đến việc sử dụng các công cụ Profiler (tạm dịch là công cụ đo đạc hiệu năng) để cải thiện tốc độ của từng phần mã lệnh trong các phương thức, từ đó từng bước nâng cao tốc độ của toàn bộ chương trình.&lt;/p&gt;
@@ -1686,19 +1685,19 @@ Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
 
 &lt;p&gt;Sau khi chạy kiểm thử lại &lt;strong&gt;ValidationUtilTest&lt;/strong&gt; để đảm bảo &lt;em&gt;verifyEmail2()&lt;/em&gt; pass qua bộ test, chúng ta chạy Profile cho file &lt;strong&gt;ValidationUtilTest&lt;/strong&gt; như sau:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/start-profiling-test-file.png&quot; alt=&quot;Hình 1. Kích hoạt Profiler để phân tích tệp Test&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/start-profiling-test-file.png&quot; alt=&quot;Hình 1. Kích hoạt Profiler để phân tích tệp Test&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Chọn chức năng cần đo đạc là CPU. Profiler sẽ yêu cầu thiết lập tùy chọn, hãy chọn Advanced &amp;gt; Edit Profiling Roots để xác định các phương thức cần đo đạc tốc độ như trong hình sau:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/edit-profiling-roots.png&quot; alt=&quot;Hình 2. Chọn các phương thức cần thực hiện đo đạc&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/edit-profiling-roots.png&quot; alt=&quot;Hình 2. Chọn các phương thức cần thực hiện đo đạc&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Sau khi đã thiết lập xong tùy chọn, click chuột vào &lt;strong&gt;Run&lt;/strong&gt; để chạy profiling. Khi kết thúc, Profiler hiển thị hộp thoại xác nhận có muốn ghi lại kết quả đã đo đạc không? hãy chọn &lt;strong&gt;Yes&lt;/strong&gt;:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/take-a-snapshot-of-results.png&quot; alt=&quot;Hình 3. Xác nhận ghi lại kết quả đo đạc&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/take-a-snapshot-of-results.png&quot; alt=&quot;Hình 3. Xác nhận ghi lại kết quả đo đạc&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Profiler sẽ hiển thị cửa sổ kết quả như sau:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/cpu-hotspot-results.png&quot; alt=&quot;Hình 4. Kết quả đo đạc tốc độ thực thi của các phương thức được chọn&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/cpu-hotspot-results.png&quot; alt=&quot;Hình 4. Kết quả đo đạc tốc độ thực thi của các phương thức được chọn&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Nhìn vào kết quả đo đạc, ta có thể dễ dàng thấy cả 2 hàm &lt;em&gt;verifyEmail()&lt;/em&gt; và &lt;em&gt;verifyEmail2()&lt;/em&gt; đều thực thi &lt;em&gt;4004&lt;/em&gt; lần, tuy nhiên tổng thời gian thực thi của &lt;em&gt;verifyEmail()&lt;/em&gt; là 346ms, chiếm 70.9% tổng thời gian thực thi ứng dụng, trong khi hàm &lt;em&gt;verifyEmail2()&lt;/em&gt; chỉ mất tổng thời gian thực thi là 24.8ms, chiếm 5.1%. Như vậy, chúng ta có đủ cơ sở để thay hàm &lt;em&gt;verifyEmail()&lt;/em&gt; bởi hàm &lt;em&gt;verifyEmail2()&lt;/em&gt;. Việc này khá đơn giản, chỉ cần hoán đổi tên của 2 hàm trên.&lt;/p&gt;
 
@@ -1710,23 +1709,23 @@ Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
 
 
   
-  &lt;p&gt;&lt;a href=&quot;http:/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html&quot;&gt;Cải thiện từng bước tốc độ chương trình bằng Profiler&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on June 19, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html&quot;&gt;Cải thiện từng bước tốc độ chương trình bằng Profiler&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on June 19, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Các kỹ thuật dùng để cải tiến hiệu năng trong lập trình Java]]></title>
-  <link rel="alternate" type="text/html" href="http:/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java.html"/>
-  <id>http:/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java</id>
+  <link rel="alternate" type="text/html" href="http://acegik.net/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java.html"/>
+  <id>http://acegik.net/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java</id>
   <published>2014-06-15T00:00:00+07:00</published>
   <updated>2014-06-15T00:00:00-00:00</updated>
   
   <author>
     <name>Phạm Ngọc Hùng</name>
-    <uri>http:/blog</uri>
+    <uri>http://acegik.net/blog</uri>
     <email>pnhung177@drupalex.net</email>
   </author>
-  <category scheme="http:/blog/tags/#Java" term="Java" /><category scheme="http:/blog/tags/#Java%20Performance" term="Java Performance" />
+  <category scheme="http://acegik.net/blog/tags/#Java" term="Java" /><category scheme="http://acegik.net/blog/tags/#Java%20Performance" term="Java Performance" />
   <content type="html">
   
     &lt;p&gt;Một ứng dụng có thể hoạt động rất tốt trong môi trường phát triển, tuy nhiên sau khi triển khai vào môi trường thực tế (production environment), ứng dụng hoạt động ngày càng kém đi do có sự gia tăng của tải trọng (số lượng người dùng hoặc lượng dữ liệu tăng lên). Chính vì vậy, việc đánh giá tình trạng cũng như thực hiện các giải pháp cải tiến hiệu năng là rất quan trọng không chỉ trong quá trình phát triển mà còn trong toàn bộ vòng đời của ứng dụng.&lt;/p&gt;
@@ -1756,13 +1755,13 @@ Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
 
 &lt;p&gt;Cải tiến hiệu năng là quá trình thu thập thông tin về hiệu năng của ứng dụng, phân tích xác định nguyên nhân ảnh hưởng đến hiệu năng, từ đó chỉnh sửa mã nguồn hoặc điều chỉnh thông số của phần mềm để làm tăng hiệu năng của ứng dụng, đáp ứng được yêu cầu đưa ra. Quá trình cải tiến hiệu năng được thực hiện thông qua 3 hoạt động: Theo dõi hiệu năng&lt;sup id=&quot;fnref:performance_monitoring&quot;&gt;&lt;a href=&quot;#fn:performance_monitoring&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; (Performance monitoring), Đo đạc hiệu năng&lt;sup id=&quot;fnref:performance_profiling&quot;&gt;&lt;a href=&quot;#fn:performance_profiling&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; (Performance profiling) và Điều chỉnh hiệu năng (Performance tuning).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/java-performance-management.png&quot; alt=&quot;Chu trình cải tiến hiệu năng cho ứng dụng Java&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/java-performance-management.png&quot; alt=&quot;Chu trình cải tiến hiệu năng cho ứng dụng Java&quot; /&gt; &lt;/p&gt;
 
 &lt;h3 id=&quot;theo-di-hiu-nng&quot;&gt;Theo dõi hiệu năng&lt;/h3&gt;
 
 &lt;p&gt;&lt;em&gt;Theo dõi hiệu năng&lt;/em&gt; là một hành động quan sát và thu thập - một cách không can thiệp (nonintrusive) - dữ liệu hiệu năng từ một ứng dụng đang vận hành. Trong hầu hết các trường hợp, theo dõi thường là dạng hành động mang tính phòng ngừa và chủ động, được thực hiện trong tất cả các môi trường của ứng dụng: môi trường thực, môi trường giám định chất lượng, hoặc môi trường phát triển. Tuy nhiên, theo dõi cũng thường là bước đầu tiên trong các hành động phản ứng lại tình huống xuất hiện báo cáo có vấn đề về hiệu năng của ứng dụng từ người dùng hoặc những người có liên quan, nhưng không cung cấp đầy đủ thông tin hoặc những đầu mối đề tìm ra nguyên nhân gốc rễ vấn đề. Theo dõi giúp xác định và cách ly các vấn đề tiềm năng mà không ảnh hưởng nghiêm trọng đến sự sẵn sàng đáp ứng hoặc thông lượng của một ứng dụng hiện đang chạy.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/performance-monitoring-comparison.png&quot; alt=&quot;So sánh giữa Performance Monitoring với chẩn đoán lâm sàng&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/performance-monitoring-comparison.png&quot; alt=&quot;So sánh giữa Performance Monitoring với chẩn đoán lâm sàng&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Theo dõi hiệu năng tương tự như quá trình chẩn đoán bệnh trong y học: bác sỹ thực hiện các kiểm tra sơ bộ, đo các chỉ số sinh hiệu (huyết áp, nhịp tim, v.v.), tác động cơ học lên cơ thể bệnh nhân, yêu cầu bệnh nhân mô tả các triệu chứng, từ đó chẩn đoán và khoanh vùng các nghi vấn về tình trạng bệnh tật. Việc khám bệnh có thể được thực hiện theo định kỳ để phòng ngừa, trong môi trường sinh hoạt bệnh nhân (bác sỹ đến khám tại nhà) hoặc bệnh nhân tự đến gặp bác sỹ để yêu cầu được khám bệnh khi phát hiện có triệu chứng bị ốm.&lt;/p&gt;
 
@@ -1770,7 +1769,7 @@ Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
 
 &lt;p&gt;&lt;em&gt;Đo đạc hiệu năng&lt;/em&gt; cũng là một hành động thu thập dữ liệu hiệu năng từ một ứng dụng đang vận hành. Tuy nhiên, khác với theo dõi hiệu năng, việc lập hồ sơ hiệu năng có thể tác động hoặc can thiệp nhiều hơn đến ứng dụng. Đo đạc hiệu năng thường tập trung có chủ đích vào phạm vi hẹp hơn so với theo dõi hiệu năng. Đo đạc rất hiếm khi được thực hiện trong môi trường thực, mà nó thường được thực hiện trong các môi trường giám định chất lượng, kiểm thử hoặc phát triển. Đo đạc thường chỉ xảy ra sau hoạt động theo dõi kết thúc hoặc khi những yêu cầu về hiệu năng được xác định rõ (well-defined).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/performance-profiling-comparison.png&quot; alt=&quot;So sánh giữa Performance Profiling với xét nghiệm cận lâm sàng&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/performance-profiling-comparison.png&quot; alt=&quot;So sánh giữa Performance Profiling với xét nghiệm cận lâm sàng&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Chúng ta có thể hình dung việc lập hồ sơ hiệu năng giống như quá trình xét nghiệm cận lâm sàng trong y học: sau khi đã chẩn đoán thông qua các triệu chứng lâm sàng, bác sỹ sẽ khoanh vùng căn bệnh và yêu cầu bệnh nhân thực hiện các xét nghiệm sâu hơn và cụ thể hơn. Ví dụ, sau khi khám và nghe mô tả của bệnh nhân: đau và hạn chế vận động cột sống, bả vai, ái phát từng đợt, thường sau khi vận động nhiều, bác sỹ chẩn đoán bệnh nhân bị loãng xương. Để xác định chính xác và chắc chắn hơn, bác sỹ sẽ chỉ định xét nghiệm cận lâm sàng: chụp X-Quang và đo chỉ số T-score. Với các thông tin thu được, bác sỹ có thể xác định nguyên nhân và đưa ra phát đồ điều trị bệnh.&lt;/p&gt;
 
@@ -1778,7 +1777,7 @@ Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
 
 &lt;p&gt;&lt;em&gt;Điều chỉnh hiệu năng&lt;/em&gt; là hoạt động chỉnh sửa mã nguồn hoặc thông số cấu hình của ứng dụng nhằm mục đích tăng cường khả năng sẵn sàng đáp ứng và nâng cao thông lượng của ứng dụng. Điều chỉnh hiệu năng thường được thực hiện sau các bước theo dõi hiệu năng và lập hồ sơ hiệu năng.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/performance-tuning-comparison.png&quot; alt=&quot;So sánh giữa Performance Tuning với điều trị bệnh&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/performance-tuning-comparison.png&quot; alt=&quot;So sánh giữa Performance Tuning với điều trị bệnh&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Tương ứng trong y tế, đây là quá trình bác sỹ áp dụng các phác đồ điều trị cũng như những cán thiệp y học (phẫu thuật, tiêm/uống thuốc, vật lý trị liệu, v.v.) để khắc phục các nguyên nhân gây bệnh, từ đó phục hồi và tăng cường sức khỏe cho người bệnh.&lt;/p&gt;
 
@@ -1801,23 +1800,23 @@ Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
 &lt;/div&gt;
 
   
-  &lt;p&gt;&lt;a href=&quot;http:/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java.html&quot;&gt;Các kỹ thuật dùng để cải tiến hiệu năng trong lập trình Java&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on June 15, 2014.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java.html&quot;&gt;Các kỹ thuật dùng để cải tiến hiệu năng trong lập trình Java&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on June 15, 2014.&lt;/p&gt;</content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Lập trình phân tách nội dung XML trong Java]]></title>
-  <link rel="alternate" type="text/html" href="http:/blog/java/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java.html"/>
-  <id>http:/blog/java/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java</id>
+  <link rel="alternate" type="text/html" href="http://acegik.net/blog/java/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java.html"/>
+  <id>http://acegik.net/blog/java/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java</id>
   <published>2013-07-05T00:00:00+07:00</published>
   <updated>2013-07-05T00:00:00-00:00</updated>
   
   <author>
     <name>Phạm Ngọc Hùng</name>
-    <uri>http:/blog</uri>
+    <uri>http://acegik.net/blog</uri>
     <email>pnhung177@drupalex.net</email>
   </author>
-  <category scheme="http:/blog/tags/#XML" term="XML" /><category scheme="http:/blog/tags/#XML%20Parser" term="XML Parser" />
+  <category scheme="http://acegik.net/blog/tags/#XML" term="XML" /><category scheme="http://acegik.net/blog/tags/#XML%20Parser" term="XML Parser" />
   <content type="html">
   
     &lt;p&gt;XML được sử dụng rộng rãi và đóng vai trò hết sức quan trọng trong các ứng dụng hiện nay. XML được sử dụng để cấu hình ứng dụng, lưu trữ dữ liệu, định dạng và trao đổi dữ liệu trong nội bộ cũng như giữa các ứng dụng. Do đó, hầu hết các ứng dụng đều trực tiếp hoặc gián tiếp xử lý dữ liệu theo định dạng XML. Với Java có rất nhiều thư viện hỗ trợ việc đọc/ghi dữ liệu theo định dạng XML, bao gồm các thư viện dựng sẵn trong Java cũng như các thư viện bên ngoài như jdom, xerces, axiom, woodstox,… Bài viết này đề cập đến việc sử dụng các thư viện dựng sẵn trong Java để phân tách đọc nội dung XML bằng 3 cách: dựa trên mô hình &lt;a href=&quot;http://en.wikipedia.org/wiki/Document_Object_Model&quot;&gt;DOM&lt;/a&gt;, sử dụng &lt;a href=&quot;http://en.wikipedia.org/wiki/Simple_API_for_XML&quot;&gt;SAX&lt;/a&gt; và sử dụng &lt;a href=&quot;http://en.wikipedia.org/wiki/StAX&quot;&gt;StAX&lt;/a&gt;.&lt;/p&gt;
@@ -1922,7 +1921,7 @@ Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
 
 &lt;p&gt;Theo cách này, chúng ta sử dụng đối tượng DocumentBuilder sẵn có trong Java. Nhiệm vụ của DocumentBuilder là phân tách nội dung tệp XML và chuyển đổi nội dung này thành cấu trúc DOM (Document Object Model) lưu trữ trong bộ nhớ, cho phép người lập trình sử dụng các hàm đã định nghĩa sẵn duyệt (traversing) cấu trúc phân cấp DOM để truy vấn dữ liệu.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/ae9e2b7d-eb00-43a5-b7a5-ff11db897b9f/xml_parsing_in_java_dom_parser.png&quot; alt=&quot;Hình 1. Cơ chế hoạt động của DOM Parser&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/ae9e2b7d-eb00-43a5-b7a5-ff11db897b9f/xml_parsing_in_java_dom_parser.png&quot; alt=&quot;Hình 1. Cơ chế hoạt động của DOM Parser&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Để minh họa, chúng ta xem xét lớp đối tượng DemoDOMParser, sử dụng DocumentBuilder để phân tách nội dung XML thành đối tượng Document theo mô hình DOM:&lt;/p&gt;
 
@@ -1978,7 +1977,7 @@ Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
 
 &lt;p&gt;Khác với việc phân tách XML theo mô hình DOM, quá trình phân tách nội dung XML bằng SAX sẽ không lưu trữ toàn bộ nội dung của tài liệu XML vào bộ nhớ, thay vào đó mỗi khi đọc đến một vị trí đặc biệt chẳng hạn như đầu tài liệu (start document), đầu thẻ (start element), nội dung văn bản (characters) bên trong thẻ, cuối thẻ hoặc cuối tài liệu XML, bộ xử lý của SAX (SAX Parser) sẽ phát sinh một sự kiện tương ứng với vị trí đồng thời gọi đến phương thức xử lý sự kiện trong lớp đối tượng Handler. Người lập trình có thể kế thừa lớp đối tượng DefaultHandler và nạp đè (override) các phương thức xử lý sự kiện trong lớp đối tượng này để xử lý theo cách của mình.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/ae9e2b7d-eb00-43a5-b7a5-ff11db897b9f/xml_parsing_in_java_sax_parser.png&quot; alt=&quot;Hình 2. Cơ chế hoạt động của SAX&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/ae9e2b7d-eb00-43a5-b7a5-ff11db897b9f/xml_parsing_in_java_sax_parser.png&quot; alt=&quot;Hình 2. Cơ chế hoạt động của SAX&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Lớp đối tượng DemoSAXParser dưới đây minh họa cho việc phân tách nội dung tệp student.xml theo cơ chế SAX. Lưu ý bên trong lớp đối tượng DemoSAXParser có chứa định nghĩa lớp đối tượng SAXHandler. Lớp SAXHandler này kế thừa từ DefaultHandler và nạp đè các phương thức xử lý sự kiện của SAX.&lt;/p&gt;
 
@@ -2047,7 +2046,7 @@ Configuration file: /path/to/your/jekyllhttp:/blog/folder/_config.yml
 
 &lt;p&gt;Cách thứ ba để xử lý tài liệu XML chính là StAX. Tương tự như SAX, StAX cũng áp dụng cơ chế xử lý sự kiện trong việc phân tách nội dung XML. Tuy nhiên, giữa SAX và StAX có sự khác biệt cơ bản: bộ xử lý SAX (SAX Parser) chủ động gọi và “đẩy” dữ liệu cho phương thức xử lý mỗi khi có sự kiện phát sinh, trong khi bộ xử lý StAX (StAX Reader) chờ chương trình gọi đến sự kiện tiếp theo và chuẩn bị sẵn dữ liệu để chương trình “kéo” dữ liệu ra xử lý.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http:/blog/media/ae9e2b7d-eb00-43a5-b7a5-ff11db897b9f/xml_parsing_in_java_stax_parser.png&quot; alt=&quot;Hình 3. Cơ chế hoạt động của StAX&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/ae9e2b7d-eb00-43a5-b7a5-ff11db897b9f/xml_parsing_in_java_stax_parser.png&quot; alt=&quot;Hình 3. Cơ chế hoạt động của StAX&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Ta có thể so sánh SAX với StAX giống như cách nhà hàng phục vụ thực khách trong tiệc cưới với cách nhà hàng phục vụ thực khách đơn lẻ. Trường hợp tiệc cưới, giống như cơ chế SAX, món ăn nào cũng như thời điểm phục vụ món ăn đó đã được gia chủ định sẵn (giống như lập trình trước các phương thức xử lý sự kiện trong SAXHandler vậy), do đó đến giờ là nhà hàng “đẩy” đồ ăn ra bàn phục vụ một cách chủ động, không phải chờ gọi. Còn với thực khách đơn lẻ, sẽ có người phục vụ luôn lắng nghe, thụ động chờ khách gọi món như thể khách “kéo” món ăn ra mỗi khi thấy cần.&lt;/p&gt;
 
@@ -2170,7 +2169,7 @@ Parsing student.xml using StAXParser:
 
 
   
-  &lt;p&gt;&lt;a href=&quot;http:/blog/java/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java.html&quot;&gt;Lập trình phân tách nội dung XML trong Java&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http:/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on July 05, 2013.&lt;/p&gt;</content>
+  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/java/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java.html&quot;&gt;Lập trình phân tách nội dung XML trong Java&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on July 05, 2013.&lt;/p&gt;</content>
 </entry>
 
 </feed>

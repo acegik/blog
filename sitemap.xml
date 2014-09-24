@@ -1,102 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>/blog</loc>
+        <loc>http://acegik.net/blog</loc>
     </url>
     
     
     <url>
-        <loc>/blog/404.html</loc>
+        <loc>http://acegik.net/blog/404.html</loc>
     </url>
     
     <url>
-        <loc>/blog/about/index.html</loc>
+        <loc>http://acegik.net/blog/about/index.html</loc>
     </url>
     
     <url>
-        <loc>/blog/categories/index.html</loc>
+        <loc>http://acegik.net/blog/categories/index.html</loc>
     </url>
     
     <url>
-        <loc>/blog/featured/</loc>
+        <loc>http://acegik.net/blog/featured/</loc>
     </url>
     
     <url>
-        <loc>/blog/feed.xml</loc>
+        <loc>http://acegik.net/blog/feed.xml</loc>
     </url>
     
     <url>
-        <loc>/blog/index.html</loc>
+        <loc>http://acegik.net/blog/index.html</loc>
     </url>
     
     <url>
-        <loc>/blog/links.jsonp</loc>
+        <loc>http://acegik.net/blog/links.jsonp</loc>
     </url>
     
     <url>
-        <loc>/blog/search.json</loc>
+        <loc>http://acegik.net/blog/search.json</loc>
     </url>
     
     <url>
-        <loc>/blog/sitemap.xml</loc>
+        <loc>http://acegik.net/blog/sitemap.xml</loc>
     </url>
     
     <url>
-        <loc>/blog/tags/index.html</loc>
+        <loc>http://acegik.net/blog/tags/index.html</loc>
     </url>
     
     <url>
-        <loc>/blog/page2/index.html</loc>
+        <loc>http://acegik.net/blog/page2/index.html</loc>
     </url>
     
     <url>
-        <loc>/blog/page3/index.html</loc>
+        <loc>http://acegik.net/blog/page3/index.html</loc>
     </url>
     
 
     
     <url>
-        <loc>/blog/puzzle/su-dung-dependency-injection-phan-ra-bai-toan-do-cua-einstein.html</loc>
+        <loc>http://acegik.net/blog/puzzle/su-dung-dependency-injection-phan-ra-bai-toan-do-cua-einstein.html</loc>
     </url>
     
     <url>
-        <loc>/blog/puzzle/lap-trinh-giai-bai-toan-do-cua-einstein.html</loc>
+        <loc>http://acegik.net/blog/puzzle/lap-trinh-giai-bai-toan-do-cua-einstein.html</loc>
     </url>
     
     <url>
-        <loc>/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html</loc>
+        <loc>http://acegik.net/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html</loc>
     </url>
     
     <url>
-        <loc>/blog/ruby/jekyll/setup/huong-dan-cai-dat-jekyll-tren-ubuntu.html</loc>
+        <loc>http://acegik.net/blog/ruby/jekyll/setup/huong-dan-cai-dat-jekyll-tren-ubuntu.html</loc>
     </url>
     
     <url>
-        <loc>/blog/java/concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading.html</loc>
+        <loc>http://acegik.net/blog/java/concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading.html</loc>
     </url>
     
     <url>
-        <loc>/blog/java/spring/core/tong-quan-ve-ioc-trong-spring.html</loc>
+        <loc>http://acegik.net/blog/java/spring/core/tong-quan-ve-ioc-trong-spring.html</loc>
     </url>
     
     <url>
-        <loc>/blog/java/concurrency/tong-quan-ve-java-concurrency.html</loc>
+        <loc>http://acegik.net/blog/java/concurrency/tong-quan-ve-java-concurrency.html</loc>
     </url>
     
     <url>
-        <loc>/blog/jekyll/migration/gia-tu-wordpress.html</loc>
+        <loc>http://acegik.net/blog/jekyll/migration/gia-tu-wordpress.html</loc>
     </url>
     
     <url>
-        <loc>/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html</loc>
+        <loc>http://acegik.net/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html</loc>
     </url>
     
     <url>
-        <loc>/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java.html</loc>
+        <loc>http://acegik.net/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java.html</loc>
     </url>
     
     <url>
-        <loc>/blog/java/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java.html</loc>
+        <loc>http://acegik.net/blog/java/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java.html</loc>
     </url>
     
 </urlset>

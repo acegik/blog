@@ -2,57 +2,57 @@ callback([
 
   {
     "text": "Lập trình phân tách nội dung XML trong Java",
-    "href": "/blog/java/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java.html"
+    "href": "http://acegik.net/blog/java/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java.html"
   } ,
 
   {
     "text": "Các kỹ thuật dùng để cải tiến hiệu năng trong lập trình Java",
-    "href": "/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java.html"
+    "href": "http://acegik.net/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java.html"
   } ,
 
   {
     "text": "Cải thiện từng bước tốc độ chương trình bằng Profiler",
-    "href": "/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html"
+    "href": "http://acegik.net/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html"
   } ,
 
   {
     "text": "Giã từ ... Wordpress",
-    "href": "/blog/jekyll/migration/gia-tu-wordpress.html"
+    "href": "http://acegik.net/blog/jekyll/migration/gia-tu-wordpress.html"
   } ,
 
   {
     "text": "Tổng quan về Java Concurrency",
-    "href": "/blog/java/concurrency/tong-quan-ve-java-concurrency.html"
+    "href": "http://acegik.net/blog/java/concurrency/tong-quan-ve-java-concurrency.html"
   } ,
 
   {
     "text": "Tổng quan về IoC trong Spring Framework",
-    "href": "/blog/java/spring/core/tong-quan-ve-ioc-trong-spring.html"
+    "href": "http://acegik.net/blog/java/spring/core/tong-quan-ve-ioc-trong-spring.html"
   } ,
 
   {
     "text": "Lập trình Concurrency trong Java bằng multithreading",
-    "href": "/blog/java/concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading.html"
+    "href": "http://acegik.net/blog/java/concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading.html"
   } ,
 
   {
     "text": "Hướng dẫn cài đặt Jekyll trên Ubuntu",
-    "href": "/blog/ruby/jekyll/setup/huong-dan-cai-dat-jekyll-tren-ubuntu.html"
+    "href": "http://acegik.net/blog/ruby/jekyll/setup/huong-dan-cai-dat-jekyll-tren-ubuntu.html"
   } ,
 
   {
     "text": "Xây dựng IoC Container đơn giản cấu hình bằng XML",
-    "href": "/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html"
+    "href": "http://acegik.net/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html"
   } ,
 
   {
     "text": "Lập trình giải bài toán đố năm ngôi nhà của Albert Einstein",
-    "href": "/blog/puzzle/lap-trinh-giai-bai-toan-do-cua-einstein.html"
+    "href": "http://acegik.net/blog/puzzle/lap-trinh-giai-bai-toan-do-cua-einstein.html"
   } ,
 
   {
     "text": "Sử dụng Dependency Injection để phân rã chương trình giải bài toán đố của Einstein",
-    "href": "/blog/puzzle/su-dung-dependency-injection-phan-ra-bai-toan-do-cua-einstein.html"
+    "href": "http://acegik.net/blog/puzzle/su-dung-dependency-injection-phan-ra-bai-toan-do-cua-einstein.html"
   } 
 
 ])

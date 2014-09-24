@@ -3,7 +3,7 @@
 		{
 		  "title"      : "Sử dụng Dependency Injection để phân rã chương trình giải bài toán đố của Einstein",
 		  "category"   : "puzzle",
-		  "url"        : "/blog/puzzle/su-dung-dependency-injection-phan-ra-bai-toan-do-cua-einstein.html",
+		  "url"        : "http://acegik.net/blog/puzzle/su-dung-dependency-injection-phan-ra-bai-toan-do-cua-einstein.html",
 		  "date"       : "2014-09-23 00:00:00 +0700",
 		  "shortdate"  : "September 23, 2014"
 		} ,
@@ -11,7 +11,7 @@
 		{
 		  "title"      : "Lập trình giải bài toán đố năm ngôi nhà của Albert Einstein",
 		  "category"   : "puzzle",
-		  "url"        : "/blog/puzzle/lap-trinh-giai-bai-toan-do-cua-einstein.html",
+		  "url"        : "http://acegik.net/blog/puzzle/lap-trinh-giai-bai-toan-do-cua-einstein.html",
 		  "date"       : "2014-09-20 00:00:00 +0700",
 		  "shortdate"  : "September 20, 2014"
 		} ,
@@ -19,7 +19,7 @@
 		{
 		  "title"      : "Xây dựng IoC Container đơn giản cấu hình bằng XML",
 		  "category"   : "javaspringcore",
-		  "url"        : "/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html",
+		  "url"        : "http://acegik.net/blog/java/spring/core/xay-dung-ioc-container-don-gian-cau-hinh-bang-xml.html",
 		  "date"       : "2014-09-06 00:00:00 +0700",
 		  "shortdate"  : "September 06, 2014"
 		} ,
@@ -27,7 +27,7 @@
 		{
 		  "title"      : "Hướng dẫn cài đặt Jekyll trên Ubuntu",
 		  "category"   : "rubyjekyllsetup",
-		  "url"        : "/blog/ruby/jekyll/setup/huong-dan-cai-dat-jekyll-tren-ubuntu.html",
+		  "url"        : "http://acegik.net/blog/ruby/jekyll/setup/huong-dan-cai-dat-jekyll-tren-ubuntu.html",
 		  "date"       : "2014-08-30 00:00:00 +0700",
 		  "shortdate"  : "August 30, 2014"
 		} ,
@@ -35,7 +35,7 @@
 		{
 		  "title"      : "Lập trình Concurrency trong Java bằng multithreading",
 		  "category"   : "javaconcurrency",
-		  "url"        : "/blog/java/concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading.html",
+		  "url"        : "http://acegik.net/blog/java/concurrency/lap-trinh-cocurrency-trong-java-bang-multithreading.html",
 		  "date"       : "2014-08-26 00:00:00 +0700",
 		  "shortdate"  : "August 26, 2014"
 		} ,
@@ -43,7 +43,7 @@
 		{
 		  "title"      : "Tổng quan về IoC trong Spring Framework",
 		  "category"   : "javaspringcore",
-		  "url"        : "/blog/java/spring/core/tong-quan-ve-ioc-trong-spring.html",
+		  "url"        : "http://acegik.net/blog/java/spring/core/tong-quan-ve-ioc-trong-spring.html",
 		  "date"       : "2014-08-24 00:00:00 +0700",
 		  "shortdate"  : "August 24, 2014"
 		} ,
@@ -51,7 +51,7 @@
 		{
 		  "title"      : "Tổng quan về Java Concurrency",
 		  "category"   : "javaconcurrency",
-		  "url"        : "/blog/java/concurrency/tong-quan-ve-java-concurrency.html",
+		  "url"        : "http://acegik.net/blog/java/concurrency/tong-quan-ve-java-concurrency.html",
 		  "date"       : "2014-08-20 00:00:00 +0700",
 		  "shortdate"  : "August 20, 2014"
 		} ,
@@ -59,7 +59,7 @@
 		{
 		  "title"      : "Giã từ ... Wordpress",
 		  "category"   : "jekyllmigration",
-		  "url"        : "/blog/jekyll/migration/gia-tu-wordpress.html",
+		  "url"        : "http://acegik.net/blog/jekyll/migration/gia-tu-wordpress.html",
 		  "date"       : "2014-07-01 00:00:00 +0700",
 		  "shortdate"  : "July 01, 2014"
 		} ,
@@ -67,7 +67,7 @@
 		{
 		  "title"      : "Cải thiện từng bước tốc độ chương trình bằng Profiler",
 		  "category"   : "javaperformance",
-		  "url"        : "/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html",
+		  "url"        : "http://acegik.net/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html",
 		  "date"       : "2014-06-19 00:00:00 +0700",
 		  "shortdate"  : "June 19, 2014"
 		} ,
@@ -75,7 +75,7 @@
 		{
 		  "title"      : "Các kỹ thuật dùng để cải tiến hiệu năng trong lập trình Java",
 		  "category"   : "javaperformance",
-		  "url"        : "/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java.html",
+		  "url"        : "http://acegik.net/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java.html",
 		  "date"       : "2014-06-15 00:00:00 +0700",
 		  "shortdate"  : "June 15, 2014"
 		} ,
@@ -83,7 +83,7 @@
 		{
 		  "title"      : "Lập trình phân tách nội dung XML trong Java",
 		  "category"   : "javaxml",
-		  "url"        : "/blog/java/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java.html",
+		  "url"        : "http://acegik.net/blog/java/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java.html",
 		  "date"       : "2013-07-05 00:00:00 +0700",
 		  "shortdate"  : "July 05, 2013"
 		} 
