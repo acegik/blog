@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CảI THIệN TừNG BướC TốC độ CHươNG TRìNH BằNG PROFILER &vert; ACEGIK'S BLOG</title>
+<meta name="description" content="Hãy thắp một ngọn nến nhỏ, thay vì nguyền rủa bóng đêm">
+<meta name="keywords" content="Java Performance, Refactoring, Profiling">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/blog/images/logo.png">
+<meta name="twitter:title" content="Cải thiện từng bước tốc độ chương trình bằng Profiler">
+<meta name="twitter:description" content="Hãy thắp một ngọn nến nhỏ, thay vì nguyền rủa bóng đêm">
+<meta name="twitter:creator" content="@pnhung177">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cải thiện từng bước tốc độ chương trình bằng Profiler">
+<meta property="og:description" content="Hãy thắp một ngọn nến nhỏ, thay vì nguyền rủa bóng đêm">
+<meta property="og:url" content="/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html">
+<meta property="og:site_name" content="Acegik's Blog">
+<meta property="og:image" content="/blog/images/">
+
+
+
+
+
+<link rel="canonical" href="/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html">
+<link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Acegik's Blog Feed">
+<link rel="author" href="https://plus.google.com/u/3/115458186421626071505?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,600,300,800,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/blog/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/blog/assets/css/vendor/normalize.css">
+    <link rel="stylesheet" href="/blog/assets/css/vendor/foundation.min.css">
+    <link rel="stylesheet" href="/blog/assets/css/style.css">
+    <link rel="stylesheet" href="/blog/assets/css/post.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/blog/assets/js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+    
+
+
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">  
+
+        <main id="summer-post-container-simple" class="summer-post-container-simple" role="main">
+            <header class="summer-post-header-simple">
+                <div class="summer-post-menu-header-simple">
+
+                    <a class="summer-blog-logo" href="/blog">
+                        <img src="/blog/images/logo.png" alt="Blog Logo" />
+                    </a>
+
+                <div class="summer-blog-menu">      
+    <div class="summer-mobile-menu show-for-small">
+        <a href="#"><i class="fa fa-bars"></i></a>
+    </div>
+    <ul class="summer-menu">
+        <li class="summer-mobile-close-btn show-for-small text-right">
+            <a href="#"><i class="fa fa-times"></i></a>
+        </li>
+
+            <li>
+                    <a href="/blog/">Trang bìa</a>
+                 </li>
+
+            <li>
+                    <a href="/blog/featured">Nổi bật</a>
+                 </li>
+
+            <li>
+                    <a href="/blog/categories">Danh mục</a>
+                 </li>
+
+            <li>
+                    <a href="/blog/about">Giới thiệu</a>
+                 </li>
+            
+           <li><a href="/blog/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+    </ul>
+
+</div>
+            </div>
+
+                <div class="summer-post-title-simple row">
+                    <div class="small-12 columns">
+                        <div class="summer-post-meta-simple">
+                            <h1>Cải thiện từng bước tốc độ chương trình bằng Profiler</h1>
+                            <p>by <strong>pnhung177</strong> &#8212; on <a href="/blog/tags/index.html#Java Performance" data-toggle="tooltip" title="Posts tagged with Java Performance" rel="tag">Java Performance</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#Refactoring" data-toggle="tooltip" title="Posts tagged with Refactoring" rel="tag">Refactoring</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#Profiling" data-toggle="tooltip" title="Posts tagged with Profiling" rel="tag">Profiling</a> &#8212; <strong><time datetime="2014-06-19T00:00:00+07:00">19/06/2014</time></strong></p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+        <article class="summer-post-content post tag-simple">
+            <div><p>Trong bài viết này, thông qua một số ví dụ nhỏ, tôi muốn đề cập đến việc sử dụng các công cụ Profiler (tạm dịch là công cụ đo đạc hiệu năng) để cải thiện tốc độ của từng phần mã lệnh trong các phương thức, từ đó từng bước nâng cao tốc độ của toàn bộ chương trình.</p>
+
+<p>Yêu cầu của ví dụ minh họa cho bài viết này là phát triển một hàm kiểm tra một chuỗi đầu vào có phải là địa chỉ email hợp lệ hay không? Netbeans được sử dụng để viết mã lệnh do có sẵn Profiler tích hợp bên trong. Nếu các bạn sử dụng các công cụ khác như Eclipse hoặc IntelliJ IDEA có thể cài đặt tích hợp thêm VisualVM vào các môi trường phát triển này.</p>
+
+<h2 id="pht-trin-chc-nng-theo-tdd">Phát triển chức năng theo TDD</h2>
+
+<p>Để lập trình chức năng đặt ra ở trên, chúng ta sẽ tạo một lớp đối tượng có tên là <strong>ValidationUtil</strong>, trong đó có một hàm <em>verifyEmail(s)</em> có chức năng kiểm tra chuỗi đầu vào <em>s</em> có phải là một địa chỉ email hợp lệ hay không?</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ValidationUtil</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">verifyEmail</span><span class="o">(</span><span class="n">String</span> <span class="n">email</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">throw</span> <span class="k">new</span> <span class="nf">UnsupportedOperationException</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
+
+<p>Tạo lớp đối tượng <strong>ValidationUtilTest</strong> trong thư mục <em>src/test/java</em>, trong đó viết các hàm kiểm thử cho <em>verifyEmail()</em>:</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ValidationUtilTest</span> <span class="o">{</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test_valid_emails</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">sample_valid_emails</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]</span> <span class="o">{</span>
+            <span class="s">&quot;abc@example.com&quot;</span><span class="o">,</span> <span class="s">&quot;abc01@example.com&quot;</span><span class="o">,</span> <span class="s">&quot;a@example.com&quot;</span><span class="o">,</span>
+            <span class="s">&quot;too_long_email_address@sub.example.com&quot;</span><span class="o">};</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="n">String</span> <span class="nl">sample:</span><span class="n">sample_valid_emails</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">Assert</span><span class="o">.</span><span class="na">assertTrue</span><span class="o">(</span><span class="n">ValidationUtil</span><span class="o">.</span><span class="na">verifyEmail</span><span class="o">(</span><span class="n">sample</span><span class="o">));</span>
+		<span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test_invalid_emails</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">sample_invalid_emails</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]</span> <span class="o">{</span>
+            <span class="s">&quot;&quot;</span><span class="o">,</span> <span class="s">&quot;#ABCDEF$&quot;</span><span class="o">,</span> <span class="s">&quot;Wrong Email&quot;</span><span class="o">,</span> <span class="s">&quot;someone@abc&quot;</span><span class="o">,</span>
+            <span class="s">&quot;domain.only.vn&quot;</span><span class="o">,</span> <span class="s">&quot;without#at.abc&quot;</span><span class="o">};</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="n">String</span> <span class="nl">sample:</span><span class="n">sample_invalid_emails</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">Assert</span><span class="o">.</span><span class="na">assertFalse</span><span class="o">(</span><span class="n">ValidationUtil</span><span class="o">.</span><span class="na">verifyEmail</span><span class="o">(</span><span class="n">sample</span><span class="o">));</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
+
+<p>Chạy kiểm thử <strong>ValidationUtilTest</strong>, đương nhiên kết quả fail đối với cả hai hàm test. Lập trình thật nhanh chưa cần tối ưu chức năng của hàm <em>verifyEmail()</em> để pass qua được các bộ test:</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ValidationUtil</span> <span class="o">{</span>
+    
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">EMAIL_PATTERN_STRING</span> <span class="o">=</span>
+		<span class="s">&quot;^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@&quot;</span>
+		<span class="o">+</span> <span class="s">&quot;[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$&quot;</span><span class="o">;</span>
+   
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">verifyEmail</span><span class="o">(</span><span class="n">String</span> <span class="n">email</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">email</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">email</span><span class="o">.</span><span class="na">matches</span><span class="o">(</span><span class="n">EMAIL_PATTERN_STRING</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
+
+<p>Chạy kiểm thử lại <strong>ValidationUtilTest</strong>, dựa trên kết quả test để tùy chỉnh mã lệnh cho đến khi <strong>pass</strong> qua bộ test.</p>
+
+<h2 id="p-dng-profiling--ci-tin-tc-">Áp dụng profiling để cải tiến tốc độ</h2>
+
+<p>Nếu chỉ dừng lại tại đây, chúng ta đã phát triển xong chức năng kiểm tra tính hợp lệ của địa chỉ email, đáp ứng được bộ Test đặt ra. Tuy nhiên, do phát triển nhanh để pass qua bộ test, chúng ta chưa cân nhắc đến tốc độ. Sau khi đã đảm bảo pass qua Test, đây là thời điểm xem xét đến hiệu năng của đoạn mã lệnh vừa tạo ra.</p>
+
+<p>Trong trường hợp ví dụ của chúng ta, có thể dễ dàng nhận ra hàm String.matches() không thực sự hiệu quả nếu được sử dụng với tần suất lớn, do mỗi lần gọi hàm chương trình đều tạo ra ngầm bên trong một đối tượng <strong>Pattern</strong> để biên dịch mẫu <em>EMAIL_PATTERN_STRING</em>, quá trình này khá tốn kém thời gian. Với nhận định trên, ta có thể cải tiến bằng cách tạo đối tượng <strong>Pattern</strong> để biên dịch mẫu đối sánh <em>EMAIL_PATTERN_STRING</em> một lần từ đầu trong lớp <strong>ValidationUtil</strong>, sau đó mỗi lần kiểm tra không cần tạo lại nữa.</p>
+
+<p>Để tiện cho việc so sánh, chúng ta tạo thêm một hàm <em>verifyEmail2()</em> chứa đoạn mã cải tiến:</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ValidationUtil</span> <span class="o">{</span>
+    
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">EMAIL_PATTERN_STRING</span> <span class="o">=</span>
+		<span class="s">&quot;^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@&quot;</span>
+		<span class="o">+</span> <span class="s">&quot;[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$&quot;</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">verifyEmail</span><span class="o">(</span><span class="n">String</span> <span class="n">email</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">email</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">email</span><span class="o">.</span><span class="na">matches</span><span class="o">(</span><span class="n">EMAIL_PATTERN_STRING</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Pattern</span> <span class="n">EMAIL_PATTERN</span> <span class="o">=</span>
+            <span class="n">Pattern</span><span class="o">.</span><span class="na">compile</span><span class="o">(</span><span class="n">EMAIL_PATTERN_STRING</span><span class="o">);</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">verifyEmail2</span><span class="o">(</span><span class="n">String</span> <span class="n">email</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">email</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="n">Matcher</span> <span class="n">matcher</span> <span class="o">=</span> <span class="n">EMAIL_PATTERN</span><span class="o">.</span><span class="na">matcher</span><span class="o">(</span><span class="n">email</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">matcher</span><span class="o">.</span><span class="na">matches</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
+
+<p>Trong <strong>ValidationUtilTest</strong> bổ sung thêm các đoạn mã lệnh kiểm thử hàm <em>verifyEmail2()</em>:</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ValidationUtilTest</span> <span class="o">{</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test_valid_emails</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">sample_valid_emails</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]</span> <span class="o">{</span>
+            <span class="s">&quot;abc@example.com&quot;</span><span class="o">,</span> <span class="s">&quot;abc01@example.com&quot;</span><span class="o">,</span> <span class="s">&quot;a@example.com&quot;</span><span class="o">,</span>
+            <span class="s">&quot;too_long_email_address@sub.example.com&quot;</span><span class="o">};</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">1000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="n">String</span> <span class="nl">sample:</span><span class="n">sample_valid_emails</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">Assert</span><span class="o">.</span><span class="na">assertTrue</span><span class="o">(</span> <span class="n">ValidationUtil</span><span class="o">.</span><span class="na">verifyEmail</span><span class="o">(</span><span class="n">sample</span><span class="o">)</span> <span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">1000</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="n">String</span> <span class="nl">sample:</span><span class="n">sample_valid_emails</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">Assert</span><span class="o">.</span><span class="na">assertTrue</span><span class="o">(</span> <span class="n">ValidationUtil</span><span class="o">.</span><span class="na">verifyEmail2</span><span class="o">(</span><span class="n">sample</span><span class="o">)</span> <span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test_invalid_emails</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">sample_invalid_emails</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[]</span> <span class="o">{</span>
+            <span class="s">&quot;&quot;</span><span class="o">,</span> <span class="s">&quot;#ABCDEF$&quot;</span><span class="o">,</span> <span class="s">&quot;Wrong Email&quot;</span><span class="o">,</span>
+            <span class="s">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567&quot;</span><span class="o">};</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="n">String</span> <span class="nl">sample:</span><span class="n">sample_invalid_emails</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">Assert</span><span class="o">.</span><span class="na">assertFalse</span><span class="o">(</span> <span class="n">ValidationUtil</span><span class="o">.</span><span class="na">verifyEmail</span><span class="o">(</span><span class="n">sample</span><span class="o">)</span> <span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="n">String</span> <span class="nl">sample:</span><span class="n">sample_invalid_emails</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">Assert</span><span class="o">.</span><span class="na">assertFalse</span><span class="o">(</span> <span class="n">ValidationUtil</span><span class="o">.</span><span class="na">verifyEmail2</span><span class="o">(</span><span class="n">sample</span><span class="o">)</span> <span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
+
+<p>Sau khi chạy kiểm thử lại <strong>ValidationUtilTest</strong> để đảm bảo <em>verifyEmail2()</em> pass qua bộ test, chúng ta chạy Profile cho file <strong>ValidationUtilTest</strong> như sau:</p>
+
+<p><img src="/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/start-profiling-test-file.png" alt="Hình 1. Kích hoạt Profiler để phân tích tệp Test" /> </p>
+
+<p>Chọn chức năng cần đo đạc là CPU. Profiler sẽ yêu cầu thiết lập tùy chọn, hãy chọn Advanced &gt; Edit Profiling Roots để xác định các phương thức cần đo đạc tốc độ như trong hình sau:</p>
+
+<p><img src="/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/edit-profiling-roots.png" alt="Hình 2. Chọn các phương thức cần thực hiện đo đạc" /></p>
+
+<p>Sau khi đã thiết lập xong tùy chọn, click chuột vào <strong>Run</strong> để chạy profiling. Khi kết thúc, Profiler hiển thị hộp thoại xác nhận có muốn ghi lại kết quả đã đo đạc không? hãy chọn <strong>Yes</strong>:</p>
+
+<p><img src="/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/take-a-snapshot-of-results.png" alt="Hình 3. Xác nhận ghi lại kết quả đo đạc" /></p>
+
+<p>Profiler sẽ hiển thị cửa sổ kết quả như sau:</p>
+
+<p><img src="/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/cpu-hotspot-results.png" alt="Hình 4. Kết quả đo đạc tốc độ thực thi của các phương thức được chọn" /></p>
+
+<p>Nhìn vào kết quả đo đạc, ta có thể dễ dàng thấy cả 2 hàm <em>verifyEmail()</em> và <em>verifyEmail2()</em> đều thực thi <em>4004</em> lần, tuy nhiên tổng thời gian thực thi của <em>verifyEmail()</em> là 346ms, chiếm 70.9% tổng thời gian thực thi ứng dụng, trong khi hàm <em>verifyEmail2()</em> chỉ mất tổng thời gian thực thi là 24.8ms, chiếm 5.1%. Như vậy, chúng ta có đủ cơ sở để thay hàm <em>verifyEmail()</em> bởi hàm <em>verifyEmail2()</em>. Việc này khá đơn giản, chỉ cần hoán đổi tên của 2 hàm trên.</p>
+
+<h2 id="kt-lun">Kết luận</h2>
+
+<p>Qua ví dụ trên, chúng ta có thể thấy Profiler là công cụ đắc lực trong việc đo đạc hiệu năng của các hàm, làm cơ sở để chọn lựa hàm có hiệu năng tốt hơn. Hơn nữa, kết hợp với Unit Testing sẽ giúp chúng ta cải thiện dần từng bước tốc độ từng phần của ứng dụng, từ đó góp phần cải tiến toàn bộ chương trình.</p>
+
+<p>Các bạn có thể tải mã nguồn đầy đủ của <a href="https://github.com/pnhung177/example-improve-running-time/archive/master.zip">ví dụ minh họa</a> để chạy thử.</p>
+
+
+            </div>
+        </article>
+        <div class="cf"></div>
+        <div class="row text-center">
+            <section class="summer-post-share">
+                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Cải thiện từng bước tốc độ chương trình bằng Profiler&quot;%20/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html%20via%20&#64;pnhung177"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a class="facebook-icon" href="https://www.facebook.com/sharer/sharer.php?u=/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a class="google-icon" href="https://plus.google.com/share?url=/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </section>
+        </div>
+        <div class="cf"></div>
+        
+            <div class="summer-author-info">
+                <div class="row">
+                    <section class="summer-post-author small-12 columns">
+                        
+                            <img src="/blog/images/avatars/pnhung177.png" class="summer-post-author-avatar" alt="Phạm Ngọc Hùng's photo">
+                        
+                        
+                            <span class="author-label">Author</span>
+                            <h1>Phạm Ngọc Hùng</h1>
+                        
+                        
+                            <p><a href="mailto:pnhung177@drupalex.net" class="author-website">pnhung177@drupalex.net</a></p>
+                        
+                        
+                            <p>Hãy thắp một ngọn nến nhỏ, thay vì nguyền rủa bóng đêm</p>
+                        
+                    </section>
+                </div>
+            </div> 
+        
+        <div class="cf"></div>
+        
+        <section class="summer-disqus row">
+    <div class="small-12 columns">
+        <h1 class="summer-comments-header">Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'acegik'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+
+        <div class="cf"></div>
+
+    <footer class="summer-site-footer">
+    <div class="copyright">
+         <section>Bản quyền nội dung thuộc về <a href="/blog/about">Phạm Ngọc Hùng</a> &copy; 2014.</section>
+    </div>
+    <div class="social-icons">
+        
+        
+        <a href="http://twitter.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-twitter fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="https://plus.google.com/u/3/115458186421626071505">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-google-plus fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="http://github.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-github fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="http://facebook.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-facebook fa-stack-1x"></i>
+            </span>
+        </a>
+        
+    </div>
+    
+    <div class="cf"></div>
+</footer>
+ 
+</main>    
+    <script src="/blog/assets/js/vendor/modernizr.js"></script>
+    <script src="/blog/assets/js/foundation.min.js"></script>
+    <script src="/blog/assets/js/vendor/background-check.js"></script>
+    <script src="/blog/assets/js/vendor/post-header-animations.js"></script>
+    <script src="/blog/assets/js/summer.js"></script>
+
+    <script>
+      $(document).foundation();
+    </script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54128248-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+</script>
+ 
+</body>
+</html>
