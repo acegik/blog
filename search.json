@@ -1,6 +1,14 @@
 [
 	
 		{
+		  "title"      : "Tiếng Anh dùng trong nghiên cứu học thuật - Thực hành từ vựng 2.1",
+		  "category"   : "engishacademic-research",
+		  "url"        : "http://acegik.net/blog/engish/academic-research/tieng-anh-dung-trong-nghien-cuu-hoc-thuat-thuc-hanh-tu-vung--2-1.html",
+		  "date"       : "2014-09-28 00:00:00 +0700",
+		  "shortdate"  : "September 28, 2014"
+		} ,
+	
+		{
 		  "title"      : "Sử dụng Dependency Injection để phân rã chương trình giải bài toán đố của Einstein",
 		  "category"   : "puzzle",
 		  "url"        : "http://acegik.net/blog/puzzle/su-dung-dependency-injection-phan-ra-bai-toan-do-cua-einstein.html",
