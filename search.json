@@ -145,6 +145,14 @@
 		} ,
 	
 		{
+		  "title"      : "Viết luận văn tốt nghiệp bằng TeX",
+		  "category"   : "tex",
+		  "url"        : "http://acegik.net/blog/tex/viet-luan-van-tot-nghiep-bang-tex.html",
+		  "date"       : "2013-08-10 00:00:00 +0700",
+		  "shortdate"  : "August 10, 2013"
+		} ,
+	
+		{
 		  "title"      : "Lập trình phân tách nội dung XML trong Java",
 		  "category"   : "javaxml",
 		  "url"        : "http://acegik.net/blog/java/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java.html",

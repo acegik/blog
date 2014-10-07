@@ -6,6 +6,11 @@ callback([
   } ,
 
   {
+    "text": "Viết luận văn tốt nghiệp bằng TeX",
+    "href": "http://acegik.net/blog/tex/viet-luan-van-tot-nghiep-bang-tex.html"
+  } ,
+
+  {
     "text": "Các kỹ thuật dùng để cải tiến hiệu năng trong lập trình Java",
     "href": "http://acegik.net/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java.html"
   } ,
