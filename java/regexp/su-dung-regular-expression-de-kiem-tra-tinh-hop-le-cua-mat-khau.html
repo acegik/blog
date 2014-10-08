@@ -224,14 +224,7 @@
   </tbody>
 </table>
 
-<table>
-  <tbody>
-    <tr>
-      <td>Để thiết lập nhiều quy tắc cùng lúc, chúng ta có thể dùng toán tử Bitwise OR (trong Java ký hiệu là</td>
-      <td>) để “ghép” các quy tắc này với nhau. Giả sử với 3 quy tắc: <em>FLAG_HAS_NO_WHITESPACE</em>, <em>FLAG_HAS_DIGIT</em> và <em>FLAG_HAS_SPECIAL_CHARS</em>, chúng ta có thể thiết lập bằng lệnh:</td>
-    </tr>
-  </tbody>
-</table>
+<p>Để thiết lập nhiều quy tắc cùng lúc, chúng ta có thể dùng toán tử Bitwise OR để “ghép” các quy tắc này với nhau. Giả sử với 3 quy tắc: <em>FLAG_HAS_NO_WHITESPACE</em>, <em>FLAG_HAS_DIGIT</em> và <em>FLAG_HAS_SPECIAL_CHARS</em>, chúng ta có thể thiết lập bằng lệnh:</p>
 
 <div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">validator</span><span class="o">.</span><span class="na">setOptionFlags</span>
     <span class="o">(</span><span class="n">FLAG_HAS_NO_WHITESPACE</span> <span class="o">|</span> <span class="n">FLAG_HAS_DIGIT</span> <span class="o">|</span> <span class="n">FLAG_HAS_SPECIAL_CHARS</span><span class="o">);</span></code></pre></div>

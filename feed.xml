@@ -9,7 +9,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://acegik.net/blog/feed.xml" />
 <link rel="alternate" type="text/html" href="http://acegik.net/blog/" />
-<updated>2014-10-08T18:16:00+07:00</updated>
+<updated>2014-10-08T18:21:28+07:00</updated>
 <id>http://acegik.net/blog/</id>
 <author>
   <name>Phạm Ngọc Hùng</name>
@@ -2280,14 +2280,7 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Để thiết lập nhiều quy tắc cùng lúc, chúng ta có thể dùng toán tử Bitwise OR (trong Java ký hiệu là&lt;/td&gt;
-      &lt;td&gt;) để “ghép” các quy tắc này với nhau. Giả sử với 3 quy tắc: &lt;em&gt;FLAG_HAS_NO_WHITESPACE&lt;/em&gt;, &lt;em&gt;FLAG_HAS_DIGIT&lt;/em&gt; và &lt;em&gt;FLAG_HAS_SPECIAL_CHARS&lt;/em&gt;, chúng ta có thể thiết lập bằng lệnh:&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;p&gt;Để thiết lập nhiều quy tắc cùng lúc, chúng ta có thể dùng toán tử Bitwise OR để “ghép” các quy tắc này với nhau. Giả sử với 3 quy tắc: &lt;em&gt;FLAG_HAS_NO_WHITESPACE&lt;/em&gt;, &lt;em&gt;FLAG_HAS_DIGIT&lt;/em&gt; và &lt;em&gt;FLAG_HAS_SPECIAL_CHARS&lt;/em&gt;, chúng ta có thể thiết lập bằng lệnh:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;validator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOptionFlags&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FLAG_HAS_NO_WHITESPACE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FLAG_HAS_DIGIT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FLAG_HAS_SPECIAL_CHARS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
