@@ -11,6 +11,11 @@ callback([
   } ,
 
   {
+    "text": "Sử dụng Regular Expression để kiểm tra tính hợp lệ của mật khẩu",
+    "href": "http://acegik.net/blog/java/regexp/su-dung-regular-expression-de-kiem-tra-tinh-hop-le-cua-mat-khau.html"
+  } ,
+
+  {
     "text": "Các kỹ thuật dùng để cải tiến hiệu năng trong lập trình Java",
     "href": "http://acegik.net/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java.html"
   } ,

@@ -57,6 +57,10 @@
         <loc>http://acegik.net/blog/page4/index.html</loc>
     </url>
     
+    <url>
+        <loc>http://acegik.net/blog/page5/index.html</loc>
+    </url>
+    
 
     
     <url>
@@ -129,6 +133,10 @@
     
     <url>
         <loc>http://acegik.net/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java.html</loc>
+    </url>
+    
+    <url>
+        <loc>http://acegik.net/blog/java/regexp/su-dung-regular-expression-de-kiem-tra-tinh-hop-le-cua-mat-khau.html</loc>
     </url>
     
     <url>
