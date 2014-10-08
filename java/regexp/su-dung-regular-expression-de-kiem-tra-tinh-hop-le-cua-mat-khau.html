@@ -119,11 +119,11 @@
         <article class="summer-post-content post tag-simple">
             <div><p>Chúng ta đã làm quen với việc sử dụng Regular Expression để kiểm tra tính hợp lệ của dữ liệu. Trong phần này, chúng ta sẽ tìm hiểu về cách thức áp dụng Regular Expression để kiểm tra tính hợp lệ của mật khẩu, trong đó xây dựng cơ chế để điều chỉnh các mức độ mạnh yếu khác nhau của mật khẩu cần được kiểm tra. </p>
 
-<p>Trong ví dụ minh họa này, chúng ta xây dựng lớp đối tượng có tên <strong>PasswordPolicyChecker</strong> thực hiện chức năng kiểm tra tính hợp lệ của mật khẩu, thông qua hàm <strong>validate()</strong> định nghĩa bên trong lớp đối tượng này.</p>
+<p>Trong ví dụ minh họa bài viết, chúng ta xây dựng lớp đối tượng có tên <strong>PasswordPolicyChecker</strong> thực hiện chức năng kiểm tra tính hợp lệ của mật khẩu, thông qua hàm <strong>validate()</strong> định nghĩa bên trong lớp đối tượng này.</p>
 
 <h2 id="lp-trnh-passwordpolicychecker">Lập trình PasswordPolicyChecker</h2>
 
-<p>Lớp đối tượng <strong>PasswordPolicyChecker</strong> cung cấp hàm <strong>validate()</strong> kiểm tra tính hợp lệ của mật khẩu cũng như cho phép người lập trình tùy chỉnh các quy tắc kiểm tra. Có hai nhóm quy tắc giúp tăng cường độ khó của mật khẩu: giới hạn về kích thước mật khẩu và các quy định về các ký tự cần phải có trong mật khẩu.</p>
+<p>Lớp đối tượng <a href="https://github.com/pnhung177/example-regexp-passwd-policy/blob/master/src/main/java/net/acegik/examples/PasswordPolicyChecker.java">PasswordPolicyChecker</a> cung cấp hàm <strong>validate()</strong> kiểm tra tính hợp lệ của mật khẩu cũng như cho phép người lập trình tùy chỉnh các quy tắc kiểm tra. Có hai nhóm quy tắc giúp tăng cường độ khó của mật khẩu: giới hạn về kích thước mật khẩu và các quy định về các loại ký tự cần phải có trong mật khẩu.</p>
 
 <h3 id="quy-nh-v-kch-thc-mt-khu">Quy định về kích thước mật khẩu</h3>
 
@@ -138,42 +138,7 @@
 
 <p>Phần này sẽ liệt kê các quy tắc về các ký tự có trong mật khẩu và các mẫu đối sánh (Pattern) định nghĩa trong RegExp tương ứng với các quy tắc đó. </p>
 
-<table>
-  <thead>
-    <tr>
-      <th> </th>
-      <th style="text-align: center">Rule</th>
-      <th style="text-align: center">Pattern</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td style="text-align: center">No whitespace allowed in the entire string</td>
-      <td style="text-align: center">(?=\S+$)</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td style="text-align: center">A digit must occur at least once</td>
-      <td style="text-align: center">(?=.*[0-9])</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td style="text-align: center">A lower case letter must occur at least once</td>
-      <td style="text-align: center">(?=.*[a-z])</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td style="text-align: center">An upper case letter must occur at least once</td>
-      <td style="text-align: center">(?=.*[A-Z])</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td style="text-align: center">A special character must occur at least once</td>
-      <td style="text-align: center">(?=.*[@#$%^&amp;+=])</td>
-    </tr>
-  </tbody>
-</table>
+<p><img src="http://acegik.net/blog/media/f3b6f4ed-b80f-4c11-baa3-2f4da021b6ff/rules-to-patterns.png" alt="Hình 1. Bảng định nghĩa Pattern cho các Rule" /></p>
 
 <p>Trường hợp đơn giản nhất, mật khẩu phải đáp ứng được yêu cầu 1, đó là không được phép có ký tự trắng (whitespace) trong mật khẩu.</p>
 
@@ -181,57 +146,15 @@
 
 <p>Việc lựa chọn các quy tắc áp dụng kiểm tra được thực hiện thông qua thuộc tính <em>optionFlags</em>. Thuộc tính này là một số nguyên, mỗi bit từ phải qua trái (tức là hướng từ vị trí có ý nghĩa thấp đến vị trí có ý nghĩa cao) được dùng làm một “cờ” để đánh dấu cho một quy tắc. Chẳng hạn bit số 0, là “cờ” có tên <em>FLAG_HAS_NO_WHITESPACE</em> đại diện cho quy tắc “No whitespace allowed in the entire string”, tùy thuộc giá trị cờ bằng 1 (cờ được bật) hay bằng 0 (cờ bị tắt) mà chương trình kiểm tra sẽ áp dụng hoặc bỏ qua quy tắc này.</p>
 
-<table>
-  <thead>
-    <tr>
-      <th> </th>
-      <th style="text-align: center">Rule</th>
-      <th style="text-align: center">Flag</th>
-      <th style="text-align: center">Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td style="text-align: center">No whitespace allowed in the entire string</td>
-      <td style="text-align: center">FLAG_HAS_NO_WHITESPACE</td>
-      <td style="text-align: center">0x01</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td style="text-align: center">A digit must occur at least once</td>
-      <td style="text-align: center">FLAG_HAS_DIGIT</td>
-      <td style="text-align: center">0x02</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td style="text-align: center">A lower case must occur at least once</td>
-      <td style="text-align: center">FLAG_HAS_LOWER_CASE</td>
-      <td style="text-align: center">0x04</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td style="text-align: center">An upper case must occur at least once</td>
-      <td style="text-align: center">FLAG_HAS_UPPER_CASE</td>
-      <td style="text-align: center">0x08</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td style="text-align: center">A special character must occur at least once</td>
-      <td style="text-align: center">FLAG_HAS_SPECIAL_CHARS</td>
-      <td style="text-align: center">0x10</td>
-    </tr>
-  </tbody>
-</table>
+<p><img src="http://acegik.net/blog/media/f3b6f4ed-b80f-4c11-baa3-2f4da021b6ff/option-flags.png" alt="Hình 2. Bảng định nghĩa Flags" /></p>
 
-<p>Để thiết lập nhiều quy tắc cùng lúc, chúng ta có thể dùng toán tử Bitwise OR để “ghép” các quy tắc này với nhau. Giả sử với 3 quy tắc: <em>FLAG_HAS_NO_WHITESPACE</em>, <em>FLAG_HAS_DIGIT</em> và <em>FLAG_HAS_SPECIAL_CHARS</em>, chúng ta có thể thiết lập bằng lệnh:</p>
+<p>Để thiết lập nhiều quy tắc cùng lúc, chúng ta có thể dùng toán tử Bitwise OR để “ghép” các quy tắc này với nhau. Giả sử với 3 quy tắc: “<em>No whitespace allowed in the entire string</em>”, “<em>A digit must occur at least once</em>” và “<em>A special character must occur at least once</em>”, chúng ta có thể thiết lập bằng lệnh:</p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">validator</span><span class="o">.</span><span class="na">setOptionFlags</span>
-    <span class="o">(</span><span class="n">FLAG_HAS_NO_WHITESPACE</span> <span class="o">|</span> <span class="n">FLAG_HAS_DIGIT</span> <span class="o">|</span> <span class="n">FLAG_HAS_SPECIAL_CHARS</span><span class="o">);</span></code></pre></div>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">validator</span><span class="o">.</span><span class="na">setOptionFlags</span><span class="o">(</span><span class="n">FLAG_HAS_NO_WHITESPACE</span> <span class="o">|</span> <span class="n">FLAG_HAS_DIGIT</span> <span class="o">|</span> <span class="n">FLAG_HAS_SPECIAL_CHARS</span><span class="o">);</span></code></pre></div>
 
 <h2 id="kim-th-passwordpolicychecker">Kiểm thử PasswordPolicyChecker</h2>
 
-<p>Chương trình kiểm thử (Unit Test) được viết trong lớp <strong>PasswordPolicyCheckerTest</strong>. Mã nguồn <a href="https://github.com/pnhung177/example-regexp-passwd-policy">ví dụ</a> được chia sẻ trên github, các bạn có thể <a href="https://github.com/pnhung177/example-regexp-passwd-policy/archive/master.zip">tải ví dụ</a> về để chạy thử trên máy tính của mình.</p>
+<p>Chương trình kiểm thử (Unit Test) được viết trong lớp <a href="https://github.com/pnhung177/example-regexp-passwd-policy/blob/master/src/test/java/net/acegik/examples/PasswordPolicyCheckerTest.java">PasswordPolicyCheckerTest</a>. Mã nguồn <a href="https://github.com/pnhung177/example-regexp-passwd-policy">ví dụ</a> được chia sẻ trên github, các bạn có thể <a href="https://github.com/pnhung177/example-regexp-passwd-policy/archive/master.zip">tải ví dụ</a> về để chạy thử trên máy tính của mình.</p>
 
 
             </div>

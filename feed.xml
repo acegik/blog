@@ -9,7 +9,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://acegik.net/blog/feed.xml" />
 <link rel="alternate" type="text/html" href="http://acegik.net/blog/" />
-<updated>2014-10-08T18:21:28+07:00</updated>
+<updated>2014-10-08T21:10:28+07:00</updated>
 <id>http://acegik.net/blog/</id>
 <author>
   <name>Phạm Ngọc Hùng</name>
@@ -2175,11 +2175,11 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
   
     &lt;p&gt;Chúng ta đã làm quen với việc sử dụng Regular Expression để kiểm tra tính hợp lệ của dữ liệu. Trong phần này, chúng ta sẽ tìm hiểu về cách thức áp dụng Regular Expression để kiểm tra tính hợp lệ của mật khẩu, trong đó xây dựng cơ chế để điều chỉnh các mức độ mạnh yếu khác nhau của mật khẩu cần được kiểm tra. &lt;/p&gt;
 
-&lt;p&gt;Trong ví dụ minh họa này, chúng ta xây dựng lớp đối tượng có tên &lt;strong&gt;PasswordPolicyChecker&lt;/strong&gt; thực hiện chức năng kiểm tra tính hợp lệ của mật khẩu, thông qua hàm &lt;strong&gt;validate()&lt;/strong&gt; định nghĩa bên trong lớp đối tượng này.&lt;/p&gt;
+&lt;p&gt;Trong ví dụ minh họa bài viết, chúng ta xây dựng lớp đối tượng có tên &lt;strong&gt;PasswordPolicyChecker&lt;/strong&gt; thực hiện chức năng kiểm tra tính hợp lệ của mật khẩu, thông qua hàm &lt;strong&gt;validate()&lt;/strong&gt; định nghĩa bên trong lớp đối tượng này.&lt;/p&gt;
 
 &lt;h2 id=&quot;lp-trnh-passwordpolicychecker&quot;&gt;Lập trình PasswordPolicyChecker&lt;/h2&gt;
 
-&lt;p&gt;Lớp đối tượng &lt;strong&gt;PasswordPolicyChecker&lt;/strong&gt; cung cấp hàm &lt;strong&gt;validate()&lt;/strong&gt; kiểm tra tính hợp lệ của mật khẩu cũng như cho phép người lập trình tùy chỉnh các quy tắc kiểm tra. Có hai nhóm quy tắc giúp tăng cường độ khó của mật khẩu: giới hạn về kích thước mật khẩu và các quy định về các ký tự cần phải có trong mật khẩu.&lt;/p&gt;
+&lt;p&gt;Lớp đối tượng &lt;a href=&quot;https://github.com/pnhung177/example-regexp-passwd-policy/blob/master/src/main/java/net/acegik/examples/PasswordPolicyChecker.java&quot;&gt;PasswordPolicyChecker&lt;/a&gt; cung cấp hàm &lt;strong&gt;validate()&lt;/strong&gt; kiểm tra tính hợp lệ của mật khẩu cũng như cho phép người lập trình tùy chỉnh các quy tắc kiểm tra. Có hai nhóm quy tắc giúp tăng cường độ khó của mật khẩu: giới hạn về kích thước mật khẩu và các quy định về các loại ký tự cần phải có trong mật khẩu.&lt;/p&gt;
 
 &lt;h3 id=&quot;quy-nh-v-kch-thc-mt-khu&quot;&gt;Quy định về kích thước mật khẩu&lt;/h3&gt;
 
@@ -2194,42 +2194,7 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
 
 &lt;p&gt;Phần này sẽ liệt kê các quy tắc về các ký tự có trong mật khẩu và các mẫu đối sánh (Pattern) định nghĩa trong RegExp tương ứng với các quy tắc đó. &lt;/p&gt;
 
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt; &lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Rule&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Pattern&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;No whitespace allowed in the entire string&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;(?=\S+$)&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;A digit must occur at least once&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;(?=.*[0-9])&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;A lower case letter must occur at least once&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;(?=.*[a-z])&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;An upper case letter must occur at least once&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;(?=.*[A-Z])&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;5&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;A special character must occur at least once&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;(?=.*[@#$%^&amp;amp;+=])&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/f3b6f4ed-b80f-4c11-baa3-2f4da021b6ff/rules-to-patterns.png&quot; alt=&quot;Hình 1. Bảng định nghĩa Pattern cho các Rule&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Trường hợp đơn giản nhất, mật khẩu phải đáp ứng được yêu cầu 1, đó là không được phép có ký tự trắng (whitespace) trong mật khẩu.&lt;/p&gt;
 
@@ -2237,57 +2202,15 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
 
 &lt;p&gt;Việc lựa chọn các quy tắc áp dụng kiểm tra được thực hiện thông qua thuộc tính &lt;em&gt;optionFlags&lt;/em&gt;. Thuộc tính này là một số nguyên, mỗi bit từ phải qua trái (tức là hướng từ vị trí có ý nghĩa thấp đến vị trí có ý nghĩa cao) được dùng làm một “cờ” để đánh dấu cho một quy tắc. Chẳng hạn bit số 0, là “cờ” có tên &lt;em&gt;FLAG_HAS_NO_WHITESPACE&lt;/em&gt; đại diện cho quy tắc “No whitespace allowed in the entire string”, tùy thuộc giá trị cờ bằng 1 (cờ được bật) hay bằng 0 (cờ bị tắt) mà chương trình kiểm tra sẽ áp dụng hoặc bỏ qua quy tắc này.&lt;/p&gt;
 
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt; &lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Rule&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Flag&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Value&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;No whitespace allowed in the entire string&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;FLAG_HAS_NO_WHITESPACE&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0x01&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;A digit must occur at least once&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;FLAG_HAS_DIGIT&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0x02&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;A lower case must occur at least once&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;FLAG_HAS_LOWER_CASE&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0x04&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;An upper case must occur at least once&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;FLAG_HAS_UPPER_CASE&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0x08&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;5&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;A special character must occur at least once&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;FLAG_HAS_SPECIAL_CHARS&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0x10&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/f3b6f4ed-b80f-4c11-baa3-2f4da021b6ff/option-flags.png&quot; alt=&quot;Hình 2. Bảng định nghĩa Flags&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Để thiết lập nhiều quy tắc cùng lúc, chúng ta có thể dùng toán tử Bitwise OR để “ghép” các quy tắc này với nhau. Giả sử với 3 quy tắc: &lt;em&gt;FLAG_HAS_NO_WHITESPACE&lt;/em&gt;, &lt;em&gt;FLAG_HAS_DIGIT&lt;/em&gt; và &lt;em&gt;FLAG_HAS_SPECIAL_CHARS&lt;/em&gt;, chúng ta có thể thiết lập bằng lệnh:&lt;/p&gt;
+&lt;p&gt;Để thiết lập nhiều quy tắc cùng lúc, chúng ta có thể dùng toán tử Bitwise OR để “ghép” các quy tắc này với nhau. Giả sử với 3 quy tắc: “&lt;em&gt;No whitespace allowed in the entire string&lt;/em&gt;”, “&lt;em&gt;A digit must occur at least once&lt;/em&gt;” và “&lt;em&gt;A special character must occur at least once&lt;/em&gt;”, chúng ta có thể thiết lập bằng lệnh:&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;validator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOptionFlags&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FLAG_HAS_NO_WHITESPACE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FLAG_HAS_DIGIT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FLAG_HAS_SPECIAL_CHARS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;validator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOptionFlags&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FLAG_HAS_NO_WHITESPACE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FLAG_HAS_DIGIT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FLAG_HAS_SPECIAL_CHARS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;kim-th-passwordpolicychecker&quot;&gt;Kiểm thử PasswordPolicyChecker&lt;/h2&gt;
 
-&lt;p&gt;Chương trình kiểm thử (Unit Test) được viết trong lớp &lt;strong&gt;PasswordPolicyCheckerTest&lt;/strong&gt;. Mã nguồn &lt;a href=&quot;https://github.com/pnhung177/example-regexp-passwd-policy&quot;&gt;ví dụ&lt;/a&gt; được chia sẻ trên github, các bạn có thể &lt;a href=&quot;https://github.com/pnhung177/example-regexp-passwd-policy/archive/master.zip&quot;&gt;tải ví dụ&lt;/a&gt; về để chạy thử trên máy tính của mình.&lt;/p&gt;
+&lt;p&gt;Chương trình kiểm thử (Unit Test) được viết trong lớp &lt;a href=&quot;https://github.com/pnhung177/example-regexp-passwd-policy/blob/master/src/test/java/net/acegik/examples/PasswordPolicyCheckerTest.java&quot;&gt;PasswordPolicyCheckerTest&lt;/a&gt;. Mã nguồn &lt;a href=&quot;https://github.com/pnhung177/example-regexp-passwd-policy&quot;&gt;ví dụ&lt;/a&gt; được chia sẻ trên github, các bạn có thể &lt;a href=&quot;https://github.com/pnhung177/example-regexp-passwd-policy/archive/master.zip&quot;&gt;tải ví dụ&lt;/a&gt; về để chạy thử trên máy tính của mình.&lt;/p&gt;
 
 
   
