@@ -31,6 +31,11 @@ callback([
   } ,
 
   {
+    "text": "Tổng quan về JVM: các thành phần của HotSpot VM",
+    "href": "/blog/java/performance/tong-quan-ve-jvm-cac-thanh-phan-cua-hotspot-vm.html"
+  } ,
+
+  {
     "text": "Tổng quan về JVM: HotSpot Garbage Collector",
     "href": "/blog/java/jvm/tong-quan-ve-jvm-hotspot-garbage-collector.html"
   } ,

@@ -9,7 +9,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://acegik.net/blog/feed.xml" />
 <link rel="alternate" type="text/html" href="http://acegik.net/blog/" />
-<updated>2014-10-09T16:15:40+07:00</updated>
+<updated>2014-10-09T21:36:26+07:00</updated>
 <id>http://acegik.net/blog/</id>
 <author>
   <name>Phạm Ngọc Hùng</name>
@@ -1916,6 +1916,87 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
 
 
 <entry>
+  <title type="html"><![CDATA[Tổng quan về JVM: các thành phần của HotSpot VM]]></title>
+  <link rel="alternate" type="text/html" href="http://acegik.net/blog/java/performance/tong-quan-ve-jvm-cac-thanh-phan-cua-hotspot-vm.html"/>
+  <id>http://acegik.net/blog/java/performance/tong-quan-ve-jvm-cac-thanh-phan-cua-hotspot-vm</id>
+  <published>2014-07-03T00:00:00+07:00</published>
+  <updated>2014-07-03T00:00:00-00:00</updated>
+  
+  <author>
+    <name>Phạm Ngọc Hùng</name>
+    <uri>http://acegik.net/blog</uri>
+    <email>pnhung177@drupalex.net</email>
+  </author>
+  <category scheme="http://acegik.net/blog/tags/#Java" term="Java" /><category scheme="http://acegik.net/blog/tags/#Java%20Performance" term="Java Performance" /><category scheme="http://acegik.net/blog/tags/#JVM" term="JVM" /><category scheme="http://acegik.net/blog/tags/#HotSpot%20VM" term="HotSpot VM" />
+  <content type="html">
+  
+    &lt;p&gt;Một trong những thách thức đối với việc xây dựng các ứng dụng Java hiệu quả là nhiều người sử dụng công nghệ Java xem JVM giống như một chiếc hộp đen, do đó đã không hiểu được cách thức ứng dụng Java được vận hành bên trong JVM như thế nào, dẫn đến không khai thác được những đặc điểm của máy ảo để viết và tổ chức mã lệnh hiệu quả. Điều này làm cho việc cải tiến hiệu năng hay mở rộng ứng dụng Java trở thành nhiệm vụ hết sức khó khăn. Chính vì vậy, có sự hiểu biết cơ bản, nền tảng về JVM là điều cần thiết để có thể cải thiện hiệu năng của một ứng dụng Java.&lt;/p&gt;
+
+&lt;h2 id=&quot;cc-b-phn-mm-my-o-java-jvm&quot;&gt;Các bộ phần mềm máy ảo Java (JVM)&lt;/h2&gt;
+
+&lt;p&gt;Rất nhiều lập trình viên nhầm tưởng rằng Java chỉ có một JVM đóng gói trong bản JRE/JDK của Oracle (Sun trước đây). Trong thực tế, có rất nhiều phần mềm máy ảo Java được các hãng phần mềm khác nhau xây dựng dựa trên đặc tả trong “Java Virtual Machine Specification”. Có thể kể ra đây một số JVM nổi bật về sự phổ biến hoặc phạm vi ứng dụng:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;HotSpot VM&lt;/strong&gt;: vừa là bản cài đặt tham chiếu cơ sở (primary reference implementation), vừa là máy ảo chính của Oracle JDK edition (miễn phí) cũng như OpenJDK edition (mã nguồn mở). Mặc dù có một số khác biệt nhỏ giữa HottSpot Oracle JDK edition và HotSpot OpenJDK edition, nhưng về tổng thể 2 bản này tương đồng với nhau.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;JRockit&lt;/strong&gt;: là bản cài đặt JVM được phát triển bởi Appeal Virtual Machines, lần lượt được sáp nhập vào BEA Systems và Oracle. Các tính năng của JRockit dần dần được tích hợp vào HotSpot VM.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Jamiga&lt;/strong&gt;: là bản cài đặt JVM dành riêng cho nền tảng &lt;a href=&quot;http://en.wikipedia.org/wiki/Amiga&quot;&gt;Amiga&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Jikes RVM&lt;/strong&gt;: là máy ảo Java phát triển bởi IBM, nằm trong dự án nghiên cứu công nghệ mới. Jikes RVM chạy trên một số hệ điều hành họ Unix (chẳng hạn PowerPC và IAX-32).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Có thể tham khảo thêm về các máy ảo Java khác trong &lt;a href=&quot;http://en.wikipedia.org/wiki/List_of_Java_virtual_machines&quot;&gt;danh sách máy ảo Java trên wikipedia&lt;/a&gt;. Bài viết này, cũng như các bài viết tiếp theo trong chuỗi “Tổng quan về JVM” sẽ tập trung vào HotSpot VM, là máy ảo Java được sử dụng phổ biến nhất hiện nay.&lt;/p&gt;
+
+&lt;h2 id=&quot;s-lc-cc-thnh-phn-ca-hotspot-vm&quot;&gt;Sơ lược các thành phần của HotSpot VM&lt;/h2&gt;
+
+&lt;p&gt;Có ba thành phần chính của HotSpot VM: HotSpot VM Runtime, HotSpot JIT (Just-In-Time) Compiler, và HotSpot Garbage Collector. Phần này sẽ trình bày sơ lược về chức năng và nhiệm vụ của ba thành phần trên, giúp người đọc hình dung tổng quan về HotSpot VM.&lt;/p&gt;
+
+&lt;h3 id=&quot;vm-runtime&quot;&gt;VM Runtime&lt;/h3&gt;
+
+&lt;p&gt;VM Runtime cung cấp các dịch vụ và API cho JIT compilers và Garbage Collector cũng như cung cấp các chức năng cơ bản cho JVM. Dưới đây là mô tả sơ lược các chức năng chính của VM Runtime:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Quản lý vòng đời máy ảo (VM Life Cycle)&lt;/strong&gt;: VM Runtime chịu trách nhiệm khởi động cũng như kết thúc hoạt động của máy ảo (và ứng dụng chạy trong đó). Thành phần khởi động máy ảo gọi là bộ kích hoạt (launcher). Có nhiều bộ kích hoạt khác nhau chẳng hạn: chương trình &lt;em&gt;java&lt;/em&gt;, chương trình &lt;em&gt;javaws&lt;/em&gt;, hoặc giao diện JNI có tên là &lt;em&gt;JNI_CreateJavaVM&lt;/em&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Phân rã tham số dòng lệnh (Parsing of command line arguments)&lt;/strong&gt;: Máy ảo Java cho phép tùy chỉnh thông số bên trong (máy ảo) thông qua các tùy chọn cung cấp dưới dạng tham số dòng lệnh. Các tùy chọn dòng lệnh được phân chia thành 3 loại: các tùy chọn tiêu chuẩn (standard options) được định nghĩa trong tài liệu đặc tả và buộc tất cả các JVM đều phải hỗ trợ; các tùy chọn không chuẩn (non-standard options) không có trong tài liệu đặc tả, do JVM tự định nghĩa; tùy chọn dành cho phát triển (developer options) cũng do JVM tự định nghĩa và chỉ áp dụng trong quá trình phát triển ứng dụng Java.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Nạp lớp đối tượng (Class Loading)&lt;/strong&gt;: VM Runtime chịu trách nhiệm trong việc thực hiện và hỗ trợ thực hiện nạp các lớp đối tượng vào bộ nhớ để thực thi, theo nhiều cách khác nhau: &lt;em&gt;Class.forName()&lt;/em&gt;, &lt;em&gt;ClassLoader.loadClass()&lt;/em&gt;, &lt;em&gt;JNI_FindClass&lt;/em&gt;, reflection APIs,…&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Bytecode Verification&lt;/strong&gt;: Java là ngôn ngữ an toàn kiểu (type-safe language). Quá trình kiểm tra kiểu được Java Compiler (javac) thực hiện khi biên dịch mã nguồn thành mã bytecode. Khi chạy chương trình, mã bytecode được nạp vào VM và được thực hiện kiểm tra kiểu trong mã bytecode bằng quá trình &lt;em&gt;Bytecode Verification&lt;/em&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Trình thông dịch (Interpreter)&lt;/strong&gt;: VM Interpreter là trình thông dịch dựa trên mẫu (Template Based Interpreter). Interpreter thực hiện thông dịch dựa trên việc tra cứu cấu trúc dữ liệu có sẵn là &lt;em&gt;TemplateTable&lt;/em&gt;. Bảng &lt;em&gt;TemplateTable&lt;/em&gt; chứa mã máy (phụ thuộc vào hệ điều hành) tương ứng với từng bytecode.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Xử lý ngoại lệ (Exception Handling)&lt;/strong&gt;: VM Runtime sử dụng exception làm tín hiệu cảnh báo một chương trình đang gặp tình huống nằm ngoài dự tính. VM Runtime điều phối Interpreter, JIT compiler, và các thành phần khác trong VM cùng nhau cộng tác để thực hiện cơ chế xử lý exception.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Đồng bộ hóa (Synchronization)&lt;/strong&gt;: Đồng bộ hóa là quá trình kiểm soát phối hợp các thao tác thực thi đồng thời (concurrency operation). Thực thi đồng thời trong Java được thể hiện thông qua kết cấu Thread.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Quản lý Thread (Thread Management)&lt;/strong&gt;: là quá trình kiểm soát toàn bộ vòng đời của các thread trong ứng dụng.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;jit-compiler&quot;&gt;JIT Compiler&lt;/h3&gt;
+
+&lt;p&gt;Về cơ bản, quá trình thực thi một chương trình Java được thực hiện theo trình tự sau:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/e40d61be-95da-4032-a270-d3745f028c4e/jvm-interpreter.png&quot; alt=&quot;Sơ đồ chạy ứng dụng Java đơn giản&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Tuy nhiên, trình thông dịch (interpreter) thường chạy với tốc độ khá chậm do phải chuyển đổi từng lệnh từ mã bytecode sang mã máy. Đối với những khối lệnh được thực thi lặp đi lặp lại nhiều lần, việc áp dụng thông dịch với chúng sẽ rất phí phạm thời gian. Chính vì vậy, những người thiết kế JVM đã kết hợp sử dụng Interpreter với một dạng trình biên dịch “tức thời” khi chạy (Just-In-Time Compiler).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/e40d61be-95da-4032-a270-d3745f028c4e/interpreter-and-jitcompiler.png&quot; alt=&quot;Sơ đồ kết hợp Interpreter với JIT Compiler&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;JVM sẽ phân tích để xác định các khối lệnh thực thi nhiều lần (gọi các vùng mã lệnh này là các hotspot) để chuyển cho JIT Compiler biên dịch thành mã máy rồi mới thực thi. Những lệnh chỉ thực thi một lần sẽ được phân công cho interpreter. JIT Compiler có 2 phiên bản, một dành cho JVM chạy trên Client và một dành cho JVM trên Server.&lt;/p&gt;
+
+&lt;h3 id=&quot;garbage-collector&quot;&gt;Garbage Collector&lt;/h3&gt;
+
+&lt;p&gt;Bộ nhớ hệ điều hành dành cho JVM bao gồm các phần sau:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/e40d61be-95da-4032-a270-d3745f028c4e/jvm-memory-structure.png&quot; alt=&quot;Cấu trúc bộ nhớ của JVM&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Bộ nhớ Heap: là vùng nhớ nằm trong “Runtime Data Areas”, dùng để cấp phát cho các đối tượng (thể hiện của lớp đối tượng) và mảng.&lt;/li&gt;
+  &lt;li&gt;Bộ nhớ Non-Heap: là vùng nhớ dùng để nạp mã lệnh định nghĩa lớp đối tượng và các &lt;em&gt;metadata&lt;/em&gt; khác.&lt;/li&gt;
+  &lt;li&gt;Mã lệnh của bản thân JVM, các cấu trúc bên trong JVM, mã lệnh và dữ liệu của các bộ phân tích (profiler), v.v.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Trong 3 vùng nhớ này, vùng nhớ Heap có nhiều biến động nhất, do các đối tượng liên tục được tạo ra, hoạt động và kết thúc hoạt động trong suốt quá trình chạy chương trình. Vùng nhớ Non-heap ít biến động hơn, thường chỉ thay đổi khi JVM nạp thêm hoặc loại bỏ khai báo các lớp đối tượng. Vùng chứa mã lệnh được nạp lên khi JVM chạy và ít biến động nhất. Chính vì vậy, JVM đã được thiết kế để áp dụng mô hình quản lý tự động thu hồi bộ nhớ không còn dùng theo kiểu “thế hệ” (generation garbage collection), trong đó các đối tượng tồn tại ngắn hạn trong đó vùng nhớ Heap chứa sẽ được thu dọn với tần suất cao, còn các đối tượng tồn tại lâu dài trong vùng Heap cũng như dữ liệu trong vùng Non-Heap sẽ được thu dọn với tần suất thấp.&lt;/p&gt;
+
+
+  
+  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/java/performance/tong-quan-ve-jvm-cac-thanh-phan-cua-hotspot-vm.html&quot;&gt;Tổng quan về JVM: các thành phần của HotSpot VM&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on July 03, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
   <title type="html"><![CDATA[Giã từ ... Wordpress]]></title>
   <link rel="alternate" type="text/html" href="http://acegik.net/blog/jekyll/migration/gia-tu-wordpress.html"/>
   <id>http://acegik.net/blog/jekyll/migration/gia-tu-wordpress</id>
@@ -2235,65 +2316,6 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
 
   
   &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java.html&quot;&gt;Các kỹ thuật dùng để cải tiến hiệu năng trong lập trình Java&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on June 15, 2014.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Sử dụng Regular Expression để kiểm tra tính hợp lệ của mật khẩu]]></title>
-  <link rel="alternate" type="text/html" href="http://acegik.net/blog/java/regexp/su-dung-regular-expression-de-kiem-tra-tinh-hop-le-cua-mat-khau.html"/>
-  <id>http://acegik.net/blog/java/regexp/su-dung-regular-expression-de-kiem-tra-tinh-hop-le-cua-mat-khau</id>
-  <published>2013-10-26T00:00:00+07:00</published>
-  <updated>2013-10-26T00:00:00+07:00</updated>
-  <author>
-    <name>Phạm Ngọc Hùng</name>
-    <uri>http://acegik.net/blog</uri>
-    <email>pnhung177@drupalex.net</email>
-  </author>
-  <category scheme="http://acegik.net/blog/tags/#Java" term="Java" /><category scheme="http://acegik.net/blog/tags/#Regular%20Expression" term="Regular Expression" /><category scheme="http://acegik.net/blog/tags/#Password%20Policy" term="Password Policy" />
-  <content type="html">
-  
-    &lt;p&gt;Chúng ta đã làm quen với việc sử dụng Regular Expression để kiểm tra tính hợp lệ của dữ liệu. Trong phần này, chúng ta sẽ tìm hiểu về cách thức áp dụng Regular Expression để kiểm tra tính hợp lệ của mật khẩu, trong đó xây dựng cơ chế để điều chỉnh các mức độ mạnh yếu khác nhau của mật khẩu cần được kiểm tra. &lt;/p&gt;
-
-&lt;p&gt;Trong ví dụ minh họa bài viết, chúng ta xây dựng lớp đối tượng có tên &lt;strong&gt;PasswordPolicyChecker&lt;/strong&gt; thực hiện chức năng kiểm tra tính hợp lệ của mật khẩu, thông qua hàm &lt;strong&gt;validate()&lt;/strong&gt; định nghĩa bên trong lớp đối tượng này.&lt;/p&gt;
-
-&lt;h2 id=&quot;lp-trnh-passwordpolicychecker&quot;&gt;Lập trình PasswordPolicyChecker&lt;/h2&gt;
-
-&lt;p&gt;Lớp đối tượng &lt;a href=&quot;https://github.com/pnhung177/example-regexp-passwd-policy/blob/master/src/main/java/net/acegik/examples/PasswordPolicyChecker.java&quot;&gt;PasswordPolicyChecker&lt;/a&gt; cung cấp hàm &lt;strong&gt;validate()&lt;/strong&gt; kiểm tra tính hợp lệ của mật khẩu cũng như cho phép người lập trình tùy chỉnh các quy tắc kiểm tra. Có hai nhóm quy tắc giúp tăng cường độ khó của mật khẩu: giới hạn về kích thước mật khẩu và các quy định về các loại ký tự cần phải có trong mật khẩu.&lt;/p&gt;
-
-&lt;h3 id=&quot;quy-nh-v-kch-thc-mt-khu&quot;&gt;Quy định về kích thước mật khẩu&lt;/h3&gt;
-
-&lt;p&gt;Kích thước mật khẩu là số lượng ký tự có trong mật khẩu đó. Thông thường các hệ thống đều quy định kích thước tối thiểu mật khẩu cần có. Một số hệ thống cũng quy định thêm giới hạn kích thước tối đa. Trong chương trình ví dụ minh họa, chúng ta sử dụng 2 thuộc tính để quy định giới hạn kích thước tối thiểu và tối đa cho mật khẩu:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;em&gt;minNumberOfChars&lt;/em&gt;: xác định số lượng tối thiểu ký tự có trong mật khẩu (kích thước tối thiểu). Nếu giá trị này không thiết lập hoặc được thiết lập giá trị nhỏ hơn hoặc bằng 0, thì sẽ được tự động thiết lập lại giá trị mặc định (bằng 6).&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;maxNumberOfChars&lt;/em&gt;: xác định số lượng tối đa ký tự có trong mật khẩu (kích thước tối đa). Nếu giá trị này không thiết lập hoặc thiết lập nhỏ hơn hoặc bằng 0, thì sẽ được xem như không giới hạn tối đa, giá trị mật khẩu có thể có chiều dài không giới hạn. Nếu giá trị &lt;em&gt;maxNumberOfChars&lt;/em&gt; thỏa mãn 0 &amp;lt; &lt;em&gt;maxNumberOfChars&lt;/em&gt; &amp;lt; &lt;em&gt;minNumberOfChars&lt;/em&gt; thì sẽ được gán giá trị bằng với &lt;em&gt;minNumberOfChars&lt;/em&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;quy-tc-v-k-t-c-trong-mt-khu&quot;&gt;Quy tắc về ký tự có trong mật khẩu&lt;/h3&gt;
-
-&lt;p&gt;Phần này sẽ liệt kê các quy tắc về các ký tự có trong mật khẩu và các mẫu đối sánh (Pattern) định nghĩa trong RegExp tương ứng với các quy tắc đó. &lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/f3b6f4ed-b80f-4c11-baa3-2f4da021b6ff/rules-to-patterns.png&quot; alt=&quot;Hình 1. Bảng định nghĩa Pattern cho các Rule&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Trường hợp đơn giản nhất, mật khẩu phải đáp ứng được yêu cầu 1, đó là không được phép có ký tự trắng (whitespace) trong mật khẩu.&lt;/p&gt;
-
-&lt;h3 id=&quot;la-chn-cc-quy-tc-p-dng-kim-tra&quot;&gt;Lựa chọn các quy tắc áp dụng kiểm tra&lt;/h3&gt;
-
-&lt;p&gt;Việc lựa chọn các quy tắc áp dụng kiểm tra được thực hiện thông qua thuộc tính &lt;em&gt;optionFlags&lt;/em&gt;. Thuộc tính này là một số nguyên, mỗi bit từ phải qua trái (tức là hướng từ vị trí có ý nghĩa thấp đến vị trí có ý nghĩa cao) được dùng làm một “cờ” để đánh dấu cho một quy tắc. Chẳng hạn bit số 0, là “cờ” có tên &lt;em&gt;FLAG_HAS_NO_WHITESPACE&lt;/em&gt; đại diện cho quy tắc “No whitespace allowed in the entire string”, tùy thuộc giá trị cờ bằng 1 (cờ được bật) hay bằng 0 (cờ bị tắt) mà chương trình kiểm tra sẽ áp dụng hoặc bỏ qua quy tắc này.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/f3b6f4ed-b80f-4c11-baa3-2f4da021b6ff/option-flags.png&quot; alt=&quot;Hình 2. Bảng định nghĩa Flags&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Để thiết lập nhiều quy tắc cùng lúc, chúng ta có thể dùng toán tử Bitwise OR để “ghép” các quy tắc này với nhau. Giả sử với 3 quy tắc: “&lt;em&gt;No whitespace allowed in the entire string&lt;/em&gt;”, “&lt;em&gt;A digit must occur at least once&lt;/em&gt;” và “&lt;em&gt;A special character must occur at least once&lt;/em&gt;”, chúng ta có thể thiết lập bằng lệnh:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;validator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOptionFlags&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FLAG_HAS_NO_WHITESPACE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FLAG_HAS_DIGIT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FLAG_HAS_SPECIAL_CHARS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;kim-th-passwordpolicychecker&quot;&gt;Kiểm thử PasswordPolicyChecker&lt;/h2&gt;
-
-&lt;p&gt;Chương trình kiểm thử (Unit Test) được viết trong lớp &lt;a href=&quot;https://github.com/pnhung177/example-regexp-passwd-policy/blob/master/src/test/java/net/acegik/examples/PasswordPolicyCheckerTest.java&quot;&gt;PasswordPolicyCheckerTest&lt;/a&gt;. Mã nguồn &lt;a href=&quot;https://github.com/pnhung177/example-regexp-passwd-policy&quot;&gt;ví dụ&lt;/a&gt; được chia sẻ trên github, các bạn có thể &lt;a href=&quot;https://github.com/pnhung177/example-regexp-passwd-policy/archive/master.zip&quot;&gt;tải ví dụ&lt;/a&gt; về để chạy thử trên máy tính của mình.&lt;/p&gt;
-
-
-  
-  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/java/regexp/su-dung-regular-expression-de-kiem-tra-tinh-hop-le-cua-mat-khau.html&quot;&gt;Sử dụng Regular Expression để kiểm tra tính hợp lệ của mật khẩu&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on October 26, 2013.&lt;/p&gt;</content>
 </entry>
 
 </feed>

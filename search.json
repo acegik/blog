@@ -129,6 +129,14 @@
 		} ,
 	
 		{
+		  "title"      : "Tổng quan về JVM: các thành phần của HotSpot VM",
+		  "category"   : "javaperformance",
+		  "url"        : "/blog/java/performance/tong-quan-ve-jvm-cac-thanh-phan-cua-hotspot-vm.html",
+		  "date"       : "2014-07-03 00:00:00 +0700",
+		  "shortdate"  : "July 03, 2014"
+		} ,
+	
+		{
 		  "title"      : "Giã từ ... Wordpress",
 		  "category"   : "jekyllmigration",
 		  "url"        : "/blog/jekyll/migration/gia-tu-wordpress.html",
