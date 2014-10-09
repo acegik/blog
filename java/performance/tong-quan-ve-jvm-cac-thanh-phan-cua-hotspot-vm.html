@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>TổNG QUAN Về JVM: CáC THàNH PHầN CủA HOTSPOT VM &vert; ACEGIK'S BLOG</title>
+<meta name="description" content="... when the sun comes up, you better be running!">
+<meta name="keywords" content="Java, Java Performance, JVM, HotSpot VM">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/blog/images/logo.png">
+<meta name="twitter:title" content="Tổng quan về JVM: các thành phần của HotSpot VM">
+<meta name="twitter:description" content="... when the sun comes up, you better be running!">
+<meta name="twitter:creator" content="@pnhung177">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tổng quan về JVM: các thành phần của HotSpot VM">
+<meta property="og:description" content="... when the sun comes up, you better be running!">
+<meta property="og:url" content="/blog/java/performance/tong-quan-ve-jvm-cac-thanh-phan-cua-hotspot-vm.html">
+<meta property="og:site_name" content="Acegik's Blog">
+<meta property="og:image" content="/blog/images/">
+
+
+
+
+
+<link rel="canonical" href="/blog/java/performance/tong-quan-ve-jvm-cac-thanh-phan-cua-hotspot-vm.html">
+<link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Acegik's Blog Feed">
+<link rel="author" href="https://plus.google.com/u/3/115458186421626071505?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,600,300,800,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/blog/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/blog/assets/css/vendor/normalize.css">
+    <link rel="stylesheet" href="/blog/assets/css/vendor/foundation.min.css">
+    <link rel="stylesheet" href="/blog/assets/css/style.css">
+    <link rel="stylesheet" href="/blog/assets/css/post.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/blog/assets/js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+    
+
+
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">  
+
+        <main id="summer-post-container-simple" class="summer-post-container-simple" role="main">
+            <header class="summer-post-header-simple">
+                <div class="summer-post-menu-header-simple">
+
+                    <a class="summer-blog-logo" href="/blog">
+                        <img src="/blog/images/logo.png" alt="Blog Logo" />
+                    </a>
+
+                <div class="summer-blog-menu">      
+    <div class="summer-mobile-menu show-for-small">
+        <a href="#"><i class="fa fa-bars"></i></a>
+    </div>
+    <ul class="summer-menu">
+        <li class="summer-mobile-close-btn show-for-small text-right">
+            <a href="#"><i class="fa fa-times"></i></a>
+        </li>
+
+            <li>
+                    <a href="/blog/">Trang bìa</a>
+                 </li>
+
+            <li>
+                    <a href="/blog/featured">Nổi bật</a>
+                 </li>
+
+            <li>
+                    <a href="/blog/categories">Danh mục</a>
+                 </li>
+
+            <li>
+                    <a href="/blog/about">Giới thiệu</a>
+                 </li>
+            
+           <li><a href="/blog/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+    </ul>
+
+</div>
+            </div>
+
+                <div class="summer-post-title-simple row">
+                    <div class="small-12 columns">
+                        <div class="summer-post-meta-simple">
+                            <h1>Tổng quan về JVM: các thành phần của HotSpot VM</h1>
+                            <p>by <strong>pnhung177</strong> &#8212; on <a href="/blog/tags/index.html#Java" data-toggle="tooltip" title="Posts tagged with Java" rel="tag">Java</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#Java Performance" data-toggle="tooltip" title="Posts tagged with Java Performance" rel="tag">Java Performance</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#JVM" data-toggle="tooltip" title="Posts tagged with JVM" rel="tag">JVM</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#HotSpot VM" data-toggle="tooltip" title="Posts tagged with HotSpot VM" rel="tag">HotSpot VM</a> &#8212; <strong><time datetime="2014-07-03T00:00:00+07:00">03/07/2014</time></strong></p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+        <article class="summer-post-content post tag-simple">
+            <div><p>Một trong những thách thức đối với việc xây dựng các ứng dụng Java hiệu quả là nhiều người sử dụng công nghệ Java xem JVM giống như một chiếc hộp đen, do đó đã không hiểu được cách thức ứng dụng Java được vận hành bên trong JVM như thế nào, dẫn đến không khai thác được những đặc điểm của máy ảo để viết và tổ chức mã lệnh hiệu quả. Điều này làm cho việc cải tiến hiệu năng hay mở rộng ứng dụng Java trở thành nhiệm vụ hết sức khó khăn. Chính vì vậy, có sự hiểu biết cơ bản, nền tảng về JVM là điều cần thiết để có thể cải thiện hiệu năng của một ứng dụng Java.</p>
+
+<h2 id="cc-b-phn-mm-my-o-java-jvm">Các bộ phần mềm máy ảo Java (JVM)</h2>
+
+<p>Rất nhiều lập trình viên nhầm tưởng rằng Java chỉ có một JVM đóng gói trong bản JRE/JDK của Oracle (Sun trước đây). Trong thực tế, có rất nhiều phần mềm máy ảo Java được các hãng phần mềm khác nhau xây dựng dựa trên đặc tả trong “Java Virtual Machine Specification”. Có thể kể ra đây một số JVM nổi bật về sự phổ biến hoặc phạm vi ứng dụng:</p>
+
+<ul>
+  <li><strong>HotSpot VM</strong>: vừa là bản cài đặt tham chiếu cơ sở (primary reference implementation), vừa là máy ảo chính của Oracle JDK edition (miễn phí) cũng như OpenJDK edition (mã nguồn mở). Mặc dù có một số khác biệt nhỏ giữa HottSpot Oracle JDK edition và HotSpot OpenJDK edition, nhưng về tổng thể 2 bản này tương đồng với nhau.</li>
+  <li><strong>JRockit</strong>: là bản cài đặt JVM được phát triển bởi Appeal Virtual Machines, lần lượt được sáp nhập vào BEA Systems và Oracle. Các tính năng của JRockit dần dần được tích hợp vào HotSpot VM.</li>
+  <li><strong>Jamiga</strong>: là bản cài đặt JVM dành riêng cho nền tảng <a href="http://en.wikipedia.org/wiki/Amiga">Amiga</a>.</li>
+  <li><strong>Jikes RVM</strong>: là máy ảo Java phát triển bởi IBM, nằm trong dự án nghiên cứu công nghệ mới. Jikes RVM chạy trên một số hệ điều hành họ Unix (chẳng hạn PowerPC và IAX-32).</li>
+</ul>
+
+<p>Có thể tham khảo thêm về các máy ảo Java khác trong <a href="http://en.wikipedia.org/wiki/List_of_Java_virtual_machines">danh sách máy ảo Java trên wikipedia</a>. Bài viết này, cũng như các bài viết tiếp theo trong chuỗi “Tổng quan về JVM” sẽ tập trung vào HotSpot VM, là máy ảo Java được sử dụng phổ biến nhất hiện nay.</p>
+
+<h2 id="s-lc-cc-thnh-phn-ca-hotspot-vm">Sơ lược các thành phần của HotSpot VM</h2>
+
+<p>Có ba thành phần chính của HotSpot VM: HotSpot VM Runtime, HotSpot JIT (Just-In-Time) Compiler, và HotSpot Garbage Collector. Phần này sẽ trình bày sơ lược về chức năng và nhiệm vụ của ba thành phần trên, giúp người đọc hình dung tổng quan về HotSpot VM.</p>
+
+<h3 id="vm-runtime">VM Runtime</h3>
+
+<p>VM Runtime cung cấp các dịch vụ và API cho JIT compilers và Garbage Collector cũng như cung cấp các chức năng cơ bản cho JVM. Dưới đây là mô tả sơ lược các chức năng chính của VM Runtime:</p>
+
+<ul>
+  <li><strong>Quản lý vòng đời máy ảo (VM Life Cycle)</strong>: VM Runtime chịu trách nhiệm khởi động cũng như kết thúc hoạt động của máy ảo (và ứng dụng chạy trong đó). Thành phần khởi động máy ảo gọi là bộ kích hoạt (launcher). Có nhiều bộ kích hoạt khác nhau chẳng hạn: chương trình <em>java</em>, chương trình <em>javaws</em>, hoặc giao diện JNI có tên là <em>JNI_CreateJavaVM</em>.</li>
+  <li><strong>Phân rã tham số dòng lệnh (Parsing of command line arguments)</strong>: Máy ảo Java cho phép tùy chỉnh thông số bên trong (máy ảo) thông qua các tùy chọn cung cấp dưới dạng tham số dòng lệnh. Các tùy chọn dòng lệnh được phân chia thành 3 loại: các tùy chọn tiêu chuẩn (standard options) được định nghĩa trong tài liệu đặc tả và buộc tất cả các JVM đều phải hỗ trợ; các tùy chọn không chuẩn (non-standard options) không có trong tài liệu đặc tả, do JVM tự định nghĩa; tùy chọn dành cho phát triển (developer options) cũng do JVM tự định nghĩa và chỉ áp dụng trong quá trình phát triển ứng dụng Java.</li>
+  <li><strong>Nạp lớp đối tượng (Class Loading)</strong>: VM Runtime chịu trách nhiệm trong việc thực hiện và hỗ trợ thực hiện nạp các lớp đối tượng vào bộ nhớ để thực thi, theo nhiều cách khác nhau: <em>Class.forName()</em>, <em>ClassLoader.loadClass()</em>, <em>JNI_FindClass</em>, reflection APIs,…</li>
+  <li><strong>Bytecode Verification</strong>: Java là ngôn ngữ an toàn kiểu (type-safe language). Quá trình kiểm tra kiểu được Java Compiler (javac) thực hiện khi biên dịch mã nguồn thành mã bytecode. Khi chạy chương trình, mã bytecode được nạp vào VM và được thực hiện kiểm tra kiểu trong mã bytecode bằng quá trình <em>Bytecode Verification</em>.</li>
+  <li><strong>Trình thông dịch (Interpreter)</strong>: VM Interpreter là trình thông dịch dựa trên mẫu (Template Based Interpreter). Interpreter thực hiện thông dịch dựa trên việc tra cứu cấu trúc dữ liệu có sẵn là <em>TemplateTable</em>. Bảng <em>TemplateTable</em> chứa mã máy (phụ thuộc vào hệ điều hành) tương ứng với từng bytecode.</li>
+  <li><strong>Xử lý ngoại lệ (Exception Handling)</strong>: VM Runtime sử dụng exception làm tín hiệu cảnh báo một chương trình đang gặp tình huống nằm ngoài dự tính. VM Runtime điều phối Interpreter, JIT compiler, và các thành phần khác trong VM cùng nhau cộng tác để thực hiện cơ chế xử lý exception.</li>
+  <li><strong>Đồng bộ hóa (Synchronization)</strong>: Đồng bộ hóa là quá trình kiểm soát phối hợp các thao tác thực thi đồng thời (concurrency operation). Thực thi đồng thời trong Java được thể hiện thông qua kết cấu Thread.</li>
+  <li><strong>Quản lý Thread (Thread Management)</strong>: là quá trình kiểm soát toàn bộ vòng đời của các thread trong ứng dụng.</li>
+</ul>
+
+<h3 id="jit-compiler">JIT Compiler</h3>
+
+<p>Về cơ bản, quá trình thực thi một chương trình Java được thực hiện theo trình tự sau:</p>
+
+<p><img src="/blog/media/e40d61be-95da-4032-a270-d3745f028c4e/jvm-interpreter.png" alt="Sơ đồ chạy ứng dụng Java đơn giản" /></p>
+
+<p>Tuy nhiên, trình thông dịch (interpreter) thường chạy với tốc độ khá chậm do phải chuyển đổi từng lệnh từ mã bytecode sang mã máy. Đối với những khối lệnh được thực thi lặp đi lặp lại nhiều lần, việc áp dụng thông dịch với chúng sẽ rất phí phạm thời gian. Chính vì vậy, những người thiết kế JVM đã kết hợp sử dụng Interpreter với một dạng trình biên dịch “tức thời” khi chạy (Just-In-Time Compiler).</p>
+
+<p><img src="/blog/media/e40d61be-95da-4032-a270-d3745f028c4e/interpreter-and-jitcompiler.png" alt="Sơ đồ kết hợp Interpreter với JIT Compiler" /></p>
+
+<p>JVM sẽ phân tích để xác định các khối lệnh thực thi nhiều lần (gọi các vùng mã lệnh này là các hotspot) để chuyển cho JIT Compiler biên dịch thành mã máy rồi mới thực thi. Những lệnh chỉ thực thi một lần sẽ được phân công cho interpreter. JIT Compiler có 2 phiên bản, một dành cho JVM chạy trên Client và một dành cho JVM trên Server.</p>
+
+<h3 id="garbage-collector">Garbage Collector</h3>
+
+<p>Bộ nhớ hệ điều hành dành cho JVM bao gồm các phần sau:</p>
+
+<p><img src="/blog/media/e40d61be-95da-4032-a270-d3745f028c4e/jvm-memory-structure.png" alt="Cấu trúc bộ nhớ của JVM" /></p>
+
+<ul>
+  <li>Bộ nhớ Heap: là vùng nhớ nằm trong “Runtime Data Areas”, dùng để cấp phát cho các đối tượng (thể hiện của lớp đối tượng) và mảng.</li>
+  <li>Bộ nhớ Non-Heap: là vùng nhớ dùng để nạp mã lệnh định nghĩa lớp đối tượng và các <em>metadata</em> khác.</li>
+  <li>Mã lệnh của bản thân JVM, các cấu trúc bên trong JVM, mã lệnh và dữ liệu của các bộ phân tích (profiler), v.v.</li>
+</ul>
+
+<p>Trong 3 vùng nhớ này, vùng nhớ Heap có nhiều biến động nhất, do các đối tượng liên tục được tạo ra, hoạt động và kết thúc hoạt động trong suốt quá trình chạy chương trình. Vùng nhớ Non-heap ít biến động hơn, thường chỉ thay đổi khi JVM nạp thêm hoặc loại bỏ khai báo các lớp đối tượng. Vùng chứa mã lệnh được nạp lên khi JVM chạy và ít biến động nhất. Chính vì vậy, JVM đã được thiết kế để áp dụng mô hình quản lý tự động thu hồi bộ nhớ không còn dùng theo kiểu “thế hệ” (generation garbage collection), trong đó các đối tượng tồn tại ngắn hạn trong đó vùng nhớ Heap chứa sẽ được thu dọn với tần suất cao, còn các đối tượng tồn tại lâu dài trong vùng Heap cũng như dữ liệu trong vùng Non-Heap sẽ được thu dọn với tần suất thấp.</p>
+
+
+            </div>
+        </article>
+        <div class="cf"></div>
+        <div class="row text-center">
+            <section class="summer-post-share">
+                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Tổng quan về JVM: các thành phần của HotSpot VM&quot;%20/blog/java/performance/tong-quan-ve-jvm-cac-thanh-phan-cua-hotspot-vm.html%20via%20&#64;pnhung177"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a class="facebook-icon" href="https://www.facebook.com/sharer/sharer.php?u=/blog/java/performance/tong-quan-ve-jvm-cac-thanh-phan-cua-hotspot-vm.html"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a class="google-icon" href="https://plus.google.com/share?url=/blog/java/performance/tong-quan-ve-jvm-cac-thanh-phan-cua-hotspot-vm.html"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </section>
+        </div>
+        <div class="cf"></div>
+        
+            <div class="summer-author-info">
+                <div class="row">
+                    <section class="summer-post-author small-12 columns">
+                        
+                            <img src="/blog/images/avatars/pnhung177.png" class="summer-post-author-avatar" alt="Phạm Ngọc Hùng's photo">
+                        
+                        
+                            <span class="author-label">Author</span>
+                            <h1>Phạm Ngọc Hùng</h1>
+                        
+                        
+                            <p><a href="mailto:pnhung177@drupalex.net" class="author-website">pnhung177@drupalex.net</a></p>
+                        
+                        
+                            <p>... when the sun comes up, you better be running!</p>
+                        
+                    </section>
+                </div>
+            </div> 
+        
+        <div class="cf"></div>
+        
+        <section class="summer-disqus row">
+    <div class="small-12 columns">
+        <h1 class="summer-comments-header">Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'acegik'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+
+        <div class="cf"></div>
+
+    <footer class="summer-site-footer">
+    <div class="copyright">
+         <section>Bản quyền nội dung thuộc về <a href="/blog/about">Phạm Ngọc Hùng</a> &copy; 2014.</section>
+    </div>
+    <div class="social-icons">
+        
+        
+        <a href="http://twitter.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-twitter fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="https://plus.google.com/u/3/115458186421626071505">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-google-plus fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="http://github.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-github fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="http://facebook.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-facebook fa-stack-1x"></i>
+            </span>
+        </a>
+        
+    </div>
+    
+    <div class="cf"></div>
+</footer>
+ 
+</main>    
+    <script src="/blog/assets/js/vendor/modernizr.js"></script>
+    <script src="/blog/assets/js/foundation.min.js"></script>
+    <script src="/blog/assets/js/vendor/background-check.js"></script>
+    <script src="/blog/assets/js/vendor/post-header-animations.js"></script>
+    <script src="/blog/assets/js/summer.js"></script>
+
+    <script>
+      $(document).foundation();
+    </script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54128248-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+</script>
+ 
+</body>
+</html>
