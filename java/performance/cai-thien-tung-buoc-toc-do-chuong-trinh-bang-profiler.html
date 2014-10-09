@@ -8,7 +8,7 @@
 
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://acegik.net/blog/images/logo.png">
+<meta name="twitter:image" content="/blog/images/logo.png">
 <meta name="twitter:title" content="Cải thiện từng bước tốc độ chương trình bằng Profiler">
 <meta name="twitter:description" content="... when the sun comes up, you better be running!">
 <meta name="twitter:creator" content="@pnhung177">
@@ -18,16 +18,16 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cải thiện từng bước tốc độ chương trình bằng Profiler">
 <meta property="og:description" content="... when the sun comes up, you better be running!">
-<meta property="og:url" content="http://acegik.net/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html">
+<meta property="og:url" content="/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html">
 <meta property="og:site_name" content="Acegik's Blog">
-<meta property="og:image" content="http://acegik.net/blog/images/">
+<meta property="og:image" content="/blog/images/">
 
 
 
 
 
-<link rel="canonical" href="http://acegik.net/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html">
-<link href="http://acegik.net/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Acegik's Blog Feed">
+<link rel="canonical" href="/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html">
+<link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Acegik's Blog Feed">
 <link rel="author" href="https://plus.google.com/u/3/115458186421626071505?rel=author">
 
 <!-- http://t.co/dKP3o1e -->
@@ -37,13 +37,13 @@
 
 
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,600,300,800,700' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="http://acegik.net/blog/assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="http://acegik.net/blog/assets/css/vendor/normalize.css">
-    <link rel="stylesheet" href="http://acegik.net/blog/assets/css/vendor/foundation.min.css">
-    <link rel="stylesheet" href="http://acegik.net/blog/assets/css/style.css">
-    <link rel="stylesheet" href="http://acegik.net/blog/assets/css/post.css">
+	<link rel="stylesheet" href="/blog/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/blog/assets/css/vendor/normalize.css">
+    <link rel="stylesheet" href="/blog/assets/css/vendor/foundation.min.css">
+    <link rel="stylesheet" href="/blog/assets/css/style.css">
+    <link rel="stylesheet" href="/blog/assets/css/post.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="http://acegik.net/blog/assets/js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+    <script>window.jQuery || document.write('<script src="/blog/assets/js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
     
 
 
@@ -52,17 +52,17 @@
 
 <!-- Icons -->
 <!-- 16x16 -->
-<link rel="shortcut icon" href="http://acegik.net/blog/favicon.ico">
+<link rel="shortcut icon" href="/blog/favicon.ico">
 <!-- 32x32 -->
-<link rel="shortcut icon" href="http://acegik.net/blog/favicon.png">
+<link rel="shortcut icon" href="/blog/favicon.png">
 <!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
-<link rel="apple-touch-icon-precomposed" href="http://acegik.net/blog/images/apple-touch-icon-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/blog/images/apple-touch-icon-precomposed.png">
 <!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://acegik.net/blog/images/apple-touch-icon-72x72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/blog/images/apple-touch-icon-72x72-precomposed.png">
 <!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://acegik.net/blog/images/apple-touch-icon-114x114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/blog/images/apple-touch-icon-114x114-precomposed.png">
 <!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://acegik.net/blog/images/apple-touch-icon-144x144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/blog/images/apple-touch-icon-144x144-precomposed.png">
 
 </head>
 <body class="post-template" itemscope itemtype="http://schema.org/WebPage">  
@@ -71,8 +71,8 @@
             <header class="summer-post-header-simple">
                 <div class="summer-post-menu-header-simple">
 
-                    <a class="summer-blog-logo" href="http://acegik.net/blog">
-                        <img src="http://acegik.net/blog/images/logo.png" alt="Blog Logo" />
+                    <a class="summer-blog-logo" href="/blog">
+                        <img src="/blog/images/logo.png" alt="Blog Logo" />
                     </a>
 
                 <div class="summer-blog-menu">      
@@ -85,22 +85,22 @@
         </li>
 
             <li>
-                    <a href="http://acegik.net/blog/">Trang bìa</a>
+                    <a href="/blog/">Trang bìa</a>
                  </li>
 
             <li>
-                    <a href="http://acegik.net/blog/featured">Nổi bật</a>
+                    <a href="/blog/featured">Nổi bật</a>
                  </li>
 
             <li>
-                    <a href="http://acegik.net/blog/categories">Danh mục</a>
+                    <a href="/blog/categories">Danh mục</a>
                  </li>
 
             <li>
-                    <a href="http://acegik.net/blog/about">Giới thiệu</a>
+                    <a href="/blog/about">Giới thiệu</a>
                  </li>
             
-           <li><a href="http://acegik.net/blog/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+           <li><a href="/blog/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
     </ul>
 
 </div>
@@ -110,7 +110,7 @@
                     <div class="small-12 columns">
                         <div class="summer-post-meta-simple">
                             <h1>Cải thiện từng bước tốc độ chương trình bằng Profiler</h1>
-                            <p>by <strong>pnhung177</strong> &#8212; on <a href="http://acegik.net/blog/tags/index.html#Java Performance" data-toggle="tooltip" title="Posts tagged with Java Performance" rel="tag">Java Performance</a>&nbsp;&comma;&nbsp;<a href="http://acegik.net/blog/tags/index.html#Refactoring" data-toggle="tooltip" title="Posts tagged with Refactoring" rel="tag">Refactoring</a>&nbsp;&comma;&nbsp;<a href="http://acegik.net/blog/tags/index.html#Profiling" data-toggle="tooltip" title="Posts tagged with Profiling" rel="tag">Profiling</a> &#8212; <strong><time datetime="2014-06-19T00:00:00+07:00">19/06/2014</time></strong></p>
+                            <p>by <strong>pnhung177</strong> &#8212; on <a href="/blog/tags/index.html#Java Performance" data-toggle="tooltip" title="Posts tagged with Java Performance" rel="tag">Java Performance</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#Refactoring" data-toggle="tooltip" title="Posts tagged with Refactoring" rel="tag">Refactoring</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#Profiling" data-toggle="tooltip" title="Posts tagged with Profiling" rel="tag">Profiling</a> &#8212; <strong><time datetime="2014-06-19T00:00:00+07:00">19/06/2014</time></strong></p>
                         </div>
                     </div>
                 </div>
@@ -244,19 +244,19 @@
 
 <p>Sau khi chạy kiểm thử lại <strong>ValidationUtilTest</strong> để đảm bảo <em>verifyEmail2()</em> pass qua bộ test, chúng ta chạy Profile cho file <strong>ValidationUtilTest</strong> như sau:</p>
 
-<p><img src="http://acegik.net/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/start-profiling-test-file.png" alt="Hình 1. Kích hoạt Profiler để phân tích tệp Test" /> </p>
+<p><img src="/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/start-profiling-test-file.png" alt="Hình 1. Kích hoạt Profiler để phân tích tệp Test" /> </p>
 
 <p>Chọn chức năng cần đo đạc là CPU. Profiler sẽ yêu cầu thiết lập tùy chọn, hãy chọn Advanced &gt; Edit Profiling Roots để xác định các phương thức cần đo đạc tốc độ như trong hình sau:</p>
 
-<p><img src="http://acegik.net/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/edit-profiling-roots.png" alt="Hình 2. Chọn các phương thức cần thực hiện đo đạc" /></p>
+<p><img src="/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/edit-profiling-roots.png" alt="Hình 2. Chọn các phương thức cần thực hiện đo đạc" /></p>
 
 <p>Sau khi đã thiết lập xong tùy chọn, click chuột vào <strong>Run</strong> để chạy profiling. Khi kết thúc, Profiler hiển thị hộp thoại xác nhận có muốn ghi lại kết quả đã đo đạc không? hãy chọn <strong>Yes</strong>:</p>
 
-<p><img src="http://acegik.net/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/take-a-snapshot-of-results.png" alt="Hình 3. Xác nhận ghi lại kết quả đo đạc" /></p>
+<p><img src="/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/take-a-snapshot-of-results.png" alt="Hình 3. Xác nhận ghi lại kết quả đo đạc" /></p>
 
 <p>Profiler sẽ hiển thị cửa sổ kết quả như sau:</p>
 
-<p><img src="http://acegik.net/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/cpu-hotspot-results.png" alt="Hình 4. Kết quả đo đạc tốc độ thực thi của các phương thức được chọn" /></p>
+<p><img src="/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/cpu-hotspot-results.png" alt="Hình 4. Kết quả đo đạc tốc độ thực thi của các phương thức được chọn" /></p>
 
 <p>Nhìn vào kết quả đo đạc, ta có thể dễ dàng thấy cả 2 hàm <em>verifyEmail()</em> và <em>verifyEmail2()</em> đều thực thi <em>4004</em> lần, tuy nhiên tổng thời gian thực thi của <em>verifyEmail()</em> là 346ms, chiếm 70.9% tổng thời gian thực thi ứng dụng, trong khi hàm <em>verifyEmail2()</em> chỉ mất tổng thời gian thực thi là 24.8ms, chiếm 5.1%. Như vậy, chúng ta có đủ cơ sở để thay hàm <em>verifyEmail()</em> bởi hàm <em>verifyEmail2()</em>. Việc này khá đơn giản, chỉ cần hoán đổi tên của 2 hàm trên.</p>
 
@@ -272,15 +272,15 @@
         <div class="cf"></div>
         <div class="row text-center">
             <section class="summer-post-share">
-                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Cải thiện từng bước tốc độ chương trình bằng Profiler&quot;%20http://acegik.net/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html%20via%20&#64;pnhung177"
+                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Cải thiện từng bước tốc độ chương trình bằng Profiler&quot;%20/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html%20via%20&#64;pnhung177"
                     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
                     <i class="fa fa-twitter"></i>
                 </a>
-                <a class="facebook-icon" href="https://www.facebook.com/sharer/sharer.php?u=http://acegik.net/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html"
+                <a class="facebook-icon" href="https://www.facebook.com/sharer/sharer.php?u=/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html"
                     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
                     <i class="fa fa-facebook"></i>
                 </a>
-                <a class="google-icon" href="https://plus.google.com/share?url=http://acegik.net/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html"
+                <a class="google-icon" href="https://plus.google.com/share?url=/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html"
                    onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
                     <i class="fa fa-google-plus"></i>
                 </a>
@@ -292,7 +292,7 @@
                 <div class="row">
                     <section class="summer-post-author small-12 columns">
                         
-                            <img src="http://acegik.net/blog/images/avatars/pnhung177.png" class="summer-post-author-avatar" alt="Phạm Ngọc Hùng's photo">
+                            <img src="/blog/images/avatars/pnhung177.png" class="summer-post-author-avatar" alt="Phạm Ngọc Hùng's photo">
                         
                         
                             <span class="author-label">Author</span>
@@ -341,7 +341,7 @@
 
     <footer class="summer-site-footer">
     <div class="copyright">
-         <section>Bản quyền nội dung thuộc về <a href="http://acegik.net/blog/about">Phạm Ngọc Hùng</a> &copy; 2014.</section>
+         <section>Bản quyền nội dung thuộc về <a href="/blog/about">Phạm Ngọc Hùng</a> &copy; 2014.</section>
     </div>
     <div class="social-icons">
         
@@ -383,11 +383,11 @@
 </footer>
  
 </main>    
-    <script src="http://acegik.net/blog/assets/js/vendor/modernizr.js"></script>
-    <script src="http://acegik.net/blog/assets/js/foundation.min.js"></script>
-    <script src="http://acegik.net/blog/assets/js/vendor/background-check.js"></script>
-    <script src="http://acegik.net/blog/assets/js/vendor/post-header-animations.js"></script>
-    <script src="http://acegik.net/blog/assets/js/summer.js"></script>
+    <script src="/blog/assets/js/vendor/modernizr.js"></script>
+    <script src="/blog/assets/js/foundation.min.js"></script>
+    <script src="/blog/assets/js/vendor/background-check.js"></script>
+    <script src="/blog/assets/js/vendor/post-header-animations.js"></script>
+    <script src="/blog/assets/js/summer.js"></script>
 
     <script>
       $(document).foundation();

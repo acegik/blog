@@ -9,7 +9,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://acegik.net/blog/feed.xml" />
 <link rel="alternate" type="text/html" href="http://acegik.net/blog/" />
-<updated>2014-10-08T21:10:28+07:00</updated>
+<updated>2014-10-09T16:15:40+07:00</updated>
 <id>http://acegik.net/blog/</id>
 <author>
   <name>Phạm Ngọc Hùng</name>
@@ -342,7 +342,7 @@
   
     &lt;p&gt;Bài này thực hành với các từ nối: according to, depending on, following, in accordance with, in agreement with, in compliance with. Chọn một từ nối phù hợp với nội dung của câu.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/6ff67171-2d39-4ce7-9998-6eda82404882/according-to-jim.png&quot; alt=&quot;According to Jim ...&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/6ff67171-2d39-4ce7-9998-6eda82404882/according-to-jim.png&quot; alt=&quot;According to Jim ...&quot; /&gt; &lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Breast cancer among premenopausal women also showed variation &lt;strong&gt;according to/ in accordance with/ in agreement with&lt;/strong&gt; the history of patients.&lt;/li&gt;
@@ -572,15 +572,15 @@
 
 &lt;p&gt;Sử dụng một mảng hai chiều (tạm gọi là mảng &lt;em&gt;P&lt;/em&gt;) để lưu trữ một phương án kết hợp màu sắc, người, đồ uống, thuốc lá, vật nuôi cho các ngôi nhà. Mảng này chứa tên của các đặc điểm, mỗi dòng tương ứng với một đặc điểm, mỗi cột tương ứng với một ngôi nhà.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_data_structure_using_name.png&quot; alt=&quot;Hình 1. Mảng hai chiều chứa phương án kết hợp các đặc điểm&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_data_structure_using_name.png&quot; alt=&quot;Hình 1. Mảng hai chiều chứa phương án kết hợp các đặc điểm&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Để thuận tiện cho lập trình, chúng ta dùng số thay cho tên của các đối tượng. Chẳng hạn với màu sắc: “Red”-0, “White”-1, “Yellow”-2, “Green”-3, “Blue”-4; với đồ uống: “Tea”-0, “Coffee”-1, “Milk”-2, “Beer”-3, “Water”-4; tương tự với thuốc lá, vật nuôi và quốc tịch. Chúng ta sử dụng một mảng 2 chiều (tạm gọi là mảng &lt;em&gt;name_matrix&lt;/em&gt;) để tương ứng tên đối tượng với số như sau:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_name2number_mapping.png&quot; alt=&quot;Hình 2. Bảng chuyển đổi giữa tên và số&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_name2number_mapping.png&quot; alt=&quot;Hình 2. Bảng chuyển đổi giữa tên và số&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Với tương ứng giữa tên và số ở trên, mảng phương án kết hợp &lt;em&gt;P&lt;/em&gt; có dạng như sau:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_data_structure_using_number.png&quot; alt=&quot;Hình 3. Mảng hai chiều chứa phương án kết hợp các đặc điểm (dạng số)&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_data_structure_using_number.png&quot; alt=&quot;Hình 3. Mảng hai chiều chứa phương án kết hợp các đặc điểm (dạng số)&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Với phương án kết hợp đang có trong &lt;em&gt;P&lt;/em&gt;, chúng ta kiểm tra xem phương án này có thỏa mãn các quy tắc của bài toán hay không. Nếu thỏa mãn, chúng ta in kết quả ra màn hình. Sau đó chuyển sang phương án kết hợp tiếp theo.&lt;/p&gt;
 
@@ -588,19 +588,19 @@
 
 &lt;p&gt;Mỗi phương án kết hợp trong &lt;em&gt;P&lt;/em&gt; bao gồm 5 mảng con 5 phần tử, mỗi mảng con thể hiện cho một cách sắp đặt các giá trị của một đặc điểm cho các ngôi nhà. Viết 5 mảng con thành 5 dòng. Giả sử chúng ta đã có cách sinh ra các hoán vị liên tiếp của một mảng 5 phẩn tử (sẽ trình bày bên dưới, trong phần “&lt;em&gt;Thuật toán sinh hoán vị liên tiếp&lt;/em&gt;”). Khi đó, hãy hình dung chúng ta viết các hoán vị liên tiếp của 5 mảng con này lần lượt ra bên phải, theo chiều ngang. Chúng ta sẽ có tất cả 120 cột tương ứng với 120 hoán vị của mảng 5 phần tử.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_combination_diagram_001-002-058-057-118.png&quot; alt=&quot;Hình 4. Dãy 120 hoán vị của 5 đặc điểm&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_combination_diagram_001-002-058-057-118.png&quot; alt=&quot;Hình 4. Dãy 120 hoán vị của 5 đặc điểm&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Trong hình vẽ minh họa ở trên, đường mũi tên đỏ &amp;amp; xanh xác định phương án kết hợp hiện tại của ma trận &lt;em&gt;P&lt;/em&gt;, là sự kết hợp của hoán vị 1 của Nationalities, 2 của Colors, 58 của Drinks, 57 của Pets và 118 của Cigarettes (1 - 2 - 58 - 57 - 118). Phương án tiếp theo sẽ là kết hợp 1 - 2 - 58 - 57 - 119, tức là dịch chuyển mũi tên xanh về bên phải 1 vị trí. Cứ tiếp tục như vậy cho đến hoán vị cuối cùng của Cigarettes.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_combination_diagram_001-002-058-057-120.png&quot; alt=&quot;Hình 5. Hoán vị cuối cùng của cigarettes&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_combination_diagram_001-002-058-057-120.png&quot; alt=&quot;Hình 5. Hoán vị cuối cùng của cigarettes&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Sau khi duyệt đến hoán vị cuối cùng, mũi tên đỏ trỏ vào Pets sẽ chuyển đến hoán vị tiếp theo của Pets, và mũi tên xanh lại trỏ về hoán vị đầu tiên của Cigarettes, bắt đầu chu kỳ mới trên dãy hoán vị này. &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_combination_diagram_001-002-058-058-001.png&quot; alt=&quot;Hình 6. Hoán vị Pets tiếp theo trong khi Cigarettes trở về đầu&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_combination_diagram_001-002-058-058-001.png&quot; alt=&quot;Hình 6. Hoán vị Pets tiếp theo trong khi Cigarettes trở về đầu&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Với sự kết hợp này, chúng ta có thể hình dung các phương án kết hợp của &lt;em&gt;P&lt;/em&gt; thay đổi như sau:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_combination_chain.png&quot; alt=&quot;Hình 7. Chuỗi các phương án kết hợp liên tiếp&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/cc3d1e99-1555-4d0e-bf65-b5a3e41612d2/einstein_puzzle_combination_chain.png&quot; alt=&quot;Hình 7. Chuỗi các phương án kết hợp liên tiếp&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Tương ứng mũi tên màu xanh duyệt từ hoán vị đầu đến hoán vị cuối của dãy hoán vị Cigarettes (có chỉ số dòng trong ma trận là &lt;strong&gt;N_CI=4&lt;/strong&gt;) chính là vòng lặp:&lt;/p&gt;
 
@@ -973,7 +973,7 @@ Nationalities: Norwegian &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     Germ
 
 &lt;p&gt;Chúng ta minh họa bài viết bằng ví dụ đơn giản sau: lập trình đếm tổng số lượng hàng hóa và tổng số tiền hàng của một cửa hàng trực tuyến.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/c8ade22a-a842-4dd3-844a-505364f3169e/simple_ioc_container_diagram.png&quot; alt=&quot;Hình 1. Sơ đồ tổng quan của Simple IoC Container&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/c8ade22a-a842-4dd3-844a-505364f3169e/simple_ioc_container_diagram.png&quot; alt=&quot;Hình 1. Sơ đồ tổng quan của Simple IoC Container&quot; /&gt; &lt;/p&gt;
 
 &lt;h2 id=&quot;cc-lp-i-tng-m-hnh-nghip-v&quot;&gt;Các lớp đối tượng mô hình nghiệp vụ&lt;/h2&gt;
 
@@ -1109,7 +1109,7 @@ Nationalities: Norwegian &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;     Germ
 
 &lt;p&gt;Chức năng của Simple IoC Container là tạo và móc nối các đối tượng nghiệp vụ với nhau dựa trên mô tả trong tệp cấu hình XML.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/c8ade22a-a842-4dd3-844a-505364f3169e/simple_ioc_container_inside.png&quot; alt=&quot;Hình 2. Cấu trúc bên trong của Simple IoC Container&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/c8ade22a-a842-4dd3-844a-505364f3169e/simple_ioc_container_inside.png&quot; alt=&quot;Hình 2. Cấu trúc bên trong của Simple IoC Container&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Để lưu trữ thông tin mô tả một đối tượng được simple-ioc-container quản lý, chúng ta cần định nghĩa 2 lớp đối tượng: BeanObject và BeanProperty. &lt;/p&gt;
 
@@ -1457,7 +1457,7 @@ Please visit https://rvm.io/integration/gnome-terminal/ &lt;span class=&quot;k&q
 
 &lt;p&gt;Để khắc phục tình trạng này, chúng ta cần mở cửa sổ tùy chọn “Edit &amp;gt; Profile Preferences” của &lt;em&gt;gnome-terminal&lt;/em&gt;, check vào lựa chọn “Run command as login shell” như trong hình vẽ.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/e8082567-e8e5-4c56-8310-d5ecc5938822/gnome-terminal-run-command-as-login-shell.png&quot; alt=&quot;Thiết lập tùy chọn &amp;quot;Run command as login shell&amp;quot; cho Gnome Terminal&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/e8082567-e8e5-4c56-8310-d5ecc5938822/gnome-terminal-run-command-as-login-shell.png&quot; alt=&quot;Thiết lập tùy chọn &amp;quot;Run command as login shell&amp;quot; cho Gnome Terminal&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Đóng cửa sổ tùy chọn, đóng cửa sổ dòng lệnh và mở cửa sổ dòng lệnh mới, sau đó chạy lại lệnh sau:&lt;/p&gt;
 
@@ -1544,7 +1544,7 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
 
 &lt;p&gt;Một Thread chạy trong một chương trình Java sẽ trải qua nhiều giai đoạn khác nhau, mỗi giai đoạn tương ứng với một trạng thái trong biểu đồ trạng thái trong hình dưới đây.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/f1f39615-0c6b-4d61-abfd-9e48235460d9/java_multithreading_lifecycle_of_a_thread.png&quot; alt=&quot;Hình 1. Lược đồ trạng thái vòng đời của một Thread&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/f1f39615-0c6b-4d61-abfd-9e48235460d9/java_multithreading_lifecycle_of_a_thread.png&quot; alt=&quot;Hình 1. Lược đồ trạng thái vòng đời của một Thread&quot; /&gt; &lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;New: Khi một thread được tạo ra (bằng toán tử new) nó sẽ ở trạng thái New, là trạng thái đầu tiên trong vòng đời của nó. Thread giữ ở trạng thái này cho đến khi nó được chương trình kích hoạt thông qua lời gọi phương thức start().&lt;/li&gt;
@@ -1591,7 +1591,7 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
 
 &lt;p&gt;Tắc nghẽn (&lt;a href=&quot;http://en.wikipedia.org/wiki/Deadlock&quot;&gt;Deadlock&lt;/a&gt;) là tình huống hai hay nhiều thread bị chặn để chờ được truy cập vào tài nguyên, trong khi tài nguyên này đang bị chiếm giữ bởi một thread cũng đang bị chặn. &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/f1f39615-0c6b-4d61-abfd-9e48235460d9/deadlock.png&quot; alt=&quot;Hình 2. Tình trạng tắc nghẽn giữa hai thread&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/f1f39615-0c6b-4d61-abfd-9e48235460d9/deadlock.png&quot; alt=&quot;Hình 2. Tình trạng tắc nghẽn giữa hai thread&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Hình vẽ bên trên minh họa trường hợp tắc nghẽn đơn giản nhất, trong đó hai thread đều bị chặn và chờ được sử dụng tài nguyên mà thread kia đang nắm giữ.&lt;/p&gt;
 
@@ -1631,7 +1631,7 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
   
     &lt;p&gt;Spring Framework ra đời như là một chọn lựa, thay thế cho mô hình chuẩn EJB trong việc phát triển ứng dụng JavaEE đã đánh dấu một bước ngoặt trong lịch sử phát triển của Enterprise Java. Spring không ngừng phát triển và ngày càng phổ biến trong cộng đồng Java. Theo thống kê của &lt;a href=&quot;http://www.indeed.com/&quot;&gt;trang web tìm kiếm việc làm Indeed&lt;/a&gt; đến đầu năm 2014, tỉ lệ gia tăng việc làm trên Spring luôn cao hơn hẳn EJB.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/spring-vs-ejb-jobgraph.png&quot; alt=&quot;Hình 1. Tỉ lệ gia tăng việc làm giữa Spring và EJB&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/spring-vs-ejb-jobgraph.png&quot; alt=&quot;Hình 1. Tỉ lệ gia tăng việc làm giữa Spring và EJB&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Một trong những thành phần chủ chốt, là nền tảng và tạo nên sức mạnh của Spring chính là IoC Container. IoC Container trong Spring được xây dựng dựa trên nguyên lý &lt;a href=&quot;http://en.wikipedia.org/wiki/Inversion_of_control&quot;&gt;Inversion of Control&lt;/a&gt; (đảo ngược điều khiển), đã xuất hiện khá lâu trong các mẫu hình thiết kế (Design Pattern), và được phổ biến rộng rãi nhờ &lt;a href=&quot;http://en.wikipedia.org/wiki/Dependency_inversion_principle&quot;&gt;Robert C. Martin&lt;/a&gt; và &lt;a href=&quot;http://martinfowler.com/bliki/InversionOfControl.html&quot;&gt;Martin Fowler&lt;/a&gt;. Để hiểu về Spring, trước tiên chúng ta cần hiểu khái niệm Inversion of Control là gì? Muốn vậy, chúng ta cần trả lời câu hỏi: Control (điều khiển) trong chương trình phần mềm là gì, và Inversion (sự đảo ngược) đối với điều khiển trong ngữ cảnh này được hiểu như thế nào.&lt;/p&gt;
 
@@ -1643,7 +1643,7 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
 
 &lt;p&gt;Do chương trình ngày càng phức tạp, nên người ta áp dụng phương pháp lập trình hướng đối tượng nhằm phân loại, chia tách các chức năng và gom thành các đối tượng. Người ta còn tạo dựng các thư viện tạo sẵn để có thể sử dụng lại. Luồng thực thi của chương trình, trong những tình huống cần xem xét ở mức tổng thể, không còn quan tâm đến các bước thực thi câu lệnh cụ thể nữa, mà chỉ xem xét đến quá trình gọi phương thức của các đối tượng trong ứng dụng cũng như các đối tượng của thư viện dựng sẵn.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/oop_flow_of_control.png&quot; alt=&quot;Hai nhiệm vụ của người lập trình khi xây dựng ứng dụng&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/oop_flow_of_control.png&quot; alt=&quot;Hai nhiệm vụ của người lập trình khi xây dựng ứng dụng&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Người lập trình, khi xây dựng ứng dụng từ đầu, đã thực hiện hai nhiệm vụ: trực tiếp điều khiển luồng thực thi của chương trình và xây dựng các chức năng để đáp ứng nghiệp vụ của ứng dụng. Thực tế, có nhiều chương trình hoặc bộ phận trong chương trình có luồng thực thi rất giống nhau, chẳng hạn phần tương tác với HTTP trong các ứng dụng web, phần unit testing trong các ứng dụng,… Việc trực tiếp tạo dựng và kiểm soát luồng thực thi của chương trình lặp đi lặp lại khi xây dựng nhiều ứng dụng sẽ làm mất nhiều công sức, chi phí, tạo ra sự nhàm chán và dễ phát sinh lỗi. Điều này tạo ra động lực cũng như môi trường để nguyên lý đảo ngược điều khiển nảy nở và phát triển.&lt;/p&gt;
 
@@ -1662,7 +1662,7 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
 
 &lt;p&gt;Hầu như tất cả chúng ta khi lập trình ứng dụng web bằng &lt;a href=&quot;http://docs.oracle.com/javaee/6/tutorial/doc/bnafd.html&quot;&gt;Java Servlet&lt;/a&gt; đều hình dung rõ ràng các bước lập trình như sau: Tạo lớp đối tượng kế thừa từ HttpServlet, nạp đè các phương thức doGet() - doPost(), sau đó đăng ký trong file cấu hình Deployment Descriptor tương ứng Servlet này với đường dẫn xác định. Lớp đối tượng Servlet chúng ta tạo ra sẽ được gọi đến khi có một truy vấn HTTP có đường dẫn “khớp” với đường dẫn khai báo trong Deployment Descriptor.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/ioc_example_servlet.png&quot; alt=&quot;Đảo ngược điều khiển trong ứng dụng Servlet&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/ioc_example_servlet.png&quot; alt=&quot;Đảo ngược điều khiển trong ứng dụng Servlet&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Đôi khi chúng ta cũng đã tự hỏi: vậy ai kích hoạt ứng dụng chúng ta viết để đáp ứng mỗi khi có Http Request gửi đến? ai chịu trách nhiệm chuyển đổi các thông điệp Http (HTTP Request và HTTP response) thành các đối tượng Java (HttpServletRequest và HttpServletResponse) để truyền cho các hàm doGet(), doPost()? Câu trả lời rõ ràng và ngay lập tức: chính là Servlet Container.&lt;/p&gt;
 
@@ -1670,13 +1670,13 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
 
 &lt;p&gt;Trong quá trình phát triển các thành phần chức năng của ứng dụng, chúng ta thường áp dụng kiểm thử thành phần (&lt;a href=&quot;http://en.wikipedia.org/wiki/Unit_testing&quot;&gt;Unit Testing&lt;/a&gt;) để đảm bảo chức năng đó vẫn chạy đúng trong suốt quá trình ứng dụng được mở rộng và phát triển thêm. Để tạo bộ Unit Test, chúng ta chỉ cần tạo một lớp đối tượng, định nghĩa các phương thức khởi tạo, phương thức kết thúc và các phương thức test. Sau đó, chúng ta chỉ việc chạy bộ test để kiểm thử. &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/ioc_example_unit_testing.png&quot; alt=&quot;Đảo ngược điều khiển trong quá trình chạy Unit Test&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/ioc_example_unit_testing.png&quot; alt=&quot;Đảo ngược điều khiển trong quá trình chạy Unit Test&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Việc điều khiển trình tự thực thi các phương thức được giao cho thư viện bên ngoài đảm nhiệm (chẳng hạn như TestNG hoặc &lt;a href=&quot;http://junit.org/&quot;&gt;JUnit&lt;/a&gt;).&lt;/p&gt;
 
 &lt;p&gt;Với hai ví dụ trên, chúng ta nhận thấy trong các ứng dụng đã có sự thay đổi vai trò: ứng dụng không còn ôm đồm vừa trực tiếp tạo dựng và kiểm soát luồng thực thi, vừa xây dựng chức năng nghiệp vụ. Việc kiểm soát luồng thực thi được tách khỏi chức năng nghiệp vụ và bị đẩy ra bên ngoài. Người lập trình đã ủy thác việc kiểm soát luồng thực thi ứng dụng cho một thành phần (thường là thư viện dựng sẵn) bên ngoài đảm nhiệm, chỉ còn tập trung vào chức năng chính của ứng dụng.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/oop_app_ioc.png&quot; alt=&quot;Tách việc kiểm soát luồng thực thi ra khỏi ứng dụng&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/12d9da45-7567-4b79-b2a3-486e2ed933d7/oop_app_ioc.png&quot; alt=&quot;Tách việc kiểm soát luồng thực thi ra khỏi ứng dụng&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Như vậy, khái niệm “đảo ngược” ở đây chính là chuyển nhiệm vụ kiểm soát lưu trình thực thi từ ứng dụng cho một thành phần chuyên trách (thường là một thư viện phần mềm khung - framework - dựng sẵn ở bên ngoài): ứng dụng chính chúng ta quan tâm phát triển không kiểm soát việc điều khiển luồng thực thi nữa, mà chỉ tập trung vào việc định nghĩa chức năng. Thư viện phần mềm khung chuyên trách kiểm soát điều khiển sẽ dựa trên mô tả trong cấu hình của ứng dụng để thay mặt ứng dụng điều phối luồng thực thi trong chương trình. Dễ dàng nhận thấy thư viện phần mềm khung này khác với các thư viện thông thường ở chỗ: thư viện thông thường cung cấp các chức năng và chờ được gọi đến, còn thư viện phần mềm khung tạo dựng luồng thực thi và gọi đến các chức năng của ứng dụng. Có lẽ sử dụng thuật ngữ “đảo ngược vai trò điều khiển luồng thực thi” thay cho “đảo ngược điều khiển” sẽ đầy đủ và phù hợp hơn cho khái niệm “Inversion of Control”. &lt;/p&gt;
 
@@ -1731,7 +1731,7 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
   &lt;li&gt;Cách (D). Một người nấu nhiều món, mỗi thời điểm chỉ nấu một món, nấu xong món này mới thực hiện món khác.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/69320106-30e4-42d0-a670-061fe894d286/java-concurrency-4-cooking-models.png&quot; alt=&quot;Hình 1. Bốn cách thực hiện nấu bữa ăn gồm ba món ăn&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/69320106-30e4-42d0-a670-061fe894d286/java-concurrency-4-cooking-models.png&quot; alt=&quot;Hình 1. Bốn cách thực hiện nấu bữa ăn gồm ba món ăn&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Nếu chúng ta tương ứng:&lt;/p&gt;
 
@@ -1748,7 +1748,7 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
 
 &lt;p&gt;Cách (C) tương ứng với Tính toán đồng thời, trong đó một chương trình xử lý nhiều nhiệm vụ đồng thời theo cách chia nhỏ từng nhiệm vụ thành các thao tác, thực thi các thao tác (không phân biệt của nhiệm vụ nào) xen kẽ nhau trong khoảng thời gian được phân bổ hợp lý. Khái niệm “đồng thời” không áp dụng cho từng thao tác (tương ứng với lệnh thực thi trong máy tính), tức là không thể thực hiện các thao tác cùng một lúc (kiểu như người nấu ăn vừa băm thịt, vừa thái hành). Ở đây, khái niệm “đồng thời” được áp dụng cho nguyên cả nhiệm vụ, hiểu theo nghĩa có hai hay nhiều nhiệm vụ cùng “đang” trong quá trình được xử lý, nhưng các hành động cụ thể thực hiện các nhiệm vụ được diễn ra xen kẽ tuần tự (nhưng không đồng thời).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/69320106-30e4-42d0-a670-061fe894d286/java-concurrency-overview-one-chef-with-3-dishes1.png&quot; alt=&quot;Hình 2. Mô hình (C) tương ứng với Tính toán đồng thời (Concurrency) trong lập trình.&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/69320106-30e4-42d0-a670-061fe894d286/java-concurrency-overview-one-chef-with-3-dishes1.png&quot; alt=&quot;Hình 2. Mô hình (C) tương ứng với Tính toán đồng thời (Concurrency) trong lập trình.&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Cách (D) tương ứng với lập trình tuần tự, trong đó chương trình xử lý tuần tự hết nhiệm vụ này rồi mới bắt đầu xử lý nhiệm vụ khác. Mỗi thời điểm chỉ có một nhiệm vụ đang được xử lý.&lt;/p&gt;
 
@@ -1760,7 +1760,7 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
 
 &lt;p&gt;Mỗi chương trình Java được chạy trên nền một máy ảo Java (&lt;a href=&quot;http://en.wikipedia.org/wiki/Java_virtual_machine&quot;&gt;Java Virtual Machine&lt;/a&gt;). Máy ảo Java là dạng Máy ảo tiến trình (Process Virtual Machine), do đó mỗi chương trình Java là một tiến trình của hệ điều hành. Hàm main() trong chương trình Java sẽ tạo ra &lt;a href=&quot;http://docs.oracle.com/javase/7/docs/api/java/lang/Thread.html&quot;&gt;Thread&lt;/a&gt; mặc định. Một chương trình Java đơn giản chỉ có một Thread được tạo ra từ hàm main(). Máy ảo Java cho phép chương trình Java có thể tạo ra nhiều Thread khác. Nếu muốn xử lý đồng thời nhiều nhiệm vụ, người lập trình phải viết mã lệnh để hàm main() gọi đến để tạo ra các Thread khác.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/69320106-30e4-42d0-a670-061fe894d286/java-concurrency-one-process-with-3-threads1.png&quot; alt=&quot;Hình 3. Tiến trình Java với 3 Thread chạy đồng thời&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/69320106-30e4-42d0-a670-061fe894d286/java-concurrency-one-process-with-3-threads1.png&quot; alt=&quot;Hình 3. Tiến trình Java với 3 Thread chạy đồng thời&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Để tạo ra Thread, người lập trình cần thực hiện các bước sau:&lt;/p&gt;
 
@@ -1833,6 +1833,85 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
 
   
   &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/java/concurrency/tong-quan-ve-java-concurrency.html&quot;&gt;Tổng quan về Java Concurrency&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on August 20, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Tổng quan về JVM: HotSpot Garbage Collector]]></title>
+  <link rel="alternate" type="text/html" href="http://acegik.net/blog/java/jvm/tong-quan-ve-jvm-hotspot-garbage-collector.html"/>
+  <id>http://acegik.net/blog/java/jvm/tong-quan-ve-jvm-hotspot-garbage-collector</id>
+  <published>2014-07-12T00:00:00+07:00</published>
+  <updated>2014-07-12T00:00:00-00:00</updated>
+  
+  <author>
+    <name>Phạm Ngọc Hùng</name>
+    <uri>http://acegik.net/blog</uri>
+    <email>pnhung177@drupalex.net</email>
+  </author>
+  <category scheme="http://acegik.net/blog/tags/#Java" term="Java" /><category scheme="http://acegik.net/blog/tags/#Java%20Performance" term="Java Performance" /><category scheme="http://acegik.net/blog/tags/#JVM" term="JVM" /><category scheme="http://acegik.net/blog/tags/#HotSpot%20VM" term="HotSpot VM" />
+  <content type="html">
+  
+    &lt;p&gt;Bài viết này giới thiệu về HotSpot Garbage Collector, cũng như giải thích cơ chế hoạt động để người dùng hiểu rõ hơn cách thức mà Garbage Collector làm việc trong HotSpot VM, từ đó có thể khai thác triệt để những ưu điểm của nó trong việc thiết kế, phát triển và triển khai ứng dụng Java. Từ đây trở đi trong bài viết này, chúng ta quy ước gọi tắt Garbage Collector là GC.&lt;/p&gt;
+
+&lt;h2 id=&quot;cu-trc-hotspot-garbage-collector&quot;&gt;Cấu trúc HotSpot Garbage Collector&lt;/h2&gt;
+
+&lt;p&gt;HotSpot sử dụng mô hình &lt;strong&gt;Generational Garbage Collection&lt;/strong&gt;, trong đó GC xác định các đối tượng “sống lâu” dựa trên số lượng lần thu nhặt rác mà đối tượng đó vượt qua được, tức là không bị xóa đi để GC thu hồi vùng nhớ. &lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/cc7aaeac-c2eb-4bf2-87a0-2995839e7b8e/hotspot-heap-structure.png&quot; alt=&quot;Cấu trúc HotSpot Heap&quot; /&gt; &lt;/p&gt;
+
+&lt;p&gt;Vùng nhớ do GC quản lý theo mô hình &lt;strong&gt;Generational Garbage Collection&lt;/strong&gt; được chia làm 3 phần:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Young Generation&lt;/strong&gt;: được dùng để chứa các đối tượng mới được chương trình tạo. Vùng nhớ này được chia nhỏ thành 3 vùng con: vùng Eden và 2 vùng nhớ Survivor có tên là S0 và S1. Vùng nhớ Eden là nơi chứa các đối tượng vừa được khởi tạo. Các vùng nhớ Survivor được dùng để tính tuổi cho các đối tượng mới được chuyển qua từ vùng Eden.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Old Generation&lt;/strong&gt; hay còn gọi là &lt;strong&gt;Tenured Generation&lt;/strong&gt;: được dùng để chứa các đối tượng tồn tại lâu dài. Các đối tượng trong vùng &lt;strong&gt;Young Generation&lt;/strong&gt; sau khi đã trải qua một số lần thu dọn rác nhất định, nếu vẫn tồn tại thì sẽ được chuyển qua vùng &lt;strong&gt;Old Generation&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Permanent Generation&lt;/strong&gt;: được máy ảo sử dụng để chứa dữ liệu cần thiết để mô tả đối tượng. Ví dụ, đối tượng mô tả các lớp đối tượng (class) và phương thức (method) được lưu trữ trong vùng Permanent Generation.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;cc-vng-nh-hot-ng-nh-th-no&quot;&gt;Các vùng nhớ hoạt động như thế nào?&lt;/h2&gt;
+
+&lt;h3 id=&quot;vng-nh-young-generation&quot;&gt;Vùng nhớ Young Generation&lt;/h3&gt;
+
+&lt;p&gt;Vùng nhớ Young Generation được dùng để chứa những đối tượng vừa được chương trình tạo ra hoặc đã tồn tại trong chương trình một thời gian ngắn. Vùng nhớ này giãn nở nhanh chóng và khi đã đầy sẽ được &lt;em&gt;quá trình thu dọn nhỏ&lt;/em&gt; (&lt;strong&gt;minor garbage collection&lt;/strong&gt;) dọn dẹp các đối tượng không dùng nữa và chuyển những đối tượng tồn tại lâu dài sang vùng Old Generation. Cơ chế này được giải thích chi tiết như sau:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1&lt;/strong&gt;. Khi một đối tượng được tạo ra, nó được cấp phát bộ nhớ trong vùng Eden. Hai vùng nhớ Survivor S0 và S1 khi mới bắt đầu đều trống rỗng. Vùng nhớ Eden tiếp tục nhận các đối tượng mới tạo cho đến khi đầy.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/cc7aaeac-c2eb-4bf2-87a0-2995839e7b8e/gc-process--object-allocation.png&quot; alt=&quot;Cấp phát bộ nhớ đối tượng trong vùng Eden&quot; /&gt; &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2&lt;/strong&gt;. Khi Eden đầy, &lt;em&gt;quá trình thu dọn nhỏ&lt;/em&gt; (&lt;strong&gt;minor garbage collection&lt;/strong&gt;) được kích hoạt. Quá trình này quét qua toàn bộ vùng Eden, những đối tượng còn tham chiếu (Referenced object) sẽ được chuyển qua vùng Survivor thứ nhất (vùng S0), đồng thời được đánh dấu tuổi bằng 1. Những đối tượng hết tham chiếu (Unreferenced object) sẽ loại bỏ khi vùng Eden bị xóa vào cuối quá trình.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/cc7aaeac-c2eb-4bf2-87a0-2995839e7b8e/gc-process--ref-obj-is-copied-to-s0.png&quot; alt=&quot;Minor gabage collection được kích hoạt&quot; /&gt; &lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3&lt;/strong&gt;. Với vùng Eden đã được dọn sạch ở bước trước, quá trình cấp phát bộ nhớ lại tiếp tục cho đến khi vùng này đầy. Quá trình thu dọn rác thứ cấp được kích hoạt trở lại. Trong lần này, các đối tượng “còn tham chiếu” trong Eden được chuyển sang vùng Servivor thứ hai (vùng S1). Sau đó, các đối tượng trong vùng S0 được chuyển từ Eden qua trong lần dọn trước sẽ được quét, những đối tượng “còn tham chiếu” sẽ được tăng số tuổi lên một đơn vị và được chuyển qua vùng Survivor S1. Cuối quá trình, vùng Eden và vùng S0 chỉ còn lại các đối tượng “hết tham chiếu” và sẽ bị xóa sạch.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/cc7aaeac-c2eb-4bf2-87a0-2995839e7b8e/gc-process--object-aging.png&quot; alt=&quot;Tính tuổi cho các đối tượng &amp;quot;còn tham chiếu&amp;quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4&lt;/strong&gt;. Quá trình cấp phát bộ nhớ lại được lặp lại. Tuy nhiên, trong bước này, vai trò của S0 và S1 được hoán đổi với nhau: Khi Eden đầy, các đối tượng “còn tham chiếu” được chuyển từ Eden và S1 sang S0 và được tăng số tuổi. Cuối quá trình vùng Eden và S1 được dọn sạch.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/cc7aaeac-c2eb-4bf2-87a0-2995839e7b8e/gc-process--object-aging-continued.png&quot; alt=&quot;Tính tuổi cho các đối tượng &amp;quot;còn tham chiếu&amp;quot; từ S1 qua S0&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;5&lt;/strong&gt;. Sau mỗi một lần thực hiện &lt;em&gt;quá trình thu dọn nhỏ&lt;/em&gt;, nếu đối tượng nào có tuổi đạt được ngưỡng (chẳng hạn trong hình minh họa là 8), nó sẽ được thăng cấp (promote) từ vùng Young Generation lên vùng Old Generation (còn gọi là Tenured Generation).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/cc7aaeac-c2eb-4bf2-87a0-2995839e7b8e/gc-process--promotion.png&quot; alt=&quot;Thăng cấp cho đối tượng&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;6&lt;/strong&gt;. Quá trình này được thực hiện lặp đi lặp lại liên tục. Chỉ những đối tượng tồn tại lâu dài (có tuổi đạt ngưỡng) thì mới được thăng cấp từ “Young Generation” qua vùng “Old Generation”.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/cc7aaeac-c2eb-4bf2-87a0-2995839e7b8e/gc-process--promotion-continued.png&quot; alt=&quot;Thăng cấp cho đối tượng lặp lại liên tục&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;vng-nh-old-generation&quot;&gt;Vùng nhớ Old Generation&lt;/h3&gt;
+
+&lt;p&gt;Như đã đề cập ở phần trên, vùng nhớ Old Generation được dùng để lưu trữ các đối tượng tồn tại lâu dài được chuyển qua từ vùng nhớ Young Generation. Vùng nhớ Old Generation thường lớn hơn nhưng giãn nở chậm hơn so với Young Generation. Khi vùng nhớ này đầy, &lt;em&gt;quá trình thu dọn lớn&lt;/em&gt; (&lt;strong&gt;major garbage collection&lt;/strong&gt;) được kích hoạt để quét qua tất cả các đối tượng và loại bỏ các đối tượng “hết tham chiếu”. Quá trình thu dọn chính còn được gọi là &lt;em&gt;quá trình thu dọn toàn bộ&lt;/em&gt; (&lt;strong&gt;full garbage collection&lt;/strong&gt;).&lt;/p&gt;
+
+&lt;p&gt;Thông thường quá trình thu dọn lớn sẽ mất thời gian hơn rất nhiều (so với &lt;em&gt;quá trình thu dọn nhỏ&lt;/em&gt;). Quá trình này cũng thuộc loại sự kiện “Stop the World”: ngưng tất cả mọi thứ trong khi nó vận hành. Do đó, đối với những ứng dụng có độ đáp ứng cao (responsive application), quá trình thu dọn lớn phải được hạn chế tối đa.&lt;/p&gt;
+
+&lt;h3 id=&quot;vng-nh-permanent-generation&quot;&gt;Vùng nhớ Permanent Generation&lt;/h3&gt;
+
+&lt;p&gt;Mặc dù tên gọi nằm trong nhóm “generation”, nhưng vùng nhớ này không nằm trong cơ cấu hoạt động dịch chuyển và thăng cấp đối tượng (tức là, các đối tượng do người lập trình tạo ra sẽ không bao giờ được chuyển từ vùng “Old generation” sang vùng “Permanent generation”). Thay vào đó, vùng nhớ này chỉ được sử dụng bởi HotSpot VM để lưu trữ &lt;strong&gt;metadata&lt;/strong&gt;, chẳng hạn như các cấu trúc dữ liệu lớp đối tượng, interned strings, v.v. Ngoài ra, các lớp đối tượng thư viện và các phương thức của JavaSE cũng được chứa ở đây.&lt;/p&gt;
+
+&lt;p&gt;Các lớp đối tượng có thể có thể được gỡ bỏ nếu JVM nhận thấy không cần dùng chúng nữa. Việc thu dọn cũng được thực hiện trong một &lt;em&gt;quá trình thu dọn toàn bộ&lt;/em&gt; (&lt;strong&gt;full garbage collection&lt;/strong&gt;).&lt;/p&gt;
+
+
+  
+  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/java/jvm/tong-quan-ve-jvm-hotspot-garbage-collector.html&quot;&gt;Tổng quan về JVM: HotSpot Garbage Collector&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on July 12, 2014.&lt;/p&gt;</content>
 </entry>
 
 
@@ -2040,19 +2119,19 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
 
 &lt;p&gt;Sau khi chạy kiểm thử lại &lt;strong&gt;ValidationUtilTest&lt;/strong&gt; để đảm bảo &lt;em&gt;verifyEmail2()&lt;/em&gt; pass qua bộ test, chúng ta chạy Profile cho file &lt;strong&gt;ValidationUtilTest&lt;/strong&gt; như sau:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/start-profiling-test-file.png&quot; alt=&quot;Hình 1. Kích hoạt Profiler để phân tích tệp Test&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/start-profiling-test-file.png&quot; alt=&quot;Hình 1. Kích hoạt Profiler để phân tích tệp Test&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Chọn chức năng cần đo đạc là CPU. Profiler sẽ yêu cầu thiết lập tùy chọn, hãy chọn Advanced &amp;gt; Edit Profiling Roots để xác định các phương thức cần đo đạc tốc độ như trong hình sau:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/edit-profiling-roots.png&quot; alt=&quot;Hình 2. Chọn các phương thức cần thực hiện đo đạc&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/edit-profiling-roots.png&quot; alt=&quot;Hình 2. Chọn các phương thức cần thực hiện đo đạc&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Sau khi đã thiết lập xong tùy chọn, click chuột vào &lt;strong&gt;Run&lt;/strong&gt; để chạy profiling. Khi kết thúc, Profiler hiển thị hộp thoại xác nhận có muốn ghi lại kết quả đã đo đạc không? hãy chọn &lt;strong&gt;Yes&lt;/strong&gt;:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/take-a-snapshot-of-results.png&quot; alt=&quot;Hình 3. Xác nhận ghi lại kết quả đo đạc&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/take-a-snapshot-of-results.png&quot; alt=&quot;Hình 3. Xác nhận ghi lại kết quả đo đạc&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Profiler sẽ hiển thị cửa sổ kết quả như sau:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/cpu-hotspot-results.png&quot; alt=&quot;Hình 4. Kết quả đo đạc tốc độ thực thi của các phương thức được chọn&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/cpu-hotspot-results.png&quot; alt=&quot;Hình 4. Kết quả đo đạc tốc độ thực thi của các phương thức được chọn&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Nhìn vào kết quả đo đạc, ta có thể dễ dàng thấy cả 2 hàm &lt;em&gt;verifyEmail()&lt;/em&gt; và &lt;em&gt;verifyEmail2()&lt;/em&gt; đều thực thi &lt;em&gt;4004&lt;/em&gt; lần, tuy nhiên tổng thời gian thực thi của &lt;em&gt;verifyEmail()&lt;/em&gt; là 346ms, chiếm 70.9% tổng thời gian thực thi ứng dụng, trong khi hàm &lt;em&gt;verifyEmail2()&lt;/em&gt; chỉ mất tổng thời gian thực thi là 24.8ms, chiếm 5.1%. Như vậy, chúng ta có đủ cơ sở để thay hàm &lt;em&gt;verifyEmail()&lt;/em&gt; bởi hàm &lt;em&gt;verifyEmail2()&lt;/em&gt;. Việc này khá đơn giản, chỉ cần hoán đổi tên của 2 hàm trên.&lt;/p&gt;
 
@@ -2110,13 +2189,13 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
 
 &lt;p&gt;Cải tiến hiệu năng là quá trình thu thập thông tin về hiệu năng của ứng dụng, phân tích xác định nguyên nhân ảnh hưởng đến hiệu năng, từ đó chỉnh sửa mã nguồn hoặc điều chỉnh thông số của phần mềm để làm tăng hiệu năng của ứng dụng, đáp ứng được yêu cầu đưa ra. Quá trình cải tiến hiệu năng được thực hiện thông qua 3 hoạt động: Theo dõi hiệu năng&lt;sup id=&quot;fnref:performance_monitoring&quot;&gt;&lt;a href=&quot;#fn:performance_monitoring&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; (Performance monitoring), Đo đạc hiệu năng&lt;sup id=&quot;fnref:performance_profiling&quot;&gt;&lt;a href=&quot;#fn:performance_profiling&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; (Performance profiling) và Điều chỉnh hiệu năng (Performance tuning).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/java-performance-management.png&quot; alt=&quot;Chu trình cải tiến hiệu năng cho ứng dụng Java&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/java-performance-management.png&quot; alt=&quot;Chu trình cải tiến hiệu năng cho ứng dụng Java&quot; /&gt; &lt;/p&gt;
 
 &lt;h3 id=&quot;theo-di-hiu-nng&quot;&gt;Theo dõi hiệu năng&lt;/h3&gt;
 
 &lt;p&gt;&lt;em&gt;Theo dõi hiệu năng&lt;/em&gt; là một hành động quan sát và thu thập - một cách không can thiệp (nonintrusive) - dữ liệu hiệu năng từ một ứng dụng đang vận hành. Trong hầu hết các trường hợp, theo dõi thường là dạng hành động mang tính phòng ngừa và chủ động, được thực hiện trong tất cả các môi trường của ứng dụng: môi trường thực, môi trường giám định chất lượng, hoặc môi trường phát triển. Tuy nhiên, theo dõi cũng thường là bước đầu tiên trong các hành động phản ứng lại tình huống xuất hiện báo cáo có vấn đề về hiệu năng của ứng dụng từ người dùng hoặc những người có liên quan, nhưng không cung cấp đầy đủ thông tin hoặc những đầu mối đề tìm ra nguyên nhân gốc rễ vấn đề. Theo dõi giúp xác định và cách ly các vấn đề tiềm năng mà không ảnh hưởng nghiêm trọng đến sự sẵn sàng đáp ứng hoặc thông lượng của một ứng dụng hiện đang chạy.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/performance-monitoring-comparison.png&quot; alt=&quot;So sánh giữa Performance Monitoring với chẩn đoán lâm sàng&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/performance-monitoring-comparison.png&quot; alt=&quot;So sánh giữa Performance Monitoring với chẩn đoán lâm sàng&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Theo dõi hiệu năng tương tự như quá trình chẩn đoán bệnh trong y học: bác sỹ thực hiện các kiểm tra sơ bộ, đo các chỉ số sinh hiệu (huyết áp, nhịp tim, v.v.), tác động cơ học lên cơ thể bệnh nhân, yêu cầu bệnh nhân mô tả các triệu chứng, từ đó chẩn đoán và khoanh vùng các nghi vấn về tình trạng bệnh tật. Việc khám bệnh có thể được thực hiện theo định kỳ để phòng ngừa, trong môi trường sinh hoạt bệnh nhân (bác sỹ đến khám tại nhà) hoặc bệnh nhân tự đến gặp bác sỹ để yêu cầu được khám bệnh khi phát hiện có triệu chứng bị ốm.&lt;/p&gt;
 
@@ -2124,7 +2203,7 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
 
 &lt;p&gt;&lt;em&gt;Đo đạc hiệu năng&lt;/em&gt; cũng là một hành động thu thập dữ liệu hiệu năng từ một ứng dụng đang vận hành. Tuy nhiên, khác với theo dõi hiệu năng, việc lập hồ sơ hiệu năng có thể tác động hoặc can thiệp nhiều hơn đến ứng dụng. Đo đạc hiệu năng thường tập trung có chủ đích vào phạm vi hẹp hơn so với theo dõi hiệu năng. Đo đạc rất hiếm khi được thực hiện trong môi trường thực, mà nó thường được thực hiện trong các môi trường giám định chất lượng, kiểm thử hoặc phát triển. Đo đạc thường chỉ xảy ra sau hoạt động theo dõi kết thúc hoặc khi những yêu cầu về hiệu năng được xác định rõ (well-defined).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/performance-profiling-comparison.png&quot; alt=&quot;So sánh giữa Performance Profiling với xét nghiệm cận lâm sàng&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/performance-profiling-comparison.png&quot; alt=&quot;So sánh giữa Performance Profiling với xét nghiệm cận lâm sàng&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Chúng ta có thể hình dung việc lập hồ sơ hiệu năng giống như quá trình xét nghiệm cận lâm sàng trong y học: sau khi đã chẩn đoán thông qua các triệu chứng lâm sàng, bác sỹ sẽ khoanh vùng căn bệnh và yêu cầu bệnh nhân thực hiện các xét nghiệm sâu hơn và cụ thể hơn. Ví dụ, sau khi khám và nghe mô tả của bệnh nhân: đau và hạn chế vận động cột sống, bả vai, ái phát từng đợt, thường sau khi vận động nhiều, bác sỹ chẩn đoán bệnh nhân bị loãng xương. Để xác định chính xác và chắc chắn hơn, bác sỹ sẽ chỉ định xét nghiệm cận lâm sàng: chụp X-Quang và đo chỉ số T-score. Với các thông tin thu được, bác sỹ có thể xác định nguyên nhân và đưa ra phát đồ điều trị bệnh.&lt;/p&gt;
 
@@ -2132,7 +2211,7 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
 
 &lt;p&gt;&lt;em&gt;Điều chỉnh hiệu năng&lt;/em&gt; là hoạt động chỉnh sửa mã nguồn hoặc thông số cấu hình của ứng dụng nhằm mục đích tăng cường khả năng sẵn sàng đáp ứng và nâng cao thông lượng của ứng dụng. Điều chỉnh hiệu năng thường được thực hiện sau các bước theo dõi hiệu năng và lập hồ sơ hiệu năng.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/performance-tuning-comparison.png&quot; alt=&quot;So sánh giữa Performance Tuning với điều trị bệnh&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/performance-tuning-comparison.png&quot; alt=&quot;So sánh giữa Performance Tuning với điều trị bệnh&quot; /&gt; &lt;/p&gt;
 
 &lt;p&gt;Tương ứng trong y tế, đây là quá trình bác sỹ áp dụng các phác đồ điều trị cũng như những cán thiệp y học (phẫu thuật, tiêm/uống thuốc, vật lý trị liệu, v.v.) để khắc phục các nguyên nhân gây bệnh, từ đó phục hồi và tăng cường sức khỏe cho người bệnh.&lt;/p&gt;
 
@@ -2194,7 +2273,7 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
 
 &lt;p&gt;Phần này sẽ liệt kê các quy tắc về các ký tự có trong mật khẩu và các mẫu đối sánh (Pattern) định nghĩa trong RegExp tương ứng với các quy tắc đó. &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/f3b6f4ed-b80f-4c11-baa3-2f4da021b6ff/rules-to-patterns.png&quot; alt=&quot;Hình 1. Bảng định nghĩa Pattern cho các Rule&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/f3b6f4ed-b80f-4c11-baa3-2f4da021b6ff/rules-to-patterns.png&quot; alt=&quot;Hình 1. Bảng định nghĩa Pattern cho các Rule&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Trường hợp đơn giản nhất, mật khẩu phải đáp ứng được yêu cầu 1, đó là không được phép có ký tự trắng (whitespace) trong mật khẩu.&lt;/p&gt;
 
@@ -2202,7 +2281,7 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
 
 &lt;p&gt;Việc lựa chọn các quy tắc áp dụng kiểm tra được thực hiện thông qua thuộc tính &lt;em&gt;optionFlags&lt;/em&gt;. Thuộc tính này là một số nguyên, mỗi bit từ phải qua trái (tức là hướng từ vị trí có ý nghĩa thấp đến vị trí có ý nghĩa cao) được dùng làm một “cờ” để đánh dấu cho một quy tắc. Chẳng hạn bit số 0, là “cờ” có tên &lt;em&gt;FLAG_HAS_NO_WHITESPACE&lt;/em&gt; đại diện cho quy tắc “No whitespace allowed in the entire string”, tùy thuộc giá trị cờ bằng 1 (cờ được bật) hay bằng 0 (cờ bị tắt) mà chương trình kiểm tra sẽ áp dụng hoặc bỏ qua quy tắc này.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://acegik.net/blog/media/f3b6f4ed-b80f-4c11-baa3-2f4da021b6ff/option-flags.png&quot; alt=&quot;Hình 2. Bảng định nghĩa Flags&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/f3b6f4ed-b80f-4c11-baa3-2f4da021b6ff/option-flags.png&quot; alt=&quot;Hình 2. Bảng định nghĩa Flags&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Để thiết lập nhiều quy tắc cùng lúc, chúng ta có thể dùng toán tử Bitwise OR để “ghép” các quy tắc này với nhau. Giả sử với 3 quy tắc: “&lt;em&gt;No whitespace allowed in the entire string&lt;/em&gt;”, “&lt;em&gt;A digit must occur at least once&lt;/em&gt;” và “&lt;em&gt;A special character must occur at least once&lt;/em&gt;”, chúng ta có thể thiết lập bằng lệnh:&lt;/p&gt;
 
@@ -2215,117 +2294,6 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
 
   
   &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/java/regexp/su-dung-regular-expression-de-kiem-tra-tinh-hop-le-cua-mat-khau.html&quot;&gt;Sử dụng Regular Expression để kiểm tra tính hợp lệ của mật khẩu&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on October 26, 2013.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Viết luận văn tốt nghiệp bằng TeX]]></title>
-  <link rel="alternate" type="text/html" href="http://acegik.net/blog/tex/viet-luan-van-tot-nghiep-bang-tex.html"/>
-  <id>http://acegik.net/blog/tex/viet-luan-van-tot-nghiep-bang-tex</id>
-  <published>2013-08-10T00:00:00+07:00</published>
-  <updated>2013-08-10T00:00:00-00:00</updated>
-  
-  <author>
-    <name>Phạm Ngọc Hùng</name>
-    <uri>http://acegik.net/blog</uri>
-    <email>pnhung177@drupalex.net</email>
-  </author>
-  <category scheme="http://acegik.net/blog/tags/#Lu%E1%BA%ADn%20v%C4%83n%20t%E1%BB%91t%20nghi%E1%BB%87p" term="Luận văn tốt nghiệp" /><category scheme="http://acegik.net/blog/tags/#TeX" term="TeX" /><category scheme="http://acegik.net/blog/tags/#MikTeX" term="MikTeX" /><category scheme="http://acegik.net/blog/tags/#TeXlive" term="TeXlive" />
-  <content type="html">
-  
-    &lt;p&gt;TeX là hệ thống công cụ xử lý tài liệu và ngôn ngữ đánh dấu dành cho tài liệu khoa học. Mặc dù ban đầu được phát triển làm công cụ soạn thảo tài liệu toán học, nhưng TeX ngày càng phổ biến và được sử dụng rộng rãi trong việc xuất bản tài liệu khoa học trong nhiều lĩnh vực như toán học, vật lý, khoa học máy tinh, kinh tế, v.v.&lt;/p&gt;
-
-&lt;p&gt;Bài viết này hướng dẫn cài cài đặt và sử dụng TeX và các công cụ soạn thảo để viết luận văn tốt nghiệp, nhằm giúp các bạn sinh viên đỡ bỡ ngỡ khi muốn sử dụng TeX để trình bày luận văn mạch lạc, rõ ràng và chuyên nghiệp. &lt;/p&gt;
-
-&lt;h2 id=&quot;cc-b-x-l-tex-v-cng-c-son-tho&quot;&gt;Các bộ xử lý TeX và công cụ soạn thảo&lt;/h2&gt;
-
-&lt;p&gt;Nếu ai đã từng sử dụng các công cụ soạn thảo và biên dịch với các ngôn ngữ lập trình phổ dụng như C++, Java,… thì sẽ thấy các công cụ trong TeX cũng được xây dựng tương tự như vậy: các công cụ xử lý và biên dịch được đóng gói riêng thành một “bộ công cụ phát triển”, chương trình soạn thảo được đóng gói riêng và được cung cấp bởi nhiều nhà cung cấp khác nhau. Ví dụ với ngôn ngữ lập trình Java, bộ chương trình biên dịch, thư viện, … được đóng gói thành JDK, chương trình soạn thảo được đóng gói riêng dưới dạng các IDE chẳng hạn như Netbeans, Eclipse.&lt;/p&gt;
-
-&lt;p&gt;Trong thế giới TeX, “bộ công cụ phát triển” được gọi chung là &lt;strong&gt;TeX Typesetting System&lt;/strong&gt;, còn các bộ soạn thảo được gọi là các &lt;strong&gt;TeX Editor&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Để sử dụng TeX viết và biên dịch tài liệu, bạn cần phải cài đặt một bộ &lt;strong&gt;TeX Typesetting System&lt;/strong&gt; “làm nền”, và ít nhất một bộ &lt;strong&gt;TeX Editor&lt;/strong&gt; để soạn thảo và gọi các phần mềm phù hợp để xử lý và biên dịch. Phần bên dưới sẽ hướng dẫn cài đặt các bộ &lt;strong&gt;TeX Typesetting System&lt;/strong&gt; và &lt;strong&gt;TeX Editor&lt;/strong&gt; tương ứng với hệ điều hành Windows và Ubuntu.&lt;/p&gt;
-
-&lt;h2 id=&quot;hng-dn-ci-t-tex-typesetting-system&quot;&gt;Hướng dẫn cài đặt TeX Typesetting System&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;TeX Typesetting System&lt;/strong&gt; là hệ thống các phần mềm công cụ dùng để xử lý và biên dịch các tệp mã nguồn (TeX) thành các định dạng xuất bản (DVI, PDF, PS,…). Có rất nhiều hệ thống &lt;strong&gt;TeX Typesetting System&lt;/strong&gt; được phát triển và duy trì bởi nhiều nhà cung cấp khác nhau. Trong số đó, phổ biến và nổi bật nhất là 2 hệ thống: MiKTeX dành cho Windows và TeXlive dành cho Linux. Phần này sẽ hướng dẫn cài đặt hai hệ thống này trên Windows và Ubuntu.&lt;/p&gt;
-
-&lt;h3 id=&quot;ci-t-miktex-trn-windows&quot;&gt;Cài đặt MiKTeX (trên Windows)&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Vào trang &lt;a href=&quot;http://miktex.org/download&quot;&gt;cài đặt&lt;/a&gt; của MiKTeX và tải bộ cài mới nhất (trong mục Recommended Download) về máy tính. Chú ý chọn phiên bản dành cho 32bit hoặc 64bit phù hợp với máy tính của bạn.&lt;/li&gt;
-  &lt;li&gt;Chạy chương trình cài đặt, thực hiện theo các bước hướng dẫn của MiKTeX. Lưu ý giữ nguyên đường dẫn mặc định của MiKTeX.&lt;/li&gt;
-  &lt;li&gt;Sau khi chương trình cài đặt hoàn tất, mở cửa sổ gõ lệnh (cmd.exe), gõ thử lệnh các lệnh latex, pdflatex, bitex,… để kiểm tra thử có chạy được các phần mềm công cụ này hay không.&lt;/li&gt;
-  &lt;li&gt;Mở cửa sổ Windows Explorer, vào thư mục C:\Program Files\MiKTex 2.y.z\ để kiểm tra xem MiKTeX có được cài vào thư mục này hay không (2.y.z là phiên bản hiện thời của MiKTeX, ví dụ trong trường hợp của tôi là 2.9.5105).&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Lưu ý: nếu bạn nhầm lẫn trong quá trình cài đặt thì có thể xóa thư mục MikTeX đã cài trước đó và cài lại.&lt;/p&gt;
-
-&lt;h3 id=&quot;ci-t-texlive-trn-ubuntu&quot;&gt;Cài đặt TeXlive (trên Ubuntu)&lt;/h3&gt;
-
-&lt;p&gt;TeXlive là bộ xử lý TeX dành cho các hệ điều hành/bản phân phối thuộc họ Linux (Fedora, Debian, Ubuntu và Gentoo) cũng như một số hệ điều hành thuộc họ Unix (như OpenBSD, FreeBSD và NetBSD). Bộ xử lý TeX này được đặt tên là TeXlive là do khả năng có thể được sử dụng trực tiếp (live) từ đĩa DVD mà không cần cài đặt.&lt;/p&gt;
-
-&lt;p&gt;Để thuận tiện cho việc sử dụng về sau, chúng ta sẽ cài đặt bản Texlive đầy đủ (full) mới nhất (hiện tại là bản texlive full 2014). Mở cửa sổ dòng lệnh và sử dụng lệnh sau:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;wget https://github.com/scottkosty/install-tl-ubuntu/raw/master/install-tl-ubuntu &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x ./install-tl-ubuntu&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;hng-dn-ci-t-tex-editor&quot;&gt;Hướng dẫn cài đặt TeX Editor&lt;/h2&gt;
-
-&lt;p&gt;Những bạn đang sử dụng Windows có thể cài đặt một trong hai &lt;strong&gt;TeX Editor&lt;/strong&gt; sau: VieTeX hoặc TexMaker. Lưu ý là các bạn cài đặt hoàn chỉnh &lt;strong&gt;TeX Typesetting System&lt;/strong&gt; trước, sau đó mới cài &lt;strong&gt;TeX Editor&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;ci-t-vietex-trn-windows&quot;&gt;Cài đặt VieTeX (trên Windows)&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Tải bộ cài VieTeX từ &lt;a href=&quot;http://nhdien.wordpress.com/tải-xuống/&quot;&gt;trang cài đặt&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;Chạy chương trình cài đặt. Tốt nhất là giữ nguyên các tham số cài đặt (đường dẫn thư mục, v.v.)&lt;/li&gt;
-  &lt;li&gt;Sau khi cài đặt xong, chạy thử và biên dịch file tex mẫu bằng VieTeX. Nếu biên dịch thành công là ổn.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;ci-t-texmaker-trn-windows&quot;&gt;Cài đặt TexMaker (trên Windows)&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Vào &lt;a href=&quot;http://www.xm1math.net/texmaker/download.html&quot;&gt;trang cài đặt&lt;/a&gt; của TexMaker để tải bộ cài cho Windows.&lt;/li&gt;
-  &lt;li&gt;Chạy chương trình cài đặt và thực hiện tuần tự theo các bước yêu cầu của chương trình. Chương trình cài đặt sẽ sử dụng các tham số mặc định để xác định các phần mềm công cụ trong &lt;strong&gt;TeX Typesetting System&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;Sau khi cài đặt xong, chạy thử và biên dịch file tex mẫu bằng TexMaker. Nếu biên dịch thành công là ổn.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;ci-t-texmaker-trn-ubuntu&quot;&gt;Cài đặt TexMaker (trên Ubuntu)&lt;/h3&gt;
-
-&lt;p&gt;Mở cửa sổ dòng lệnh (Terminal), sử dụng lệnh sau để cài đặt:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;sudo apt-get install texmaker
-Reading package lists... Done
-Building dependency tree       
-Reading state information... Done
-The following extra packages will be installed:
-  asymptote asymptote-doc blt libpoppler-qt4-3 python-imaging-tk python-tk
-  texmaker-data
-Suggested packages:
-  gv xpdf blt-demo python-imaging-doc python-imaging-tk-dbg tix python-tk-dbg
-The following NEW packages will be installed:
-  asymptote asymptote-doc blt libpoppler-qt4-3 python-imaging-tk python-tk
-  texmaker texmaker-data
-&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; upgraded, &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt; newly installed, &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; to remove and &lt;span class=&quot;m&quot;&gt;234&lt;/span&gt; not upgraded.
-Need to get 9,577 kB of archives.
-After this operation, 23.3 MB of additional disk space will be used.
-Do you want to &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Y/n&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;?&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Sau khi trả lời &lt;strong&gt;Y&lt;/strong&gt;, chương trình sẽ cài đặt TexMaker và tự động cấu hình đường đẫn đến các phần mềm công cụ trong &lt;strong&gt;TeX Typesetting System&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;khung-mu-lun-vn&quot;&gt;Khung mẫu luận văn&lt;/h2&gt;
-
-&lt;p&gt;Các bạn có thể tham khảo và sử dụng khung mẫu luận văn do tôi tạo sẵn và chia sẻ trên &lt;a href=&quot;https://github.com/pnhung177/latex-bachelor-thesis-sample&quot;&gt;github&lt;/a&gt;. Các bạn có thể &lt;a href=&quot;https://github.com/pnhung177/latex-bachelor-thesis-sample/archive/master.zip&quot;&gt;tải khung mẫu về&lt;/a&gt;, tự chỉnh sửa kích thước font chữ, định dạng tài liệu: căn biên, giãn dòng,… tùy theo quy định của nhà trường hoặc yêu cầu của thầy hướng dẫn.&lt;/p&gt;
-
-&lt;h2 id=&quot;ti-nguyn-v-tex&quot;&gt;Tài nguyên về TeX&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://miktex.org/&quot;&gt;Trang chủ MikTex&lt;/a&gt;: Các bạn có thể tìm đọc tài liệu hướng dẫn sử dụng MikTex, theo dõi quá trình cập nhật phiên bản mới của MikTex, tải các bản cài đặt mới nhất, …&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.tug.org/texlive/&quot;&gt;Trang chủ Texlive&lt;/a&gt;: Bạn nào sử dụng hệ điều hành Linux sẽ quan tâm đến Texlive thay vì MikTex. Trang chủ Texlive cung cấp các đường dẫn cần thiết đến các bộ cài đặt cũng như hướng dẫn sử dụng Texlive.&lt;/li&gt;
-&lt;/ul&gt;
-
-
-  
-  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/tex/viet-luan-van-tot-nghiep-bang-tex.html&quot;&gt;Viết luận văn tốt nghiệp bằng TeX&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on August 10, 2013.&lt;/p&gt;</content>
 </entry>
 
 </feed>
