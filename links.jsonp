@@ -11,6 +11,11 @@ callback([
   } ,
 
   {
+    "text": "Sử dụng Regular Expression để kiểm tra tính hợp lệ của dữ liệu",
+    "href": "/blog/java/regexp/su-dung-regular-expression-de-kiem-tra-tinh-hop-le-cua-du-lieu.html"
+  } ,
+
+  {
     "text": "Sử dụng Regular Expression để kiểm tra tính hợp lệ của mật khẩu",
     "href": "/blog/java/regexp/su-dung-regular-expression-de-kiem-tra-tinh-hop-le-cua-mat-khau.html"
   } ,

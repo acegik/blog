@@ -169,6 +169,14 @@
 		} ,
 	
 		{
+		  "title"      : "Sử dụng Regular Expression để kiểm tra tính hợp lệ của dữ liệu",
+		  "category"   : "javaregexp",
+		  "url"        : "/blog/java/regexp/su-dung-regular-expression-de-kiem-tra-tinh-hop-le-cua-du-lieu.html",
+		  "date"       : "2013-10-22 00:00:00 +0700",
+		  "shortdate"  : "October 22, 2013"
+		} ,
+	
+		{
 		  "title"      : "Viết luận văn tốt nghiệp bằng TeX",
 		  "category"   : "tex",
 		  "url"        : "/blog/tex/viet-luan-van-tot-nghiep-bang-tex.html",
