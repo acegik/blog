@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>THEO DõI HIệU NăNG CủA JVM &vert; ACEGIK'S BLOG</title>
+<meta name="description" content="... when the sun comes up, you better be running!">
+<meta name="keywords" content="Java, Java Performance">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/blog/images/logo.png">
+<meta name="twitter:title" content="Theo dõi hiệu năng của JVM">
+<meta name="twitter:description" content="... when the sun comes up, you better be running!">
+<meta name="twitter:creator" content="@pnhung177">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Theo dõi hiệu năng của JVM">
+<meta property="og:description" content="... when the sun comes up, you better be running!">
+<meta property="og:url" content="/blog/java/performance/theo-doi-hieu-nang-cua-jvm.html">
+<meta property="og:site_name" content="Acegik's Blog">
+<meta property="og:image" content="/blog/images/">
+
+
+
+
+
+<link rel="canonical" href="/blog/java/performance/theo-doi-hieu-nang-cua-jvm.html">
+<link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Acegik's Blog Feed">
+<link rel="author" href="https://plus.google.com/u/3/115458186421626071505?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,600,300,800,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/blog/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/blog/assets/css/vendor/normalize.css">
+    <link rel="stylesheet" href="/blog/assets/css/vendor/foundation.min.css">
+    <link rel="stylesheet" href="/blog/assets/css/style.css">
+    <link rel="stylesheet" href="/blog/assets/css/post.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/blog/assets/js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+    
+
+
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">  
+
+        <main id="summer-post-container-simple" class="summer-post-container-simple" role="main">
+            <header class="summer-post-header-simple">
+                <div class="summer-post-menu-header-simple">
+
+                    <a class="summer-blog-logo" href="/blog">
+                        <img src="/blog/images/logo.png" alt="Blog Logo" />
+                    </a>
+
+                <div class="summer-blog-menu">      
+    <div class="summer-mobile-menu show-for-small">
+        <a href="#"><i class="fa fa-bars"></i></a>
+    </div>
+    <ul class="summer-menu">
+        <li class="summer-mobile-close-btn show-for-small text-right">
+            <a href="#"><i class="fa fa-times"></i></a>
+        </li>
+
+            <li>
+                    <a href="/blog/">Trang bìa</a>
+                 </li>
+
+            <li>
+                    <a href="/blog/featured">Nổi bật</a>
+                 </li>
+
+            <li>
+                    <a href="/blog/categories">Danh mục</a>
+                 </li>
+
+            <li>
+                    <a href="/blog/about">Giới thiệu</a>
+                 </li>
+            
+           <li><a href="/blog/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+    </ul>
+
+</div>
+            </div>
+
+                <div class="summer-post-title-simple row">
+                    <div class="small-12 columns">
+                        <div class="summer-post-meta-simple">
+                            <h1>Theo dõi hiệu năng của JVM</h1>
+                            <p>by <strong>pnhung177</strong> &#8212; on <a href="/blog/tags/index.html#Java" data-toggle="tooltip" title="Posts tagged with Java" rel="tag">Java</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#Java Performance" data-toggle="tooltip" title="Posts tagged with Java Performance" rel="tag">Java Performance</a> &#8212; <strong><time datetime="2014-07-20T00:00:00+07:00">20/07/2014</time></strong></p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+        <article class="summer-post-content post tag-simple">
+            <div><p>Theo dõi hiệu năng JVM là hoạt động diễn ra trong suốt thời gian vận hành ứng dụng. Việc phân tích thông tin thu được từ quá trình theo dõi hiệu năng JVM cho biết khi nào thì cần tiến hành điều chỉnh hiệu năng. Với nhiều ứng dụng Java, sau một thời gian sử dụng, số lượng người dùng và lượng dữ liệu gia tăng cũng có thể làm thay đổi hiệu năng của ứng dụng. </p>
+
+<p>Có một số hoạt động bên trong JVM cần theo dõi bao gồm quá trình thu dọn bộ nhớ, hoạt động biên dịch JIT và quá trình nạp lớp. Nhiều công cụ có sẵn để theo dõi JVM. Một số công cụ theo dõi được phân phối sẵn kèm trong bộ JDK, một số là công cụ miễn phí, và phần còn lại là các công cụ thương mại. Các công cụ theo dõi được trình bày trong bài viết này là phần mềm miễn phí hoặc mã nguồn mở.</p>
+
+<h2 id="theo-di-qu-trnh-garbage-collection">Theo dõi quá trình Garbage Collection</h2>
+
+<h3 id="d-liu-cn-c-quan-tm-v-gc">Dữ liệu cần được quan tâm về GC</h3>
+
+<ul>
+  <li>Kích thước của Java Heap</li>
+  <li>Kích thước của vùng <em>young generation</em>, <em>old generation</em> và <em>permanent generation</em>.</li>
+  <li>Thời gian và tần suất thực hiện và dung lượng vùng nhớ thu hồi được từ <em>minor garbage collection</em>.</li>
+  <li>Thời gian và tần suất thực hiện và dung lượng vùng nhớ thu hồi được từ <em>major garbage collection</em>.</li>
+  <li>Sự chiếm giữ vùng nhớ của <em>young generation</em>, <em>old generation</em> và <em>permanent generation</em> trước và sau khi thực hiện <em>garbage collection</em>.</li>
+  <li>Sự chiếm giữ vùng nhớ của <em>old generation</em> hay <em>permanent generation</em> quyết định kích hoạt <em>quá trình thu dọn toàn bộ</em>?</li>
+  <li>Liệu ứng dụng Java có sử dụng lệnh <em>thu dọn bộ nhớ</em> tường minh <code>System.gc()</code> không?</li>
+</ul>
+
+<h3 id="tham-s-dng-lnh-hin-th-thng-tin-gc">Tham số dòng lệnh hiển thị thông tin GC</h3>
+
+<h4 id="tham-s--verbosegc">Tham số <strong>-verbose:gc</strong></h4>
+
+<p>Hiển thị thông tin chi tiết về quá trình <em>thu dọn bộ nhớ</em> ra màn hình Console mỗi khi  GC thực thi.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>java -client –verbose:gc -Xmx12m -Xms3m -Xmn1m
+    -XX:PermSize<span class="o">=</span>20m -XX:MaxPermSize<span class="o">=</span>20m
+    -jar /usr/java/demo/jfc/Java2D/Java2Demo.jar
+...
+<span class="o">[</span>GC 1884K-&gt;1299K<span class="o">(</span>5056K<span class="o">)</span>, 0.0031820 secs<span class="o">]</span>
+...</code></pre></div>
+
+<p>Thông tin <code>[GC 1884K-&gt;1299K(5056K), 0.0031820 secs]</code> hiển thị ở Console có ý nghĩa như sau:</p>
+
+<ul>
+  <li>GC: đây là một <em>minor garbage collection</em>. Giá trị <em>Full GC</em> nếu là một <em>full garbage collection</em>.</li>
+  <li>1884K: Kích thước Java Heap trước khi thực thi GC</li>
+  <li>1299K: Kích thước Java Heap sau khi thực thi GC</li>
+  <li>5056K: Tổng kích thước của Java Heap</li>
+  <li>0.0031820 secs: Tổng thời gian thực thi GC</li>
+</ul>
+
+<h4 id="tham-s--xxprintgcdetails">Tham số <strong>-XX:+PrintGCDetails</strong></h4>
+
+<p>Mặc dù <code>-verbose:gc</code> được dùng phổ biến nhất, tuy nhiên <code>-XX:+PrintGCDetails</code> hiển thị nhiều thông tin hơn về các <em>quá trình thu dọn bộ nhớ</em>.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>java –client –XX:+PrintGCDetails -Xmx12m -Xms3m -Xmn1m
+    -XX:PermSize<span class="o">=</span>20m -XX:MaxPermSize<span class="o">=</span>20m
+    -jar /usr/java/demo/jfc/Java2D/Java2Demo.jar
+...
+<span class="o">[</span>GC <span class="o">[</span>DefNew: 490K-&gt;64K<span class="o">(</span>960K<span class="o">)</span>, 0.0032800 secs<span class="o">]</span> 5470K-&gt;5151K<span class="o">(</span>7884K<span class="o">)</span>,
+0.0033270 secs<span class="o">]</span> <span class="o">[</span>Times: <span class="nv">user</span><span class="o">=</span>0.00 <span class="nv">sys</span><span class="o">=</span>0.00, <span class="nv">real</span><span class="o">=</span>0.00 secs<span class="o">]</span>
+...
+<span class="o">[</span>Full GC <span class="o">(</span>System<span class="o">)</span> <span class="o">[</span>Tenured: 5087K-&gt;5151K<span class="o">(</span>6924K<span class="o">)</span>, 0.0971070 secs<span class="o">]</span>
+6047K-&gt;5151K<span class="o">(</span>7884K<span class="o">)</span>, <span class="o">[</span>Perm : 11178K-&gt;11178K<span class="o">(</span>16384K<span class="o">)]</span>,
+0.0972120 secs<span class="o">]</span> <span class="o">[</span>Times: <span class="nv">user</span><span class="o">=</span>0.10 <span class="nv">sys</span><span class="o">=</span>0.01, <span class="nv">real</span><span class="o">=</span>0.10 secs<span class="o">]</span>
+...</code></pre></div>
+
+<h4 id="hin-th-thm-thng-tin-v-ngy-gi">Hiển thị thêm thông tin về ngày giờ</h4>
+
+<ul>
+  <li>Tham số <code>-XX:+PrintGCTimeStamps</code>: Hiển thị thêm phần thời gian (tính bằng giây) từ khi kích hoạt máy ảo.</li>
+  <li>Tham số <code>-XX:+PrintGCDateStamps</code>: Hiển thị thêm thông tin về thời điểm (theo định dạng <em>YYYY-MM-DDTHH.MM.SS.mmm-tttt</em>) khi quá trình GC diễn ra.</li>
+</ul>
+
+<h4 id="hin-th-thng-tin-v-thi-gian-dng">Hiển thị thông tin về thời gian dừng</h4>
+
+<ul>
+  <li><code>-XX:+PrintGCApplicationStoppedTime</code>: Hiển thị thêm lượng thời gian mà ứng dụng tạm ngưng để thực hiện <em>quá trình thu dọn bộ nhớ</em> (Garbage Collection). Lưu ý quá trình này là hoạt động đòi hỏi phát sinh sự kiện <em>Stop the World</em>. </li>
+  <li><code>-XX:+PrintGCApplicationConcurrentTime</code>: Lượng thời gian ứng dụng chạy giữa hai lần thực hiện <em>quá trình thu dọn bộ nhớ</em> (Garbage Collection).</li>
+</ul>
+
+<h4 id="ghi-d-liu-ra-tp-bng-code-xloggccode">Ghi dữ liệu ra tệp bằng <code>-Xloggc</code></h4>
+
+<p>Tham số <code>-Xloggc:&lt;filename&gt;</code> được dùng để đẩy thông tin của <em>quá trình thu dọn bộ nhớ</em> (Garbage Collection) ra tệp bên ngoài, nhằm phục vụ quá trình phân tích về sau. Tham số <code>-Xloggc</code> được dùng kèm với <em>-verbose:gc</em> hoặc <em>-XX:+PrintGCDetails</em>.</p>
+
+<h3 id="cng-c-dng-lnh-theo-di-garbage-collection">Công cụ dòng lệnh theo dõi Garbage Collection</h3>
+
+<h4 id="jps">jps</h4>
+
+<p><strong>jps</strong> là ứng dụng dòng lệnh dùng để tìm và hiển thị các tiến trình java hiện đang chạy. Mục đích của <strong>jps</strong> là để xác địch ProcessID của các tiến trình Java. <strong>jps</strong> được đóng gói và phần phối cùng với JDK. Xem thông tin đầy đủ về <strong>jps</strong> tại trang <a href="http://docs.oracle.com/javase/7/docs/technotes/tools/share/jps.html">tooldocs</a> của Java Oracle.</p>
+
+<h4 id="jstat">jstat</h4>
+
+<p><strong>jstat</strong> là ứng dụng dòng lệnh hiển thị thống kê hiệu năng chi tiết về một HotSpot VM cục bộ hoặc từ xa. Cú pháp chung của công cụ này có dạng như sau:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>jstat -&lt;option&gt; <span class="o">[</span>-t<span class="o">]</span> <span class="o">[</span>-h&lt;lines&gt;<span class="o">]</span> &lt;vmid&gt; <span class="o">[</span>&lt;internal&gt; <span class="o">[</span>&lt;count&gt;<span class="o">]]</span></code></pre></div>
+
+<p>Các tùy chọn liên quan đến Garbage Collection bao gồm: <em>-gc</em>, <em>-gccapacity</em>, <em>-gccause</em>, <em>-gcnew</em>, <em>-gcnewcapacity</em>, <em>-gcold</em>, <em>-gcoldcapacity</em>, <em>-gcpermcapacity</em>, <em>-gcutil</em>. Trong đó, tùy chọn <em>–gctuil</em> thường được sử dụng nhiều nhất.</p>
+
+<h3 id="cng-c--ha-theo-di-garbage-collection">Công cụ đồ họa theo dõi Garbage Collection</h3>
+
+<h4 id="jconsole">jconsole</h4>
+
+<p><strong>jconsole</strong> là phần mềm quản lý và theo dõi JVM có giao diện đồ họa, được đóng gói và phân phối cùng với bộ JDK. <em>jconsole</em> hỗ trợ cả công nghệ <em>JMX</em> lẫn <em>MBean</em>. Nhờ đó, <em>jconsole</em> có thể theo dõi nhiều JVM cùng lúc. Không những vậy, nhiều phiên làm việc (session) của <em>jconsole</em> có thể cùng theo dõi một phiên làm việc của một JVM. <em>jconsole</em> có khả năng theo dõi những đặc điểm của JVM sau:</p>
+
+<ul>
+  <li>Memory usage by memory pool/spaces</li>
+  <li>Garbage collection</li>
+  <li>JIT compilation</li>
+  <li>Class loading</li>
+  <li>Threading and logging</li>
+  <li>Thread monitor contention</li>
+</ul>
+
+<p><img src="/blog/media/83bf2f22-7a3f-49a0-850e-625e774dcfc3/jconsole-gui.png" alt="Giao diện chương trình jconsole" /></p>
+
+<h4 id="visualvm">VisualVM</h4>
+
+<p><strong>VisualVM</strong> là công cụ theo dõi và đo dạc hiệu năng giao diện đồ họa, được đóng gói và phân phối cùng với JDK (từ bản <em>JDK6 update 7</em> trở đi). Sau khi đã cài đặt JDK, người dùng có thể kích hoạt <em>VisualVM</em> bằng cách dùng lệnh <em>jvisualvm</em> từ cửa sổ dòng lệnh.</p>
+
+<p>Công cụ này hỗ trợ một số tính năng chính sau:</p>
+
+<ul>
+  <li>Tích hợp với các công cụ JDK, bao gồm <em>jconsole</em> và một phần <em>NetBeans Profiler</em>.</li>
+  <li>Phân tích hiệu năng (Performance analysis) và khắc phục sự cố (troubleshooting) bao gồm dò tìm thread deadlock và xử lý tranh chấp thread monitor.</li>
+  <li>Dễ dàng mở rộng thông qua plug-in API. Các plugin đã được phát triển và có thể cài đặt và sử dụng:
+    <ul>
+      <li>jconsole</li>
+      <li>VisualGC plug-in</li>
+      <li>Glassfish plug-in</li>
+      <li>btrace plug-in</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="/blog/media/83bf2f22-7a3f-49a0-850e-625e774dcfc3/visualvm-gui.png" alt="Giao diện chương trình jvisualvm" /></p>
+
+<h4 id="visualgc">VisualGC</h4>
+
+<p><strong>VisualGC</strong> phần mềm theo dõi JVM, có thể sử dụng dưới dạng ứng dụng giao diện đồ họa độc lập hoặc dưới dạng plugin của VisualVM. Người ta thường sử dụng <em>VisualGC</em> dưới dạng VisualVM plugin, được cài đặt vào VisualVM từ plugin center của VisualVM. Bằng VisualGC, người dùng có thể nhìn thấy trực quan trên màn hình chính xác những gì đang được Garbage Collector thực hiện. Ngoài thông tin về <em>Garbage Collection</em>, VisualGC còn hiển thị thông tin về <em>Class loading</em> và <em>JIT compilation</em>.</p>
+
+<p><img src="/blog/media/83bf2f22-7a3f-49a0-850e-625e774dcfc3/visualgc-gui.png" alt="Giao diện chương trình VisualGC" /></p>
+
+<h4 id="gchisto">GCHisto</h4>
+
+<p>Chương trình <strong>GCHisto</strong> là công cụ giao diện đồ họa dùng để phân tích các tệp log. <em>GCHisto</em> cho phép so sánh kích thước vùng Heap hoặc các loại Garbage Collector khác nhau bằng cách so sánh các file GC logs.</p>
+
+<p><img src="/blog/media/83bf2f22-7a3f-49a0-850e-625e774dcfc3/gchisto-gui.png" alt="Giao diện chương trình GCiHisto" /></p>
+
+
+            </div>
+        </article>
+        <div class="cf"></div>
+        <div class="row text-center">
+            <section class="summer-post-share">
+                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Theo dõi hiệu năng của JVM&quot;%20/blog/java/performance/theo-doi-hieu-nang-cua-jvm.html%20via%20&#64;pnhung177"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a class="facebook-icon" href="https://www.facebook.com/sharer/sharer.php?u=/blog/java/performance/theo-doi-hieu-nang-cua-jvm.html"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a class="google-icon" href="https://plus.google.com/share?url=/blog/java/performance/theo-doi-hieu-nang-cua-jvm.html"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </section>
+        </div>
+        <div class="cf"></div>
+        
+            <div class="summer-author-info">
+                <div class="row">
+                    <section class="summer-post-author small-12 columns">
+                        
+                            <img src="/blog/images/avatars/pnhung177.png" class="summer-post-author-avatar" alt="Phạm Ngọc Hùng's photo">
+                        
+                        
+                            <span class="author-label">Author</span>
+                            <h1>Phạm Ngọc Hùng</h1>
+                        
+                        
+                            <p><a href="mailto:pnhung177@drupalex.net" class="author-website">pnhung177@drupalex.net</a></p>
+                        
+                        
+                            <p>... when the sun comes up, you better be running!</p>
+                        
+                    </section>
+                </div>
+            </div> 
+        
+        <div class="cf"></div>
+        
+        <section class="summer-disqus row">
+    <div class="small-12 columns">
+        <h1 class="summer-comments-header">Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'acegik'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+
+        <div class="cf"></div>
+
+    <footer class="summer-site-footer">
+    <div class="copyright">
+         <section>Bản quyền nội dung thuộc về <a href="/blog/about">Phạm Ngọc Hùng</a> &copy; 2014.</section>
+    </div>
+    <div class="social-icons">
+        
+        
+        <a href="http://twitter.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-twitter fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="https://plus.google.com/u/3/115458186421626071505">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-google-plus fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="http://github.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-github fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="http://facebook.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-facebook fa-stack-1x"></i>
+            </span>
+        </a>
+        
+    </div>
+    
+    <div class="cf"></div>
+</footer>
+ 
+</main>    
+    <script src="/blog/assets/js/vendor/modernizr.js"></script>
+    <script src="/blog/assets/js/foundation.min.js"></script>
+    <script src="/blog/assets/js/vendor/background-check.js"></script>
+    <script src="/blog/assets/js/vendor/post-header-animations.js"></script>
+    <script src="/blog/assets/js/summer.js"></script>
+
+    <script>
+      $(document).foundation();
+    </script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54128248-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+</script>
+ 
+</body>
+</html>

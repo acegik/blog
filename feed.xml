@@ -9,7 +9,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://acegik.net/blog/feed.xml" />
 <link rel="alternate" type="text/html" href="http://acegik.net/blog/" />
-<updated>2014-10-10T15:37:23+07:00</updated>
+<updated>2014-10-12T09:11:51+07:00</updated>
 <id>http://acegik.net/blog/</id>
 <author>
   <name>Phạm Ngọc Hùng</name>
@@ -1837,6 +1837,166 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
 
 
 <entry>
+  <title type="html"><![CDATA[Theo dõi hiệu năng của JVM]]></title>
+  <link rel="alternate" type="text/html" href="http://acegik.net/blog/java/performance/theo-doi-hieu-nang-cua-jvm.html"/>
+  <id>http://acegik.net/blog/java/performance/theo-doi-hieu-nang-cua-jvm</id>
+  <published>2014-07-20T00:00:00+07:00</published>
+  <updated>2014-07-20T00:00:00-00:00</updated>
+  
+  <author>
+    <name>Phạm Ngọc Hùng</name>
+    <uri>http://acegik.net/blog</uri>
+    <email>pnhung177@drupalex.net</email>
+  </author>
+  <category scheme="http://acegik.net/blog/tags/#Java" term="Java" /><category scheme="http://acegik.net/blog/tags/#Java%20Performance" term="Java Performance" />
+  <content type="html">
+  
+    &lt;p&gt;Theo dõi hiệu năng JVM là hoạt động diễn ra trong suốt thời gian vận hành ứng dụng. Việc phân tích thông tin thu được từ quá trình theo dõi hiệu năng JVM cho biết khi nào thì cần tiến hành điều chỉnh hiệu năng. Với nhiều ứng dụng Java, sau một thời gian sử dụng, số lượng người dùng và lượng dữ liệu gia tăng cũng có thể làm thay đổi hiệu năng của ứng dụng. &lt;/p&gt;
+
+&lt;p&gt;Có một số hoạt động bên trong JVM cần theo dõi bao gồm quá trình thu dọn bộ nhớ, hoạt động biên dịch JIT và quá trình nạp lớp. Nhiều công cụ có sẵn để theo dõi JVM. Một số công cụ theo dõi được phân phối sẵn kèm trong bộ JDK, một số là công cụ miễn phí, và phần còn lại là các công cụ thương mại. Các công cụ theo dõi được trình bày trong bài viết này là phần mềm miễn phí hoặc mã nguồn mở.&lt;/p&gt;
+
+&lt;h2 id=&quot;theo-di-qu-trnh-garbage-collection&quot;&gt;Theo dõi quá trình Garbage Collection&lt;/h2&gt;
+
+&lt;h3 id=&quot;d-liu-cn-c-quan-tm-v-gc&quot;&gt;Dữ liệu cần được quan tâm về GC&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Kích thước của Java Heap&lt;/li&gt;
+  &lt;li&gt;Kích thước của vùng &lt;em&gt;young generation&lt;/em&gt;, &lt;em&gt;old generation&lt;/em&gt; và &lt;em&gt;permanent generation&lt;/em&gt;.&lt;/li&gt;
+  &lt;li&gt;Thời gian và tần suất thực hiện và dung lượng vùng nhớ thu hồi được từ &lt;em&gt;minor garbage collection&lt;/em&gt;.&lt;/li&gt;
+  &lt;li&gt;Thời gian và tần suất thực hiện và dung lượng vùng nhớ thu hồi được từ &lt;em&gt;major garbage collection&lt;/em&gt;.&lt;/li&gt;
+  &lt;li&gt;Sự chiếm giữ vùng nhớ của &lt;em&gt;young generation&lt;/em&gt;, &lt;em&gt;old generation&lt;/em&gt; và &lt;em&gt;permanent generation&lt;/em&gt; trước và sau khi thực hiện &lt;em&gt;garbage collection&lt;/em&gt;.&lt;/li&gt;
+  &lt;li&gt;Sự chiếm giữ vùng nhớ của &lt;em&gt;old generation&lt;/em&gt; hay &lt;em&gt;permanent generation&lt;/em&gt; quyết định kích hoạt &lt;em&gt;quá trình thu dọn toàn bộ&lt;/em&gt;?&lt;/li&gt;
+  &lt;li&gt;Liệu ứng dụng Java có sử dụng lệnh &lt;em&gt;thu dọn bộ nhớ&lt;/em&gt; tường minh &lt;code&gt;System.gc()&lt;/code&gt; không?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;tham-s-dng-lnh-hin-th-thng-tin-gc&quot;&gt;Tham số dòng lệnh hiển thị thông tin GC&lt;/h3&gt;
+
+&lt;h4 id=&quot;tham-s--verbosegc&quot;&gt;Tham số &lt;strong&gt;-verbose:gc&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;Hiển thị thông tin chi tiết về quá trình &lt;em&gt;thu dọn bộ nhớ&lt;/em&gt; ra màn hình Console mỗi khi  GC thực thi.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;java -client –verbose:gc -Xmx12m -Xms3m -Xmn1m
+    -XX:PermSize&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;20m -XX:MaxPermSize&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;20m
+    -jar /usr/java/demo/jfc/Java2D/Java2Demo.jar
+...
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;GC 1884K-&amp;gt;1299K&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;5056K&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, 0.0031820 secs&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Thông tin &lt;code&gt;[GC 1884K-&amp;gt;1299K(5056K), 0.0031820 secs]&lt;/code&gt; hiển thị ở Console có ý nghĩa như sau:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;GC: đây là một &lt;em&gt;minor garbage collection&lt;/em&gt;. Giá trị &lt;em&gt;Full GC&lt;/em&gt; nếu là một &lt;em&gt;full garbage collection&lt;/em&gt;.&lt;/li&gt;
+  &lt;li&gt;1884K: Kích thước Java Heap trước khi thực thi GC&lt;/li&gt;
+  &lt;li&gt;1299K: Kích thước Java Heap sau khi thực thi GC&lt;/li&gt;
+  &lt;li&gt;5056K: Tổng kích thước của Java Heap&lt;/li&gt;
+  &lt;li&gt;0.0031820 secs: Tổng thời gian thực thi GC&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;tham-s--xxprintgcdetails&quot;&gt;Tham số &lt;strong&gt;-XX:+PrintGCDetails&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;Mặc dù &lt;code&gt;-verbose:gc&lt;/code&gt; được dùng phổ biến nhất, tuy nhiên &lt;code&gt;-XX:+PrintGCDetails&lt;/code&gt; hiển thị nhiều thông tin hơn về các &lt;em&gt;quá trình thu dọn bộ nhớ&lt;/em&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;java –client –XX:+PrintGCDetails -Xmx12m -Xms3m -Xmn1m
+    -XX:PermSize&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;20m -XX:MaxPermSize&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;20m
+    -jar /usr/java/demo/jfc/Java2D/Java2Demo.jar
+...
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;GC &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;DefNew: 490K-&amp;gt;64K&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;960K&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, 0.0032800 secs&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; 5470K-&amp;gt;5151K&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;7884K&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,
+0.0033270 secs&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Times: &lt;span class=&quot;nv&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0.00 &lt;span class=&quot;nv&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0.00, &lt;span class=&quot;nv&quot;&gt;real&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0.00 secs&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+...
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Full GC &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;System&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Tenured: 5087K-&amp;gt;5151K&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;6924K&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, 0.0971070 secs&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+6047K-&amp;gt;5151K&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;7884K&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;, &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Perm : 11178K-&amp;gt;11178K&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;16384K&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt;,
+0.0972120 secs&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Times: &lt;span class=&quot;nv&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0.10 &lt;span class=&quot;nv&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0.01, &lt;span class=&quot;nv&quot;&gt;real&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0.10 secs&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;hin-th-thm-thng-tin-v-ngy-gi&quot;&gt;Hiển thị thêm thông tin về ngày giờ&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tham số &lt;code&gt;-XX:+PrintGCTimeStamps&lt;/code&gt;: Hiển thị thêm phần thời gian (tính bằng giây) từ khi kích hoạt máy ảo.&lt;/li&gt;
+  &lt;li&gt;Tham số &lt;code&gt;-XX:+PrintGCDateStamps&lt;/code&gt;: Hiển thị thêm thông tin về thời điểm (theo định dạng &lt;em&gt;YYYY-MM-DDTHH.MM.SS.mmm-tttt&lt;/em&gt;) khi quá trình GC diễn ra.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;hin-th-thng-tin-v-thi-gian-dng&quot;&gt;Hiển thị thông tin về thời gian dừng&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;-XX:+PrintGCApplicationStoppedTime&lt;/code&gt;: Hiển thị thêm lượng thời gian mà ứng dụng tạm ngưng để thực hiện &lt;em&gt;quá trình thu dọn bộ nhớ&lt;/em&gt; (Garbage Collection). Lưu ý quá trình này là hoạt động đòi hỏi phát sinh sự kiện &lt;em&gt;Stop the World&lt;/em&gt;. &lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;-XX:+PrintGCApplicationConcurrentTime&lt;/code&gt;: Lượng thời gian ứng dụng chạy giữa hai lần thực hiện &lt;em&gt;quá trình thu dọn bộ nhớ&lt;/em&gt; (Garbage Collection).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;ghi-d-liu-ra-tp-bng-code-xloggccode&quot;&gt;Ghi dữ liệu ra tệp bằng &lt;code&gt;-Xloggc&lt;/code&gt;&lt;/h4&gt;
+
+&lt;p&gt;Tham số &lt;code&gt;-Xloggc:&amp;lt;filename&amp;gt;&lt;/code&gt; được dùng để đẩy thông tin của &lt;em&gt;quá trình thu dọn bộ nhớ&lt;/em&gt; (Garbage Collection) ra tệp bên ngoài, nhằm phục vụ quá trình phân tích về sau. Tham số &lt;code&gt;-Xloggc&lt;/code&gt; được dùng kèm với &lt;em&gt;-verbose:gc&lt;/em&gt; hoặc &lt;em&gt;-XX:+PrintGCDetails&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;cng-c-dng-lnh-theo-di-garbage-collection&quot;&gt;Công cụ dòng lệnh theo dõi Garbage Collection&lt;/h3&gt;
+
+&lt;h4 id=&quot;jps&quot;&gt;jps&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;jps&lt;/strong&gt; là ứng dụng dòng lệnh dùng để tìm và hiển thị các tiến trình java hiện đang chạy. Mục đích của &lt;strong&gt;jps&lt;/strong&gt; là để xác địch ProcessID của các tiến trình Java. &lt;strong&gt;jps&lt;/strong&gt; được đóng gói và phần phối cùng với JDK. Xem thông tin đầy đủ về &lt;strong&gt;jps&lt;/strong&gt; tại trang &lt;a href=&quot;http://docs.oracle.com/javase/7/docs/technotes/tools/share/jps.html&quot;&gt;tooldocs&lt;/a&gt; của Java Oracle.&lt;/p&gt;
+
+&lt;h4 id=&quot;jstat&quot;&gt;jstat&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;jstat&lt;/strong&gt; là ứng dụng dòng lệnh hiển thị thống kê hiệu năng chi tiết về một HotSpot VM cục bộ hoặc từ xa. Cú pháp chung của công cụ này có dạng như sau:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;jstat -&amp;lt;option&amp;gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-t&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-h&amp;lt;lines&amp;gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &amp;lt;vmid&amp;gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&amp;lt;internal&amp;gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&amp;lt;count&amp;gt;&lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Các tùy chọn liên quan đến Garbage Collection bao gồm: &lt;em&gt;-gc&lt;/em&gt;, &lt;em&gt;-gccapacity&lt;/em&gt;, &lt;em&gt;-gccause&lt;/em&gt;, &lt;em&gt;-gcnew&lt;/em&gt;, &lt;em&gt;-gcnewcapacity&lt;/em&gt;, &lt;em&gt;-gcold&lt;/em&gt;, &lt;em&gt;-gcoldcapacity&lt;/em&gt;, &lt;em&gt;-gcpermcapacity&lt;/em&gt;, &lt;em&gt;-gcutil&lt;/em&gt;. Trong đó, tùy chọn &lt;em&gt;–gctuil&lt;/em&gt; thường được sử dụng nhiều nhất.&lt;/p&gt;
+
+&lt;h3 id=&quot;cng-c--ha-theo-di-garbage-collection&quot;&gt;Công cụ đồ họa theo dõi Garbage Collection&lt;/h3&gt;
+
+&lt;h4 id=&quot;jconsole&quot;&gt;jconsole&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;jconsole&lt;/strong&gt; là phần mềm quản lý và theo dõi JVM có giao diện đồ họa, được đóng gói và phân phối cùng với bộ JDK. &lt;em&gt;jconsole&lt;/em&gt; hỗ trợ cả công nghệ &lt;em&gt;JMX&lt;/em&gt; lẫn &lt;em&gt;MBean&lt;/em&gt;. Nhờ đó, &lt;em&gt;jconsole&lt;/em&gt; có thể theo dõi nhiều JVM cùng lúc. Không những vậy, nhiều phiên làm việc (session) của &lt;em&gt;jconsole&lt;/em&gt; có thể cùng theo dõi một phiên làm việc của một JVM. &lt;em&gt;jconsole&lt;/em&gt; có khả năng theo dõi những đặc điểm của JVM sau:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Memory usage by memory pool/spaces&lt;/li&gt;
+  &lt;li&gt;Garbage collection&lt;/li&gt;
+  &lt;li&gt;JIT compilation&lt;/li&gt;
+  &lt;li&gt;Class loading&lt;/li&gt;
+  &lt;li&gt;Threading and logging&lt;/li&gt;
+  &lt;li&gt;Thread monitor contention&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/83bf2f22-7a3f-49a0-850e-625e774dcfc3/jconsole-gui.png&quot; alt=&quot;Giao diện chương trình jconsole&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;visualvm&quot;&gt;VisualVM&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;VisualVM&lt;/strong&gt; là công cụ theo dõi và đo dạc hiệu năng giao diện đồ họa, được đóng gói và phân phối cùng với JDK (từ bản &lt;em&gt;JDK6 update 7&lt;/em&gt; trở đi). Sau khi đã cài đặt JDK, người dùng có thể kích hoạt &lt;em&gt;VisualVM&lt;/em&gt; bằng cách dùng lệnh &lt;em&gt;jvisualvm&lt;/em&gt; từ cửa sổ dòng lệnh.&lt;/p&gt;
+
+&lt;p&gt;Công cụ này hỗ trợ một số tính năng chính sau:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tích hợp với các công cụ JDK, bao gồm &lt;em&gt;jconsole&lt;/em&gt; và một phần &lt;em&gt;NetBeans Profiler&lt;/em&gt;.&lt;/li&gt;
+  &lt;li&gt;Phân tích hiệu năng (Performance analysis) và khắc phục sự cố (troubleshooting) bao gồm dò tìm thread deadlock và xử lý tranh chấp thread monitor.&lt;/li&gt;
+  &lt;li&gt;Dễ dàng mở rộng thông qua plug-in API. Các plugin đã được phát triển và có thể cài đặt và sử dụng:
+    &lt;ul&gt;
+      &lt;li&gt;jconsole&lt;/li&gt;
+      &lt;li&gt;VisualGC plug-in&lt;/li&gt;
+      &lt;li&gt;Glassfish plug-in&lt;/li&gt;
+      &lt;li&gt;btrace plug-in&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/83bf2f22-7a3f-49a0-850e-625e774dcfc3/visualvm-gui.png&quot; alt=&quot;Giao diện chương trình jvisualvm&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;visualgc&quot;&gt;VisualGC&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;VisualGC&lt;/strong&gt; phần mềm theo dõi JVM, có thể sử dụng dưới dạng ứng dụng giao diện đồ họa độc lập hoặc dưới dạng plugin của VisualVM. Người ta thường sử dụng &lt;em&gt;VisualGC&lt;/em&gt; dưới dạng VisualVM plugin, được cài đặt vào VisualVM từ plugin center của VisualVM. Bằng VisualGC, người dùng có thể nhìn thấy trực quan trên màn hình chính xác những gì đang được Garbage Collector thực hiện. Ngoài thông tin về &lt;em&gt;Garbage Collection&lt;/em&gt;, VisualGC còn hiển thị thông tin về &lt;em&gt;Class loading&lt;/em&gt; và &lt;em&gt;JIT compilation&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/83bf2f22-7a3f-49a0-850e-625e774dcfc3/visualgc-gui.png&quot; alt=&quot;Giao diện chương trình VisualGC&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;gchisto&quot;&gt;GCHisto&lt;/h4&gt;
+
+&lt;p&gt;Chương trình &lt;strong&gt;GCHisto&lt;/strong&gt; là công cụ giao diện đồ họa dùng để phân tích các tệp log. &lt;em&gt;GCHisto&lt;/em&gt; cho phép so sánh kích thước vùng Heap hoặc các loại Garbage Collector khác nhau bằng cách so sánh các file GC logs.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/83bf2f22-7a3f-49a0-850e-625e774dcfc3/gchisto-gui.png&quot; alt=&quot;Giao diện chương trình GCiHisto&quot; /&gt;&lt;/p&gt;
+
+
+  
+  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/java/performance/theo-doi-hieu-nang-cua-jvm.html&quot;&gt;Theo dõi hiệu năng của JVM&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on July 20, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
   <title type="html"><![CDATA[Tổng quan về JVM: HotSpot Garbage Collector]]></title>
   <link rel="alternate" type="text/html" href="http://acegik.net/blog/java/jvm/tong-quan-ve-jvm-hotspot-garbage-collector.html"/>
   <id>http://acegik.net/blog/java/jvm/tong-quan-ve-jvm-hotspot-garbage-collector</id>
@@ -1857,7 +2017,7 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
 
 &lt;p&gt;HotSpot sử dụng mô hình &lt;strong&gt;Generational Garbage Collection&lt;/strong&gt;, trong đó GC xác định các đối tượng “sống lâu” dựa trên số lượng lần thu nhặt rác mà đối tượng đó vượt qua được, tức là không bị xóa đi để GC thu hồi vùng nhớ. &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/media/cc7aaeac-c2eb-4bf2-87a0-2995839e7b8e/hotspot-heap-structure.png&quot; alt=&quot;Cấu trúc HotSpot Heap&quot; /&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/media/cc7aaeac-c2eb-4bf2-87a0-2995839e7b8e/hotspot-heap-structure.png&quot; alt=&quot;Cấu trúc HotSpot Heap&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Vùng nhớ do GC quản lý theo mô hình &lt;strong&gt;Generational Garbage Collection&lt;/strong&gt; được chia làm 3 phần:&lt;/p&gt;
 
@@ -2225,97 +2385,6 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
 
   
   &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html&quot;&gt;Cải thiện từng bước tốc độ chương trình bằng Profiler&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on June 19, 2014.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Các kỹ thuật dùng để cải tiến hiệu năng trong lập trình Java]]></title>
-  <link rel="alternate" type="text/html" href="http://acegik.net/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java.html"/>
-  <id>http://acegik.net/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java</id>
-  <published>2014-06-15T00:00:00+07:00</published>
-  <updated>2014-06-15T00:00:00-00:00</updated>
-  
-  <author>
-    <name>Phạm Ngọc Hùng</name>
-    <uri>http://acegik.net/blog</uri>
-    <email>pnhung177@drupalex.net</email>
-  </author>
-  <category scheme="http://acegik.net/blog/tags/#Java" term="Java" /><category scheme="http://acegik.net/blog/tags/#Java%20Performance" term="Java Performance" />
-  <content type="html">
-  
-    &lt;p&gt;Một ứng dụng có thể hoạt động rất tốt trong môi trường phát triển, tuy nhiên sau khi triển khai vào môi trường thực tế (production environment), ứng dụng hoạt động ngày càng kém đi do có sự gia tăng của tải trọng (số lượng người dùng hoặc lượng dữ liệu tăng lên). Chính vì vậy, việc đánh giá tình trạng cũng như thực hiện các giải pháp cải tiến hiệu năng là rất quan trọng không chỉ trong quá trình phát triển mà còn trong toàn bộ vòng đời của ứng dụng.&lt;/p&gt;
-
-&lt;h2 id=&quot;hiu-nng-ca-ng-dng-l-g&quot;&gt;Hiệu năng của ứng dụng là gì?&lt;/h2&gt;
-
-&lt;p&gt;Hiệu năng của ứng dụng, là tính chất thể hiện mức độ hiệu quả trong việc thực thi mã lệnh của ứng dụng, được đặc trưng bởi số lượng công việc mà ứng dụng thực hiện được trong một khoảng thời gian và với một lượng tài nguyên máy tính xác định. Hiệu năng của ứng dụng được đánh giá thông qua một số các khía cạnh đặc trưng sau:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Vùng phủ bộ nhớ (Memory Footprint)&lt;/strong&gt;: là lượng bộ nhớ được sử dụng bởi ứng dụng (kể cả máy ảo Java (JVM) mà ứng dụng chạy trên đó). Trong ứng dụng Java, cần chú ý tình huống khi vùng phủ bộ nhớ tăng lên có tác động đến bộ nhớ ảo (Virtual Memory) không? Việc hoán đổi dữ liệu giữa bộ nhớ ảo và bộ nhớ vật lý (RAM) cần được hạn chế tối đa trong các ứng dụng Java. Thử hình dung trường hợp bộ thu dọn rác (Garbage Collector) thu hồi một khối lớn vùng nhớ heap đang nằm trong bộ nhớ ảo, việc quét xem các đối tượng có còn được tham chiếu hay không sẽ mất nhiều thời gian hơn rất nhiều so với trường hợp vùng nhớ heap đang nằm trong bộ nhớ vật lý.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Thời gian kích hoạt (Startup Time)&lt;/strong&gt;: là khoảng thời gian cần thiết để ứng dụng khởi động. Thời gian kích hoạt đối với các ứng dụng Client thường phải ngắn, càng ngắn càng tốt, điều này rất quan trọng do sự tác động trực tiếp đến tâm lý người sử dụng. Ngược lại, đối với các ứng dụng Server thời gian kích hoạt ít quan trọng hơn.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Khả năng mở rộng (Scalability)&lt;/strong&gt;: là mức độ ứng dụng vẫn còn đáp ứng tốt khi có sự gia tăng về tải trọng sử dụng (do số người dùng hoặc lượng dữ liệu tăng lên). Nếu thời gian phản hồi của ứng dụng tăng theo cấp số mũ của tải trọng, khi đó ta nói ứng dụng có khả năng mở rộng kém. Ngược lại, nếu thời gian phản hồi của ứng dụng tăng theo mức độ tuyến tính đối với tại trọng, khi đó ta nói ứng dụng có khả năng mở rộng tốt.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Khả năng sẵn sàng đáp ứng (Responsiveness)&lt;/strong&gt;: thể hiện ở mức độ nhanh chóng của ứng dụng trong việc phản hồi một yêu cầu dữ liệu.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Thông lượng (Throughput)&lt;/strong&gt;: của một ứng dụng là lượng tối đa công việc mà ứng dụng xử lý được trong một khoảng thời gian xác định.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Đây là các khía cạnh đặc trưng cho hiệu năng ứng dụng nói chung. Riêng với các ứng dụng Java, chúng ta tập trung nhiều hơn vào việc tối ưu hóa JVM để tăng &lt;em&gt;khả năng sẵn sàng đáp ứng&lt;/em&gt; và &lt;em&gt;thông lượng&lt;/em&gt;. Để làm được điều này, chúng ta cần phát hiện, xử lý, điều chỉnh các vấn đề hiệu năng nảy sinh trong ứng dụng Java. Các ứng dụng Java thường gặp phải các vấn đề hiệu năng thuộc các loại sau:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Rò rỉ bộ nhớ (Memory Leaks)&lt;/strong&gt;: là những tình huống xảy ra khi có các đối tượng hết sử dụng, không còn tham chiếu trỏ đến nhưng vẫn tồn tại trong bộ nhớ mà không bị thu dọn rác (Garbage Collector) thu hồi.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Cạnh tranh khóa (Lock contention)&lt;/strong&gt;: tình trạng xảy ra khi một thread cố giành lấy khóa (lock) đang bị chiếm giữ bởi một thread khác. Nếu càng nhiều thread phải dừng lại chờ trong thời gian kéo dài sẽ làm giảm hiệu năng của ứng dụng. Thiết lập cơ chế quản lý khóa càng mịn, thì tình trạng thread phải chờ để nhận khóa từ tiến trình khác càng ít xảy ra. &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Điều chỉnh kích cỡ vùng nhớ heap (Tuning heap size)&lt;/strong&gt;: kích cỡ vùng nhớ heap ảnh hưởng đến vấn đề hoán đổi dữ liệu giữa bộ nhớ ảo và bộ nhớ vật lý. Dành quá ít hoặc quá nhiều bộ nhớ cho vùng nhớ heap đều ảnh hưởng đến hiệu năng của ứng dụng.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Tối ưu hóa thu gom rác trong JVM (Optimizing JVM garbage collection)&lt;/strong&gt;: việc hiểu rõ cơ chế vận hành của bộ thu gom rác (Garbage Collector) và điều chỉnh cho phù hợp với đặc điểm của ứng dụng sẽ giúp cải thiện rất lớn đến hiệu năng của ứng dụng.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;qu-trnh-ci-tin-hiu-nng&quot;&gt;Quá trình cải tiến hiệu năng&lt;/h2&gt;
-
-&lt;p&gt;Cải tiến hiệu năng là quá trình thu thập thông tin về hiệu năng của ứng dụng, phân tích xác định nguyên nhân ảnh hưởng đến hiệu năng, từ đó chỉnh sửa mã nguồn hoặc điều chỉnh thông số của phần mềm để làm tăng hiệu năng của ứng dụng, đáp ứng được yêu cầu đưa ra. Quá trình cải tiến hiệu năng được thực hiện thông qua 3 hoạt động: Theo dõi hiệu năng&lt;sup id=&quot;fnref:performance_monitoring&quot;&gt;&lt;a href=&quot;#fn:performance_monitoring&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; (Performance monitoring), Đo đạc hiệu năng&lt;sup id=&quot;fnref:performance_profiling&quot;&gt;&lt;a href=&quot;#fn:performance_profiling&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; (Performance profiling) và Điều chỉnh hiệu năng (Performance tuning).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/java-performance-management.png&quot; alt=&quot;Chu trình cải tiến hiệu năng cho ứng dụng Java&quot; /&gt; &lt;/p&gt;
-
-&lt;h3 id=&quot;theo-di-hiu-nng&quot;&gt;Theo dõi hiệu năng&lt;/h3&gt;
-
-&lt;p&gt;&lt;em&gt;Theo dõi hiệu năng&lt;/em&gt; là một hành động quan sát và thu thập - một cách không can thiệp (nonintrusive) - dữ liệu hiệu năng từ một ứng dụng đang vận hành. Trong hầu hết các trường hợp, theo dõi thường là dạng hành động mang tính phòng ngừa và chủ động, được thực hiện trong tất cả các môi trường của ứng dụng: môi trường thực, môi trường giám định chất lượng, hoặc môi trường phát triển. Tuy nhiên, theo dõi cũng thường là bước đầu tiên trong các hành động phản ứng lại tình huống xuất hiện báo cáo có vấn đề về hiệu năng của ứng dụng từ người dùng hoặc những người có liên quan, nhưng không cung cấp đầy đủ thông tin hoặc những đầu mối đề tìm ra nguyên nhân gốc rễ vấn đề. Theo dõi giúp xác định và cách ly các vấn đề tiềm năng mà không ảnh hưởng nghiêm trọng đến sự sẵn sàng đáp ứng hoặc thông lượng của một ứng dụng hiện đang chạy.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/performance-monitoring-comparison.png&quot; alt=&quot;So sánh giữa Performance Monitoring với chẩn đoán lâm sàng&quot; /&gt; &lt;/p&gt;
-
-&lt;p&gt;Theo dõi hiệu năng tương tự như quá trình chẩn đoán bệnh trong y học: bác sỹ thực hiện các kiểm tra sơ bộ, đo các chỉ số sinh hiệu (huyết áp, nhịp tim, v.v.), tác động cơ học lên cơ thể bệnh nhân, yêu cầu bệnh nhân mô tả các triệu chứng, từ đó chẩn đoán và khoanh vùng các nghi vấn về tình trạng bệnh tật. Việc khám bệnh có thể được thực hiện theo định kỳ để phòng ngừa, trong môi trường sinh hoạt bệnh nhân (bác sỹ đến khám tại nhà) hoặc bệnh nhân tự đến gặp bác sỹ để yêu cầu được khám bệnh khi phát hiện có triệu chứng bị ốm.&lt;/p&gt;
-
-&lt;h3 id=&quot;o-c-hiu-nng&quot;&gt;Đo đạc hiệu năng&lt;/h3&gt;
-
-&lt;p&gt;&lt;em&gt;Đo đạc hiệu năng&lt;/em&gt; cũng là một hành động thu thập dữ liệu hiệu năng từ một ứng dụng đang vận hành. Tuy nhiên, khác với theo dõi hiệu năng, việc lập hồ sơ hiệu năng có thể tác động hoặc can thiệp nhiều hơn đến ứng dụng. Đo đạc hiệu năng thường tập trung có chủ đích vào phạm vi hẹp hơn so với theo dõi hiệu năng. Đo đạc rất hiếm khi được thực hiện trong môi trường thực, mà nó thường được thực hiện trong các môi trường giám định chất lượng, kiểm thử hoặc phát triển. Đo đạc thường chỉ xảy ra sau hoạt động theo dõi kết thúc hoặc khi những yêu cầu về hiệu năng được xác định rõ (well-defined).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/performance-profiling-comparison.png&quot; alt=&quot;So sánh giữa Performance Profiling với xét nghiệm cận lâm sàng&quot; /&gt; &lt;/p&gt;
-
-&lt;p&gt;Chúng ta có thể hình dung việc lập hồ sơ hiệu năng giống như quá trình xét nghiệm cận lâm sàng trong y học: sau khi đã chẩn đoán thông qua các triệu chứng lâm sàng, bác sỹ sẽ khoanh vùng căn bệnh và yêu cầu bệnh nhân thực hiện các xét nghiệm sâu hơn và cụ thể hơn. Ví dụ, sau khi khám và nghe mô tả của bệnh nhân: đau và hạn chế vận động cột sống, bả vai, ái phát từng đợt, thường sau khi vận động nhiều, bác sỹ chẩn đoán bệnh nhân bị loãng xương. Để xác định chính xác và chắc chắn hơn, bác sỹ sẽ chỉ định xét nghiệm cận lâm sàng: chụp X-Quang và đo chỉ số T-score. Với các thông tin thu được, bác sỹ có thể xác định nguyên nhân và đưa ra phát đồ điều trị bệnh.&lt;/p&gt;
-
-&lt;h3 id=&quot;iu-chnh-hiu-nng&quot;&gt;Điều chỉnh hiệu năng&lt;/h3&gt;
-
-&lt;p&gt;&lt;em&gt;Điều chỉnh hiệu năng&lt;/em&gt; là hoạt động chỉnh sửa mã nguồn hoặc thông số cấu hình của ứng dụng nhằm mục đích tăng cường khả năng sẵn sàng đáp ứng và nâng cao thông lượng của ứng dụng. Điều chỉnh hiệu năng thường được thực hiện sau các bước theo dõi hiệu năng và lập hồ sơ hiệu năng.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/performance-tuning-comparison.png&quot; alt=&quot;So sánh giữa Performance Tuning với điều trị bệnh&quot; /&gt; &lt;/p&gt;
-
-&lt;p&gt;Tương ứng trong y tế, đây là quá trình bác sỹ áp dụng các phác đồ điều trị cũng như những cán thiệp y học (phẫu thuật, tiêm/uống thuốc, vật lý trị liệu, v.v.) để khắc phục các nguyên nhân gây bệnh, từ đó phục hồi và tăng cường sức khỏe cho người bệnh.&lt;/p&gt;
-
-&lt;h2 id=&quot;kt-lun&quot;&gt;Kết luận&lt;/h2&gt;
-
-&lt;p&gt;Bài viết này&lt;sup id=&quot;fnref:PS&quot;&gt;&lt;a href=&quot;#fn:PS&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; trình bày khái niệm về hiệu năng của ứng dụng, các khía cạnh đặc trưng và các vấn đề liên quan đến hiệu năng trong ứng dụng Java. Bài viết cũng trình bày sơ lược 3 bước của quá trình cải tiến hiệu năng: theo dõi, đo đạc và hiệu chỉnh.&lt;/p&gt;
-
-&lt;div class=&quot;footnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:performance_monitoring&quot;&gt;
-      &lt;p&gt;Từ &lt;em&gt;monitoring&lt;/em&gt; có thể dịch thành các từ &lt;em&gt;giám sát&lt;/em&gt;, &lt;em&gt;quan sát&lt;/em&gt;, &lt;em&gt;theo dõi&lt;/em&gt;. Tôi chọn từ &lt;em&gt;theo dõi&lt;/em&gt;. &lt;a href=&quot;#fnref:performance_monitoring&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:performance_profiling&quot;&gt;
-      &lt;p&gt;Các bạn có thể tra từ điển từ &lt;em&gt;profiling&lt;/em&gt; có nghĩa &lt;em&gt;lập hồ sơ&lt;/em&gt;, &lt;em&gt;định hình&lt;/em&gt;. Ở đây tôi dịch là &lt;em&gt;đo đạc&lt;/em&gt; vì cảm thấy từ này hợp nghĩa nhất. &lt;a href=&quot;#fnref:performance_profiling&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:PS&quot;&gt;
-      &lt;p&gt;Bài viết này là bài mở đầu cho loạt bài viết về cải tiến hiệu năng cho ứng dụng Java (Java Performance).  &lt;a href=&quot;#fnref:PS&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;
-
-  
-  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java.html&quot;&gt;Các kỹ thuật dùng để cải tiến hiệu năng trong lập trình Java&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on June 15, 2014.&lt;/p&gt;</content>
 </entry>
 
 </feed>

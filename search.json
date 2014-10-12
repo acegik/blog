@@ -121,6 +121,14 @@
 		} ,
 	
 		{
+		  "title"      : "Theo dõi hiệu năng của JVM",
+		  "category"   : "javaperformance",
+		  "url"        : "/blog/java/performance/theo-doi-hieu-nang-cua-jvm.html",
+		  "date"       : "2014-07-20 00:00:00 +0700",
+		  "shortdate"  : "July 20, 2014"
+		} ,
+	
+		{
 		  "title"      : "Tổng quan về JVM: HotSpot Garbage Collector",
 		  "category"   : "javajvm",
 		  "url"        : "/blog/java/jvm/tong-quan-ve-jvm-hotspot-garbage-collector.html",

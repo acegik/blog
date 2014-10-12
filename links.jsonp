@@ -46,6 +46,11 @@ callback([
   } ,
 
   {
+    "text": "Theo dõi hiệu năng của JVM",
+    "href": "/blog/java/performance/theo-doi-hieu-nang-cua-jvm.html"
+  } ,
+
+  {
     "text": "Tổng quan về Java Concurrency",
     "href": "/blog/java/concurrency/tong-quan-ve-java-concurrency.html"
   } ,
