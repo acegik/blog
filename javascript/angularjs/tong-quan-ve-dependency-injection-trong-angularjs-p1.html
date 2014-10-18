@@ -229,7 +229,7 @@
 
 <p>Theo cách này, hàm khởi tạo <em>Caller</em> chỉ phụ thuộc vào hàm mà nó gọi (đây là điều không thể tránh khỏi được), chứ không còn phụ thuộc vào lệnh khởi tạo <em>callee object</em>. <em>callee object</em> được tạo ở bên ngoài và truyền vào <em>caller object</em> thông qua hàm khởi tạo. Đây chính là một trong những cách để đẩy mã lệnh phụ thuộc ra bên ngoài định nghĩa đối tượng.</p>
 
-<p><strong>Nhận xét chung</strong>: Hai cách đầu, thường được gọi là mã cứng (hard code) sự phụ thuộc vào bên trong <em>caller object</em>. Điều này sẽ gây khó khăn cho việc chỉnh sửa những phần phụ thuộc: mã lệnh khởi tạo, tên lớp đối tượng, tên biến toàn cục, v.v. Ngoài ra, cũng rất khó khăn trong việc thực hiện Unit Test, là kỹ thuật đòi hỏi phải cô lập các thành phần phụ thuộc.</p>
+<p><strong>Nhận xét chung</strong>: Hai cách đầu, thường được gọi là viết cứng mã lệnh (hard code) của đối tượng phụ thuộc (<em>callee object</em>) vào bên trong <em>caller object</em>. Điều này sẽ gây khó khăn cho việc chỉnh sửa những phần phụ thuộc: mã lệnh khởi tạo, tên lớp đối tượng, tên biến toàn cục, v.v. Ngoài ra, cũng rất khó khăn trong việc thực hiện Unit Test, là kỹ thuật đòi hỏi phải cô lập các thành phần phụ thuộc.</p>
 
 <h3 id="vy-dependency-injection-l-g">Vậy, Dependency Injection là gì?</h3>
 
