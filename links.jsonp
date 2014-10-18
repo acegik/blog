@@ -36,6 +36,11 @@ callback([
   } ,
 
   {
+    "text": "Theo dõi hiệu năng của hệ điều hành",
+    "href": "/blog/java/performance/theo-doi-hieu-nang-cua-he-dieu-hanh.html"
+  } ,
+
+  {
     "text": "Tổng quan về JVM: các thành phần của HotSpot VM",
     "href": "/blog/java/jvm/tong-quan-ve-jvm-cac-thanh-phan-cua-hotspot-vm.html"
   } ,
@@ -123,6 +128,16 @@ callback([
   {
     "text": "Tiếng Anh dùng trong nghiên cứu học thuật - Thực hành từ vựng 4.4 - Giới từ",
     "href": "/blog/english/academic-research/tieng-anh-dung-trong-nghien-cuu-hoc-thuat-thuc-hanh-tu-vung--4-4.html"
+  } ,
+
+  {
+    "text": "Tổng quan về Dependency Injection trong AngularJS (P1)",
+    "href": "/blog/javascript/angularjs/tong-quan-ve-dependency-injection-trong-angularjs-p1.html"
+  } ,
+
+  {
+    "text": "Tổng quan về Dependency Injection trong AngularJS (P2)",
+    "href": "/blog/javascript/angularjs/tong-quan-ve-dependency-injection-trong-angularjs-p2.html"
   } 
 
 ])

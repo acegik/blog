@@ -61,7 +61,19 @@
         <loc>http://acegik.net/blog/page5/index.html</loc>
     </url>
     
+    <url>
+        <loc>http://acegik.net/blog/page6/index.html</loc>
+    </url>
+    
 
+    
+    <url>
+        <loc>http://acegik.net/blog/javascript/angularjs/tong-quan-ve-dependency-injection-trong-angularjs-p2.html</loc>
+    </url>
+    
+    <url>
+        <loc>http://acegik.net/blog/javascript/angularjs/tong-quan-ve-dependency-injection-trong-angularjs-p1.html</loc>
+    </url>
     
     <url>
         <loc>http://acegik.net/blog/english/academic-research/tieng-anh-dung-trong-nghien-cuu-hoc-thuat-thuc-hanh-tu-vung--4-4.html</loc>
@@ -133,6 +145,10 @@
     
     <url>
         <loc>http://acegik.net/blog/java/jvm/tong-quan-ve-jvm-cac-thanh-phan-cua-hotspot-vm.html</loc>
+    </url>
+    
+    <url>
+        <loc>http://acegik.net/blog/java/performance/theo-doi-hieu-nang-cua-he-dieu-hanh.html</loc>
     </url>
     
     <url>

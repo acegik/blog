@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>THEO DõI HIệU NăNG CủA Hệ đIềU HàNH &vert; ACEGIK'S BLOG</title>
+<meta name="description" content="... when the sun comes up, you better be running!">
+<meta name="keywords" content="Java, Java Performance">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/blog/images/logo.png">
+<meta name="twitter:title" content="Theo dõi hiệu năng của hệ điều hành">
+<meta name="twitter:description" content="... when the sun comes up, you better be running!">
+<meta name="twitter:creator" content="@pnhung177">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Theo dõi hiệu năng của hệ điều hành">
+<meta property="og:description" content="... when the sun comes up, you better be running!">
+<meta property="og:url" content="/blog/java/performance/theo-doi-hieu-nang-cua-he-dieu-hanh.html">
+<meta property="og:site_name" content="Acegik's Blog">
+<meta property="og:image" content="/blog/images/">
+
+
+
+
+
+<link rel="canonical" href="/blog/java/performance/theo-doi-hieu-nang-cua-he-dieu-hanh.html">
+<link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Acegik's Blog Feed">
+<link rel="author" href="https://plus.google.com/u/3/115458186421626071505?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,600,300,800,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/blog/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/blog/assets/css/vendor/normalize.css">
+    <link rel="stylesheet" href="/blog/assets/css/vendor/foundation.min.css">
+    <link rel="stylesheet" href="/blog/assets/css/style.css">
+    <link rel="stylesheet" href="/blog/assets/css/post.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/blog/assets/js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+    
+
+
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">  
+
+        <main id="summer-post-container-simple" class="summer-post-container-simple" role="main">
+            <header class="summer-post-header-simple">
+                <div class="summer-post-menu-header-simple">
+
+                    <a class="summer-blog-logo" href="/blog">
+                        <img src="/blog/images/logo.png" alt="Blog Logo" />
+                    </a>
+
+                <div class="summer-blog-menu">      
+    <div class="summer-mobile-menu show-for-small">
+        <a href="#"><i class="fa fa-bars"></i></a>
+    </div>
+    <ul class="summer-menu">
+        <li class="summer-mobile-close-btn show-for-small text-right">
+            <a href="#"><i class="fa fa-times"></i></a>
+        </li>
+
+            <li>
+                    <a href="/blog/">Trang bìa</a>
+                 </li>
+
+            <li>
+                    <a href="/blog/featured">Nổi bật</a>
+                 </li>
+
+            <li>
+                    <a href="/blog/categories">Danh mục</a>
+                 </li>
+
+            <li>
+                    <a href="/blog/about">Giới thiệu</a>
+                 </li>
+            
+           <li><a href="/blog/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+    </ul>
+
+</div>
+            </div>
+
+                <div class="summer-post-title-simple row">
+                    <div class="small-12 columns">
+                        <div class="summer-post-meta-simple">
+                            <h1>Theo dõi hiệu năng của hệ điều hành</h1>
+                            <p>by <strong>pnhung177</strong> &#8212; on <a href="/blog/tags/index.html#Java" data-toggle="tooltip" title="Posts tagged with Java" rel="tag">Java</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#Java Performance" data-toggle="tooltip" title="Posts tagged with Java Performance" rel="tag">Java Performance</a> &#8212; <strong><time datetime="2014-07-02T00:00:00+07:00">02/07/2014</time></strong></p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+        <article class="summer-post-content post tag-simple">
+            <div><p>Theo dõi hiệu năng của hệ điều hành (HĐH) mà ứng dụng được chạy trên đó là bước đầu tiên trong quá trình cải tiến hiệu năng của ứng dụng.</p>
+
+<h2 id="ti-sao-cn-phi-theo-di-hiu-nng-ca-hh">Tại sao cần phải theo dõi hiệu năng của HĐH</h2>
+
+<p>Chúng ta quan sát hệ điều hành để có được cảm nhận về vấn đề hiệu năng đang phát sinh. Nói cách khác, chúng ta thăm dò xem ứng dụng có bộc lộ ra triệu chứng nào cho thấy hiệu năng kém không? Căn cứ vào triệu chứng quan sát được, chúng ta có thể xác định các bước hành động tiếp theo trong việc chẩn đoán các vấn đề hiệu năng.</p>
+
+<p>Theo dõi hiệu năng hệ điều hành được thực hiện thông qua các hoạt động theo dõi sau:</p>
+
+<ul>
+  <li>Theo dõi hoạt động của CPU</li>
+  <li>Theo dõi hoạt động vào/ra mạng</li>
+  <li>Theo dõi hoạt động vào/ra ổ đĩa</li>
+  <li>Theo dõi hoạt động của bộ nhớ ảo</li>
+  <li>Theo dõi hoạt động của các tiến trình </li>
+</ul>
+
+<h2 id="theo-di-s-dng-cpu">Theo dõi sử dụng CPU</h2>
+
+<h3 id="cc-ch-s-o-c-v-s-dng-cpu">Các chỉ số đo đạc về sử dụng CPU</h3>
+
+<ul>
+  <li><em>User time</em>: Là lượng thời gian CPU dành cho tiến trình chạy các tác vụ của riêng nó (chạy ngoài kernel của hệ điều hành).</li>
+  <li><em>System time</em>: Là lượng thời gian CPU dùng để khai thác tài nguyên, chạy trong kernel của hệ điều hành.</li>
+  <li><em>Idle time</em>: Là lượng thời gian CPU không được sử dụng.</li>
+  <li><em>Voluntary context switch</em>: </li>
+</ul>
+
+<h3 id="cng-c-theo-di-v-s-dng-cpu">Công cụ theo dõi về sử dụng CPU</h3>
+
+<h4 id="vmstat-linux--solaris">vmstat (Linux &amp; Solaris)</h4>
+
+<p>Công cụ <strong>vmstat</strong> là phần mềm dòng lệnh dùng để hiển thị lên màn hình console các thông số về sử dụng CPU trong nhiều lần cách quãng liên tiếp. Mỗi thông số đọc được trong một lần đọc được gọi là mẫu chọn (sample). Những mẫu chọn này cung cấp một cái nhìn tổng quan về tỉ lệ phần trăm <em>user time</em> (us), <em>system time</em> (sy) và <em>idle time</em> (id).</p>
+
+<h4 id="mpstat-linux--solaris">mpstat (Linux &amp; Solaris)</h4>
+
+<p>Công cụ <strong>mpstat</strong> là phần mềm dòng lệnh dùng để hiển thị thống kê về hoạt động của bộ xử lý (processor). <strong>mpstat</strong> trên <a href="http://linux.die.net/man/1/mpstat">Linux</a> và <a href="http://docs.oracle.com/cd/E23824_01/html/821-1462/mpstat-1m.html">Solaris</a> có một chút khác biệt ở thông tin hiển thị.</p>
+
+<p>Kết quả chạy lệnh trên Linux:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>mpstat
+Linux 3.2.0-63-generic-pae <span class="o">(</span>drupalex-ubuntu<span class="o">)</span> 	10/13/2014 	_i686_	<span class="o">(</span><span class="m">2</span> CPU<span class="o">)</span>
+
+02:31:55 PM  CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest   %idle
+02:31:55 PM  all   27.67    0.02    7.02    2.38    0.02    0.09    0.00    0.00   62.80</code></pre></div>
+
+<p>Kết quả chạy lệnh trên Solaris 11:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>mpstat
+CPU minf mjf xcal  intr ithr  csw icsw migr smtx  srw syscl  usr sys  wt idl
+  <span class="m">0</span>    <span class="m">0</span>   <span class="m">0</span>    <span class="m">0</span>   <span class="m">329</span>  <span class="m">121</span>  <span class="m">169</span>    <span class="m">6</span>    <span class="m">0</span>    <span class="m">0</span>    <span class="m">0</span>   <span class="m">406</span>    <span class="m">0</span>   <span class="m">1</span>   <span class="m">0</span>  98</code></pre></div>
+
+<h4 id="cpubar-solaris">cpubar (Solaris)</h4>
+
+<p>Công cụ giao diện đồ họa hiển thị thông tin thống kê về hoạt động của CPU. </p>
+
+<p><img src="/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/cpubar.png" alt="Công cụ giao diện đồ họa cpubar" /></p>
+
+<p>Trong đó: Xanh lá cây (User time), Đỏ (System tile), Xanh da trời (Idle time).</p>
+
+<h4 id="prstat-solaris">prstat (Solaris)</h4>
+
+<p>Công cụ <strong>prstat</strong> là phần mềm dòng lệnh có chức năng khảo sát hoạt động của các tiến trình đang chạy trên hệ thống và hiển thị báo cáo thống kê dựa trên tùy chọn về thông tin muốn kết xuất và thứ tự sắp xếp. <strong>prstat</strong> cung cấp các tùy chọn cho phép chỉ khảo sát trên một số các tiến trình xác định bởi PID, UID, CPU ID, v.v. Mặc định, <strong>prstat</strong> hiển thị toàn bộ thời gian sử dụng CPU đo được trên mỗi tiến trình.</p>
+
+<p><img src="/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/prstat-without-args.png" alt="Công cụ prstat: lời gọi không tham số" /> </p>
+
+<p>Để hiển thị thông tin trạng thái chi tiết (có chứa thông tin <strong>VCX</strong> và <strong>IVCX</strong>), chúng ta có thể sử dụng <strong>prstat</strong> với tham số <strong>-m</strong>:</p>
+
+<p><img src="/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/prstat-with--m.png" alt="Công cụ prstat: với tham số -m" /> </p>
+
+<p>Để hiển thị thông tin về từng tiến trình con (lightweight process), chúng ta sử dụng tham số <strong>-L</strong>. Tương tự ví dụ trên, để hiển thị thông tin trạng thái chi tiết với từng tiến trình con, chúng ta kết hợp hai tham số <strong>-Lm</strong> như sau:</p>
+
+<p><img src="/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/prstat-with--Lm.png" alt="Công cụ prstat: với tham số -Lm" /> </p>
+
+<h2 id="theo-di-network-io">Theo dõi Network I/O</h2>
+
+<h3 id="thng-tin-cn-bit-v-network-io">Thông tin cần biết về Network I/O</h3>
+
+<h3 id="cng-c-theo-di-network-io">Công cụ theo dõi Network I/O</h3>
+
+<h4 id="tcptop-solaris">tcptop (Solaris)</h4>
+
+<p>tcptop can identify who is doing what and how much traffic are they generating. If this were
+a production system, you would want to know who is running rcp on this system and why.</p>
+
+<h4 id="nicstat-solaris">nicstat (Solaris)</h4>
+
+<h2 id="theo-di-disk-io">Theo dõi Disk I/O</h2>
+
+<h3 id="thng-tin-cn-bit-v-disk-io">Thông tin cần biết về Disk I/O</h3>
+
+<ul>
+  <li>Số lượng các lần truy cập ổ đĩa: Mỗi lần truy cập ổ đĩa là một hoạt động tốn kém đối với hệ thống, quá trình gửi - chờ - nhận kết quả (<em>Round Trip Time</em>) của thao tác đọc dữ liệu từ ổ đĩa rất tốn kém thời gian. Do đó chúng ta mong muốn tối thiểu hóa số lần truy cập ổ đĩa để đọc dữ liệu.</li>
+  <li>Độ trễ và độ trễ trung bình: là khoảng thời gian cần có để lấy dữ liệu từ ỗ đĩa.</li>
+</ul>
+
+<h3 id="cng-c-theo-di-disk-io">Công cụ theo dõi Disk I/O</h3>
+
+<h4 id="iostat-linux--solaris">iostat (LInux &amp; Solaris)</h4>
+
+<h4 id="iotop-linux--solaris">iotop (Linux &amp; Solaris)</h4>
+
+<p>Công cụ <strong>iotop</strong> là phần mềm dòng lệnh, có chức năng theo dõi thông tin về quá trình vào ra (I/O) ổ đĩa từ hệ điều hành (nhân Linux từ 2.6.20) và hiển thị thông tin dưới dạng bảng liệt kê lượng truy cập vào ra ổ đĩa thực hiện bởi các tiến trình.</p>
+
+<p><img src="/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/iotop.png" alt="Công cụ iotop" /></p>
+
+<h2 id="theo-di-virtual-memory">Theo dõi Virtual Memory</h2>
+
+<h3 id="theo-di-virtual-memory--lm-g">Theo dõi Virtual Memory để làm gì?</h3>
+
+<p>Quan sát quá trình phân trang (paging) trong bộ nhớ ảo để xác định tình trạng hoán chuyển (swapping) bộ nhớ của các tiến trình. Đối với chương trình Java, việc hoán chuyển vùng nhớ Heap từ bộ nhớ (Memory/RAM) vào vùng nhớ ảo (Virtual Memory/HarDisk) sẽ làm giảm hiểu năng rất lớn, là do chức năng thu dọn bộ nhớ trong chương trình Java thường xuyên quét qua vùng nhớ Heap để xác định và thu hồi các đối tượng không còn sử dụng nữa. Nếu vùng nhớ Heap bị chia cắt, hoặc bị chuyển vào Virtual Memory thì quá trình thu dọn bộ nhớ sẽ thực hiện rất chậm. Chính vì vậy, chúng ta cần theo dõi các tiến trình Java để xác định xem có sự hoán chuyển bộ nhớ hay không, từ đó có các giải pháp điều chỉnh để tăng hiệu năng.</p>
+
+<h3 id="cng-c-theo-di-virtual-memory">Công cụ theo dõi Virtual Memory</h3>
+
+<ul>
+  <li>vmstat (Solaris &amp; Linux)</li>
+  <li>prstat (Solaris)</li>
+  <li>top (Linux)</li>
+  <li>Performance Monitor (Windows)</li>
+  <li>DTrace (Solaris)</li>
+  <li>cpubar (Solaris – Performance Tools CD)</li>
+  <li>meminfo (Solaris – Performance Tools CD)</li>
+</ul>
+
+<h3 id="theo-di-pages-inout-trong-solaris">Theo dõi pages in/out trong Solaris</h3>
+
+<p>Sử dụng công cụ <strong>vmstat</strong>, ta có thể theo dõi được các thông số <em>pages in</em>, <em>pages out</em> và <em>page scan rate</em>. </p>
+
+<p><img src="/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/vmstat-solaris.png" alt="Phân tích bằng vmstat trong Solaris" /></p>
+
+<p>Khi hệ thống bắt đầu thực hiện hoán chuyển dữ liệu vào <em>virtual memory</em>, các giá trị <em>page in</em>, <em>page out</em> và <em>scan rate</em> đều tăng. Khi hệ thống thực hiện <em>page in</em> và <em>page out</em> mà không phát sinh hoạt động <em>scan rate</em>, hoặc có một số thay đổi <em>scan rate</em> nhỏ và sớm kết thúc, là được.</p>
+
+<h3 id="theo-di-pages-inout-trong-linux">Theo dõi pages in/out trong Linux</h3>
+
+<p><img src="/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/vmstat-linux.png" alt="Phân tích bằng vmstat trong Linux" /></p>
+
+<h3 id="x-l-vn--swapping-memory">Xử lý vấn đề Swapping Memory</h3>
+
+<p>Đối với ứng dụng Java, việc vùng nhớ Heap bị hoán chuyển vào Virtual Memory sẽ khiến hiệu năng chương trình giảm nghiêm trọng. Khi phát hiện hệ thống phải swapping memory nhiều, có thể xử lý bằng các cách sau:</p>
+
+<ul>
+  <li>Phân tích và xác định và giảm kích thước phù hợp cho vùng Java Heap.</li>
+  <li>Thêm dung lượng bộ nhớ vật lý (cắm thêm RAM).</li>
+  <li>Giảm bớt số lượng ứng dụng đang chạy trên máy tính.</li>
+  <li>Kết hợp các phương án trên.</li>
+</ul>
+
+
+            </div>
+        </article>
+        <div class="cf"></div>
+        <div class="row text-center">
+            <section class="summer-post-share">
+                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Theo dõi hiệu năng của hệ điều hành&quot;%20/blog/java/performance/theo-doi-hieu-nang-cua-he-dieu-hanh.html%20via%20&#64;pnhung177"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a class="facebook-icon" href="https://www.facebook.com/sharer/sharer.php?u=/blog/java/performance/theo-doi-hieu-nang-cua-he-dieu-hanh.html"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a class="google-icon" href="https://plus.google.com/share?url=/blog/java/performance/theo-doi-hieu-nang-cua-he-dieu-hanh.html"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </section>
+        </div>
+        <div class="cf"></div>
+        
+            <div class="summer-author-info">
+                <div class="row">
+                    <section class="summer-post-author small-12 columns">
+                        
+                            <img src="/blog/images/avatars/pnhung177.png" class="summer-post-author-avatar" alt="Phạm Ngọc Hùng's photo">
+                        
+                        
+                            <span class="author-label">Author</span>
+                            <h1>Phạm Ngọc Hùng</h1>
+                        
+                        
+                            <p><a href="mailto:pnhung177@drupalex.net" class="author-website">pnhung177@drupalex.net</a></p>
+                        
+                        
+                            <p>... when the sun comes up, you better be running!</p>
+                        
+                    </section>
+                </div>
+            </div> 
+        
+        <div class="cf"></div>
+        
+        <section class="summer-disqus row">
+    <div class="small-12 columns">
+        <h1 class="summer-comments-header">Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'acegik'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+
+        <div class="cf"></div>
+
+    <footer class="summer-site-footer">
+    <div class="copyright">
+         <section>Bản quyền nội dung thuộc về <a href="/blog/about">Phạm Ngọc Hùng</a> &copy; 2014.</section>
+    </div>
+    <div class="social-icons">
+        
+        
+        <a href="http://twitter.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-twitter fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="https://plus.google.com/u/3/115458186421626071505">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-google-plus fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="http://github.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-github fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="http://facebook.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-facebook fa-stack-1x"></i>
+            </span>
+        </a>
+        
+    </div>
+    
+    <div class="cf"></div>
+</footer>
+ 
+</main>    
+    <script src="/blog/assets/js/vendor/modernizr.js"></script>
+    <script src="/blog/assets/js/foundation.min.js"></script>
+    <script src="/blog/assets/js/vendor/background-check.js"></script>
+    <script src="/blog/assets/js/vendor/post-header-animations.js"></script>
+    <script src="/blog/assets/js/summer.js"></script>
+
+    <script>
+      $(document).foundation();
+    </script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54128248-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+</script>
+ 
+</body>
+</html>

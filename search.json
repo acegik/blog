@@ -1,6 +1,22 @@
 [
 	
 		{
+		  "title"      : "Tổng quan về Dependency Injection trong AngularJS (P2)",
+		  "category"   : "javascriptangularjs",
+		  "url"        : "/blog/javascript/angularjs/tong-quan-ve-dependency-injection-trong-angularjs-p2.html",
+		  "date"       : "2014-10-17 00:00:00 +0700",
+		  "shortdate"  : "October 17, 2014"
+		} ,
+	
+		{
+		  "title"      : "Tổng quan về Dependency Injection trong AngularJS (P1)",
+		  "category"   : "javascriptangularjs",
+		  "url"        : "/blog/javascript/angularjs/tong-quan-ve-dependency-injection-trong-angularjs-p1.html",
+		  "date"       : "2014-10-14 00:00:00 +0700",
+		  "shortdate"  : "October 14, 2014"
+		} ,
+	
+		{
 		  "title"      : "Tiếng Anh dùng trong nghiên cứu học thuật - Thực hành từ vựng 4.4 - Giới từ",
 		  "category"   : "englishacademic-research",
 		  "url"        : "/blog/english/academic-research/tieng-anh-dung-trong-nghien-cuu-hoc-thuat-thuc-hanh-tu-vung--4-4.html",
@@ -142,6 +158,14 @@
 		  "url"        : "/blog/java/jvm/tong-quan-ve-jvm-cac-thanh-phan-cua-hotspot-vm.html",
 		  "date"       : "2014-07-03 00:00:00 +0700",
 		  "shortdate"  : "July 03, 2014"
+		} ,
+	
+		{
+		  "title"      : "Theo dõi hiệu năng của hệ điều hành",
+		  "category"   : "javaperformance",
+		  "url"        : "/blog/java/performance/theo-doi-hieu-nang-cua-he-dieu-hanh.html",
+		  "date"       : "2014-07-02 00:00:00 +0700",
+		  "shortdate"  : "July 02, 2014"
 		} ,
 	
 		{
