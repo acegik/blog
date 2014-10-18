@@ -132,7 +132,6 @@
               <li><a href="#hm-factory">Hàm factory()</a></li>
               <li><a href="#hm-service">Hàm service()</a></li>
               <li><a href="#hm-value">Hàm value()</a></li>
-              <li><a href="#hm-constant">Hàm constant()</a></li>
             </ul>
           </li>
           <li><a href="#i-tng-dch-v-injector">Đối tượng dịch vụ $injector</a>            <ul>
@@ -150,6 +149,7 @@
       </li>
     </ul>
   </li>
+  <li><a href="#v-d-trc-quan-minh-ha-injection">Ví dụ trực quan minh họa Injection</a></li>
   <li><a href="#ti-liu-tham-kho">Tài liệu tham khảo</a></li>
 </ul>
 
@@ -318,10 +318,6 @@
 
 <p>Như đã đề cập ở bên trên, <em>đối tượng dịch vụ</em> tạo ra từ hàm <em>value()</em> sẽ không thể <em>bơm truyền</em> bất cứ thứ gì vào cho nó được. Tại sao lại như vậy? là vì trong <em>AngularJS</em>, các tham số tiếp nhận giá trị <em>bơm truyền</em> đều phải nằm ở khai báo hàm <em>$get</em>. Khai báo của hàm <em>value()</em> sẽ nằm ở bên trong một hàm <em>$get</em> mà hàm <em>$get</em> này <em>AngularJS</em> đã định nghĩa cứng là không có tham số.</p>
 
-<h5 id="hm-constant">Hàm constant()</h5>
-
-<p>Hàm <em>constant()</em>, như tên gọi của nó, có chức năng định nghĩa các giá trị không thay đổi</p>
-
 <h4 id="i-tng-dch-v-injector">Đối tượng dịch vụ $injector</h4>
 
 <p>Đối tượng dịch vụ <em>$injector</em> có nhiệm vụ tạo ra các <em>đối tượng thể hiện của dịch vụ</em> (<em>instances of services</em>) từ các khai báo <em>provider</em> được định nghĩa bởi <em>$provide</em>, đồng thời <em>bơm truyền</em> các <em>đối tượng dịch vụ</em> đã có vào cho <em>thể hiện của đối tượng dịch vụ</em> vừa mới tạo. Mỗi ứng dụng AngularJS có một đối tượng <em>$injector</em> được tự động tạo ra khi ứng dụng khởi động.</p>
@@ -454,6 +450,55 @@
 <span class="p">]);</span></code></pre></div>
 
 <p>Về mặt cú pháp, <em>chú giải nội tuyến</em> cho phép truyền một mảng thay vì một hàm trong phần khai báo hàm khởi tạo đối tượng của <em>AngularJS</em>. Các phần tử của mảng là danh sách tên của các <em>dependency</em> cần truyền cho tham số hàm khởi tạo, phần tử cuối của mảng chính là khai báo hàm khởi tạo đối tượng. Cách khai báo này giúp chúng ta tránh được việc sử dụng thêm một thuộc tính trong việc khai báo hàm khởi tạo.</p>
+
+<h2 id="v-d-trc-quan-minh-ha-injection">Ví dụ trực quan minh họa Injection</h2>
+
+<p>Nếu có sự so sánh giữa <em>Dependency Injection</em> trong lập trình với Injection trong y tế (Medical Injection), chúng ta sẽ thấy có sự tương đồng khá thú vị. Phần này sẽ trình bày một ví dụ nhỏ, minh họa cho sự tương đồng đó.</p>
+
+<p>Giả sử có một bệnh nhân (<em>patient</em>), được điều trị tại bệnh viện (<em>hospital</em>). Anh ta tham gia vào một quá trình điều trị (<em>treatment</em>), trong đó được điều dưỡng (<em>nurse</em>) tiêm 2 loại vacxin tên là <em>vaccineX</em> và <em>vaccineY</em>. <em>vaccineX</em> có tác dụng điều trị căn bệnh <em>X</em> của anh ta, còn <em>vaccineY</em> có chức năng ngăn ngừa căn bệnh <em>Y</em>. Khi đó, quá trình thực hiện này có thể được minh họa thông qua đoạn chương trình sau:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">$hospital</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;Hospital&#39;</span><span class="p">,</span> <span class="p">[]);</span>
+
+<span class="nx">$hospital</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">&#39;vaccineX&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$window</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">isInjected</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">$window</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;The VaccineX was injected into patient &quot;</span> <span class="o">+</span>
+          <span class="s2">&quot;to cure the disease X.&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">});</span>
+
+<span class="nx">$hospital</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">&#39;vaccineY&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$window</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">isInjected</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">$window</span><span class="p">.</span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;The VaccineY was injected into patient &quot;</span> <span class="o">+</span>
+          <span class="s2">&quot;to prevent the disease Y.&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">});</span>
+
+<span class="nx">$hospital</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">&#39;patient&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;vaccineX&#39;</span><span class="p">,</span> <span class="s1">&#39;vaccineY&#39;</span><span class="p">,</span> 
+    <span class="kd">function</span><span class="p">(</span><span class="nx">biceps</span><span class="p">,</span> <span class="nx">buttock</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="nx">treat</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="nx">biceps</span><span class="p">.</span><span class="nx">isInjected</span><span class="p">();</span>
+                <span class="nx">buttock</span><span class="p">.</span><span class="nx">isInjected</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">]);</span>
+
+<span class="kd">var</span> <span class="nx">$nurse</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">injector</span><span class="p">([</span><span class="s1">&#39;Hospital&#39;</span><span class="p">,</span> <span class="s1">&#39;ng&#39;</span><span class="p">]);</span>
+
+<span class="kd">var</span> <span class="nx">Treatment</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">patient</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">patient</span><span class="p">.</span><span class="nx">treat</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="nx">$nurse</span><span class="p">.</span><span class="nx">invoke</span><span class="p">(</span><span class="nx">Treatment</span><span class="p">);</span></code></pre></div>
+
+<p>Đoạn mã lệnh trên có thể minh họa trực quan bằng hình vẽ bên dưới. Đối chiếu hình vẽ và mã lệnh bên trên, bạn thấy <em>Dependency Injection</em> còn khó hiểu nữa hay không?</p>
+
+<p><img src="/blog/media/f973ec46-ece6-432b-a96f-46bd93f738e8/dependency_injection_demo_diagram.png" alt="Sơ đồ minh họa trực quan khái niệm Injection" /></p>
 
 <h2 id="ti-liu-tham-kho">Tài liệu tham khảo</h2>
 

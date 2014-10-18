@@ -9,7 +9,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://acegik.net/blog/feed.xml" />
 <link rel="alternate" type="text/html" href="http://acegik.net/blog/" />
-<updated>2014-10-18T08:19:13+07:00</updated>
+<updated>2014-10-18T16:33:24+07:00</updated>
 <id>http://acegik.net/blog/</id>
 <author>
   <name>Phạm Ngọc Hùng</name>
@@ -48,7 +48,6 @@
               &lt;li&gt;&lt;a href=&quot;#hm-factory&quot;&gt;Hàm factory()&lt;/a&gt;&lt;/li&gt;
               &lt;li&gt;&lt;a href=&quot;#hm-service&quot;&gt;Hàm service()&lt;/a&gt;&lt;/li&gt;
               &lt;li&gt;&lt;a href=&quot;#hm-value&quot;&gt;Hàm value()&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;#hm-constant&quot;&gt;Hàm constant()&lt;/a&gt;&lt;/li&gt;
             &lt;/ul&gt;
           &lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#i-tng-dch-v-injector&quot;&gt;Đối tượng dịch vụ $injector&lt;/a&gt;            &lt;ul&gt;
@@ -66,6 +65,7 @@
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#v-d-trc-quan-minh-ha-injection&quot;&gt;Ví dụ trực quan minh họa Injection&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#ti-liu-tham-kho&quot;&gt;Tài liệu tham khảo&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -234,10 +234,6 @@
 
 &lt;p&gt;Như đã đề cập ở bên trên, &lt;em&gt;đối tượng dịch vụ&lt;/em&gt; tạo ra từ hàm &lt;em&gt;value()&lt;/em&gt; sẽ không thể &lt;em&gt;bơm truyền&lt;/em&gt; bất cứ thứ gì vào cho nó được. Tại sao lại như vậy? là vì trong &lt;em&gt;AngularJS&lt;/em&gt;, các tham số tiếp nhận giá trị &lt;em&gt;bơm truyền&lt;/em&gt; đều phải nằm ở khai báo hàm &lt;em&gt;$get&lt;/em&gt;. Khai báo của hàm &lt;em&gt;value()&lt;/em&gt; sẽ nằm ở bên trong một hàm &lt;em&gt;$get&lt;/em&gt; mà hàm &lt;em&gt;$get&lt;/em&gt; này &lt;em&gt;AngularJS&lt;/em&gt; đã định nghĩa cứng là không có tham số.&lt;/p&gt;
 
-&lt;h5 id=&quot;hm-constant&quot;&gt;Hàm constant()&lt;/h5&gt;
-
-&lt;p&gt;Hàm &lt;em&gt;constant()&lt;/em&gt;, như tên gọi của nó, có chức năng định nghĩa các giá trị không thay đổi&lt;/p&gt;
-
 &lt;h4 id=&quot;i-tng-dch-v-injector&quot;&gt;Đối tượng dịch vụ $injector&lt;/h4&gt;
 
 &lt;p&gt;Đối tượng dịch vụ &lt;em&gt;$injector&lt;/em&gt; có nhiệm vụ tạo ra các &lt;em&gt;đối tượng thể hiện của dịch vụ&lt;/em&gt; (&lt;em&gt;instances of services&lt;/em&gt;) từ các khai báo &lt;em&gt;provider&lt;/em&gt; được định nghĩa bởi &lt;em&gt;$provide&lt;/em&gt;, đồng thời &lt;em&gt;bơm truyền&lt;/em&gt; các &lt;em&gt;đối tượng dịch vụ&lt;/em&gt; đã có vào cho &lt;em&gt;thể hiện của đối tượng dịch vụ&lt;/em&gt; vừa mới tạo. Mỗi ứng dụng AngularJS có một đối tượng &lt;em&gt;$injector&lt;/em&gt; được tự động tạo ra khi ứng dụng khởi động.&lt;/p&gt;
@@ -370,6 +366,55 @@
 &lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Về mặt cú pháp, &lt;em&gt;chú giải nội tuyến&lt;/em&gt; cho phép truyền một mảng thay vì một hàm trong phần khai báo hàm khởi tạo đối tượng của &lt;em&gt;AngularJS&lt;/em&gt;. Các phần tử của mảng là danh sách tên của các &lt;em&gt;dependency&lt;/em&gt; cần truyền cho tham số hàm khởi tạo, phần tử cuối của mảng chính là khai báo hàm khởi tạo đối tượng. Cách khai báo này giúp chúng ta tránh được việc sử dụng thêm một thuộc tính trong việc khai báo hàm khởi tạo.&lt;/p&gt;
+
+&lt;h2 id=&quot;v-d-trc-quan-minh-ha-injection&quot;&gt;Ví dụ trực quan minh họa Injection&lt;/h2&gt;
+
+&lt;p&gt;Nếu có sự so sánh giữa &lt;em&gt;Dependency Injection&lt;/em&gt; trong lập trình với Injection trong y tế (Medical Injection), chúng ta sẽ thấy có sự tương đồng khá thú vị. Phần này sẽ trình bày một ví dụ nhỏ, minh họa cho sự tương đồng đó.&lt;/p&gt;
+
+&lt;p&gt;Giả sử có một bệnh nhân (&lt;em&gt;patient&lt;/em&gt;), được điều trị tại bệnh viện (&lt;em&gt;hospital&lt;/em&gt;). Anh ta tham gia vào một quá trình điều trị (&lt;em&gt;treatment&lt;/em&gt;), trong đó được điều dưỡng (&lt;em&gt;nurse&lt;/em&gt;) tiêm 2 loại vacxin tên là &lt;em&gt;vaccineX&lt;/em&gt; và &lt;em&gt;vaccineY&lt;/em&gt;. &lt;em&gt;vaccineX&lt;/em&gt; có tác dụng điều trị căn bệnh &lt;em&gt;X&lt;/em&gt; của anh ta, còn &lt;em&gt;vaccineY&lt;/em&gt; có chức năng ngăn ngừa căn bệnh &lt;em&gt;Y&lt;/em&gt;. Khi đó, quá trình thực hiện này có thể được minh họa thông qua đoạn chương trình sau:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$hospital&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Hospital&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;$hospital&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;factory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;vaccineX&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;isInjected&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;$window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;The VaccineX was injected into patient &amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+          &lt;span class=&quot;s2&quot;&gt;&amp;quot;to cure the disease X.&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;$hospital&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;factory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;vaccineY&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;isInjected&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;$window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;alert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;The VaccineY was injected into patient &amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+          &lt;span class=&quot;s2&quot;&gt;&amp;quot;to prevent the disease Y.&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;$hospital&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;factory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;patient&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;vaccineX&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;vaccineY&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;biceps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;buttock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;treat&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;biceps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isInjected&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;buttock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isInjected&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$nurse&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;injector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Hospital&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;ng&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Treatment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;patient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;patient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;treat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;$nurse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;invoke&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Treatment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Đoạn mã lệnh trên có thể minh họa trực quan bằng hình vẽ bên dưới. Đối chiếu hình vẽ và mã lệnh bên trên, bạn thấy &lt;em&gt;Dependency Injection&lt;/em&gt; còn khó hiểu nữa hay không?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/f973ec46-ece6-432b-a96f-46bd93f738e8/dependency_injection_demo_diagram.png&quot; alt=&quot;Sơ đồ minh họa trực quan khái niệm Injection&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;ti-liu-tham-kho&quot;&gt;Tài liệu tham khảo&lt;/h2&gt;
 
