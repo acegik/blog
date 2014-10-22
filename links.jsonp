@@ -1,6 +1,11 @@
 callback([
 
   {
+    "text": "Transact-SQL: Xử lý lỗi với TRY - CATCH - RAISEERROR",
+    "href": "/blog/rdbms/sqlserver/transact-sql-try-catch-raiseerror-example.html"
+  } ,
+
+  {
     "text": "Lập trình phân tách nội dung XML trong Java",
     "href": "/blog/java/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java.html"
   } ,

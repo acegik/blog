@@ -57,6 +57,10 @@
         <loc>http://acegik.net/blog/page4/index.html</loc>
     </url>
     
+    <url>
+        <loc>http://acegik.net/blog/page5/index.html</loc>
+    </url>
+    
 
     
     <url>
@@ -137,6 +141,10 @@
     
     <url>
         <loc>http://acegik.net/blog/java/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java.html</loc>
+    </url>
+    
+    <url>
+        <loc>http://acegik.net/blog/rdbms/sqlserver/transact-sql-try-catch-raiseerror-example.html</loc>
     </url>
     
 </urlset>

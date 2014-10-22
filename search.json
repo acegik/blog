@@ -158,6 +158,14 @@
 		  "url"        : "/blog/java/xml/lap-trinh-phan-tach-noi-dung-xml-trong-java.html",
 		  "date"       : "2013-07-05 00:00:00 +0700",
 		  "shortdate"  : "July 05, 2013"
+		} ,
+	
+		{
+		  "title"      : "Transact-SQL: Xử lý lỗi với TRY - CATCH - RAISEERROR",
+		  "category"   : "rdbmssqlserver",
+		  "url"        : "/blog/rdbms/sqlserver/transact-sql-try-catch-raiseerror-example.html",
+		  "date"       : "2008-08-02 00:00:00 +0700",
+		  "shortdate"  : "August 02, 2008"
 		} 
 	
 ]
