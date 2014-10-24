@@ -1,6 +1,14 @@
 [
 	
 		{
+		  "title"      : "Tìm hiểu về Scope trong AngularJS",
+		  "category"   : "javascriptangularjs",
+		  "url"        : "/blog/javascript/angularjs/tim-hieu-ve-scope-trong-angularjs.html",
+		  "date"       : "2014-10-22 00:00:00 +0700",
+		  "shortdate"  : "October 22, 2014"
+		} ,
+	
+		{
 		  "title"      : "Tổng quan về Dependency Injection trong AngularJS (P2)",
 		  "category"   : "javascriptangularjs",
 		  "url"        : "/blog/javascript/angularjs/tong-quan-ve-dependency-injection-trong-angularjs-p2.html",

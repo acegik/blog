@@ -103,6 +103,11 @@ callback([
   {
     "text": "Tổng quan về Dependency Injection trong AngularJS (P2)",
     "href": "/blog/javascript/angularjs/tong-quan-ve-dependency-injection-trong-angularjs-p2.html"
+  } ,
+
+  {
+    "text": "Tìm hiểu về Scope trong AngularJS",
+    "href": "/blog/javascript/angularjs/tim-hieu-ve-scope-trong-angularjs.html"
   } 
 
 ])
