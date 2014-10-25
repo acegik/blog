@@ -9,7 +9,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://acegik.net/blog/feed.xml" />
 <link rel="alternate" type="text/html" href="http://acegik.net/blog/" />
-<updated>2014-10-25T03:37:09+07:00</updated>
+<updated>2014-10-25T07:26:11+07:00</updated>
 <id>http://acegik.net/blog/</id>
 <author>
   <name>Phạm Ngọc Hùng</name>
@@ -82,13 +82,13 @@
 
 &lt;h4 id=&quot;scope-l-ni--nh-ngha-v-lu-gi-trng-d-liu&quot;&gt;Scope là nơi để định nghĩa và lưu giữ trường dữ liệu&lt;/h4&gt;
 
-&lt;p&gt;Chức năng đầu tiên của Scope chính là nơi lưu trữ thông tin sẵn sàng để hiển thị. Mỗi Controller khi được gắn kết vào HTML (bằng khai báo ng-controller) đều tạo riêng một đối tượng &lt;em&gt;$scope&lt;/em&gt; chung cho nó và khối HTML tương ứng. Trong ví dụ dưới đây, ta có thể định nghĩa một &lt;em&gt;Controller&lt;/em&gt; và khởi tạo các trường dữ liệu lưu trữ trong đối tượng &lt;em&gt;$scope&lt;/em&gt; của nó: &lt;/p&gt;
+&lt;p&gt;Chức năng đầu tiên của Scope chính là nơi lưu trữ thông tin sẵn sàng để hiển thị. Mỗi Controller khi được gắn kết vào HTML (bằng khai báo ng-controller) đều tạo riêng một đối tượng &lt;em&gt;$scope&lt;/em&gt; chung cho nó và khối HTML tương ứng. Trong &lt;a href=&quot;http://plnkr.co/edit/nnqDAECGDDFxSCzo4hV0?p=preview&quot;&gt;ví dụ dưới đây&lt;/a&gt;, ta có thể định nghĩa một &lt;em&gt;Controller&lt;/em&gt; và khởi tạo các trường dữ liệu lưu trữ trong đối tượng &lt;em&gt;$scope&lt;/em&gt; của nó: &lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/blog/media/423e56e6-01e6-4e0d-ad68-4edc0f212864/angularjs_scope_as_data_model.png&quot; alt=&quot;Scope đóng vai trò là Data Model&quot; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;scope-ng-vai-tr-l-ng-cnh-ca-expression&quot;&gt;Scope đóng vai trò là ngữ cảnh của Expression&lt;/h4&gt;
 
-&lt;p&gt;Các biểu thức (Expression) được dùng để “điền” giá trị dữ liệu trong Scope lên View (HTML). Mặc dù &lt;em&gt;expression&lt;/em&gt; được viết ngắn gọn, sử dụng tên của các trường dữ liệu, nhưng AngularJS sẽ hiểu các trường dữ liệu này nằm trong &lt;em&gt;Scope&lt;/em&gt; gần nhất của biểu thức. Ví dụ dưới đây minh họa điều đó:&lt;/p&gt;
+&lt;p&gt;Các biểu thức (Expression) được dùng để “điền” giá trị dữ liệu trong Scope lên View (HTML). Mặc dù &lt;em&gt;expression&lt;/em&gt; được viết ngắn gọn, sử dụng tên của các trường dữ liệu, nhưng AngularJS sẽ hiểu các trường dữ liệu này nằm trong &lt;em&gt;Scope&lt;/em&gt; gần nhất của biểu thức.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/blog/media/423e56e6-01e6-4e0d-ad68-4edc0f212864/angularjs_scope_as_expression_context.png&quot; alt=&quot;Scope đóng vai trò là ngữ cảnh của Expression&quot; /&gt;&lt;/p&gt;
 
@@ -102,7 +102,7 @@
 
 &lt;h4 id=&quot;scope-cung-cp-c-ch-theo-di-thay-i-ca-trng-d-liu&quot;&gt;Scope cung cấp cơ chế theo dõi thay đổi của trường dữ liệu&lt;/h4&gt;
 
-&lt;p&gt;&lt;em&gt;Scope&lt;/em&gt; được trang bị hàm &lt;em&gt;$watch()&lt;/em&gt; cho phép đăng ký một hàm theo dõi sự thay đổi giá trị của một trường dữ liệu trong Scope. Mỗi khi trường dữ liệu này thay đổi giá trị, hàm theo dõi sẽ được kích hoạt.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Scope&lt;/em&gt; được trang bị hàm &lt;em&gt;$watch()&lt;/em&gt; cho phép đăng ký một hàm theo dõi sự thay đổi giá trị của một trường dữ liệu trong Scope. Mỗi khi trường dữ liệu này thay đổi giá trị, hàm theo dõi sẽ được kích hoạt. &lt;a href=&quot;http://plnkr.co/edit/cdRIZyqtujJyXkjNCtM4?p=preview&quot;&gt;Ví dụ sau đây&lt;/a&gt; minh họa điều đó:&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/blog/media/423e56e6-01e6-4e0d-ad68-4edc0f212864/angularjs_scope_watch.png&quot; alt=&quot;Scope cung cấp cơ chế theo dõi thay đổi của Model&quot; /&gt;&lt;/p&gt;
 

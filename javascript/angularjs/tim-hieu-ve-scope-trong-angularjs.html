@@ -166,13 +166,13 @@
 
 <h4 id="scope-l-ni--nh-ngha-v-lu-gi-trng-d-liu">Scope là nơi để định nghĩa và lưu giữ trường dữ liệu</h4>
 
-<p>Chức năng đầu tiên của Scope chính là nơi lưu trữ thông tin sẵn sàng để hiển thị. Mỗi Controller khi được gắn kết vào HTML (bằng khai báo ng-controller) đều tạo riêng một đối tượng <em>$scope</em> chung cho nó và khối HTML tương ứng. Trong ví dụ dưới đây, ta có thể định nghĩa một <em>Controller</em> và khởi tạo các trường dữ liệu lưu trữ trong đối tượng <em>$scope</em> của nó: </p>
+<p>Chức năng đầu tiên của Scope chính là nơi lưu trữ thông tin sẵn sàng để hiển thị. Mỗi Controller khi được gắn kết vào HTML (bằng khai báo ng-controller) đều tạo riêng một đối tượng <em>$scope</em> chung cho nó và khối HTML tương ứng. Trong <a href="http://plnkr.co/edit/nnqDAECGDDFxSCzo4hV0?p=preview">ví dụ dưới đây</a>, ta có thể định nghĩa một <em>Controller</em> và khởi tạo các trường dữ liệu lưu trữ trong đối tượng <em>$scope</em> của nó: </p>
 
 <p><img src="/blog/media/423e56e6-01e6-4e0d-ad68-4edc0f212864/angularjs_scope_as_data_model.png" alt="Scope đóng vai trò là Data Model" /></p>
 
 <h4 id="scope-ng-vai-tr-l-ng-cnh-ca-expression">Scope đóng vai trò là ngữ cảnh của Expression</h4>
 
-<p>Các biểu thức (Expression) được dùng để “điền” giá trị dữ liệu trong Scope lên View (HTML). Mặc dù <em>expression</em> được viết ngắn gọn, sử dụng tên của các trường dữ liệu, nhưng AngularJS sẽ hiểu các trường dữ liệu này nằm trong <em>Scope</em> gần nhất của biểu thức. Ví dụ dưới đây minh họa điều đó:</p>
+<p>Các biểu thức (Expression) được dùng để “điền” giá trị dữ liệu trong Scope lên View (HTML). Mặc dù <em>expression</em> được viết ngắn gọn, sử dụng tên của các trường dữ liệu, nhưng AngularJS sẽ hiểu các trường dữ liệu này nằm trong <em>Scope</em> gần nhất của biểu thức.</p>
 
 <p><img src="/blog/media/423e56e6-01e6-4e0d-ad68-4edc0f212864/angularjs_scope_as_expression_context.png" alt="Scope đóng vai trò là ngữ cảnh của Expression" /></p>
 
@@ -186,7 +186,7 @@
 
 <h4 id="scope-cung-cp-c-ch-theo-di-thay-i-ca-trng-d-liu">Scope cung cấp cơ chế theo dõi thay đổi của trường dữ liệu</h4>
 
-<p><em>Scope</em> được trang bị hàm <em>$watch()</em> cho phép đăng ký một hàm theo dõi sự thay đổi giá trị của một trường dữ liệu trong Scope. Mỗi khi trường dữ liệu này thay đổi giá trị, hàm theo dõi sẽ được kích hoạt.</p>
+<p><em>Scope</em> được trang bị hàm <em>$watch()</em> cho phép đăng ký một hàm theo dõi sự thay đổi giá trị của một trường dữ liệu trong Scope. Mỗi khi trường dữ liệu này thay đổi giá trị, hàm theo dõi sẽ được kích hoạt. <a href="http://plnkr.co/edit/cdRIZyqtujJyXkjNCtM4?p=preview">Ví dụ sau đây</a> minh họa điều đó:</p>
 
 <p><img src="/blog/media/423e56e6-01e6-4e0d-ad68-4edc0f212864/angularjs_scope_watch.png" alt="Scope cung cấp cơ chế theo dõi thay đổi của Model" /></p>
 
