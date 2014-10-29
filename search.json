@@ -190,6 +190,14 @@
 		  "url"        : "/blog/rdbms/sqlserver/transact-sql-chen-du-lieu-hinh-anh-vao-bang.html",
 		  "date"       : "2008-07-23 00:00:00 +0700",
 		  "shortdate"  : "July 23, 2008"
+		} ,
+	
+		{
+		  "title"      : "Transact-SQL: Ví dụ minh họa GROUP BY ... WITH ROLLUP",
+		  "category"   : "rdbmssqlserver",
+		  "url"        : "/blog/rdbms/sqlserver/transact-sql-vi-du-minh-hoa-group-by.html",
+		  "date"       : "2008-07-14 00:00:00 +0700",
+		  "shortdate"  : "July 14, 2008"
 		} 
 	
 ]

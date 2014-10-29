@@ -1,6 +1,11 @@
 callback([
 
   {
+    "text": "Transact-SQL: Ví dụ minh họa GROUP BY ... WITH ROLLUP",
+    "href": "/blog/rdbms/sqlserver/transact-sql-vi-du-minh-hoa-group-by.html"
+  } ,
+
+  {
     "text": "Transact-SQL: Chèn dữ liệu hình ảnh vào bảng",
     "href": "/blog/rdbms/sqlserver/transact-sql-chen-du-lieu-hinh-anh-vao-bang.html"
   } ,
