@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CáC LệNH THôNG DụNG DùNG TRONG Hệ đIềU HàNH SOLARIS 11 &vert; ACEGIK'S BLOG</title>
+<meta name="description" content="... when the sun comes up, you better be running!">
+<meta name="keywords" content="Operating System, Solaris 11, Command line">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/blog/images/logo.png">
+<meta name="twitter:title" content="Các lệnh thông dụng dùng trong hệ điều hành Solaris 11">
+<meta name="twitter:description" content="... when the sun comes up, you better be running!">
+<meta name="twitter:creator" content="@pnhung177">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Các lệnh thông dụng dùng trong hệ điều hành Solaris 11">
+<meta property="og:description" content="... when the sun comes up, you better be running!">
+<meta property="og:url" content="/blog/os/solaris/cac-lenh-thong-dung-trong-he-dieu-hanh-solaris.html">
+<meta property="og:site_name" content="Acegik's Blog">
+<meta property="og:image" content="/blog/images/">
+
+
+
+
+
+<link rel="canonical" href="/blog/os/solaris/cac-lenh-thong-dung-trong-he-dieu-hanh-solaris.html">
+<link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Acegik's Blog Feed">
+<link rel="author" href="https://plus.google.com/u/3/115458186421626071505?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,600,300,800,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/blog/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/blog/assets/css/vendor/normalize.css">
+    <link rel="stylesheet" href="/blog/assets/css/vendor/foundation.min.css">
+    <link rel="stylesheet" href="/blog/assets/css/style.css">
+    <link rel="stylesheet" href="/blog/assets/css/post.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/blog/assets/js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+    
+
+
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">  
+
+        <main id="summer-post-container-simple" class="summer-post-container-simple" role="main">
+            <header class="summer-post-header-simple">
+                <div class="summer-post-menu-header-simple">
+
+                    <a class="summer-blog-logo" href="/blog">
+                        <img src="/blog/images/logo.png" alt="Blog Logo" />
+                    </a>
+
+                <div class="summer-blog-menu">      
+    <div class="summer-mobile-menu show-for-small">
+        <a href="#"><i class="fa fa-bars"></i></a>
+    </div>
+    <ul class="summer-menu">
+        <li class="summer-mobile-close-btn show-for-small text-right">
+            <a href="#"><i class="fa fa-times"></i></a>
+        </li>
+
+            <li>
+                    <a href="/blog/">Trang bìa</a>
+                 </li>
+
+            <li>
+                    <a href="/blog/featured">Nổi bật</a>
+                 </li>
+
+            <li>
+                    <a href="/blog/categories">Danh mục</a>
+                 </li>
+
+            <li>
+                    <a href="/blog/about">Giới thiệu</a>
+                 </li>
+            
+           <li><a href="/blog/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+    </ul>
+
+</div>
+            </div>
+
+                <div class="summer-post-title-simple row">
+                    <div class="small-12 columns">
+                        <div class="summer-post-meta-simple">
+                            <h1>Các lệnh thông dụng dùng trong hệ điều hành Solaris 11</h1>
+                            <p>by <strong>pnhung177</strong> &#8212; on <a href="/blog/tags/index.html#Operating System" data-toggle="tooltip" title="Posts tagged with Operating System" rel="tag">Operating System</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#Solaris 11" data-toggle="tooltip" title="Posts tagged with Solaris 11" rel="tag">Solaris 11</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#Command line" data-toggle="tooltip" title="Posts tagged with Command line" rel="tag">Command line</a> &#8212; <strong><time datetime="2014-05-29T00:00:00+07:00">29/05/2014</time></strong></p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+        <article class="summer-post-content post tag-simple">
+            <div><h2 id="hin-th-a-ch-ip">Hiển thị địa chỉ IP</h2>
+
+<p>Đối với Linux, địa chỉ IP có thể được hiển thị nhanh chóng bằng lệnh sau: <em>ifconfig</em>. Trong Solaris 11, lệnh ifconfig bị xem là lạc hậu và được thay thế bằng lệnh <em>ipadm</em>. Chúng ta vẫn có thể sử dụng <em>ifconfig</em> để xem IP, nhưng phải sử dụng thêm tham số <em>-a</em>.</p>
+
+<p><img src="/blog/media/b8df782c-0623-445e-8b77-42991c51494c/ifconfig-and-ipadm.png" alt="Hiển thị địa chỉ IP" /></p>
+
+<h2 id="hin-th-kin-trc-h-thng">Hiển thị kiến trúc hệ thống</h2>
+
+<p>Đôi khi chúng ta cần biết hệ điều này đang sử dụng là 32-bit hay 64-bit. Để làm được điều này, rất đơn giản, chúng ta sử dụng lệnh <em>arch</em> như sau:</p>
+
+<p><img src="/blog/media/b8df782c-0623-445e-8b77-42991c51494c/arch.png" alt="Hiển thị địa chỉ IP" /></p>
+
+<h2 id="hin-th-hot-ng-ca-tin-trnh">Hiển thị hoạt động của tiến trình</h2>
+
+<p>Lệnh <em>top</em> cung cấp thông tin về hoạt động đang diễn ra của các tiến trình trong thời gian thực. Nó hiển thị danh sách các tiến trình sử dụng CPU nhiều nhất, cũng như các thông tin thống kê chung về dung lượng CPU, bộ nhớ và bộ nhớ ảo, thời gian chạy, tải lượng trung bình (load average). Ngoài ra, lệnh top còn cho phép tùy chỉnh tiêu chí lọc và sắp xếp danh sách các tiến trình.</p>
+
+<p><img src="/blog/media/b8df782c-0623-445e-8b77-42991c51494c/top.png" alt="Hiển thị thông tin về tiến trình hoạt động" /></p>
+
+<h2 id="chuyn-i-user">Chuyển đổi User</h2>
+
+<p>Solaris không cho phép người dùng login trực tiếp bằng tài khoản <em>root</em> (Superuser), mà phải login bằng một tài khoản thông thường, sau đó chuyển đổi (switch) trở thành Superuser. Để chuyển đổi tài khoản thành Superuser (hoặc chuyển sang vai trò người dùng khác), chúng ta sử dụng lệnh <em>su</em> (switch user).</p>
+
+<p><img src="/blog/media/b8df782c-0623-445e-8b77-42991c51494c/su.png" alt="Chuyển đổi User bằng lệnh su" /></p>
+
+<p>Cần lưu ý sự khác nhau giữ <em>su ‘username’</em> và <em>su - ‘username’</em>. Nếu sử dụng <em>su -</em> (hoặc đầy đủ là <em>su -l</em>), lệnh <em>su</em> sẽ thực hiện quá trình login đầy đủ vào user mới, tức là nó sẽ thiết lập lại môi trường (ngoại trừ một vài biến như <em>TERM</em>, <em>DISPLAY</em> và <em>XAUTHORITY</em> trong một số hệ thống). Còn nếu chỉ sử dụng <em>su ‘username’</em>, thì lệnh <em>su</em> sẽ giữ nguyên môi trường, ngoại trừ biến <em>PATH</em> được thiết lập lại theo user mới.</p>
+
+<h2 id="ci-t-gi-th-vin">Cài đặt gói thư viện</h2>
+
+<p><em>pkg</em> là công cụ dòng lệnh trong Solaris dùng để cài đặt gói thư viện mới. Để dùng lệnh này, chúng ta cần đăng nhập vào tài khoản <em>Superuser</em> (thường là <em>root</em>).</p>
+
+<p><img src="/blog/media/b8df782c-0623-445e-8b77-42991c51494c/pkg-install.png" alt="Chuyển thành SuperUser" /></p>
+
+<p>Ngoài chức năng cài đặt gói ứng dụng mới bằng lệnh <em>pkg install</em> ở trên, chúng ta còn dùng lệnh <em>pkg</em> để cập nhật các gói thư viện bằng lệnh <em>pkg update</em> (Xem thêm trong tài liệu <a href="http://docs.oracle.com/cd/E23824_01/html/E21802/gihhp.html">Installing and Updating Packages</a>), hoặc gỡ bỏ gói thư viện bằng lệnh <em>pkg uninstall</em> (Xem trong tài liệu <a href="http://docs.oracle.com/cd/E23824_01/html/E21802/gijmk.html">Uninstalling Packages</a>).</p>
+
+<h2 id="qun-l-th-mc-v-tp">Quản lý thư mục và tệp</h2>
+
+<p><em>mc</em> là công cụ giao diện Text mạnh mẽ, nhiều tính năng dùng để quản lý file-system trong các hệ thống Unix và Linux. Mặc dù thao tác trên <em>mc</em> chậm hơn so việc việc dùng trực tiếp lệnh trên console, tuy nhiên <em>mc</em> rất hữu dụng đối với những người mới làm quen khi làm việc bằng dòng lệnh với Unix và Linux nói chung, cần có giao diện trực quan để tương tác vì không nhớ lệnh.</p>
+
+<p><img src="/blog/media/b8df782c-0623-445e-8b77-42991c51494c/mc.png" alt="Quản lý filesystem bằng mc" /></p>
+
+<p>Tuy nhiên về lâu dài, người dùng cần sử dụng trực tiếp lệnh để thao tác nhanh hơn và tránh lệ thuộc vào <em>mc</em>.</p>
+
+
+            </div>
+        </article>
+        <div class="cf"></div>
+        <div class="row text-center">
+            <section class="summer-post-share">
+                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Các lệnh thông dụng dùng trong hệ điều hành Solaris 11&quot;%20/blog/os/solaris/cac-lenh-thong-dung-trong-he-dieu-hanh-solaris.html%20via%20&#64;pnhung177"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a class="facebook-icon" href="https://www.facebook.com/sharer/sharer.php?u=/blog/os/solaris/cac-lenh-thong-dung-trong-he-dieu-hanh-solaris.html"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a class="google-icon" href="https://plus.google.com/share?url=/blog/os/solaris/cac-lenh-thong-dung-trong-he-dieu-hanh-solaris.html"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </section>
+        </div>
+        <div class="cf"></div>
+        
+            <div class="summer-author-info">
+                <div class="row">
+                    <section class="summer-post-author small-12 columns">
+                        
+                            <img src="/blog/images/avatars/pnhung177.png" class="summer-post-author-avatar" alt="Phạm Ngọc Hùng's photo">
+                        
+                        
+                            <span class="author-label">Author</span>
+                            <h1>Phạm Ngọc Hùng</h1>
+                        
+                        
+                            <p><a href="mailto:pnhung177@drupalex.net" class="author-website">pnhung177@drupalex.net</a></p>
+                        
+                        
+                            <p>... when the sun comes up, you better be running!</p>
+                        
+                    </section>
+                </div>
+            </div> 
+        
+        <div class="cf"></div>
+        
+        <section class="summer-disqus row">
+    <div class="small-12 columns">
+        <h1 class="summer-comments-header">Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'acegik'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+
+        <div class="cf"></div>
+
+    <footer class="summer-site-footer">
+    <div class="copyright">
+         <section>Bản quyền nội dung thuộc về <a href="/blog/about">Phạm Ngọc Hùng</a> &copy; 2014.</section>
+    </div>
+    <div class="social-icons">
+        
+        
+        <a href="http://twitter.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-twitter fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="https://plus.google.com/u/3/115458186421626071505">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-google-plus fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="http://github.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-github fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="http://facebook.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-facebook fa-stack-1x"></i>
+            </span>
+        </a>
+        
+    </div>
+    
+    <div class="cf"></div>
+</footer>
+ 
+</main>    
+    <script src="/blog/assets/js/vendor/modernizr.js"></script>
+    <script src="/blog/assets/js/foundation.min.js"></script>
+    <script src="/blog/assets/js/vendor/background-check.js"></script>
+    <script src="/blog/assets/js/vendor/post-header-animations.js"></script>
+    <script src="/blog/assets/js/summer.js"></script>
+
+    <script>
+      $(document).foundation();
+    </script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54128248-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+</script>
+ 
+</body>
+</html>

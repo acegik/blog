@@ -132,6 +132,10 @@
     </url>
     
     <url>
+        <loc>http://acegik.net/blog/os/solaris/cac-lenh-thong-dung-trong-he-dieu-hanh-solaris.html</loc>
+    </url>
+    
+    <url>
         <loc>http://acegik.net/blog/java/regexp/su-dung-regular-expression-de-kiem-tra-tinh-hop-le-cua-mat-khau.html</loc>
     </url>
     
@@ -149,6 +153,10 @@
     
     <url>
         <loc>http://acegik.net/blog/rdbms/sqlserver/transact-sql-try-catch-raiseerror-example.html</loc>
+    </url>
+    
+    <url>
+        <loc>http://acegik.net/blog/rdbms/sqlserver/transact-sql-chen-du-lieu-hinh-anh-vao-bang.html</loc>
     </url>
     
 </urlset>

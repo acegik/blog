@@ -1,6 +1,11 @@
 callback([
 
   {
+    "text": "Transact-SQL: Chèn dữ liệu hình ảnh vào bảng",
+    "href": "/blog/rdbms/sqlserver/transact-sql-chen-du-lieu-hinh-anh-vao-bang.html"
+  } ,
+
+  {
     "text": "Transact-SQL: Xử lý lỗi với TRY - CATCH - RAISEERROR",
     "href": "/blog/rdbms/sqlserver/transact-sql-try-catch-raiseerror-example.html"
   } ,
@@ -23,6 +28,11 @@ callback([
   {
     "text": "Sử dụng Regular Expression để kiểm tra tính hợp lệ của mật khẩu",
     "href": "/blog/java/regexp/su-dung-regular-expression-de-kiem-tra-tinh-hop-le-cua-mat-khau.html"
+  } ,
+
+  {
+    "text": "Các lệnh thông dụng dùng trong hệ điều hành Solaris 11",
+    "href": "/blog/os/solaris/cac-lenh-thong-dung-trong-he-dieu-hanh-solaris.html"
   } ,
 
   {

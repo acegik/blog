@@ -9,7 +9,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://acegik.net/blog/feed.xml" />
 <link rel="alternate" type="text/html" href="http://acegik.net/blog/" />
-<updated>2014-10-25T07:26:11+07:00</updated>
+<updated>2014-10-29T08:32:18+07:00</updated>
 <id>http://acegik.net/blog/</id>
 <author>
   <name>Phạm Ngọc Hùng</name>
@@ -3168,6 +3168,69 @@ a production system, you would want to know who is running rcp on this system an
 
 
 <entry>
+  <title type="html"><![CDATA[Các lệnh thông dụng dùng trong hệ điều hành Solaris 11]]></title>
+  <link rel="alternate" type="text/html" href="http://acegik.net/blog/os/solaris/cac-lenh-thong-dung-trong-he-dieu-hanh-solaris.html"/>
+  <id>http://acegik.net/blog/os/solaris/cac-lenh-thong-dung-trong-he-dieu-hanh-solaris</id>
+  <published>2014-05-29T00:00:00+07:00</published>
+  <updated>2014-05-29T00:00:00-00:00</updated>
+  
+  <author>
+    <name>Phạm Ngọc Hùng</name>
+    <uri>http://acegik.net/blog</uri>
+    <email>pnhung177@drupalex.net</email>
+  </author>
+  <category scheme="http://acegik.net/blog/tags/#Operating%20System" term="Operating System" /><category scheme="http://acegik.net/blog/tags/#Solaris%2011" term="Solaris 11" /><category scheme="http://acegik.net/blog/tags/#Command%20line" term="Command line" />
+  <content type="html">
+  
+    &lt;h2 id=&quot;hin-th-a-ch-ip&quot;&gt;Hiển thị địa chỉ IP&lt;/h2&gt;
+
+&lt;p&gt;Đối với Linux, địa chỉ IP có thể được hiển thị nhanh chóng bằng lệnh sau: &lt;em&gt;ifconfig&lt;/em&gt;. Trong Solaris 11, lệnh ifconfig bị xem là lạc hậu và được thay thế bằng lệnh &lt;em&gt;ipadm&lt;/em&gt;. Chúng ta vẫn có thể sử dụng &lt;em&gt;ifconfig&lt;/em&gt; để xem IP, nhưng phải sử dụng thêm tham số &lt;em&gt;-a&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/b8df782c-0623-445e-8b77-42991c51494c/ifconfig-and-ipadm.png&quot; alt=&quot;Hiển thị địa chỉ IP&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;hin-th-kin-trc-h-thng&quot;&gt;Hiển thị kiến trúc hệ thống&lt;/h2&gt;
+
+&lt;p&gt;Đôi khi chúng ta cần biết hệ điều này đang sử dụng là 32-bit hay 64-bit. Để làm được điều này, rất đơn giản, chúng ta sử dụng lệnh &lt;em&gt;arch&lt;/em&gt; như sau:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/b8df782c-0623-445e-8b77-42991c51494c/arch.png&quot; alt=&quot;Hiển thị địa chỉ IP&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;hin-th-hot-ng-ca-tin-trnh&quot;&gt;Hiển thị hoạt động của tiến trình&lt;/h2&gt;
+
+&lt;p&gt;Lệnh &lt;em&gt;top&lt;/em&gt; cung cấp thông tin về hoạt động đang diễn ra của các tiến trình trong thời gian thực. Nó hiển thị danh sách các tiến trình sử dụng CPU nhiều nhất, cũng như các thông tin thống kê chung về dung lượng CPU, bộ nhớ và bộ nhớ ảo, thời gian chạy, tải lượng trung bình (load average). Ngoài ra, lệnh top còn cho phép tùy chỉnh tiêu chí lọc và sắp xếp danh sách các tiến trình.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/b8df782c-0623-445e-8b77-42991c51494c/top.png&quot; alt=&quot;Hiển thị thông tin về tiến trình hoạt động&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;chuyn-i-user&quot;&gt;Chuyển đổi User&lt;/h2&gt;
+
+&lt;p&gt;Solaris không cho phép người dùng login trực tiếp bằng tài khoản &lt;em&gt;root&lt;/em&gt; (Superuser), mà phải login bằng một tài khoản thông thường, sau đó chuyển đổi (switch) trở thành Superuser. Để chuyển đổi tài khoản thành Superuser (hoặc chuyển sang vai trò người dùng khác), chúng ta sử dụng lệnh &lt;em&gt;su&lt;/em&gt; (switch user).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/b8df782c-0623-445e-8b77-42991c51494c/su.png&quot; alt=&quot;Chuyển đổi User bằng lệnh su&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Cần lưu ý sự khác nhau giữ &lt;em&gt;su ‘username’&lt;/em&gt; và &lt;em&gt;su - ‘username’&lt;/em&gt;. Nếu sử dụng &lt;em&gt;su -&lt;/em&gt; (hoặc đầy đủ là &lt;em&gt;su -l&lt;/em&gt;), lệnh &lt;em&gt;su&lt;/em&gt; sẽ thực hiện quá trình login đầy đủ vào user mới, tức là nó sẽ thiết lập lại môi trường (ngoại trừ một vài biến như &lt;em&gt;TERM&lt;/em&gt;, &lt;em&gt;DISPLAY&lt;/em&gt; và &lt;em&gt;XAUTHORITY&lt;/em&gt; trong một số hệ thống). Còn nếu chỉ sử dụng &lt;em&gt;su ‘username’&lt;/em&gt;, thì lệnh &lt;em&gt;su&lt;/em&gt; sẽ giữ nguyên môi trường, ngoại trừ biến &lt;em&gt;PATH&lt;/em&gt; được thiết lập lại theo user mới.&lt;/p&gt;
+
+&lt;h2 id=&quot;ci-t-gi-th-vin&quot;&gt;Cài đặt gói thư viện&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;pkg&lt;/em&gt; là công cụ dòng lệnh trong Solaris dùng để cài đặt gói thư viện mới. Để dùng lệnh này, chúng ta cần đăng nhập vào tài khoản &lt;em&gt;Superuser&lt;/em&gt; (thường là &lt;em&gt;root&lt;/em&gt;).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/b8df782c-0623-445e-8b77-42991c51494c/pkg-install.png&quot; alt=&quot;Chuyển thành SuperUser&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ngoài chức năng cài đặt gói ứng dụng mới bằng lệnh &lt;em&gt;pkg install&lt;/em&gt; ở trên, chúng ta còn dùng lệnh &lt;em&gt;pkg&lt;/em&gt; để cập nhật các gói thư viện bằng lệnh &lt;em&gt;pkg update&lt;/em&gt; (Xem thêm trong tài liệu &lt;a href=&quot;http://docs.oracle.com/cd/E23824_01/html/E21802/gihhp.html&quot;&gt;Installing and Updating Packages&lt;/a&gt;), hoặc gỡ bỏ gói thư viện bằng lệnh &lt;em&gt;pkg uninstall&lt;/em&gt; (Xem trong tài liệu &lt;a href=&quot;http://docs.oracle.com/cd/E23824_01/html/E21802/gijmk.html&quot;&gt;Uninstalling Packages&lt;/a&gt;).&lt;/p&gt;
+
+&lt;h2 id=&quot;qun-l-th-mc-v-tp&quot;&gt;Quản lý thư mục và tệp&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;mc&lt;/em&gt; là công cụ giao diện Text mạnh mẽ, nhiều tính năng dùng để quản lý file-system trong các hệ thống Unix và Linux. Mặc dù thao tác trên &lt;em&gt;mc&lt;/em&gt; chậm hơn so việc việc dùng trực tiếp lệnh trên console, tuy nhiên &lt;em&gt;mc&lt;/em&gt; rất hữu dụng đối với những người mới làm quen khi làm việc bằng dòng lệnh với Unix và Linux nói chung, cần có giao diện trực quan để tương tác vì không nhớ lệnh.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/b8df782c-0623-445e-8b77-42991c51494c/mc.png&quot; alt=&quot;Quản lý filesystem bằng mc&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Tuy nhiên về lâu dài, người dùng cần sử dụng trực tiếp lệnh để thao tác nhanh hơn và tránh lệ thuộc vào &lt;em&gt;mc&lt;/em&gt;.&lt;/p&gt;
+
+
+  
+  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/os/solaris/cac-lenh-thong-dung-trong-he-dieu-hanh-solaris.html&quot;&gt;Các lệnh thông dụng dùng trong hệ điều hành Solaris 11&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on May 29, 2014.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
   <title type="html"><![CDATA[Sử dụng Regular Expression để kiểm tra tính hợp lệ của mật khẩu]]></title>
   <link rel="alternate" type="text/html" href="http://acegik.net/blog/java/regexp/su-dung-regular-expression-de-kiem-tra-tinh-hop-le-cua-mat-khau.html"/>
   <id>http://acegik.net/blog/java/regexp/su-dung-regular-expression-de-kiem-tra-tinh-hop-le-cua-mat-khau</id>
@@ -3372,117 +3435,6 @@ a production system, you would want to know who is running rcp on this system an
 
   
   &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/java/regexp/su-dung-regular-expression-de-kiem-tra-tinh-hop-le-cua-du-lieu.html&quot;&gt;Sử dụng Regular Expression để kiểm tra tính hợp lệ của dữ liệu&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on October 22, 2013.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Viết luận văn tốt nghiệp bằng TeX]]></title>
-  <link rel="alternate" type="text/html" href="http://acegik.net/blog/tex/viet-luan-van-tot-nghiep-bang-tex.html"/>
-  <id>http://acegik.net/blog/tex/viet-luan-van-tot-nghiep-bang-tex</id>
-  <published>2013-08-10T00:00:00+07:00</published>
-  <updated>2013-08-10T00:00:00-00:00</updated>
-  
-  <author>
-    <name>Phạm Ngọc Hùng</name>
-    <uri>http://acegik.net/blog</uri>
-    <email>pnhung177@drupalex.net</email>
-  </author>
-  <category scheme="http://acegik.net/blog/tags/#Lu%E1%BA%ADn%20v%C4%83n%20t%E1%BB%91t%20nghi%E1%BB%87p" term="Luận văn tốt nghiệp" /><category scheme="http://acegik.net/blog/tags/#TeX" term="TeX" /><category scheme="http://acegik.net/blog/tags/#MikTeX" term="MikTeX" /><category scheme="http://acegik.net/blog/tags/#TeXlive" term="TeXlive" />
-  <content type="html">
-  
-    &lt;p&gt;TeX là hệ thống công cụ xử lý tài liệu và ngôn ngữ đánh dấu dành cho tài liệu khoa học. Mặc dù ban đầu được phát triển làm công cụ soạn thảo tài liệu toán học, nhưng TeX ngày càng phổ biến và được sử dụng rộng rãi trong việc xuất bản tài liệu khoa học trong nhiều lĩnh vực như toán học, vật lý, khoa học máy tinh, kinh tế, v.v.&lt;/p&gt;
-
-&lt;p&gt;Bài viết này hướng dẫn cài cài đặt và sử dụng TeX và các công cụ soạn thảo để viết luận văn tốt nghiệp, nhằm giúp các bạn sinh viên đỡ bỡ ngỡ khi muốn sử dụng TeX để trình bày luận văn mạch lạc, rõ ràng và chuyên nghiệp. &lt;/p&gt;
-
-&lt;h2 id=&quot;cc-b-x-l-tex-v-cng-c-son-tho&quot;&gt;Các bộ xử lý TeX và công cụ soạn thảo&lt;/h2&gt;
-
-&lt;p&gt;Nếu ai đã từng sử dụng các công cụ soạn thảo và biên dịch với các ngôn ngữ lập trình phổ dụng như C++, Java,… thì sẽ thấy các công cụ trong TeX cũng được xây dựng tương tự như vậy: các công cụ xử lý và biên dịch được đóng gói riêng thành một “bộ công cụ phát triển”, chương trình soạn thảo được đóng gói riêng và được cung cấp bởi nhiều nhà cung cấp khác nhau. Ví dụ với ngôn ngữ lập trình Java, bộ chương trình biên dịch, thư viện, … được đóng gói thành JDK, chương trình soạn thảo được đóng gói riêng dưới dạng các IDE chẳng hạn như Netbeans, Eclipse.&lt;/p&gt;
-
-&lt;p&gt;Trong thế giới TeX, “bộ công cụ phát triển” được gọi chung là &lt;strong&gt;TeX Typesetting System&lt;/strong&gt;, còn các bộ soạn thảo được gọi là các &lt;strong&gt;TeX Editor&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Để sử dụng TeX viết và biên dịch tài liệu, bạn cần phải cài đặt một bộ &lt;strong&gt;TeX Typesetting System&lt;/strong&gt; “làm nền”, và ít nhất một bộ &lt;strong&gt;TeX Editor&lt;/strong&gt; để soạn thảo và gọi các phần mềm phù hợp để xử lý và biên dịch. Phần bên dưới sẽ hướng dẫn cài đặt các bộ &lt;strong&gt;TeX Typesetting System&lt;/strong&gt; và &lt;strong&gt;TeX Editor&lt;/strong&gt; tương ứng với hệ điều hành Windows và Ubuntu.&lt;/p&gt;
-
-&lt;h2 id=&quot;hng-dn-ci-t-tex-typesetting-system&quot;&gt;Hướng dẫn cài đặt TeX Typesetting System&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;TeX Typesetting System&lt;/strong&gt; là hệ thống các phần mềm công cụ dùng để xử lý và biên dịch các tệp mã nguồn (TeX) thành các định dạng xuất bản (DVI, PDF, PS,…). Có rất nhiều hệ thống &lt;strong&gt;TeX Typesetting System&lt;/strong&gt; được phát triển và duy trì bởi nhiều nhà cung cấp khác nhau. Trong số đó, phổ biến và nổi bật nhất là 2 hệ thống: MiKTeX dành cho Windows và TeXlive dành cho Linux. Phần này sẽ hướng dẫn cài đặt hai hệ thống này trên Windows và Ubuntu.&lt;/p&gt;
-
-&lt;h3 id=&quot;ci-t-miktex-trn-windows&quot;&gt;Cài đặt MiKTeX (trên Windows)&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Vào trang &lt;a href=&quot;http://miktex.org/download&quot;&gt;cài đặt&lt;/a&gt; của MiKTeX và tải bộ cài mới nhất (trong mục Recommended Download) về máy tính. Chú ý chọn phiên bản dành cho 32bit hoặc 64bit phù hợp với máy tính của bạn.&lt;/li&gt;
-  &lt;li&gt;Chạy chương trình cài đặt, thực hiện theo các bước hướng dẫn của MiKTeX. Lưu ý giữ nguyên đường dẫn mặc định của MiKTeX.&lt;/li&gt;
-  &lt;li&gt;Sau khi chương trình cài đặt hoàn tất, mở cửa sổ gõ lệnh (cmd.exe), gõ thử lệnh các lệnh latex, pdflatex, bitex,… để kiểm tra thử có chạy được các phần mềm công cụ này hay không.&lt;/li&gt;
-  &lt;li&gt;Mở cửa sổ Windows Explorer, vào thư mục C:\Program Files\MiKTex 2.y.z\ để kiểm tra xem MiKTeX có được cài vào thư mục này hay không (2.y.z là phiên bản hiện thời của MiKTeX, ví dụ trong trường hợp của tôi là 2.9.5105).&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Lưu ý: nếu bạn nhầm lẫn trong quá trình cài đặt thì có thể xóa thư mục MikTeX đã cài trước đó và cài lại.&lt;/p&gt;
-
-&lt;h3 id=&quot;ci-t-texlive-trn-ubuntu&quot;&gt;Cài đặt TeXlive (trên Ubuntu)&lt;/h3&gt;
-
-&lt;p&gt;TeXlive là bộ xử lý TeX dành cho các hệ điều hành/bản phân phối thuộc họ Linux (Fedora, Debian, Ubuntu và Gentoo) cũng như một số hệ điều hành thuộc họ Unix (như OpenBSD, FreeBSD và NetBSD). Bộ xử lý TeX này được đặt tên là TeXlive là do khả năng có thể được sử dụng trực tiếp (live) từ đĩa DVD mà không cần cài đặt.&lt;/p&gt;
-
-&lt;p&gt;Để thuận tiện cho việc sử dụng về sau, chúng ta sẽ cài đặt bản Texlive đầy đủ (full) mới nhất (hiện tại là bản texlive full 2014). Mở cửa sổ dòng lệnh và sử dụng lệnh sau:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;wget https://github.com/scottkosty/install-tl-ubuntu/raw/master/install-tl-ubuntu &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x ./install-tl-ubuntu&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;hng-dn-ci-t-tex-editor&quot;&gt;Hướng dẫn cài đặt TeX Editor&lt;/h2&gt;
-
-&lt;p&gt;Những bạn đang sử dụng Windows có thể cài đặt một trong hai &lt;strong&gt;TeX Editor&lt;/strong&gt; sau: VieTeX hoặc TexMaker. Lưu ý là các bạn cài đặt hoàn chỉnh &lt;strong&gt;TeX Typesetting System&lt;/strong&gt; trước, sau đó mới cài &lt;strong&gt;TeX Editor&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;ci-t-vietex-trn-windows&quot;&gt;Cài đặt VieTeX (trên Windows)&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Tải bộ cài VieTeX từ &lt;a href=&quot;http://nhdien.wordpress.com/tải-xuống/&quot;&gt;trang cài đặt&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;Chạy chương trình cài đặt. Tốt nhất là giữ nguyên các tham số cài đặt (đường dẫn thư mục, v.v.)&lt;/li&gt;
-  &lt;li&gt;Sau khi cài đặt xong, chạy thử và biên dịch file tex mẫu bằng VieTeX. Nếu biên dịch thành công là ổn.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;ci-t-texmaker-trn-windows&quot;&gt;Cài đặt TexMaker (trên Windows)&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Vào &lt;a href=&quot;http://www.xm1math.net/texmaker/download.html&quot;&gt;trang cài đặt&lt;/a&gt; của TexMaker để tải bộ cài cho Windows.&lt;/li&gt;
-  &lt;li&gt;Chạy chương trình cài đặt và thực hiện tuần tự theo các bước yêu cầu của chương trình. Chương trình cài đặt sẽ sử dụng các tham số mặc định để xác định các phần mềm công cụ trong &lt;strong&gt;TeX Typesetting System&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;Sau khi cài đặt xong, chạy thử và biên dịch file tex mẫu bằng TexMaker. Nếu biên dịch thành công là ổn.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;ci-t-texmaker-trn-ubuntu&quot;&gt;Cài đặt TexMaker (trên Ubuntu)&lt;/h3&gt;
-
-&lt;p&gt;Mở cửa sổ dòng lệnh (Terminal), sử dụng lệnh sau để cài đặt:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;sudo apt-get install texmaker
-Reading package lists... Done
-Building dependency tree       
-Reading state information... Done
-The following extra packages will be installed:
-  asymptote asymptote-doc blt libpoppler-qt4-3 python-imaging-tk python-tk
-  texmaker-data
-Suggested packages:
-  gv xpdf blt-demo python-imaging-doc python-imaging-tk-dbg tix python-tk-dbg
-The following NEW packages will be installed:
-  asymptote asymptote-doc blt libpoppler-qt4-3 python-imaging-tk python-tk
-  texmaker texmaker-data
-&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; upgraded, &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt; newly installed, &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; to remove and &lt;span class=&quot;m&quot;&gt;234&lt;/span&gt; not upgraded.
-Need to get 9,577 kB of archives.
-After this operation, 23.3 MB of additional disk space will be used.
-Do you want to &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Y/n&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;?&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Sau khi trả lời &lt;strong&gt;Y&lt;/strong&gt;, chương trình sẽ cài đặt TexMaker và tự động cấu hình đường đẫn đến các phần mềm công cụ trong &lt;strong&gt;TeX Typesetting System&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;khung-mu-lun-vn&quot;&gt;Khung mẫu luận văn&lt;/h2&gt;
-
-&lt;p&gt;Các bạn có thể tham khảo và sử dụng khung mẫu luận văn do tôi tạo sẵn và chia sẻ trên &lt;a href=&quot;https://github.com/pnhung177/latex-bachelor-thesis-sample&quot;&gt;github&lt;/a&gt;. Các bạn có thể &lt;a href=&quot;https://github.com/pnhung177/latex-bachelor-thesis-sample/archive/master.zip&quot;&gt;tải khung mẫu về&lt;/a&gt;, tự chỉnh sửa kích thước font chữ, định dạng tài liệu: căn biên, giãn dòng,… tùy theo quy định của nhà trường hoặc yêu cầu của thầy hướng dẫn.&lt;/p&gt;
-
-&lt;h2 id=&quot;ti-nguyn-v-tex&quot;&gt;Tài nguyên về TeX&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://miktex.org/&quot;&gt;Trang chủ MikTex&lt;/a&gt;: Các bạn có thể tìm đọc tài liệu hướng dẫn sử dụng MikTex, theo dõi quá trình cập nhật phiên bản mới của MikTex, tải các bản cài đặt mới nhất, …&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.tug.org/texlive/&quot;&gt;Trang chủ Texlive&lt;/a&gt;: Bạn nào sử dụng hệ điều hành Linux sẽ quan tâm đến Texlive thay vì MikTex. Trang chủ Texlive cung cấp các đường dẫn cần thiết đến các bộ cài đặt cũng như hướng dẫn sử dụng Texlive.&lt;/li&gt;
-&lt;/ul&gt;
-
-
-  
-  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/tex/viet-luan-van-tot-nghiep-bang-tex.html&quot;&gt;Viết luận văn tốt nghiệp bằng TeX&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on August 10, 2013.&lt;/p&gt;</content>
 </entry>
 
 </feed>

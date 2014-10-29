@@ -137,6 +137,14 @@
 		} ,
 	
 		{
+		  "title"      : "Các lệnh thông dụng dùng trong hệ điều hành Solaris 11",
+		  "category"   : "ossolaris",
+		  "url"        : "/blog/os/solaris/cac-lenh-thong-dung-trong-he-dieu-hanh-solaris.html",
+		  "date"       : "2014-05-29 00:00:00 +0700",
+		  "shortdate"  : "May 29, 2014"
+		} ,
+	
+		{
 		  "title"      : "Sử dụng Regular Expression để kiểm tra tính hợp lệ của mật khẩu",
 		  "category"   : "javaregexp",
 		  "url"        : "/blog/java/regexp/su-dung-regular-expression-de-kiem-tra-tinh-hop-le-cua-mat-khau.html",
@@ -174,6 +182,14 @@
 		  "url"        : "/blog/rdbms/sqlserver/transact-sql-try-catch-raiseerror-example.html",
 		  "date"       : "2008-08-02 00:00:00 +0700",
 		  "shortdate"  : "August 02, 2008"
+		} ,
+	
+		{
+		  "title"      : "Transact-SQL: Chèn dữ liệu hình ảnh vào bảng",
+		  "category"   : "rdbmssqlserver",
+		  "url"        : "/blog/rdbms/sqlserver/transact-sql-chen-du-lieu-hinh-anh-vao-bang.html",
+		  "date"       : "2008-07-23 00:00:00 +0700",
+		  "shortdate"  : "July 23, 2008"
 		} 
 	
 ]
