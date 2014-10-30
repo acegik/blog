@@ -193,6 +193,14 @@
 		} ,
 	
 		{
+		  "title"      : "Transact-SQL: Ví dụ minh họa về PIVOT và UNPIVOT",
+		  "category"   : "rdbmssqlserver",
+		  "url"        : "/blog/rdbms/sqlserver/transact-sql-vi-du-minh-hoa-pivot-va-unpivot.html",
+		  "date"       : "2008-07-18 00:00:00 +0700",
+		  "shortdate"  : "July 18, 2008"
+		} ,
+	
+		{
 		  "title"      : "Transact-SQL: Ví dụ minh họa GROUP BY ... WITH ROLLUP",
 		  "category"   : "rdbmssqlserver",
 		  "url"        : "/blog/rdbms/sqlserver/transact-sql-vi-du-minh-hoa-group-by.html",

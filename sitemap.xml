@@ -61,6 +61,10 @@
         <loc>http://acegik.net/blog/page5/index.html</loc>
     </url>
     
+    <url>
+        <loc>http://acegik.net/blog/page6/index.html</loc>
+    </url>
+    
 
     
     <url>
@@ -157,6 +161,10 @@
     
     <url>
         <loc>http://acegik.net/blog/rdbms/sqlserver/transact-sql-chen-du-lieu-hinh-anh-vao-bang.html</loc>
+    </url>
+    
+    <url>
+        <loc>http://acegik.net/blog/rdbms/sqlserver/transact-sql-vi-du-minh-hoa-pivot-va-unpivot.html</loc>
     </url>
     
     <url>
