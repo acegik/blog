@@ -121,9 +121,7 @@
 
 <h2 id="ti-sao-cn-phi-theo-di-hiu-nng-ca-hh">Tại sao cần phải theo dõi hiệu năng của HĐH</h2>
 
-<p>Chúng ta quan sát hệ điều hành để có được cảm nhận về vấn đề hiệu năng đang phát sinh. Nói cách khác, chúng ta thăm dò xem ứng dụng có bộc lộ ra triệu chứng nào cho thấy hiệu năng kém không? Căn cứ vào triệu chứng quan sát được, chúng ta có thể xác định các bước hành động tiếp theo trong việc chẩn đoán các vấn đề hiệu năng.</p>
-
-<p>Theo dõi hiệu năng hệ điều hành được thực hiện thông qua các hoạt động theo dõi sau:</p>
+<p>Chúng ta quan sát hệ điều hành để có được cảm nhận về vấn đề hiệu năng đang phát sinh. Nói cách khác, chúng ta thăm dò xem ứng dụng có bộc lộ ra triệu chứng nào cho thấy hiệu năng kém không? Căn cứ vào triệu chứng quan sát được, chúng ta có thể xác định các bước hành động tiếp theo trong việc chẩn đoán các vấn đề hiệu năng. Theo dõi hiệu năng hệ điều hành được thực hiện thông qua các hoạt động theo dõi sau:</p>
 
 <ul>
   <li>Theo dõi hoạt động của CPU</li>
@@ -133,48 +131,27 @@
   <li>Theo dõi hoạt động của các tiến trình </li>
 </ul>
 
-<h2 id="theo-di-s-dng-cpu">Theo dõi sử dụng CPU</h2>
+<h2 id="theo-di-hot-ng-ca-cpu">Theo dõi hoạt động của CPU</h2>
 
 <h3 id="cc-ch-s-o-c-v-s-dng-cpu">Các chỉ số đo đạc về sử dụng CPU</h3>
 
 <ul>
-  <li><em>User time</em>: Là lượng thời gian CPU dành cho tiến trình chạy các tác vụ của riêng nó (chạy ngoài kernel của hệ điều hành).</li>
-  <li><em>System time</em>: Là lượng thời gian CPU dùng để khai thác tài nguyên, chạy trong kernel của hệ điều hành.</li>
-  <li><em>Idle time</em>: Là lượng thời gian CPU không được sử dụng.</li>
-  <li><em>Voluntary context switch</em>: </li>
+  <li><em>User CPU time</em>: Là lượng thời gian CPU dành cho tiến trình chạy các tác vụ của riêng nó (chạy ngoài kernel của hệ điều hành).</li>
+  <li><em>System CPU time</em>: Là lượng thời gian CPU dùng để khai thác tài nguyên, chạy trong kernel của hệ điều hành.</li>
+  <li><em>Idle CPU time</em>: Là lượng thời gian CPU không được sử dụng.</li>
+  <li><em>Voluntary context switch</em>: Tiến trình tự nguyện nhường lại CPU sau khi chạy hết thời gian dự kiến của nó hoặc nó yêu cầu sử dụng tài nguyên hiện không khả dụng.</li>
+  <li><em>Involuntary context switch</em>: Tiến trình bị gián đoạn và nhường lại CPU trước khi hoàn tất thời gian chạy theo lịch trình của nó do hệ thống xác định một tiến trình ưu tiên cao hơn cần thực thi.</li>
+</ul>
+
+<p>Việc theo dõi hoạt động của CPU cần được xem xét thêm nếu các chỉ số đo đạc thể hiện:</p>
+
+<ul>
+  <li>Giá trị <em>System time</em> cao: chỉ ra rằng có một lượng lớn chu kỳ chạy của CPU được sử dụng trong kernel của hệ điều hành. Giá trị này cũng chỉ ra rằng có thể đã xảy ra tình huống tranh giành tài nguyên trong hệ thống. Việc giảm lượng thời gian thực thi mã lệnh trong kernel sẽ làm tăng thời lượng thực thi tác vụ của riêng ứng dụng (tăng <em>User time</em>).</li>
+  <li>Giá trị <em>VCX</em> cao: có thể là do <em>sự tương tranh</em> giữa các hàm hoặc khối đồng bộ (synchronized method/block) hoặc các khóa (lock) của Java Concurrency API.</li>
+  <li>Giá trị <em>ICX</em> cao: cần phải xem xét do thao tác <em>context switch</em> rất tốn kém - thứ nhất mỗi một <em>context switch</em> tiêu tốn một lượng lớn xung nhịp CPU (CPU clock cycle); thứ hai, <em>context switch</em> có thể khiến cho phải nạp dữ liệu từ bộ nhớ vào thanh ghi thay vì từ CPU cache, việc này cũng tiêu tốn lượng xung nhịp CPU lớn. Do đó, ứng dụng phát sinh giá trị <em>ICX</em> cao cũng cần phải được xem xét về các vấn đề hiệu năng.</li>
 </ul>
 
 <h3 id="cng-c-theo-di-v-s-dng-cpu">Công cụ theo dõi về sử dụng CPU</h3>
-
-<h4 id="vmstat-linux--solaris">vmstat (Linux &amp; Solaris)</h4>
-
-<p>Công cụ <strong>vmstat</strong> là phần mềm dòng lệnh dùng để hiển thị lên màn hình console các thông số về sử dụng CPU trong nhiều lần cách quãng liên tiếp. Mỗi thông số đọc được trong một lần đọc được gọi là mẫu chọn (sample). Những mẫu chọn này cung cấp một cái nhìn tổng quan về tỉ lệ phần trăm <em>user time</em> (us), <em>system time</em> (sy) và <em>idle time</em> (id).</p>
-
-<h4 id="mpstat-linux--solaris">mpstat (Linux &amp; Solaris)</h4>
-
-<p>Công cụ <strong>mpstat</strong> là phần mềm dòng lệnh dùng để hiển thị thống kê về hoạt động của bộ xử lý (processor). <strong>mpstat</strong> trên <a href="http://linux.die.net/man/1/mpstat">Linux</a> và <a href="http://docs.oracle.com/cd/E23824_01/html/821-1462/mpstat-1m.html">Solaris</a> có một chút khác biệt ở thông tin hiển thị.</p>
-
-<p>Kết quả chạy lệnh trên Linux:</p>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>mpstat
-Linux 3.2.0-63-generic-pae <span class="o">(</span>drupalex-ubuntu<span class="o">)</span> 	10/13/2014 	_i686_	<span class="o">(</span><span class="m">2</span> CPU<span class="o">)</span>
-
-02:31:55 PM  CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest   %idle
-02:31:55 PM  all   27.67    0.02    7.02    2.38    0.02    0.09    0.00    0.00   62.80</code></pre></div>
-
-<p>Kết quả chạy lệnh trên Solaris 11:</p>
-
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>mpstat
-CPU minf mjf xcal  intr ithr  csw icsw migr smtx  srw syscl  usr sys  wt idl
-  <span class="m">0</span>    <span class="m">0</span>   <span class="m">0</span>    <span class="m">0</span>   <span class="m">329</span>  <span class="m">121</span>  <span class="m">169</span>    <span class="m">6</span>    <span class="m">0</span>    <span class="m">0</span>    <span class="m">0</span>   <span class="m">406</span>    <span class="m">0</span>   <span class="m">1</span>   <span class="m">0</span>  98</code></pre></div>
-
-<h4 id="cpubar-solaris">cpubar (Solaris)</h4>
-
-<p>Công cụ giao diện đồ họa hiển thị thông tin thống kê về hoạt động của CPU. </p>
-
-<p><img src="/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/cpubar.png" alt="Công cụ giao diện đồ họa cpubar" /></p>
-
-<p>Trong đó: Xanh lá cây (User time), Đỏ (System tile), Xanh da trời (Idle time).</p>
 
 <h4 id="prstat-solaris">prstat (Solaris)</h4>
 
@@ -190,18 +167,71 @@ CPU minf mjf xcal  intr ithr  csw icsw migr smtx  srw syscl  usr sys  wt idl
 
 <p><img src="/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/prstat-with--Lm.png" alt="Công cụ prstat: với tham số -Lm" /> </p>
 
+<h4 id="cpubar-solaris">cpubar (Solaris)</h4>
+
+<p>Công cụ giao diện đồ họa hiển thị thông tin thống kê tổng quan về hoạt động của CPU, các tiến trình, tình trạng sử dụng bộ nhớ.</p>
+
+<p><img src="/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/cpubar.png" alt="Công cụ giao diện đồ họa cpubar" /></p>
+
+<p>Đối với CPU, màu Xanh lá cây (User time), Đỏ (System tile), Xanh da trời (Idle time).</p>
+
+<h4 id="vmstat-linux--solaris">vmstat (Linux &amp; Solaris)</h4>
+
+<p>Công cụ <strong>vmstat</strong> là phần mềm dòng lệnh dùng để hiển thị lên màn hình console các thông số về sử dụng CPU trong nhiều lần cách quãng liên tiếp. Mỗi thông số đọc được trong một lần đọc được gọi là mẫu chọn (sample). Những mẫu chọn này cung cấp một cái nhìn tổng quan về tỉ lệ phần trăm <em>user time</em> (us), <em>system time</em> (sy) và <em>idle time</em> (id).</p>
+
+<p><img src="/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/vmstat-solaris.png" alt="Công cụ dòng lệnh vmstat" /></p>
+
+<h4 id="mpstat-linux--solaris">mpstat (Linux &amp; Solaris)</h4>
+
+<p>Công cụ <strong>mpstat</strong> là phần mềm dòng lệnh dùng để hiển thị thống kê về hoạt động của bộ vi xử lý (micro-processor). <strong>mpstat</strong> trên <a href="http://linux.die.net/man/1/mpstat">Linux</a> và <a href="http://docs.oracle.com/cd/E23824_01/html/821-1462/mpstat-1m.html">Solaris</a> có một chút khác biệt ở thông tin hiển thị.</p>
+
+<p><img src="/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/mpstat-solaris.png" alt="Công cụ dòng lệnh mpstat" /></p>
+
+<p>Kết quả chạy lệnh trên Linux:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>mpstat
+Linux 3.2.0-63-generic-pae <span class="o">(</span>drupalex-ubuntu<span class="o">)</span> 	10/13/2014 	_i686_	<span class="o">(</span><span class="m">2</span> CPU<span class="o">)</span>
+
+02:31:55 PM  CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest   %idle
+02:31:55 PM  all   27.67    0.02    7.02    2.38    0.02    0.09    0.00    0.00   62.80</code></pre></div>
+
+<p>Kết quả chạy lệnh trên Solaris 11:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>mpstat
+CPU minf mjf xcal  intr ithr  csw icsw migr smtx  srw syscl  usr sys  wt idl
+  <span class="m">0</span>    <span class="m">0</span>   <span class="m">0</span>    <span class="m">0</span>   <span class="m">329</span>  <span class="m">121</span>  <span class="m">169</span>    <span class="m">6</span>    <span class="m">0</span>    <span class="m">0</span>    <span class="m">0</span>   <span class="m">406</span>    <span class="m">0</span>   <span class="m">1</span>   <span class="m">0</span>  98</code></pre></div>
+
 <h2 id="theo-di-network-io">Theo dõi Network I/O</h2>
 
 <h3 id="thng-tin-cn-bit-v-network-io">Thông tin cần biết về Network I/O</h3>
+
+<p>Nếu một ứng dụng có sử dụng mạng (hoặc ổ đĩa), ta dễ dàng nhận ra hiệu năng đạt được tốt nhất khi giảm thiểu số lượng truy cập mạng (hoặc ổ đĩa). Vì vậy, nếu một ứng dụng truy cập mạng hay ổ đĩa, hãy suy xét xem ứng dụng tạo ra có truy cập quá nhiều mạng hoặc ổ đĩa không? Giám sát các ứng dụng truy cập mạng sẽ cung cấp cho bạn một “cảm giác” về lượng truy cập mạng có quá nhiều hay không?</p>
 
 <h3 id="cng-c-theo-di-network-io">Công cụ theo dõi Network I/O</h3>
 
 <h4 id="tcptop-solaris">tcptop (Solaris)</h4>
 
-<p>tcptop can identify who is doing what and how much traffic are they generating. If this were
-a production system, you would want to know who is running rcp on this system and why.</p>
+<p>Công cụ dòng lệnh <em>tcptop</em> hiển thị thông tin thống kê về lưu lượng truy cập mạng của từng tiến trình trong hệ thống. Nó chỉ ra rằng, người dùng nào đang chạy cái gì và sử dụng bao nhiêu thông lượng mạng.</p>
 
 <h4 id="nicstat-solaris">nicstat (Solaris)</h4>
+
+<p>Công cụ dòng lệnh <em>nicstat</em> hiển thị thông tin thống kê về lưu lượng mạng (network trafic), tính theo Kbyte, số lượng Packet hoặc dung lượng trung bình. </p>
+
+<p><img src="/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/nicstat-solaris.png" alt="Công cụ dòng lệnh nicstat" /></p>
+
+<p>Các trường thông tin hiển thị bao gồm:</p>
+
+<ul>
+  <li>Int (Interface): tên của giao diện mạng.</li>
+  <li>rKB/s (read Kbytes/s): tốc độ đọc mạng tính theo Kilobyte.</li>
+  <li>wKB/s (write Kbytes/s): tốc độ ghi mạng tính theo Kilobyte.</li>
+  <li>rPk/s (read Packets/s): tốc độ đọc mạng tính theo số lượng Packet / giây.</li>
+  <li>wPk/s (write Packets/s): tốc độ ghi mạng tính theo số lượng Packet / giây.</li>
+  <li>rAvs (read Average size, bytes): kích thước đọc trung bình, tính theo số byte.</li>
+  <li>wAvs (write Average size, bytes): kích thước ghi trung bình, tính theo số byte.</li>
+  <li>%Util (%Utilisation (r+w/ifspeed)): tính bằng số lượng byte được chuyển chia cho tốc độ của Interface (nếu xác định được tốc độ Interface).</li>
+  <li>Sat (Saturation): độ bão hòa được xác định bằng cách đếm số lượng lỗi đọc/ghi phát sinh bởi Interface chạy ở mức bão hòa.</li>
+</ul>
 
 <h2 id="theo-di-disk-io">Theo dõi Disk I/O</h2>
 
@@ -214,13 +244,19 @@ a production system, you would want to know who is running rcp on this system an
 
 <h3 id="cng-c-theo-di-disk-io">Công cụ theo dõi Disk I/O</h3>
 
-<h4 id="iostat-linux--solaris">iostat (LInux &amp; Solaris)</h4>
+<h4 id="iostat-linux--solaris">iostat (Linux &amp; Solaris)</h4>
+
+<p>Công cụ dòng lệnh <em>iostat</em> được sử dụng để thống kê các thông số vào / ra của các thiết bị lưu trữ.</p>
+
+<p><img src="/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/iostat-solaris.png" alt="Công cụ iostat trong Solaris" /></p>
+
+<p><img src="/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/iostat-linux.png" alt="Công cụ iostat trong Linux" /></p>
 
 <h4 id="iotop-linux--solaris">iotop (Linux &amp; Solaris)</h4>
 
 <p>Công cụ <strong>iotop</strong> là phần mềm dòng lệnh, có chức năng theo dõi thông tin về quá trình vào ra (I/O) ổ đĩa từ hệ điều hành (nhân Linux từ 2.6.20) và hiển thị thông tin dưới dạng bảng liệt kê lượng truy cập vào ra ổ đĩa thực hiện bởi các tiến trình.</p>
 
-<p><img src="/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/iotop.png" alt="Công cụ iotop" /></p>
+<p><img src="/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/iotop-linux.png" alt="Công cụ iotop" /></p>
 
 <h2 id="theo-di-virtual-memory">Theo dõi Virtual Memory</h2>
 
