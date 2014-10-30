@@ -185,6 +185,14 @@
 		} ,
 	
 		{
+		  "title"      : "Transact-SQL: Ví dụ minh họa về Inner Join và Outer Join",
+		  "category"   : "rdbmssqlserver",
+		  "url"        : "/blog/rdbms/sqlserver/transact-sql-vi-du-minh-hoa-inner-join-va-outer-join.html",
+		  "date"       : "2008-07-26 00:00:00 +0700",
+		  "shortdate"  : "July 26, 2008"
+		} ,
+	
+		{
 		  "title"      : "Transact-SQL: Chèn dữ liệu hình ảnh vào bảng",
 		  "category"   : "rdbmssqlserver",
 		  "url"        : "/blog/rdbms/sqlserver/transact-sql-chen-du-lieu-hinh-anh-vao-bang.html",

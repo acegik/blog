@@ -16,6 +16,11 @@ callback([
   } ,
 
   {
+    "text": "Transact-SQL: Ví dụ minh họa về Inner Join và Outer Join",
+    "href": "/blog/rdbms/sqlserver/transact-sql-vi-du-minh-hoa-inner-join-va-outer-join.html"
+  } ,
+
+  {
     "text": "Transact-SQL: Xử lý lỗi với TRY - CATCH - RAISEERROR",
     "href": "/blog/rdbms/sqlserver/transact-sql-try-catch-raiseerror-example.html"
   } ,
