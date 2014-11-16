@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>TổNG QUAN Về KIểM THử PHầN MềM TRONG ANGUALRJS &vert; ACEGIK'S BLOG</title>
+<meta name="description" content="... when the sun comes up, you better be running!">
+<meta name="keywords" content="JavaScript, AngularJS">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/blog/images/logo.png">
+<meta name="twitter:title" content="Tổng quan về kiểm thử phần mềm trong AngualrJS">
+<meta name="twitter:description" content="... when the sun comes up, you better be running!">
+<meta name="twitter:creator" content="@pnhung177">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tổng quan về kiểm thử phần mềm trong AngualrJS">
+<meta property="og:description" content="... when the sun comes up, you better be running!">
+<meta property="og:url" content="/blog/javascript/angularjs/tong-quan-ve-kiem-thu-trong-angularjs.html">
+<meta property="og:site_name" content="Acegik's Blog">
+<meta property="og:image" content="/blog/images/">
+
+
+
+
+
+<link rel="canonical" href="/blog/javascript/angularjs/tong-quan-ve-kiem-thu-trong-angularjs.html">
+<link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Acegik's Blog Feed">
+<link rel="author" href="https://plus.google.com/u/3/115458186421626071505?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,600,300,800,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/blog/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/blog/assets/css/vendor/normalize.css">
+    <link rel="stylesheet" href="/blog/assets/css/vendor/foundation.min.css">
+    <link rel="stylesheet" href="/blog/assets/css/style.css">
+    <link rel="stylesheet" href="/blog/assets/css/post.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/blog/assets/js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+    
+
+
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">  
+
+        <main id="summer-post-container-simple" class="summer-post-container-simple" role="main">
+            <header class="summer-post-header-simple">
+                <div class="summer-post-menu-header-simple">
+
+                    <a class="summer-blog-logo" href="/blog">
+                        <img src="/blog/images/logo.png" alt="Blog Logo" />
+                    </a>
+
+                <div class="summer-blog-menu">      
+    <div class="summer-mobile-menu show-for-small">
+        <a href="#"><i class="fa fa-bars"></i></a>
+    </div>
+    <ul class="summer-menu">
+        <li class="summer-mobile-close-btn show-for-small text-right">
+            <a href="#"><i class="fa fa-times"></i></a>
+        </li>
+
+            <li>
+                    <a href="/blog/">Trang bìa</a>
+                 </li>
+
+            <li>
+                    <a href="/blog/featured">Nổi bật</a>
+                 </li>
+
+            <li>
+                    <a href="/blog/categories">Danh mục</a>
+                 </li>
+
+            <li>
+                    <a href="/blog/about">Giới thiệu</a>
+                 </li>
+            
+           <li><a href="/blog/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+    </ul>
+
+</div>
+            </div>
+
+                <div class="summer-post-title-simple row">
+                    <div class="small-12 columns">
+                        <div class="summer-post-meta-simple">
+                            <h1>Tổng quan về kiểm thử phần mềm trong AngualrJS</h1>
+                            <p>by <strong>pnhung177</strong> &#8212; on <a href="/blog/tags/index.html#JavaScript" data-toggle="tooltip" title="Posts tagged with JavaScript" rel="tag">JavaScript</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#AngularJS" data-toggle="tooltip" title="Posts tagged with AngularJS" rel="tag">AngularJS</a> &#8212; <strong><time datetime="2014-11-14T00:00:00+07:00">14/11/2014</time></strong></p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+        <article class="summer-post-content post tag-simple">
+            <div><p>Một trong những yếu tố mang đến thành công cho AngualrJS chính là khả năng áp dụng kiểm thử (Testing) vào quá trình phát triển các ứng dụng SPA. AngularJS được hỗ trợ bởi nền tảng kiểm thử Karma, kết hợp với các công cụ Mocha, Chai và Sanon, đã tạo nên một bộ giải pháp hoàn chỉnh để thực hiện các phạm vi kiểm thử khác nhau, bao gồm Unit Testing, Midway Testing và End-to-End Testing.</p>
+
+<section>
+  <header>
+    <h2>Nội dung trình bày</h2>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#ti-sao-phi-kim-th-ng-dng">Tại sao phải kiểm thử ứng dụng?</a>    <ul>
+      <li><a href="#v-d-v-kim-th-trong-sn-xut-xe-hi">Ví dụ về kiểm thử trong sản xuất xe hơi</a></li>
+      <li><a href="#kim-th-trong-xy-dng-phn-mm">Kiểm thử trong xây dựng phần mềm</a></li>
+    </ul>
+  </li>
+</ul>
+
+  </div>
+</section>
+
+<h2 id="ti-sao-phi-kim-th-ng-dng">Tại sao phải kiểm thử ứng dụng?</h2>
+
+<p>Trước khi đi vào nội dung chính - áp dụng kiểm thử phần mềm vào ứng dụng xây dựng bằng AngularJS - tôi muốn đề cập sơ lược về khái niệm và sự cần thiết của kiểm thử trong quá trình phát triển phần mềm, cụ thể là phần mềm xây dựng trên nền tảng AngularJS.</p>
+
+<p>Để thuận tiện cho việc trình bày, tôi sẽ lấy một ví dụ cụ thể về một ngành sản xuất để minh họa cho các khái niệm cần được giải thích ở đây.</p>
+
+<h3 id="v-d-v-kim-th-trong-sn-xut-xe-hi">Ví dụ về kiểm thử trong sản xuất xe hơi</h3>
+
+<p>Giả sử hãng xe hơi Atoyot thiết lập một dây chuyển sản xuất xe hơi bao gồm nhiều nhà máy sản xuất linh kiện và lắp ráp đạt tại nhiều quốc gia như sau:</p>
+
+<p><img src="/blog/media/e164079a-679b-4037-ac73-712e35755327/car_factory_process.png" alt="Ví dụ minh họa về kiểm thử trong sản xuất xe hơi" /></p>
+
+<p>Trong hình minh họa ở trên, ta có thể thấy các bộ phận của ô tô có thể được sản xuất tại các nhà máy ở các quốc gia khác nhau. Các bộ phận này được tạo ra tuân theo các thông số thiết kế, do đó có thể được lắp ghép thành một chiếc ô tô hoàn chỉnh. Tuy nhiên trong thực tế, mọi hoạt động đều có khả năng tiềm tàng và phát sinh những sai sót. Điều gì xảy ra nếu sai sót của một số bộ phận chỉ bị phát hiện khi đã chuyển đến nhà máy lắp ráp hoặc thậm chí sau khi đã đến tay người dùng? Dễ thấy rằng những sai sót chậm phát hiện này sẽ tiêu tốn nhiều thời gian và chi phí cho việc phát hiện, vận chuyển, thay thế khắc phục, thu hồi sản phẩm, đền bù nếu có thiệt hại xảy ra. Thậm chí, uy tín của hãng bị ảnh hưởng nghiêm trọng.</p>
+
+<p>Chính vì vậy, các hãng sản xuất đều xây dựng quy trình sản xuất chặt chẽ, trong đó việc kiểm thử được thực hiện <em>càng sớm càng tốt</em> và áp dụng <em>trong suốt quá trình</em> sản xuất và lắp ráp sản phẩm. </p>
+
+<h3 id="kim-th-trong-xy-dng-phn-mm">Kiểm thử trong xây dựng phần mềm</h3>
+
+<p>Ngày nay, quá trình phát triển phần mềm cũng được thực hiện theo cách phân rã phần mềm lớn thành các phần nhỏ. Các bộ phận nhỏ của phần mềm được phát triển rời nhau và được lắp ghép lại thành sản phẩm phần mềm hoàn chỉnh. Do được xây dựng trên nền tảng logic nên phần mềm tiềm tàng rất nhiều sai lệch so với những gì chúng ta hình dung về nó khi xây dựng. Thêm vào đó, phần mềm là dạng kết cấu không trực quan nên những sai lệch này rất khó phát hiện và tích tụ theo thời gian.</p>
+
+<p>Theo tính toán của NIST (National Institute of Standards and Technology), chi phí khắc phục lỗi trong phần mềm theo thời gian sẽ gia tăng theo cấp độ mũ.</p>
+
+<p><img src="/blog/media/e164079a-679b-4037-ac73-712e35755327/the-cost-of-fixing-vulnerabilities-rises-exponentially.png" alt="Chi phí khắc phục lỗi tăng theo cấp độ mũ" /></p>
+
+<p>Việc phát hiện sớm lỗi trong phần mềm có ý nghĩa hết sức quan trọng trong việc đảm bảo tiến độ cũng như làm giảm rủi ro và chi phí phát triển. Có nhiều hướng tiếp cận trong kiểm thử phần mềm, trong đó phổ biến nhất là phân loại kiểm thử phần mềm theo cấp độ, bao gồm:</p>
+
+<ul>
+  <li>Kiểm thử đơn vị (Unit Testing): còn gọi là kiểm thử thành phần (Component Testing) là phương pháp kiểm thử chú trọng vào việc kiểm tra chức năng của một “đơn vị” chức năng chương trình (thông thường là một hàm, tuy nhiên trong một số mô hình, chẳng hạn AngularJS, “đơn vị” có thể là Controller, Directive hoặc Service). Kiểm thử đơn vị được thực hiện bởi chính lập trình viên tạo nên chức năng chương trình đó.</li>
+  <li>Kiểm thử tích hợp (Integration Testing): là dạng kiểm thử định hướng vào việc kiểm tra tính đúng đắn của giao tiếp thông qua giao diện giữa các thành phần của phần mềm. Kiểm thử tích hợp thông thường cũng được thực hiện bởi lập trình viên.</li>
+  <li>Kiểm thử hệ thống (System Testing): còn gọi là kiểm thử 2 đầu (End-to-End Testing), là dạng kiểm thử toàn diện phần mềm đã được lắp ghép hoàn chỉnh để kiểm tra xem các yêu cầu phần mềm có được đáp ứng đầy đủ hay không? Kiểm thử hệ thống thường do đội QA (Quality Assurance) đảm trách.</li>
+  <li>Kiểm thử chấp nhận (Acceptance Testing): là dạng kiểm thử được thực hiện tại nơi triển khai thực tế của sản phẩm, do người đặt hàng thực hiện nhằm đảm bảo sản phẩm tiếp nhận đáp ứng được đầy đủ các yêu cầu đã đề ra. Trong kiểm thử phần mềm, các bộ kiểm thử chấp nhận thường do khách hàng phát triển, hoặc do khách hàng cộng tác với đơn vị xây dựng tạo ra.</li>
+</ul>
+
+
+            </div>
+        </article>
+        <div class="cf"></div>
+        <div class="row text-center">
+            <section class="summer-post-share">
+                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Tổng quan về kiểm thử phần mềm trong AngualrJS&quot;%20/blog/javascript/angularjs/tong-quan-ve-kiem-thu-trong-angularjs.html%20via%20&#64;pnhung177"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a class="facebook-icon" href="https://www.facebook.com/sharer/sharer.php?u=/blog/javascript/angularjs/tong-quan-ve-kiem-thu-trong-angularjs.html"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a class="google-icon" href="https://plus.google.com/share?url=/blog/javascript/angularjs/tong-quan-ve-kiem-thu-trong-angularjs.html"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </section>
+        </div>
+        <div class="cf"></div>
+        
+            <div class="summer-author-info">
+                <div class="row">
+                    <section class="summer-post-author small-12 columns">
+                        
+                            <img src="/blog/images/avatars/pnhung177.png" class="summer-post-author-avatar" alt="Phạm Ngọc Hùng's photo">
+                        
+                        
+                            <span class="author-label">Author</span>
+                            <h1>Phạm Ngọc Hùng</h1>
+                        
+                        
+                            <p><a href="mailto:pnhung177@drupalex.net" class="author-website">pnhung177@drupalex.net</a></p>
+                        
+                        
+                            <p>... when the sun comes up, you better be running!</p>
+                        
+                    </section>
+                </div>
+            </div> 
+        
+        <div class="cf"></div>
+        
+        <section class="summer-disqus row">
+    <div class="small-12 columns">
+        <h1 class="summer-comments-header">Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'acegik'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+
+        <div class="cf"></div>
+
+    <footer class="summer-site-footer">
+    <div class="copyright">
+         <section>Bản quyền nội dung thuộc về <a href="/blog/about">Phạm Ngọc Hùng</a> &copy; 2014.</section>
+    </div>
+    <div class="social-icons">
+        
+        
+        <a href="http://twitter.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-twitter fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="https://plus.google.com/u/3/115458186421626071505">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-google-plus fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="http://github.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-github fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="http://facebook.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-facebook fa-stack-1x"></i>
+            </span>
+        </a>
+        
+    </div>
+    
+    <div class="cf"></div>
+</footer>
+ 
+</main>    
+    <script src="/blog/assets/js/vendor/modernizr.js"></script>
+    <script src="/blog/assets/js/foundation.min.js"></script>
+    <script src="/blog/assets/js/vendor/background-check.js"></script>
+    <script src="/blog/assets/js/vendor/post-header-animations.js"></script>
+    <script src="/blog/assets/js/summer.js"></script>
+
+    <script>
+      $(document).foundation();
+    </script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54128248-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+</script>
+ 
+</body>
+</html>

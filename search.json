@@ -1,6 +1,14 @@
 [
 	
 		{
+		  "title"      : "Tổng quan về kiểm thử phần mềm trong AngualrJS",
+		  "category"   : "javascriptangularjs",
+		  "url"        : "/blog/javascript/angularjs/tong-quan-ve-kiem-thu-trong-angularjs.html",
+		  "date"       : "2014-11-14 00:00:00 +0700",
+		  "shortdate"  : "November 14, 2014"
+		} ,
+	
+		{
 		  "title"      : "Tìm hiểu về Scope trong AngularJS",
 		  "category"   : "javascriptangularjs",
 		  "url"        : "/blog/javascript/angularjs/tim-hieu-ve-scope-trong-angularjs.html",

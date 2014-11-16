@@ -133,6 +133,11 @@ callback([
   {
     "text": "Tìm hiểu về Scope trong AngularJS",
     "href": "/blog/javascript/angularjs/tim-hieu-ve-scope-trong-angularjs.html"
+  } ,
+
+  {
+    "text": "Tổng quan về kiểm thử phần mềm trong AngualrJS",
+    "href": "/blog/javascript/angularjs/tong-quan-ve-kiem-thu-trong-angularjs.html"
   } 
 
 ])
