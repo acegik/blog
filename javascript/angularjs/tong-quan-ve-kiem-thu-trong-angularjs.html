@@ -117,7 +117,7 @@
             </header>
 
         <article class="summer-post-content post tag-simple">
-            <div><p>Một trong những yếu tố mang đến thành công cho AngualrJS chính là khả năng áp dụng kiểm thử (Testing) vào quá trình phát triển các ứng dụng SPA. AngularJS được hỗ trợ bởi nền tảng kiểm thử Karma, kết hợp với các công cụ Mocha, Chai và Sanon, đã tạo nên một bộ giải pháp hoàn chỉnh để thực hiện các phạm vi kiểm thử khác nhau, bao gồm Unit Testing, Midway Testing và End-to-End Testing.</p>
+            <div><p>Một trong những yếu tố mang đến thành công cho AngularJS chính là khả năng áp dụng kiểm thử (Testing) vào quá trình phát triển các ứng dụng SPA. AngularJS hỗ trợ thực hiện các phạm vi kiểm thử khác nhau, bao gồm kiểm thử đơn vị (Unit Testing), kiểm thử từng phần (Midway Testing) và kiểm thử đầu-cuối (End-to-End Testing). Bài viết này giới thiệu sơ lược các khái niệm có liên quan đến kiểm thử trong AngularJS.</p>
 
 <section>
   <header>
@@ -128,6 +128,11 @@
   <li><a href="#ti-sao-phi-kim-th-ng-dng">Tại sao phải kiểm thử ứng dụng?</a>    <ul>
       <li><a href="#v-d-v-kim-th-trong-sn-xut-xe-hi">Ví dụ về kiểm thử trong sản xuất xe hơi</a></li>
       <li><a href="#kim-th-trong-xy-dng-phn-mm">Kiểm thử trong xây dựng phần mềm</a></li>
+    </ul>
+  </li>
+  <li><a href="#cc-loi-kim-th-trong-angularjs">Các loại kiểm thử trong AngularJS</a>    <ul>
+      <li><a href="#kim-th-thnh-phn-unit-testing">Kiểm thử thành phần (Unit Testing)</a></li>
+      <li><a href="#kim-th-u-cui-end-to-end-testing">Kiểm thử đầu-cuối (End-to-End Testing)</a></li>
     </ul>
   </li>
 </ul>
@@ -145,11 +150,13 @@
 
 <p>Giả sử hãng xe hơi Atoyot thiết lập một dây chuyển sản xuất xe hơi bao gồm nhiều nhà máy sản xuất linh kiện và lắp ráp đạt tại nhiều quốc gia như sau:</p>
 
-<p><img src="/blog/media/e164079a-679b-4037-ac73-712e35755327/car_factory_process.png" alt="Ví dụ minh họa về kiểm thử trong sản xuất xe hơi" /></p>
+<p><img src="/blog/media/e164079a-679b-4037-ac73-712e35755327/car_factory_process_without_testing.png" alt="Ví dụ minh họa về quy trình sản xuất xe hơi đơn giản" /></p>
 
 <p>Trong hình minh họa ở trên, ta có thể thấy các bộ phận của ô tô có thể được sản xuất tại các nhà máy ở các quốc gia khác nhau. Các bộ phận này được tạo ra tuân theo các thông số thiết kế, do đó có thể được lắp ghép thành một chiếc ô tô hoàn chỉnh. Tuy nhiên trong thực tế, mọi hoạt động đều có khả năng tiềm tàng và phát sinh những sai sót. Điều gì xảy ra nếu sai sót của một số bộ phận chỉ bị phát hiện khi đã chuyển đến nhà máy lắp ráp hoặc thậm chí sau khi đã đến tay người dùng? Dễ thấy rằng những sai sót chậm phát hiện này sẽ tiêu tốn nhiều thời gian và chi phí cho việc phát hiện, vận chuyển, thay thế khắc phục, thu hồi sản phẩm, đền bù nếu có thiệt hại xảy ra. Thậm chí, uy tín của hãng bị ảnh hưởng nghiêm trọng.</p>
 
 <p>Chính vì vậy, các hãng sản xuất đều xây dựng quy trình sản xuất chặt chẽ, trong đó việc kiểm thử được thực hiện <em>càng sớm càng tốt</em> và áp dụng <em>trong suốt quá trình</em> sản xuất và lắp ráp sản phẩm. </p>
+
+<p><img src="/blog/media/e164079a-679b-4037-ac73-712e35755327/car_factory_process_checked.png" alt="Ví dụ minh họa về kiểm thử trong sản xuất xe hơi" /></p>
 
 <h3 id="kim-th-trong-xy-dng-phn-mm">Kiểm thử trong xây dựng phần mềm</h3>
 
@@ -157,16 +164,36 @@
 
 <p>Theo tính toán của NIST (National Institute of Standards and Technology), chi phí khắc phục lỗi trong phần mềm theo thời gian sẽ gia tăng theo cấp độ mũ.</p>
 
-<p><img src="/blog/media/e164079a-679b-4037-ac73-712e35755327/the-cost-of-fixing-vulnerabilities-rises-exponentially.png" alt="Chi phí khắc phục lỗi tăng theo cấp độ mũ" /></p>
+<p><img src="/blog/media/e164079a-679b-4037-ac73-712e35755327/the-cost-of-fixing-software-bugs.png" alt="Chi phí khắc phục lỗi tăng theo cấp độ mũ" /></p>
 
 <p>Việc phát hiện sớm lỗi trong phần mềm có ý nghĩa hết sức quan trọng trong việc đảm bảo tiến độ cũng như làm giảm rủi ro và chi phí phát triển. Có nhiều hướng tiếp cận trong kiểm thử phần mềm, trong đó phổ biến nhất là phân loại kiểm thử phần mềm theo cấp độ, bao gồm:</p>
 
 <ul>
-  <li>Kiểm thử đơn vị (Unit Testing): còn gọi là kiểm thử thành phần (Component Testing) là phương pháp kiểm thử chú trọng vào việc kiểm tra chức năng của một “đơn vị” chức năng chương trình (thông thường là một hàm, tuy nhiên trong một số mô hình, chẳng hạn AngularJS, “đơn vị” có thể là Controller, Directive hoặc Service). Kiểm thử đơn vị được thực hiện bởi chính lập trình viên tạo nên chức năng chương trình đó.</li>
-  <li>Kiểm thử tích hợp (Integration Testing): là dạng kiểm thử định hướng vào việc kiểm tra tính đúng đắn của giao tiếp thông qua giao diện giữa các thành phần của phần mềm. Kiểm thử tích hợp thông thường cũng được thực hiện bởi lập trình viên.</li>
-  <li>Kiểm thử hệ thống (System Testing): còn gọi là kiểm thử 2 đầu (End-to-End Testing), là dạng kiểm thử toàn diện phần mềm đã được lắp ghép hoàn chỉnh để kiểm tra xem các yêu cầu phần mềm có được đáp ứng đầy đủ hay không? Kiểm thử hệ thống thường do đội QA (Quality Assurance) đảm trách.</li>
-  <li>Kiểm thử chấp nhận (Acceptance Testing): là dạng kiểm thử được thực hiện tại nơi triển khai thực tế của sản phẩm, do người đặt hàng thực hiện nhằm đảm bảo sản phẩm tiếp nhận đáp ứng được đầy đủ các yêu cầu đã đề ra. Trong kiểm thử phần mềm, các bộ kiểm thử chấp nhận thường do khách hàng phát triển, hoặc do khách hàng cộng tác với đơn vị xây dựng tạo ra.</li>
+  <li><strong>Kiểm thử đơn vị (Unit Testing)</strong> còn gọi là kiểm thử thành phần (Component Testing) là phương pháp kiểm thử chú trọng vào việc kiểm tra chức năng của một “đơn vị” chức năng chương trình (thông thường là một hàm, tuy nhiên trong một số mô hình, chẳng hạn AngularJS, “đơn vị” có thể là Controller, Directive hoặc Service). Kiểm thử đơn vị được thực hiện bởi chính lập trình viên tạo nên chức năng chương trình đó.</li>
+  <li><strong>Kiểm thử tích hợp (Integration Testing)</strong>: là dạng kiểm thử định hướng vào việc kiểm tra tính đúng đắn của giao tiếp thông qua giao diện giữa các thành phần của phần mềm. Kiểm thử tích hợp thông thường cũng được thực hiện bởi lập trình viên.</li>
+  <li><strong>Kiểm thử hệ thống (System Testing)</strong>: còn gọi là kiểm thử 2 đầu (End-to-End Testing), là dạng kiểm thử toàn diện phần mềm đã được lắp ghép hoàn chỉnh để kiểm tra xem các yêu cầu phần mềm có được đáp ứng đầy đủ hay không? Kiểm thử hệ thống thường do đội QA (Quality Assurance) đảm trách.</li>
+  <li><strong>Kiểm thử chấp nhận (Acceptance Testing)</strong>: là dạng kiểm thử được thực hiện tại nơi triển khai thực tế của sản phẩm, do người đặt hàng thực hiện nhằm đảm bảo sản phẩm tiếp nhận đáp ứng được đầy đủ các yêu cầu đã đề ra. Trong kiểm thử phần mềm, các bộ kiểm thử chấp nhận thường do khách hàng phát triển, hoặc do khách hàng cộng tác với đơn vị xây dựng tạo ra.</li>
 </ul>
+
+<h2 id="cc-loi-kim-th-trong-angularjs">Các loại kiểm thử trong AngularJS</h2>
+
+<p>Trong quá trình áp dụng phương pháp TDD vào phát triển phần mềm, các dự án luôn có xu hướng tự động hóa quá trình kiểm thử (Automation Testing). Các dự án phát triển bằng AngularJS cũng không ngoại lệ. Với vai trò là khung ứng dụng, AngularJS cung cấp các công cụ kiểm thử nhằm hỗ trợ người phát triển áp dụng các phương pháp kiểm thử cũng như tự động hóa quá trình kiểm thử được dễ dàng và nhanh chóng. AngularJS cung cấp 2 loại kiểm thử chính: Unit Testing và End-to-End Testing. Mặc dù còn một loại nữa là Midway Testing là một trường hợp của End-to-End Testing, tuy nhiên trong thực tế loại này ít được sử dụng. </p>
+
+<p><img src="/blog/media/e164079a-679b-4037-ac73-712e35755327/unit-testing-vs-e2e-testing.jpg" alt="So sánh sự khác nhau giữa Unit Testing và End-to-End Testing" /></p>
+
+<h3 id="kim-th-thnh-phn-unit-testing">Kiểm thử thành phần (Unit Testing)</h3>
+
+<p>Unit testing hoạt động dựa trên nguyên tắc chia tách và cô lập các đơn vị chương trình để có thể kiểm thử chức năng của từng đơn vị chương trình một cách độc lập với những phần còn lại. Để dễ dàng hình dung, chúng ta có thể thấy trong sản xuất xe hơi, mỗi một bộ phận khi sản xuất đều được kiểm thử riêng rẽ trong một môi trường giả lập thực tế. Hình ảnh bên dưới minh họa việc kiểm thử bánh xe hơi:</p>
+
+<p><img src="/blog/media/e164079a-679b-4037-ac73-712e35755327/car-wheel-testing.jpg" alt="Ví dụ về kiểm thử thành phần trong sản xuất xe hơi" /></p>
+
+<h3 id="kim-th-u-cui-end-to-end-testing">Kiểm thử đầu-cuối (End-to-End Testing)</h3>
+
+<p>End-to-End testing thực hiện kiểm thử hoạt động tổng thể của ứng dụng bằng cách kiểm thử quá trình thực hiện chức năng từ đầu đến cuối quá trình xử lý, đi từ giao diện đến giao tiếp với nguồn dữ liệu (truy cập dịch vụ web hoặc vùng lưu trữ cục bộ). Có thể hình dung một kiểm thử End-to-End là quá trình thực hiện một chức năng của ứng dụng được một Robot thao tác trên một trình duyệt ẩn theo một kịch bản do chúng ta lập trình sẵn. Xét trong phạm vi ứng dụng phát triển bằng AngularJS, End-to-End Testing chính là System Testing.</p>
+
+<p>Liên hệ với ví dụ về kiểm thử trong ngành sản xuất xe hơi, quá trình kiểm thử đầu-cuối (End-to-End Testing) tương ứng với công đoạn kiểm soát chất lượng sản phẩm sau khi lắp ráp như trong hình ảnh minh họa bên dưới:</p>
+
+<p><img src="/blog/media/e164079a-679b-4037-ac73-712e35755327/car-end-to-end-testing.png" alt="Ví dụ về kiểm thử đầu-cuối một chiếc xe hơi" /></p>
 
 
             </div>
