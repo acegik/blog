@@ -9,13 +9,617 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://acegik.net/blog/feed.xml" />
 <link rel="alternate" type="text/html" href="http://acegik.net/blog/" />
-<updated>2014-11-21T18:27:48+07:00</updated>
+<updated>2014-11-26T21:05:12+07:00</updated>
 <id>http://acegik.net/blog/</id>
 <author>
   <name>Phạm Ngọc Hùng</name>
   <uri>http://acegik.net/blog/</uri>
   <email>pnhung177@drupalex.net</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Kiểm thử đơn vị (Unit Testing) trong AngularJS]]></title>
+  <link rel="alternate" type="text/html" href="http://acegik.net/blog/javascript/angularjs/kiem-thu-don-vi-unit-testing-trong-angularjs.html"/>
+  <id>http://acegik.net/blog/javascript/angularjs/kiem-thu-don-vi-unit-testing-trong-angularjs</id>
+  <published>2014-11-21T00:00:00+07:00</published>
+  <updated>2014-11-21T00:00:00-00:00</updated>
+  
+  <author>
+    <name>Phạm Ngọc Hùng</name>
+    <uri>http://acegik.net/blog</uri>
+    <email>pnhung177@drupalex.net</email>
+  </author>
+  <category scheme="http://acegik.net/blog/tags/#JavaScript" term="JavaScript" /><category scheme="http://acegik.net/blog/tags/#AngularJS" term="AngularJS" />
+  <content type="html">
+  
+    &lt;p&gt;Trong bài viết trước, tôi đã cố gắng trình bày về tầm quan trọng của Kiểm thử đơn vị (Unit testing) trong phát triển ứng dụng nói chung cũng như các ứng dụng trong AngularJS nói riêng. Bài viết này hướng dẫn từng bước cách tạo môi trường để thực hiện Kiểm thử đơn vị trong AngularJS cũng như giải thích về các kỹ thuật thường áp dụng thông qua các ví dụ đơn giản.&lt;/p&gt;
+
+&lt;section&gt;
+  &lt;header&gt;
+    &lt;h2&gt;Nội dung trình bày&lt;/h2&gt;
+  &lt;/header&gt;
+&lt;div id=&quot;drawer&quot;&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#thit-lp-mi-trng-unit-testing&quot;&gt;Thiết lập môi trường Unit Testing&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#karma---to-mi-trng-cho-unit-testing&quot;&gt;Karma - tạo môi trường cho Unit Testing&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#ci-t-nodejs&quot;&gt;Cài đặt Node.js&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#ci-t-karma&quot;&gt;Cài đặt Karma&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#ci-t-karma-commandline-interface&quot;&gt;Cài đặt Karma Commandline Interface&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#tp-cu-hnh-ca-karma&quot;&gt;Tệp cấu hình của Karma&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#jasmine---khung-ng-dng-cho-unit-testing&quot;&gt;Jasmine - khung ứng dụng cho Unit Testing&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#khai-bo-spec-suite&quot;&gt;Khai báo Spec Suite&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#khai-bo-hm-kim-th-spec&quot;&gt;Khai báo hàm kiểm thử (Spec)&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#cc-hm-khi-to-v-thu-dn-mi-trng&quot;&gt;Các hàm khởi tạo và thu dọn môi trường&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#cc-hm-k-vng-expectations&quot;&gt;Các hàm kỳ vọng (Expectations)&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#v-d-n-gin-v-unit-testing&quot;&gt;Ví dụ đơn giản về Unit Testing&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#p-dng-unit-testing-cho-ng-dng-angularjs&quot;&gt;Áp dụng Unit Testing cho ứng dụng AngularJS&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#k-thut-gi-lp-trong-kim-th-angularjs&quot;&gt;Kỹ thuật giả lập trong kiểm thử AngularJS&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#p-dng-unit-testing-cho-cc-controller&quot;&gt;Áp dụng Unit Testing cho các Controller&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#ti-v-d-minh-ha&quot;&gt;Tải ví dụ minh họa&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#m-t-controller-cn-kim-th&quot;&gt;Mô tả Controller cần kiểm thử&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#to-spec-kim-th-controller&quot;&gt;Tạo Spec kiểm thử Controller&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#ci-tin-cch-kim-th&quot;&gt;Cải tiến cách kiểm thử&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#p-dng-unit-testing-cho-cc-service&quot;&gt;Áp dụng Unit Testing cho các Service&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#ti-v-d-minh-ha-1&quot;&gt;Tải ví dụ minh họa&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#m-t-service-cn-kim-th&quot;&gt;Mô tả Service cần kiểm thử&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#to-spec-kim-th-service&quot;&gt;Tạo Spec kiểm thử Service&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#p-dng-unit-testing-cho-cc-filter&quot;&gt;Áp dụng Unit Testing cho các Filter&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#ti-v-d-minh-ha-2&quot;&gt;Tải ví dụ minh họa&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#m-t-filter-cn-kim-th&quot;&gt;Mô tả Filter cần kiểm thử&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#to-spec-kim-th-filter&quot;&gt;Tạo Spec kiểm thử Filter&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#p-dng-unit-testing-cho-cc-directive&quot;&gt;Áp dụng Unit Testing cho các Directive&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#ti-v-d-minh-ha-3&quot;&gt;Tải ví dụ minh họa&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#m-t-directive-cn-kim-th&quot;&gt;Mô tả Directive cần kiểm thử&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#to-spec-kim-th-directive&quot;&gt;Tạo Spec kiểm thử Directive&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;h2 id=&quot;thit-lp-mi-trng-unit-testing&quot;&gt;Thiết lập môi trường Unit Testing&lt;/h2&gt;
+
+&lt;h3 id=&quot;karma---to-mi-trng-cho-unit-testing&quot;&gt;Karma - tạo môi trường cho Unit Testing&lt;/h3&gt;
+
+&lt;p&gt;(Vai trò của Karma đối với việc Kiểm thử trong AngularJS cũng giống như nền móng và mặt bằng xung quanh của một ngôi nhà)&lt;/p&gt;
+
+&lt;h4 id=&quot;ci-t-nodejs&quot;&gt;Cài đặt Node.js&lt;/h4&gt;
+
+&lt;p&gt;Các bạn có thể tham khảo hướng dẫn cài đặt NOde.js tại &lt;a href=&quot;https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager&quot;&gt;trang hướng dẫn này&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;ci-t-karma&quot;&gt;Cài đặt Karma&lt;/h4&gt;
+
+&lt;p&gt;Dưới đây tôi chỉ ghi chép lại các bước cài đặt mà tôi đã thực hiện trên Ubuntu. Đối với các hệ điều hành khác, các bạn vui lòng tham khảo trên Internet. Trừ khi sử dụng &lt;strong&gt;nvm&lt;/strong&gt; (&lt;a href=&quot;https://github.com/creationix/nvm&quot;&gt;Node Version Manager&lt;/a&gt;), các bạn chỉ nên cài đặt karma ở chế độ &lt;strong&gt;local&lt;/strong&gt; (không dùng tham số -g): Karma và tất cả plugin liên quan đều được cài đặt trong thư mục &lt;strong&gt;node_modules&lt;/strong&gt; bên trong thư mục gốc của dự án.&lt;/p&gt;
+
+&lt;p&gt;Về cơ bản, chúng ta cần các gói thư viện &lt;strong&gt;karma&lt;/strong&gt;, &lt;strong&gt;karma-jasmine&lt;/strong&gt; và &lt;strong&gt;karma-chrome-launcher&lt;/strong&gt; (hoặc &lt;strong&gt;karma-firefox-launcher&lt;/strong&gt; nếu bạn muốn chạy với Firefox) , các thư viện phụ thuộc sẽ được &lt;strong&gt;npm&lt;/strong&gt; tự động tìm và cài đặt:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install karma --save-dev&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install karma-jasmine karma-chrome-launcher --save-dev&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Tham số &lt;strong&gt;–save-dev&lt;/strong&gt; lưu thông tin của karma vào khai báo &lt;strong&gt;devDependencies&lt;/strong&gt; trong tệp &lt;strong&gt;package.json&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Sau khi cài đặt xong, chạy thử Karma như sau:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./node_modules/karma/bin/karma start&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;ci-t-karma-commandline-interface&quot;&gt;Cài đặt Karma Commandline Interface&lt;/h4&gt;
+
+&lt;p&gt;Để tránh mỗi lần muốn chạy Karma, người dùng phải gõ lệnh &lt;strong&gt;./node_modules/karma/bin/karma start&lt;/strong&gt; dài và nhàm chán, chúng ta cài đặt Karma Commandline Interface (lưu ý các tham số -g):&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install -g karma-cli&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Sau đó, mỗi lần muốn chạy Karma, chúng ta chỉ cần sử dụng lệnh ngắn gọn, chẳng hạn &lt;strong&gt;karma start&lt;/strong&gt;. &lt;strong&gt;karma-cli&lt;/strong&gt; sẽ tự động tìm ứng dụng karma tại thư mục đang làm việc (tức là &lt;strong&gt;./node_modules/karma/bin/karma&lt;/strong&gt;) để thực thi.&lt;/p&gt;
+
+&lt;h4 id=&quot;tp-cu-hnh-ca-karma&quot;&gt;Tệp cấu hình của Karma&lt;/h4&gt;
+
+&lt;p&gt;Karma cho phép người dùng tùy chỉnh môi trường cho các dạng kiểm thử khác nhau, bằng cách cung cấp lệnh để người dùng khai báo các tham số môi trường. Các khai báo tham số môi trường kiểm thử sẽ được lưu trong một tệp cấu hình. Thông thường, người lập trình sẽ khai báo tham số và lưu vào tệp cấu hình môi trường cho mỗi loại kiểm thử trong AngularJS, chẳng hạn karma-unit.conf.js cho Unit Testing, karma-e2e.conf.js cho End-to-End Testing.&lt;/p&gt;
+
+&lt;p&gt;Để thuận tiện cho việc khai báo, Karma cung cấp lệnh **karma init &lt;tên tệp=&quot;&quot; cấu=&quot;&quot; hình=&quot;&quot;&gt;** để người dùng chọn giá trị cho từng mục cấu hình. Chẳng hạn, để tạo tệp cấu hình cho Unit Testing, chúng ta chuyển thư mục làm việc vào thư mục gốc của dự án, dùng lệnh khởi tạo như sau:&lt;/tên&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;karma init karma-unit.conf.js&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;(Lưu ý chỉ tạo tệp cấu hình sau khi đã cài đặt &lt;strong&gt;karma&lt;/strong&gt; và các gói thư viện liên quan vào thư mục gốc của dự án như hướng dẫn ở bên trên).&lt;/p&gt;
+
+&lt;h3 id=&quot;jasmine---khung-ng-dng-cho-unit-testing&quot;&gt;Jasmine - khung ứng dụng cho Unit Testing&lt;/h3&gt;
+
+&lt;p&gt;Jasmine là khung ứng dụng hỗ trợ kiểm thử theo mô hình BDD (Behavior-Driven Development framework). Jasmine được chọn mặc định làm khung ứng dụng kiểm thử trong Karma. Để sử dụng Jasmine với Karma, chúng ta cần cài đặt gói thư viện &lt;strong&gt;karma-jasmine&lt;/strong&gt; (như đã thực hiện trong phần cài đặt Karma ở bên trên).&lt;/p&gt;
+
+&lt;p&gt;Jasmine cung cấp các hàm cung cáp nhiều tiện ích hỗ trợ kiểm thử khác nhau. Phần dưới đây sẽ trình bày các nhóm hàm hỗ trợ kiểm thử thường dùng của Jasmine.&lt;/p&gt;
+
+&lt;h4 id=&quot;khai-bo-spec-suite&quot;&gt;Khai báo Spec Suite&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;Spec Suite&lt;/strong&gt; là một &lt;em&gt;bộ mô tả kiểm thử&lt;/em&gt;, bao gồm nhiều hàm kiểm thử, mỗi hàm kiểm thử tập trung vào một khía cạnh cần kiểm tra của một đơn vị chương trình. Các hàm kiểm thử trong &lt;strong&gt;Spec Suite&lt;/strong&gt; thường có chung đơn vị chương trình nên có môi trường thử nghiệm giống nhau, do đó &lt;strong&gt;Spec Suite&lt;/strong&gt; chứa các &lt;em&gt;hàm khởi tạo&lt;/em&gt; và các &lt;em&gt;hàm thu dọn&lt;/em&gt; môi trường chung cho các hàm kiểm thử đó. &lt;strong&gt;Spec Suite&lt;/strong&gt; được định nghĩa bởi hàm &lt;strong&gt;describe()&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Spec Suite: myController&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// các hàm khởi tạo, thu dọn môi trường&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// các hàm kiểm thử từng khía cạnh của đơn vị chương trình&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Chúng ta có thể phân nhỏ các &lt;strong&gt;Spec Suite&lt;/strong&gt; bằng cách định nghĩa các &lt;strong&gt;Spec Suite&lt;/strong&gt; lồng nhau:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Spec Suite: myController&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Sub Spec Suite: create function&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// ...&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Sub Spec Suite: update function&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// ...&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;khai-bo-hm-kim-th-spec&quot;&gt;Khai báo hàm kiểm thử (Spec)&lt;/h4&gt;
+
+&lt;p&gt;Trong Jasmine, mỗi &lt;em&gt;hàm kiểm thử&lt;/em&gt; được gọi là một &lt;strong&gt;Spec&lt;/strong&gt;. Jasmine cung cấp hàm &lt;strong&gt;it()&lt;/strong&gt; để định nghĩa &lt;strong&gt;Spec&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Spec Suite: a very simple Spec&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;contains a passing spec&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toBe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;cc-hm-khi-to-v-thu-dn-mi-trng&quot;&gt;Các hàm khởi tạo và thu dọn môi trường&lt;/h4&gt;
+
+&lt;p&gt;Để thiết lập môi trường kiểm thử cho các &lt;strong&gt;Spec&lt;/strong&gt;, Jasmine cung cấp hàm &lt;strong&gt;beforeEach()&lt;/strong&gt; cho phép khai báo đoạn mã lệnh sẽ được chạy ngay trước khi thực hiện mỗi &lt;strong&gt;Spec&lt;/strong&gt;. Cụ thể, &lt;strong&gt;beforeEach()&lt;/strong&gt; thường được dùng để giả lập các Service mà đối tượng được kiểm thử cần dùng đến, xác lập trạng thái ban đầu của đối tượng,v.v.. Hàm &lt;strong&gt;beforeEach()&lt;/strong&gt; được định nghĩa như sau:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Spec Suite: myController&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// setup something before running each Spec ...&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Tương tự như vậy, Jasmine cung cấp hàm &lt;strong&gt;afterEach()&lt;/strong&gt; để khai báo hàm sẽ được chạy ngay sau khi thực hiện từng &lt;strong&gt;Spec&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Spec Suite: myController&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;afterEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// reset environment after running each Spec ...&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;cc-hm-k-vng-expectations&quot;&gt;Các hàm kỳ vọng (Expectations)&lt;/h4&gt;
+
+&lt;p&gt;Các hàm kỳ vọng cho phép chúng ta khẳng định &lt;em&gt;một biểu thức cần kiểm thử&lt;/em&gt; phải có giá trị &lt;em&gt;thỏa mãn&lt;/em&gt; một &lt;em&gt;yêu cầu&lt;/em&gt; nào đó.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;expect(x).toEqual(val): Khẳng định giá trị của đối tượng &lt;strong&gt;x&lt;/strong&gt; bằng với &lt;strong&gt;val&lt;/strong&gt; (nhưng không nhất thiết đồng nhất nhau).&lt;/li&gt;
+  &lt;li&gt;expect(x).toBe(obj): Khẳng định rằng đối tượng &lt;strong&gt;x&lt;/strong&gt; đồng nhất với &lt;strong&gt;obj&lt;/strong&gt; (2 đối tượng này là một).&lt;/li&gt;
+  &lt;li&gt;expect(x).toMatch(regexp): Khẳng định chuỗi &lt;strong&gt;x&lt;/strong&gt; khớp với biểu thức chính quy &lt;strong&gt;regexp&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;expect(x).toBeNull(): Khẳng định rằng biến &lt;strong&gt;x&lt;/strong&gt; chứa giá trị là &lt;strong&gt;null&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;expect(x).toBeTruthy(): Khẳng định rằng giá trị &lt;strong&gt;x&lt;/strong&gt; là &lt;strong&gt;true&lt;/strong&gt; hoặc ước lượng bằng &lt;strong&gt;true&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;expect(x).toBeFalsy(): Khẳng định rằng giá trị &lt;strong&gt;x&lt;/strong&gt; là &lt;strong&gt;false&lt;/strong&gt; hoặc ước lượng bằng &lt;strong&gt;false&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;expect(x).toContain(y): Khẳng định rằng &lt;strong&gt;x&lt;/strong&gt; là một chuỗi ký tự và &lt;strong&gt;x&lt;/strong&gt; chứa giá trị &lt;strong&gt;y&lt;/strong&gt; (chuỗi &lt;strong&gt;y&lt;/strong&gt; là một phần của chuỗi &lt;strong&gt;x&lt;/strong&gt;).&lt;/li&gt;
+  &lt;li&gt;expect(x).toBeGreaterThan(y): Khẳng định rằng &lt;strong&gt;x&lt;/strong&gt; lớn hơn &lt;strong&gt;y&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;expect(x).toBeDefined(): Khẳng định rằng biến &lt;strong&gt;x&lt;/strong&gt; đã được định nghĩa.&lt;/li&gt;
+  &lt;li&gt;expect(x).toBeUndefined(): Khẳng định rằng biến &lt;strong&gt;x&lt;/strong&gt; chưa được định nghĩa.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;v-d-n-gin-v-unit-testing&quot;&gt;Ví dụ đơn giản về Unit Testing&lt;/h3&gt;
+
+&lt;p&gt;Chúng ta tạo một ví dụ đơn giản sử dụng Karma để kiểm thử cho một chức năng (lưu ý là chưa liên quan đến AngularJS). &lt;/p&gt;
+
+&lt;p&gt;Trước tiên, tạo một thư mục có tên &lt;em&gt;example-karma-simple-unit-testing&lt;/em&gt;, sau đó chuyển vào làm việc trong thư mục này:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;mkdir example-karma-simple-unit-testing
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;example-karma-simple-unit-testing
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install karma --save-dev
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install karma-jasmine karma-chrome-launcher --save-dev
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;karma init karma-unit.conf.js
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;mkdir &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;mkdir &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;/unit
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;touch &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;/unit/simpleSpec.js&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Mở phần mềm soạn thảo (&lt;em&gt;gedit&lt;/em&gt;, &lt;em&gt;geany&lt;/em&gt;, v.v.) để thêm mã lệnh kiểm thử sau vào tệp &lt;em&gt;simpleSpec.js&lt;/em&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// file: example-karma-simple-unit-testing/test/unit/simpleSpec.js&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;A very simple Unit testing&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// Preparation (set up a scenario)&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Increments value&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// attempt the operation&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// verify the result&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Decrements value&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// attempt the operation&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// verify the result&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Quay lại cửa sổ dòng lệnh và chạy Karma để kiểm thử:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;karma start karma-unit.conf.js&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;p-dng-unit-testing-cho-ng-dng-angularjs&quot;&gt;Áp dụng Unit Testing cho ứng dụng AngularJS&lt;/h2&gt;
+
+&lt;p&gt;Ứng dụng xây dựng bằng AngularJS có các thành phần sau chứa mã lệnh cần được kiểm thử:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Controller (bao gồm cả Scope)&lt;/li&gt;
+  &lt;li&gt;Service&lt;/li&gt;
+  &lt;li&gt;Filter&lt;/li&gt;
+  &lt;li&gt;Directive&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;AngularJS xem mỗi Controller, Service, Filter và Directive là một đơn vị chương trình, do đó cần được áp dụng kiểm thử đơn vị trong quá trình phát triển. Phần nội dung này của bài viết sẽ tập trung trình bày các khái niệm cũng như những kỹ thuật cơ bản để áp dụng kiểm thử đơn vị và các thành phần trên của AngularJS.&lt;/p&gt;
+
+&lt;h3 id=&quot;k-thut-gi-lp-trong-kim-th-angularjs&quot;&gt;Kỹ thuật giả lập trong kiểm thử AngularJS&lt;/h3&gt;
+
+&lt;p&gt;Trước khi tìm hiểu cách thức áp dụng kiểm thử đơn vị vào các thành phần của AngularJS, chúng ta cần hiểu rõ một kỹ thuật quan trọng trong lập trình kiểm thử: kỹ thuật giả lập (mocking).&lt;/p&gt;
+
+&lt;p&gt;(coming soon)&lt;/p&gt;
+
+&lt;h3 id=&quot;p-dng-unit-testing-cho-cc-controller&quot;&gt;Áp dụng Unit Testing cho các Controller&lt;/h3&gt;
+
+&lt;h4 id=&quot;ti-v-d-minh-ha&quot;&gt;Tải ví dụ minh họa&lt;/h4&gt;
+
+&lt;p&gt;Tải ví dụ minh họa “&lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-controller&quot;&gt;AngularJS Controller Unit Testing&lt;/a&gt;” theo địa chỉ dành cho &lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-controller.git&quot;&gt;git clone&lt;/a&gt; hoặc bản &lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-controller/archive/master.zip&quot;&gt;nén zip&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Sau khi tải xong ví dụ, chuyển vào thư mục &lt;em&gt;example-karma-unit-testing-controller&lt;/em&gt;, thực hiện lệnh sau để cài đặt &lt;strong&gt;karma&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install karma karma-jasmine karma-chrome-launcher --save-dev&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Sau khi &lt;strong&gt;npm&lt;/strong&gt; cài đặt xong các gói thư viện, chạy thử ví dụ bằng lệnh:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;karma start karma-unit.conf.js&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;m-t-controller-cn-kim-th&quot;&gt;Mô tả Controller cần kiểm thử&lt;/h4&gt;
+
+&lt;p&gt;Giả sử chúng ta cần tạo một Controller có tên &lt;strong&gt;myController&lt;/strong&gt; thuộc ứng dụng &lt;strong&gt;myApp&lt;/strong&gt;, thực hiện chức năng đơn giản là tăng giá trị cho biến &lt;strong&gt;counter&lt;/strong&gt; mỗi khi người dùng bấm vào nút lệnh &lt;strong&gt;Increment&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/f65d9701-b730-4686-8160-b0b05b525703/example-karma-controller-unit-testing.png&quot; alt=&quot;Ví dụ minh họa về Controller&quot; /&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//----------------------------------------------------------------------&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// file: example-karma-unit-testing-controller/main/js/myController.js&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myApp&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;controller&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myController&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;$scope&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;backendService&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+        &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$ctrlScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$backend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;$ctrlScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;$ctrlScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;incrementCounter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;$ctrlScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$backend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;$ctrlScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resetCounter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;$ctrlScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$backend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}]);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Lưu ý &lt;strong&gt;myController&lt;/strong&gt; có sử dụng một Service có tên là &lt;strong&gt;backendService&lt;/strong&gt;, Service này vẫn chưa được lập trình. Khi đó, ta cần giả lập &lt;strong&gt;backendService&lt;/strong&gt; khi lập trình &lt;strong&gt;Spec&lt;/strong&gt; kiểm thử &lt;strong&gt;myController&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;to-spec-kim-th-controller&quot;&gt;Tạo Spec kiểm thử Controller&lt;/h4&gt;
+
+&lt;p&gt;Tạo một &lt;strong&gt;Spec Suite&lt;/strong&gt; kiểm thử cho &lt;strong&gt;myController&lt;/strong&gt;, định nghĩa trong tệp myController.Spec.js như sau:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//----------------------------------------------------------------------&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// file: example-karma-unit-testing-controller/test/unit/myController.Spec.js&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;myController Unit testing #1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// Arrange&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;controller&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;myApp&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;inject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$controller&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$rootScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$rootScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        
+        &lt;span class=&quot;nx&quot;&gt;controller&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$controller&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;myController&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;backendService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;echo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;echo[&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;]&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}));&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Creates variable&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Increments counter&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;incrementCounter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Resets counter&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resetCounter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Lưu ý Service &lt;strong&gt;backendService&lt;/strong&gt; được giả lập trực tiếp bằng cách định nghĩa một &lt;em&gt;đối tượng cụ thể&lt;/em&gt; và gán cho thuộc tính &lt;strong&gt;backendService&lt;/strong&gt; trong quá trình tạo &lt;strong&gt;myController&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;ci-tin-cch-kim-th&quot;&gt;Cải tiến cách kiểm thử&lt;/h4&gt;
+
+&lt;p&gt;Chúng ta có thể cải tiến cách giả lập Service &lt;strong&gt;backendService&lt;/strong&gt; bằng cách sử dụng các hàm &lt;strong&gt;spyOn()&lt;/strong&gt; của Jasmine để định nghĩa các hàm của Service &lt;strong&gt;backendService&lt;/strong&gt; ngay trong từng hàm kiểm thử (&lt;strong&gt;Spec&lt;/strong&gt;).&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//----------------------------------------------------------------------&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// file: example-karma-unit-testing-controller/test/unit/myController.Spec.js&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;myController Unit testing #2&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// Arrange&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mockBackendService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;controller&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;myApp&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;inject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$controller&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$rootScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$rootScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        
+        &lt;span class=&quot;nx&quot;&gt;mockBackendService&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+        
+        &lt;span class=&quot;nx&quot;&gt;controller&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$controller&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;myController&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;backendService&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mockBackendService&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}));&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Creates variable&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Increments counter&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;spyOn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mockBackendService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;step&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;callFake&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+        &lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;incrementCounter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        
+        &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Resets counter&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;spyOn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mockBackendService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;init&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;callFake&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+        
+        &lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resetCounter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        
+        &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mockBackendService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toHaveBeenCalled&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;p-dng-unit-testing-cho-cc-service&quot;&gt;Áp dụng Unit Testing cho các Service&lt;/h3&gt;
+
+&lt;h4 id=&quot;ti-v-d-minh-ha-1&quot;&gt;Tải ví dụ minh họa&lt;/h4&gt;
+
+&lt;p&gt;Tải ví dụ minh họa “&lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-service&quot;&gt;AngularJS Service Unit Testing&lt;/a&gt;” theo địa chỉ dành cho &lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-service.git&quot;&gt;git clone&lt;/a&gt; hoặc bản &lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-service/archive/master.zip&quot;&gt;nén zip&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Sau khi tải xong ví dụ, chuyển vào thư mục &lt;em&gt;example-karma-unit-testing-service&lt;/em&gt;, thực hiện lệnh sau để cài đặt &lt;strong&gt;karma&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install karma karma-jasmine karma-chrome-launcher --save-dev&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Sau khi &lt;strong&gt;npm&lt;/strong&gt; cài đặt xong các gói thư viện, chạy thử ví dụ bằng lệnh:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;karma start karma-unit.conf.js&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;m-t-service-cn-kim-th&quot;&gt;Mô tả Service cần kiểm thử&lt;/h4&gt;
+
+&lt;p&gt;Tương tự như với &lt;strong&gt;myControler&lt;/strong&gt;, chúng ta cũng xem xét một Service đơn giản có tên là &lt;strong&gt;myService&lt;/strong&gt;, có chức năng đơn giản như sau:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//----------------------------------------------------------------------&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// file: example-karma-unit-testing-service/main/js/myService.js&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myApp&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;factory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myService&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;backendService&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$backend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Returned message:&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$backend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;echo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}]);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Trong đoạn mã lệnh trên, &lt;strong&gt;myService&lt;/strong&gt; sử dụng hàm &lt;strong&gt;echo()&lt;/strong&gt; của một Service chưa tồn tại có tên là &lt;strong&gt;backendService&lt;/strong&gt;. Để kiểm thử &lt;strong&gt;myService&lt;/strong&gt; (trong ví dụ này, &lt;strong&gt;myService&lt;/strong&gt; chỉ có một hàm là &lt;strong&gt;test()&lt;/strong&gt;), chúng ta sẽ giả lập Service &lt;strong&gt;backendService&lt;/strong&gt;. &lt;/p&gt;
+
+&lt;h4 id=&quot;to-spec-kim-th-service&quot;&gt;Tạo Spec kiểm thử Service&lt;/h4&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//----------------------------------------------------------------------&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// file: example-karma-unit-testing-service/test/unit/myService.Spec.js&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myService Unit Testing&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mockBackend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myApp&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$provide&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;mockBackend&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jasmine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createSpyObj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;backendService&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;echo&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;$provide&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;backendService&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mockBackend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}));&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;inject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_myService_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;myService&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_myService_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}));&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;should call backendService.echo on myService.test&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;mockBackend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;echo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;callFake&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;echo[&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;]&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;// make the call.&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Hello&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// check our spy to see if echo was called properly.&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mockBackend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;echo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toHaveBeenCalledWith&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Hello&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Returned message:echo[Hello]&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;p-dng-unit-testing-cho-cc-filter&quot;&gt;Áp dụng Unit Testing cho các Filter&lt;/h3&gt;
+
+&lt;h4 id=&quot;ti-v-d-minh-ha-2&quot;&gt;Tải ví dụ minh họa&lt;/h4&gt;
+
+&lt;p&gt;Tải ví dụ minh họa “&lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-filter&quot;&gt;AngularJS Filter Unit Testing&lt;/a&gt;” theo địa chỉ dành cho &lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-filter.git&quot;&gt;git clone&lt;/a&gt; hoặc bản &lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-filter/archive/master.zip&quot;&gt;nén zip&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Sau khi tải xong ví dụ, chuyển vào thư mục &lt;em&gt;example-karma-unit-testing-filter&lt;/em&gt;, thực hiện lệnh sau để cài đặt &lt;strong&gt;karma&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install karma karma-jasmine karma-chrome-launcher --save-dev&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Sau khi &lt;strong&gt;npm&lt;/strong&gt; cài đặt xong các gói thư viện, chạy thử ví dụ bằng lệnh:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;karma start karma-unit.conf.js&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;m-t-filter-cn-kim-th&quot;&gt;Mô tả Filter cần kiểm thử&lt;/h4&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//----------------------------------------------------------------------&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// file: example-karma-unit-testing-filter/main/js/myFilter.js&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myApp&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myFilter&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toUpperCase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sub&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toUpperCase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;to-spec-kim-th-filter&quot;&gt;Tạo Spec kiểm thử Filter&lt;/h4&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//----------------------------------------------------------------------&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// file: example-karma-unit-testing-filter/test/unit/myFilter.Spec.js&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myFilter Unit Testing&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;filterInstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;myApp&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;inject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;filterInstance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;myFilter&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}));&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Uppercase full length of string&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;filterInstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;testing filter&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;TESTING FILTER&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Uppercase first five characters of string&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;filterInstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;testing filter&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;TESTIng filter&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;p-dng-unit-testing-cho-cc-directive&quot;&gt;Áp dụng Unit Testing cho các Directive&lt;/h3&gt;
+
+&lt;h4 id=&quot;ti-v-d-minh-ha-3&quot;&gt;Tải ví dụ minh họa&lt;/h4&gt;
+
+&lt;p&gt;Tải ví dụ minh họa “&lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-directive&quot;&gt;AngularJS Directive Unit Testing&lt;/a&gt;” theo địa chỉ dành cho &lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-directive.git&quot;&gt;git clone&lt;/a&gt; hoặc bản &lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-directive/archive/master.zip&quot;&gt;nén zip&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Sau khi tải xong ví dụ, chuyển vào thư mục &lt;em&gt;example-karma-unit-testing-directive&lt;/em&gt;, thực hiện lệnh sau để cài đặt &lt;strong&gt;karma&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install karma karma-jasmine karma-chrome-launcher --save-dev&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Sau khi &lt;strong&gt;npm&lt;/strong&gt; cài đặt xong các gói thư viện, chạy thử ví dụ bằng lệnh:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;karma start karma-unit.conf.js&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;m-t-directive-cn-kim-th&quot;&gt;Mô tả Directive cần kiểm thử&lt;/h4&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//----------------------------------------------------------------------&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// file: example-karma-unit-testing-directive/main/js/myDirective.js&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myApp&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;directive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myDirective&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$timeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;lt;div class=&amp;quot;notification&amp;quot;&amp;gt;&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+            &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;lt;div class=&amp;quot;notification-content&amp;quot;&amp;gt;&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+                &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+            &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;lt;/div&amp;gt;&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;lt;/div&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;restrict&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;E&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;=&amp;#39;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;to-spec-kim-th-directive&quot;&gt;Tạo Spec kiểm thử Directive&lt;/h4&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//----------------------------------------------------------------------&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// file: example-karma-unit-testing-directive/test/unit/myDirective.Spec.js&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myDirective Unit Testing&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mockElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myApp&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;inject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$compile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$rootScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$rootScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;mockElement&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+                &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;lt;my-directive message=&amp;quot;note&amp;quot;&amp;gt;&amp;lt;/my-directive&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;$compile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mockElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}));&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;should display the welcome text&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;note&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Welcome to Danang Javascript&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mockElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toContain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Welcome to Danang Javascript&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+  
+  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/javascript/angularjs/kiem-thu-don-vi-unit-testing-trong-angularjs.html&quot;&gt;Kiểm thử đơn vị (Unit Testing) trong AngularJS&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on November 21, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -3362,65 +3966,6 @@ CPU minf mjf xcal  intr ithr  csw icsw migr smtx  srw syscl  usr sys  wt idl
 
   
   &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/os/solaris/cac-lenh-thong-dung-trong-he-dieu-hanh-solaris.html&quot;&gt;Các lệnh thông dụng dùng trong hệ điều hành Solaris 11&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on May 29, 2014.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Sử dụng Regular Expression để kiểm tra tính hợp lệ của mật khẩu]]></title>
-  <link rel="alternate" type="text/html" href="http://acegik.net/blog/java/regexp/su-dung-regular-expression-de-kiem-tra-tinh-hop-le-cua-mat-khau.html"/>
-  <id>http://acegik.net/blog/java/regexp/su-dung-regular-expression-de-kiem-tra-tinh-hop-le-cua-mat-khau</id>
-  <published>2013-10-26T00:00:00+07:00</published>
-  <updated>2013-10-26T00:00:00+07:00</updated>
-  <author>
-    <name>Phạm Ngọc Hùng</name>
-    <uri>http://acegik.net/blog</uri>
-    <email>pnhung177@drupalex.net</email>
-  </author>
-  <category scheme="http://acegik.net/blog/tags/#Java" term="Java" /><category scheme="http://acegik.net/blog/tags/#Regular%20Expression" term="Regular Expression" /><category scheme="http://acegik.net/blog/tags/#Password%20Policy" term="Password Policy" />
-  <content type="html">
-  
-    &lt;p&gt;Chúng ta đã làm quen với việc sử dụng Regular Expression để kiểm tra tính hợp lệ của dữ liệu. Trong phần này, chúng ta sẽ tìm hiểu về cách thức áp dụng Regular Expression để kiểm tra tính hợp lệ của mật khẩu, trong đó xây dựng cơ chế để điều chỉnh các mức độ mạnh yếu khác nhau của mật khẩu cần được kiểm tra. &lt;/p&gt;
-
-&lt;p&gt;Trong ví dụ minh họa bài viết, chúng ta xây dựng lớp đối tượng có tên &lt;strong&gt;PasswordPolicyChecker&lt;/strong&gt; thực hiện chức năng kiểm tra tính hợp lệ của mật khẩu, thông qua hàm &lt;strong&gt;validate()&lt;/strong&gt; định nghĩa bên trong lớp đối tượng này.&lt;/p&gt;
-
-&lt;h2 id=&quot;lp-trnh-passwordpolicychecker&quot;&gt;Lập trình PasswordPolicyChecker&lt;/h2&gt;
-
-&lt;p&gt;Lớp đối tượng &lt;a href=&quot;https://github.com/pnhung177/example-regexp-passwd-policy/blob/master/src/main/java/net/acegik/examples/PasswordPolicyChecker.java&quot;&gt;PasswordPolicyChecker&lt;/a&gt; cung cấp hàm &lt;strong&gt;validate()&lt;/strong&gt; kiểm tra tính hợp lệ của mật khẩu cũng như cho phép người lập trình tùy chỉnh các quy tắc kiểm tra. Có hai nhóm quy tắc giúp tăng cường độ khó của mật khẩu: giới hạn về kích thước mật khẩu và các quy định về các loại ký tự cần phải có trong mật khẩu.&lt;/p&gt;
-
-&lt;h3 id=&quot;quy-nh-v-kch-thc-mt-khu&quot;&gt;Quy định về kích thước mật khẩu&lt;/h3&gt;
-
-&lt;p&gt;Kích thước mật khẩu là số lượng ký tự có trong mật khẩu đó. Thông thường các hệ thống đều quy định kích thước tối thiểu mật khẩu cần có. Một số hệ thống cũng quy định thêm giới hạn kích thước tối đa. Trong chương trình ví dụ minh họa, chúng ta sử dụng 2 thuộc tính để quy định giới hạn kích thước tối thiểu và tối đa cho mật khẩu:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;em&gt;minNumberOfChars&lt;/em&gt;: xác định số lượng tối thiểu ký tự có trong mật khẩu (kích thước tối thiểu). Nếu giá trị này không thiết lập hoặc được thiết lập giá trị nhỏ hơn hoặc bằng 0, thì sẽ được tự động thiết lập lại giá trị mặc định (bằng 6).&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;maxNumberOfChars&lt;/em&gt;: xác định số lượng tối đa ký tự có trong mật khẩu (kích thước tối đa). Nếu giá trị này không thiết lập hoặc thiết lập nhỏ hơn hoặc bằng 0, thì sẽ được xem như không giới hạn tối đa, giá trị mật khẩu có thể có chiều dài không giới hạn. Nếu giá trị &lt;em&gt;maxNumberOfChars&lt;/em&gt; thỏa mãn 0 &amp;lt; &lt;em&gt;maxNumberOfChars&lt;/em&gt; &amp;lt; &lt;em&gt;minNumberOfChars&lt;/em&gt; thì sẽ được gán giá trị bằng với &lt;em&gt;minNumberOfChars&lt;/em&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;quy-tc-v-k-t-c-trong-mt-khu&quot;&gt;Quy tắc về ký tự có trong mật khẩu&lt;/h3&gt;
-
-&lt;p&gt;Phần này sẽ liệt kê các quy tắc về các ký tự có trong mật khẩu và các mẫu đối sánh (Pattern) định nghĩa trong RegExp tương ứng với các quy tắc đó. &lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/f3b6f4ed-b80f-4c11-baa3-2f4da021b6ff/rules-to-patterns.png&quot; alt=&quot;Hình 1. Bảng định nghĩa Pattern cho các Rule&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Trường hợp đơn giản nhất, mật khẩu phải đáp ứng được yêu cầu 1, đó là không được phép có ký tự trắng (whitespace) trong mật khẩu.&lt;/p&gt;
-
-&lt;h3 id=&quot;la-chn-cc-quy-tc-p-dng-kim-tra&quot;&gt;Lựa chọn các quy tắc áp dụng kiểm tra&lt;/h3&gt;
-
-&lt;p&gt;Việc lựa chọn các quy tắc áp dụng kiểm tra được thực hiện thông qua thuộc tính &lt;em&gt;optionFlags&lt;/em&gt;. Thuộc tính này là một số nguyên, mỗi bit từ phải qua trái (tức là hướng từ vị trí có ý nghĩa thấp đến vị trí có ý nghĩa cao) được dùng làm một “cờ” để đánh dấu cho một quy tắc. Chẳng hạn bit số 0, là “cờ” có tên &lt;em&gt;FLAG_HAS_NO_WHITESPACE&lt;/em&gt; đại diện cho quy tắc “No whitespace allowed in the entire string”, tùy thuộc giá trị cờ bằng 1 (cờ được bật) hay bằng 0 (cờ bị tắt) mà chương trình kiểm tra sẽ áp dụng hoặc bỏ qua quy tắc này.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/f3b6f4ed-b80f-4c11-baa3-2f4da021b6ff/option-flags.png&quot; alt=&quot;Hình 2. Bảng định nghĩa Flags&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Để thiết lập nhiều quy tắc cùng lúc, chúng ta có thể dùng toán tử Bitwise OR để “ghép” các quy tắc này với nhau. Giả sử với 3 quy tắc: “&lt;em&gt;No whitespace allowed in the entire string&lt;/em&gt;”, “&lt;em&gt;A digit must occur at least once&lt;/em&gt;” và “&lt;em&gt;A special character must occur at least once&lt;/em&gt;”, chúng ta có thể thiết lập bằng lệnh:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;validator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setOptionFlags&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FLAG_HAS_NO_WHITESPACE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FLAG_HAS_DIGIT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FLAG_HAS_SPECIAL_CHARS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;kim-th-passwordpolicychecker&quot;&gt;Kiểm thử PasswordPolicyChecker&lt;/h2&gt;
-
-&lt;p&gt;Chương trình kiểm thử (Unit Test) được viết trong lớp &lt;a href=&quot;https://github.com/pnhung177/example-regexp-passwd-policy/blob/master/src/test/java/net/acegik/examples/PasswordPolicyCheckerTest.java&quot;&gt;PasswordPolicyCheckerTest&lt;/a&gt;. Mã nguồn &lt;a href=&quot;https://github.com/pnhung177/example-regexp-passwd-policy&quot;&gt;ví dụ&lt;/a&gt; được chia sẻ trên github, các bạn có thể &lt;a href=&quot;https://github.com/pnhung177/example-regexp-passwd-policy/archive/master.zip&quot;&gt;tải ví dụ&lt;/a&gt; về để chạy thử trên máy tính của mình.&lt;/p&gt;
-
-
-  
-  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/java/regexp/su-dung-regular-expression-de-kiem-tra-tinh-hop-le-cua-mat-khau.html&quot;&gt;Sử dụng Regular Expression để kiểm tra tính hợp lệ của mật khẩu&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on October 26, 2013.&lt;/p&gt;</content>
 </entry>
 
 </feed>

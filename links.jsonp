@@ -138,6 +138,11 @@ callback([
   {
     "text": "Tổng quan về kiểm thử phần mềm trong AngualrJS",
     "href": "/blog/javascript/angularjs/tong-quan-ve-kiem-thu-trong-angularjs.html"
+  } ,
+
+  {
+    "text": "Kiểm thử đơn vị (Unit Testing) trong AngularJS",
+    "href": "/blog/javascript/angularjs/kiem-thu-don-vi-unit-testing-trong-angularjs.html"
   } 
 
 ])

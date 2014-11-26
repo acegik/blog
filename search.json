@@ -1,6 +1,14 @@
 [
 	
 		{
+		  "title"      : "Kiểm thử đơn vị (Unit Testing) trong AngularJS",
+		  "category"   : "javascriptangularjs",
+		  "url"        : "/blog/javascript/angularjs/kiem-thu-don-vi-unit-testing-trong-angularjs.html",
+		  "date"       : "2014-11-21 00:00:00 +0700",
+		  "shortdate"  : "November 21, 2014"
+		} ,
+	
+		{
 		  "title"      : "Tổng quan về kiểm thử phần mềm trong AngualrJS",
 		  "category"   : "javascriptangularjs",
 		  "url"        : "/blog/javascript/angularjs/tong-quan-ve-kiem-thu-trong-angularjs.html",
