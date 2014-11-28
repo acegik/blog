@@ -126,7 +126,7 @@
 <div id="drawer">
 <ul id="markdown-toc">
   <li><a href="#thit-lp-mi-trng-unit-testing">Thiết lập môi trường Unit Testing</a>    <ul>
-      <li><a href="#karma---to-mi-trng-cho-unit-testing">Karma - tạo môi trường cho Unit Testing</a>        <ul>
+      <li><a href="#karma---mi-trng--chy-unit-testing">Karma - môi trường để chạy Unit Testing</a>        <ul>
           <li><a href="#ci-t-nodejs">Cài đặt Node.js</a></li>
           <li><a href="#ci-t-karma">Cài đặt Karma</a></li>
           <li><a href="#ci-t-karma-commandline-interface">Cài đặt Karma Commandline Interface</a></li>
@@ -144,7 +144,13 @@
     </ul>
   </li>
   <li><a href="#p-dng-unit-testing-cho-ng-dng-angularjs">Áp dụng Unit Testing cho ứng dụng AngularJS</a>    <ul>
-      <li><a href="#k-thut-gi-lp-trong-kim-th-angularjs">Kỹ thuật giả lập trong kiểm thử AngularJS</a></li>
+      <li><a href="#k-thut-gi-lp-trong-kim-th-angularjs">Kỹ thuật giả lập trong kiểm thử AngularJS</a>        <ul>
+          <li><a href="#khai-bo-th-vin-angular-mocks">Khai báo thư viện angular-mocks</a></li>
+          <li><a href="#gi-lp-module-ng-dng-c-kim-th">Giả lập module ứng dụng được kiểm thử</a></li>
+          <li><a href="#thay-th-cc-dch-v-ph-thuc">Thay thế các dịch vụ phụ thuộc</a></li>
+          <li><a href="#ch-nh-dch-v-cn-s-dng">Chỉ định dịch vụ cần sử dụng</a></li>
+        </ul>
+      </li>
       <li><a href="#p-dng-unit-testing-cho-cc-controller">Áp dụng Unit Testing cho các Controller</a>        <ul>
           <li><a href="#ti-v-d-minh-ha">Tải ví dụ minh họa</a></li>
           <li><a href="#m-t-controller-cn-kim-th">Mô tả Controller cần kiểm thử</a></li>
@@ -172,6 +178,7 @@
       </li>
     </ul>
   </li>
+  <li><a href="#ti-liu-tham-kho">Tài liệu tham khảo</a></li>
 </ul>
 
   </div>
@@ -179,13 +186,13 @@
 
 <h2 id="thit-lp-mi-trng-unit-testing">Thiết lập môi trường Unit Testing</h2>
 
-<h3 id="karma---to-mi-trng-cho-unit-testing">Karma - tạo môi trường cho Unit Testing</h3>
+<h3 id="karma---mi-trng--chy-unit-testing">Karma - môi trường để chạy Unit Testing</h3>
 
 <p>(Vai trò của Karma đối với việc Kiểm thử trong AngularJS cũng giống như nền móng và mặt bằng xung quanh của một ngôi nhà)</p>
 
 <h4 id="ci-t-nodejs">Cài đặt Node.js</h4>
 
-<p>Các bạn có thể tham khảo hướng dẫn cài đặt NOde.js tại <a href="https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager">trang hướng dẫn này</a>.</p>
+<p>Các bạn có thể tham khảo hướng dẫn cài đặt Node.js tại <a href="https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager">trang hướng dẫn này</a>.</p>
 
 <h4 id="ci-t-karma">Cài đặt Karma</h4>
 
@@ -215,7 +222,7 @@
 
 <p>Karma cho phép người dùng tùy chỉnh môi trường cho các dạng kiểm thử khác nhau, bằng cách cung cấp lệnh để người dùng khai báo các tham số môi trường. Các khai báo tham số môi trường kiểm thử sẽ được lưu trong một tệp cấu hình. Thông thường, người lập trình sẽ khai báo tham số và lưu vào tệp cấu hình môi trường cho mỗi loại kiểm thử trong AngularJS, chẳng hạn karma-unit.conf.js cho Unit Testing, karma-e2e.conf.js cho End-to-End Testing.</p>
 
-<p>Để thuận tiện cho việc khai báo, Karma cung cấp lệnh **karma init <tên tệp="" cấu="" hình="">** để người dùng chọn giá trị cho từng mục cấu hình. Chẳng hạn, để tạo tệp cấu hình cho Unit Testing, chúng ta chuyển thư mục làm việc vào thư mục gốc của dự án, dùng lệnh khởi tạo như sau:</tên></p>
+<p>Để thuận tiện cho việc khai báo, Karma cung cấp lệnh <strong>karma init &lt;tên tệp cấu hình&gt;</strong> để người dùng chọn giá trị cho từng mục cấu hình. Chẳng hạn, để tạo tệp cấu hình cho Unit Testing, chúng ta chuyển thư mục làm việc vào thư mục gốc của dự án, dùng lệnh khởi tạo như sau:</p>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>karma init karma-unit.conf.js</code></pre></div>
 
@@ -223,9 +230,11 @@
 
 <h3 id="jasmine---khung-ng-dng-cho-unit-testing">Jasmine - khung ứng dụng cho Unit Testing</h3>
 
+<p>(Vai trò của Jasmine đối với việc Kiểm thử trong AngularJS cũng giống như khung bê-tông, dầm trụ xi-măng của một ngôi nhà)</p>
+
 <p>Jasmine là khung ứng dụng hỗ trợ kiểm thử theo mô hình BDD (Behavior-Driven Development framework). Jasmine được chọn mặc định làm khung ứng dụng kiểm thử trong Karma. Để sử dụng Jasmine với Karma, chúng ta cần cài đặt gói thư viện <strong>karma-jasmine</strong> (như đã thực hiện trong phần cài đặt Karma ở bên trên).</p>
 
-<p>Jasmine cung cấp các hàm cung cáp nhiều tiện ích hỗ trợ kiểm thử khác nhau. Phần dưới đây sẽ trình bày các nhóm hàm hỗ trợ kiểm thử thường dùng của Jasmine.</p>
+<p>Jasmine cung cấp nhiều hàm tiện ích hỗ trợ các khía cạnh khác nhau trong kiểm thử. Phần dưới đây sẽ trình bày các nhóm hàm hỗ trợ kiểm thử thường dùng của Jasmine.</p>
 
 <h4 id="khai-bo-spec-suite">Khai báo Spec Suite</h4>
 
@@ -286,16 +295,16 @@
 <p>Các hàm kỳ vọng cho phép chúng ta khẳng định <em>một biểu thức cần kiểm thử</em> phải có giá trị <em>thỏa mãn</em> một <em>yêu cầu</em> nào đó.</p>
 
 <ul>
-  <li>expect(x).toEqual(val): Khẳng định giá trị của đối tượng <strong>x</strong> bằng với <strong>val</strong> (nhưng không nhất thiết đồng nhất nhau).</li>
-  <li>expect(x).toBe(obj): Khẳng định rằng đối tượng <strong>x</strong> đồng nhất với <strong>obj</strong> (2 đối tượng này là một).</li>
-  <li>expect(x).toMatch(regexp): Khẳng định chuỗi <strong>x</strong> khớp với biểu thức chính quy <strong>regexp</strong>.</li>
-  <li>expect(x).toBeNull(): Khẳng định rằng biến <strong>x</strong> chứa giá trị là <strong>null</strong>.</li>
-  <li>expect(x).toBeTruthy(): Khẳng định rằng giá trị <strong>x</strong> là <strong>true</strong> hoặc ước lượng bằng <strong>true</strong>.</li>
-  <li>expect(x).toBeFalsy(): Khẳng định rằng giá trị <strong>x</strong> là <strong>false</strong> hoặc ước lượng bằng <strong>false</strong>.</li>
-  <li>expect(x).toContain(y): Khẳng định rằng <strong>x</strong> là một chuỗi ký tự và <strong>x</strong> chứa giá trị <strong>y</strong> (chuỗi <strong>y</strong> là một phần của chuỗi <strong>x</strong>).</li>
-  <li>expect(x).toBeGreaterThan(y): Khẳng định rằng <strong>x</strong> lớn hơn <strong>y</strong>.</li>
-  <li>expect(x).toBeDefined(): Khẳng định rằng biến <strong>x</strong> đã được định nghĩa.</li>
-  <li>expect(x).toBeUndefined(): Khẳng định rằng biến <strong>x</strong> chưa được định nghĩa.</li>
+  <li><em>expect(x).toEqual(val)</em>: Khẳng định giá trị của đối tượng <strong>x</strong> bằng với <strong>val</strong> (nhưng không nhất thiết đồng nhất nhau).</li>
+  <li><em>expect(x).toBe(obj)</em>: Khẳng định rằng đối tượng <strong>x</strong> đồng nhất với <strong>obj</strong> (2 đối tượng này là một).</li>
+  <li><em>expect(x).toMatch(regexp)</em>: Khẳng định chuỗi <strong>x</strong> khớp với biểu thức chính quy <strong>regexp</strong>.</li>
+  <li><em>expect(x).toBeNull()</em>: Khẳng định rằng biến <strong>x</strong> chứa giá trị là <strong>null</strong>.</li>
+  <li><em>expect(x).toBeTruthy()</em>: Khẳng định rằng giá trị <strong>x</strong> là <strong>true</strong> hoặc ước lượng bằng <strong>true</strong>.</li>
+  <li><em>expect(x).toBeFalsy()</em>: Khẳng định rằng giá trị <strong>x</strong> là <strong>false</strong> hoặc ước lượng bằng <strong>false</strong>.</li>
+  <li><em>expect(x).toContain(y)</em>: Khẳng định rằng <strong>x</strong> là một chuỗi ký tự và <strong>x</strong> chứa giá trị <strong>y</strong> (chuỗi <strong>y</strong> là một phần của chuỗi <strong>x</strong>).</li>
+  <li><em>expect(x).toBeGreaterThan(y)</em>: Khẳng định rằng <strong>x</strong> lớn hơn <strong>y</strong>.</li>
+  <li><em>expect(x).toBeDefined()</em>: Khẳng định rằng biến <strong>x</strong> đã được định nghĩa.</li>
+  <li><em>expect(x).toBeUndefined()</em>: Khẳng định rằng biến <strong>x</strong> chưa được định nghĩa.</li>
 </ul>
 
 <h3 id="v-d-n-gin-v-unit-testing">Ví dụ đơn giản về Unit Testing</h3>
@@ -361,17 +370,136 @@
 
 <h3 id="k-thut-gi-lp-trong-kim-th-angularjs">Kỹ thuật giả lập trong kiểm thử AngularJS</h3>
 
-<p>Trước khi tìm hiểu cách thức áp dụng kiểm thử đơn vị vào các thành phần của AngularJS, chúng ta cần hiểu rõ một kỹ thuật quan trọng trong lập trình kiểm thử: kỹ thuật giả lập (mocking).</p>
+<p>Trước khi tìm hiểu cách thức áp dụng kiểm thử đơn vị vào các thành phần của AngularJS, chúng ta cần hiểu rõ một kỹ thuật quan trọng trong lập trình kiểm thử: kỹ thuật giả lập (mocking). Giả lập trong kiểm thử đơn vị ứng dụng AngularJS là sự kết hợp giữa các hàm Spy của Jasmine với module ngMocks của AngularJS.</p>
 
-<p>(coming soon)</p>
+<h4 id="khai-bo-th-vin-angular-mocks">Khai báo thư viện angular-mocks</h4>
+
+<p>Để tạo các đối tượng giả dùng cho kiểm thử đơn vị trong AngularJS, chúng ta cần khai báo thư viện <em>angular-mocks</em> bằng cách bổ sung khai báo tệp <em>angular-mocks.js</em> trong cấu hình của Karma. Cần lưu ý thứ tự khai báo các tệp thư viện trong thuộc tính <em>files</em> của tệp cấu hình Karma:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//</span>
+<span class="c1">// file: karma-unit.conf.js</span>
+<span class="c1">//</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">config</span><span class="p">.</span><span class="nx">set</span><span class="p">({</span>
+    
+    <span class="c1">// ...</span>
+  
+    <span class="c1">// list of files / patterns to load in the browser</span>
+    <span class="nx">files</span><span class="o">:</span> <span class="p">[</span>
+      <span class="s1">&#39;main/lib/angular/angular.js&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;main/lib/angular/angular-mocks.js&#39;</span><span class="p">,</span>  
+      <span class="s1">&#39;main/js/*.js&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;test/**/*Spec.js&#39;</span>
+    <span class="p">],</span>
+    
+    <span class="c1">// .....</span>
+
+  <span class="p">});</span>
+<span class="p">};</span></code></pre></div>
+
+<p>Một khi đã khai báo thư viện <em>angular-mocks</em>, chúng ta có thể viết lệnh tạo ngữ cảnh giả lập đối tượng cho module ứng dụng Angular cần kiểm thử.</p>
+
+<h4 id="gi-lp-module-ng-dng-c-kim-th">Giả lập module ứng dụng được kiểm thử</h4>
+
+<p>Chẳng hạn chúng ta cần kiểm thử đơn vị đối với Service có tên <em>myService</em> trong module ứng dụng <em>myApp</em>, khi đó chúng ta cần sử dụng hàm <strong>angular.mock.module()</strong> tạo ngữ cảnh giả lập đối tượng cho <em>myApp</em> ứng với từng lệnh kiểm thử <strong>it()</strong> như sau:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;myApp Unit Testing&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    
+    <span class="c1">// Mock our &#39;myApp&#39; angular module</span>
+    <span class="nx">beforeEach</span><span class="p">(</span><span class="nx">angular</span><span class="p">.</span><span class="nx">mock</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myApp&#39;</span><span class="p">));</span>
+    
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;Unit testing 1&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
+        <span class="c1">// ... </span>
+    <span class="p">});</span>
+    
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;Unit testing 2&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
+        <span class="c1">// ... </span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
+
+<h4 id="thay-th-cc-dch-v-ph-thuc">Thay thế các dịch vụ phụ thuộc</h4>
+
+<p>Quá trình <em>kiểm thử đơn vị</em> đòi hỏi phải cô lập thành phần đang được kiểm thử khỏi các thành phần phụ thuộc khác. Hàm <em>angular.mock.module()</em> cho phép mã lệnh kiểm thử lấy service <strong>$provide</strong> ra để định nghĩa lại (thay thế) các service phụ thuộc khác trước khi chạy hàm kiểm thử:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;myApp Unit Testing&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    
+    <span class="c1">// Mock our &#39;myApp&#39; angular module</span>
+    <span class="nx">beforeEach</span><span class="p">(</span><span class="nx">angular</span><span class="p">.</span><span class="nx">mock</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myApp&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$provide</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// sử dụng các hàm factory(), service(), value() của $provide</span>
+    <span class="p">}));</span>
+    
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;Unit testing 1&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
+        <span class="c1">// ... </span>
+    <span class="p">});</span>
+    
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;Unit testing 2&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
+        <span class="c1">// ... </span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
+
+<p>Có thể tìm hiểu thêm về nội dung này trong phần bài viết “<em>Áp dụng Unit Testing cho các Service</em>” bên dưới.</p>
+
+<h4 id="ch-nh-dch-v-cn-s-dng">Chỉ định dịch vụ cần sử dụng</h4>
+
+<p>Để kiểm thử các thành phần (Controller, Service, Filter, Directive), chúng ta cần tạo ra đối tượng cụ thể của thành phần đó, thay thế các dịch vụ phụ thuộc bằng các đối tượng giả lập, thực hiện các lời gọi hàm theo trình tự của kịch bản kiểm thử.</p>
+
+<p>Để có thể tiếp cận các dịch vụ của AngularJS để sử dụng phục vụ quá trình kiểm thử (chẳng hạn tạo đối tượng thành phần cần được kiểm thử như mô tả ở trên), thư viện <em>angular-mocks</em> cung cấp hàm <em>angular.mock.inject()</em> như là một điểm giao tiếp để người viết mã lệnh kiểm thử có thể chỉ định các dịch vụ của AngularJs cần dùng. Ví dụ, để có thể tạo đối tượng để kiểm thử <em>myController</em>, người lập trình có thể viết mã lệnh kiểm thử như sau:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;myController Unit testing #1&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">mockScope</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">controller</span><span class="p">;</span>
+
+    <span class="nx">beforeEach</span><span class="p">(</span><span class="nx">angular</span><span class="p">.</span><span class="nx">mock</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s2">&quot;myApp&quot;</span><span class="p">));</span>
+
+    <span class="nx">beforeEach</span><span class="p">(</span><span class="nx">angular</span><span class="p">.</span><span class="nx">mock</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">$rootScope</span><span class="p">,</span> <span class="nx">$controller</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">mockScope</span> <span class="o">=</span> <span class="nx">$rootScope</span><span class="p">.</span><span class="nx">$new</span><span class="p">();</span>
+        <span class="nx">controller</span> <span class="o">=</span> <span class="nx">$controller</span><span class="p">(</span><span class="s2">&quot;myController&quot;</span><span class="p">,</span> <span class="p">{</span>
+            <span class="nx">$scope</span><span class="o">:</span> <span class="nx">mockScope</span><span class="p">,</span>
+        <span class="p">});</span>
+    <span class="p">}));</span>
+    
+    <span class="nx">it</span><span class="p">(</span><span class="s2">&quot;unit testing function&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// testing code using controller and mockScope variables</span>
+    <span class="p">})</span>
+<span class="p">});</span></code></pre></div>
+
+<p>Lưu ý về quy ước sử dụng dấu gạch dưới (underscore - <em>_</em>) trong tên gọi của dịch vụ cung cấp bởi <em>angular.mock.inject()</em>: Đôi khi chúng ta muốn đặt tên biến tham chiếu trùng với tên của dịch vụ để thuận tiện cho việc lập trình. Chẳng hạn, cách đặt tên biến someService sau có thể gây khó hiểu cho mã lệnh bên dưới:</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;myService Unit Testing&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">someService</span><span class="p">;</span>
+
+    <span class="nx">beforeEach</span><span class="p">(</span><span class="nx">angular</span><span class="p">.</span><span class="nx">mock</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">myService</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">someService</span> <span class="o">=</span> <span class="nx">myService</span><span class="p">;</span>  <span class="c1">// &lt;-- we can&#39;t use the same name!</span>
+    <span class="p">}));</span>
+
+    <span class="c1">// There&#39;s a lot of code here ...</span>
+    
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;using someService&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// &lt;-- this is more confusing: what is someService, huh?</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
+
+<p>Thư viện <em>angular-mocks</em> đưa ra quy ước dịch vụ truyền vào hàm <em>angular.mock.inject()</em> có thể được bao trong cặp dấu gạch dưới, từ đó cho phép tên biến có thể trùng với tên dịch vụ. Khi đi tìm dịch vụ để truyền vào, <em>angular.mock.inject()</em> sẽ tự động loại bỏ cặp dấu gạch dưới để xác định đúng tên của dịch vụ cần tìm.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;myService Unit Testing&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">myService</span><span class="p">;</span> <span class="c1">// &lt;-- we can use the same name</span>
+
+    <span class="nx">beforeEach</span><span class="p">(</span><span class="nx">angular</span><span class="p">.</span><span class="nx">mock</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">_myService_</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">myService</span> <span class="o">=</span> <span class="nx">_myService_</span><span class="p">;</span>
+    <span class="p">}));</span>
+
+    <span class="c1">// There&#39;s a lot of code here ...</span>
+    
+    <span class="nx">it</span><span class="p">(</span><span class="s1">&#39;using myService&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// It&#39;s ok. myService is myService</span>
+    <span class="p">});</span>
+<span class="p">});</span></code></pre></div>
 
 <h3 id="p-dng-unit-testing-cho-cc-controller">Áp dụng Unit Testing cho các Controller</h3>
 
 <h4 id="ti-v-d-minh-ha">Tải ví dụ minh họa</h4>
 
-<p>Tải ví dụ minh họa “<a href="https://github.com/pnhung177/example-karma-unit-testing-controller">AngularJS Controller Unit Testing</a>” theo địa chỉ dành cho <a href="https://github.com/pnhung177/example-karma-unit-testing-controller.git">git clone</a> hoặc bản <a href="https://github.com/pnhung177/example-karma-unit-testing-controller/archive/master.zip">nén zip</a>.</p>
-
-<p>Sau khi tải xong ví dụ, chuyển vào thư mục <em>example-karma-unit-testing-controller</em>, thực hiện lệnh sau để cài đặt <strong>karma</strong>:</p>
+<p>Tải ví dụ minh họa “<a href="https://github.com/pnhung177/example-karma-unit-testing-controller">AngularJS Controller Unit Testing</a>” theo địa chỉ dành cho <a href="https://github.com/pnhung177/example-karma-unit-testing-controller.git">git clone</a> hoặc bản <a href="https://github.com/pnhung177/example-karma-unit-testing-controller/archive/master.zip">nén zip</a>. Sau khi tải xong ví dụ, chuyển vào thư mục <em>example-karma-unit-testing-controller</em>, thực hiện lệnh sau để cài đặt <strong>karma</strong>:</p>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install karma karma-jasmine karma-chrome-launcher --save-dev</code></pre></div>
 
@@ -516,9 +644,7 @@
 
 <h4 id="ti-v-d-minh-ha-1">Tải ví dụ minh họa</h4>
 
-<p>Tải ví dụ minh họa “<a href="https://github.com/pnhung177/example-karma-unit-testing-service">AngularJS Service Unit Testing</a>” theo địa chỉ dành cho <a href="https://github.com/pnhung177/example-karma-unit-testing-service.git">git clone</a> hoặc bản <a href="https://github.com/pnhung177/example-karma-unit-testing-service/archive/master.zip">nén zip</a>.</p>
-
-<p>Sau khi tải xong ví dụ, chuyển vào thư mục <em>example-karma-unit-testing-service</em>, thực hiện lệnh sau để cài đặt <strong>karma</strong>:</p>
+<p>Tải ví dụ minh họa “<a href="https://github.com/pnhung177/example-karma-unit-testing-service">AngularJS Service Unit Testing</a>” theo địa chỉ dành cho <a href="https://github.com/pnhung177/example-karma-unit-testing-service.git">git clone</a> hoặc bản <a href="https://github.com/pnhung177/example-karma-unit-testing-service/archive/master.zip">nén zip</a>. Sau khi tải xong ví dụ, chuyển vào thư mục <em>example-karma-unit-testing-service</em>, thực hiện lệnh sau để cài đặt <strong>karma</strong>:</p>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install karma karma-jasmine karma-chrome-launcher --save-dev</code></pre></div>
 
@@ -581,9 +707,7 @@
 
 <h4 id="ti-v-d-minh-ha-2">Tải ví dụ minh họa</h4>
 
-<p>Tải ví dụ minh họa “<a href="https://github.com/pnhung177/example-karma-unit-testing-filter">AngularJS Filter Unit Testing</a>” theo địa chỉ dành cho <a href="https://github.com/pnhung177/example-karma-unit-testing-filter.git">git clone</a> hoặc bản <a href="https://github.com/pnhung177/example-karma-unit-testing-filter/archive/master.zip">nén zip</a>.</p>
-
-<p>Sau khi tải xong ví dụ, chuyển vào thư mục <em>example-karma-unit-testing-filter</em>, thực hiện lệnh sau để cài đặt <strong>karma</strong>:</p>
+<p>Tải ví dụ minh họa “<a href="https://github.com/pnhung177/example-karma-unit-testing-filter">AngularJS Filter Unit Testing</a>” theo địa chỉ dành cho <a href="https://github.com/pnhung177/example-karma-unit-testing-filter.git">git clone</a> hoặc bản <a href="https://github.com/pnhung177/example-karma-unit-testing-filter/archive/master.zip">nén zip</a>. Sau khi tải xong ví dụ, chuyển vào thư mục <em>example-karma-unit-testing-filter</em>, thực hiện lệnh sau để cài đặt <strong>karma</strong>:</p>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install karma karma-jasmine karma-chrome-launcher --save-dev</code></pre></div>
 
@@ -641,9 +765,7 @@
 
 <h4 id="ti-v-d-minh-ha-3">Tải ví dụ minh họa</h4>
 
-<p>Tải ví dụ minh họa “<a href="https://github.com/pnhung177/example-karma-unit-testing-directive">AngularJS Directive Unit Testing</a>” theo địa chỉ dành cho <a href="https://github.com/pnhung177/example-karma-unit-testing-directive.git">git clone</a> hoặc bản <a href="https://github.com/pnhung177/example-karma-unit-testing-directive/archive/master.zip">nén zip</a>.</p>
-
-<p>Sau khi tải xong ví dụ, chuyển vào thư mục <em>example-karma-unit-testing-directive</em>, thực hiện lệnh sau để cài đặt <strong>karma</strong>:</p>
+<p>Tải ví dụ minh họa “<a href="https://github.com/pnhung177/example-karma-unit-testing-directive">AngularJS Directive Unit Testing</a>” theo địa chỉ dành cho <a href="https://github.com/pnhung177/example-karma-unit-testing-directive.git">git clone</a> hoặc bản <a href="https://github.com/pnhung177/example-karma-unit-testing-directive/archive/master.zip">nén zip</a>. Sau khi tải xong ví dụ, chuyển vào thư mục <em>example-karma-unit-testing-directive</em>, thực hiện lệnh sau để cài đặt <strong>karma</strong>:</p>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install karma karma-jasmine karma-chrome-launcher --save-dev</code></pre></div>
 
@@ -682,9 +804,9 @@
     <span class="kd">var</span> <span class="nx">mockElement</span><span class="p">;</span>
     <span class="kd">var</span> <span class="nx">mockScope</span><span class="p">;</span>
 
-    <span class="nx">beforeEach</span><span class="p">(</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myApp&#39;</span><span class="p">));</span>
+    <span class="nx">beforeEach</span><span class="p">(</span><span class="nx">angular</span><span class="p">.</span><span class="nx">mock</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;myApp&#39;</span><span class="p">));</span>
 
-    <span class="nx">beforeEach</span><span class="p">(</span><span class="nx">inject</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$compile</span><span class="p">,</span> <span class="nx">$rootScope</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">beforeEach</span><span class="p">(</span><span class="nx">angular</span><span class="p">.</span><span class="nx">mock</span><span class="p">.</span><span class="nx">inject</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$compile</span><span class="p">,</span> <span class="nx">$rootScope</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">mockScope</span> <span class="o">=</span> <span class="nx">$rootScope</span><span class="p">.</span><span class="nx">$new</span><span class="p">();</span>
         <span class="nx">mockElement</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">element</span><span class="p">(</span>
                 <span class="s1">&#39;&lt;my-directive message=&quot;note&quot;&gt;&lt;/my-directive&gt;&#39;</span><span class="p">);</span>
@@ -699,6 +821,16 @@
         <span class="nx">expect</span><span class="p">(</span><span class="nx">mockElement</span><span class="p">.</span><span class="nx">html</span><span class="p">()).</span><span class="nx">toContain</span><span class="p">(</span><span class="s2">&quot;Welcome to Danang Javascript&quot;</span><span class="p">);</span>
     <span class="p">});</span>
 <span class="p">});</span></code></pre></div>
+
+<h2 id="ti-liu-tham-kho">Tài liệu tham khảo</h2>
+
+<ul>
+  <li><a href="https://docs.angularjs.org/guide/unit-testing">AngularJS Documentation for unit-testing</a></li>
+  <li><a href="http://andyshora.com/unit-testing-best-practices-angularjs.html">Unit Testing Best Practices in AngularJS</a></li>
+  <li><a href="http://karma-runner.github.io/0.12/intro/installation.html">Karma Documentation - Installation</a></li>
+  <li><a href="https://docs.angularjs.org/api/ngMock/function/angular.mock.module">Function components in ngMock - angular.mock.module</a></li>
+  <li><a href="https://docs.angularjs.org/api/ngMock/function/angular.mock.inject">Function components in ngMock - angular.mock.inject</a></li>
+</ul>
 
 
             </div>

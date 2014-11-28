@@ -9,7 +9,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://acegik.net/blog/feed.xml" />
 <link rel="alternate" type="text/html" href="http://acegik.net/blog/" />
-<updated>2014-11-26T21:05:12+07:00</updated>
+<updated>2014-11-28T16:15:23+07:00</updated>
 <id>http://acegik.net/blog/</id>
 <author>
   <name>Phạm Ngọc Hùng</name>
@@ -42,7 +42,7 @@
 &lt;div id=&quot;drawer&quot;&gt;
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#thit-lp-mi-trng-unit-testing&quot;&gt;Thiết lập môi trường Unit Testing&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#karma---to-mi-trng-cho-unit-testing&quot;&gt;Karma - tạo môi trường cho Unit Testing&lt;/a&gt;        &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#karma---mi-trng--chy-unit-testing&quot;&gt;Karma - môi trường để chạy Unit Testing&lt;/a&gt;        &lt;ul&gt;
           &lt;li&gt;&lt;a href=&quot;#ci-t-nodejs&quot;&gt;Cài đặt Node.js&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#ci-t-karma&quot;&gt;Cài đặt Karma&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#ci-t-karma-commandline-interface&quot;&gt;Cài đặt Karma Commandline Interface&lt;/a&gt;&lt;/li&gt;
@@ -60,7 +60,13 @@
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#p-dng-unit-testing-cho-ng-dng-angularjs&quot;&gt;Áp dụng Unit Testing cho ứng dụng AngularJS&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#k-thut-gi-lp-trong-kim-th-angularjs&quot;&gt;Kỹ thuật giả lập trong kiểm thử AngularJS&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#k-thut-gi-lp-trong-kim-th-angularjs&quot;&gt;Kỹ thuật giả lập trong kiểm thử AngularJS&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#khai-bo-th-vin-angular-mocks&quot;&gt;Khai báo thư viện angular-mocks&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#gi-lp-module-ng-dng-c-kim-th&quot;&gt;Giả lập module ứng dụng được kiểm thử&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#thay-th-cc-dch-v-ph-thuc&quot;&gt;Thay thế các dịch vụ phụ thuộc&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#ch-nh-dch-v-cn-s-dng&quot;&gt;Chỉ định dịch vụ cần sử dụng&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#p-dng-unit-testing-cho-cc-controller&quot;&gt;Áp dụng Unit Testing cho các Controller&lt;/a&gt;        &lt;ul&gt;
           &lt;li&gt;&lt;a href=&quot;#ti-v-d-minh-ha&quot;&gt;Tải ví dụ minh họa&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#m-t-controller-cn-kim-th&quot;&gt;Mô tả Controller cần kiểm thử&lt;/a&gt;&lt;/li&gt;
@@ -88,6 +94,7 @@
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ti-liu-tham-kho&quot;&gt;Tài liệu tham khảo&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
   &lt;/div&gt;
@@ -95,13 +102,13 @@
 
 &lt;h2 id=&quot;thit-lp-mi-trng-unit-testing&quot;&gt;Thiết lập môi trường Unit Testing&lt;/h2&gt;
 
-&lt;h3 id=&quot;karma---to-mi-trng-cho-unit-testing&quot;&gt;Karma - tạo môi trường cho Unit Testing&lt;/h3&gt;
+&lt;h3 id=&quot;karma---mi-trng--chy-unit-testing&quot;&gt;Karma - môi trường để chạy Unit Testing&lt;/h3&gt;
 
 &lt;p&gt;(Vai trò của Karma đối với việc Kiểm thử trong AngularJS cũng giống như nền móng và mặt bằng xung quanh của một ngôi nhà)&lt;/p&gt;
 
 &lt;h4 id=&quot;ci-t-nodejs&quot;&gt;Cài đặt Node.js&lt;/h4&gt;
 
-&lt;p&gt;Các bạn có thể tham khảo hướng dẫn cài đặt NOde.js tại &lt;a href=&quot;https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager&quot;&gt;trang hướng dẫn này&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Các bạn có thể tham khảo hướng dẫn cài đặt Node.js tại &lt;a href=&quot;https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager&quot;&gt;trang hướng dẫn này&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h4 id=&quot;ci-t-karma&quot;&gt;Cài đặt Karma&lt;/h4&gt;
 
@@ -131,7 +138,7 @@
 
 &lt;p&gt;Karma cho phép người dùng tùy chỉnh môi trường cho các dạng kiểm thử khác nhau, bằng cách cung cấp lệnh để người dùng khai báo các tham số môi trường. Các khai báo tham số môi trường kiểm thử sẽ được lưu trong một tệp cấu hình. Thông thường, người lập trình sẽ khai báo tham số và lưu vào tệp cấu hình môi trường cho mỗi loại kiểm thử trong AngularJS, chẳng hạn karma-unit.conf.js cho Unit Testing, karma-e2e.conf.js cho End-to-End Testing.&lt;/p&gt;
 
-&lt;p&gt;Để thuận tiện cho việc khai báo, Karma cung cấp lệnh **karma init &lt;tên tệp=&quot;&quot; cấu=&quot;&quot; hình=&quot;&quot;&gt;** để người dùng chọn giá trị cho từng mục cấu hình. Chẳng hạn, để tạo tệp cấu hình cho Unit Testing, chúng ta chuyển thư mục làm việc vào thư mục gốc của dự án, dùng lệnh khởi tạo như sau:&lt;/tên&gt;&lt;/p&gt;
+&lt;p&gt;Để thuận tiện cho việc khai báo, Karma cung cấp lệnh &lt;strong&gt;karma init &amp;lt;tên tệp cấu hình&amp;gt;&lt;/strong&gt; để người dùng chọn giá trị cho từng mục cấu hình. Chẳng hạn, để tạo tệp cấu hình cho Unit Testing, chúng ta chuyển thư mục làm việc vào thư mục gốc của dự án, dùng lệnh khởi tạo như sau:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;karma init karma-unit.conf.js&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -139,9 +146,11 @@
 
 &lt;h3 id=&quot;jasmine---khung-ng-dng-cho-unit-testing&quot;&gt;Jasmine - khung ứng dụng cho Unit Testing&lt;/h3&gt;
 
+&lt;p&gt;(Vai trò của Jasmine đối với việc Kiểm thử trong AngularJS cũng giống như khung bê-tông, dầm trụ xi-măng của một ngôi nhà)&lt;/p&gt;
+
 &lt;p&gt;Jasmine là khung ứng dụng hỗ trợ kiểm thử theo mô hình BDD (Behavior-Driven Development framework). Jasmine được chọn mặc định làm khung ứng dụng kiểm thử trong Karma. Để sử dụng Jasmine với Karma, chúng ta cần cài đặt gói thư viện &lt;strong&gt;karma-jasmine&lt;/strong&gt; (như đã thực hiện trong phần cài đặt Karma ở bên trên).&lt;/p&gt;
 
-&lt;p&gt;Jasmine cung cấp các hàm cung cáp nhiều tiện ích hỗ trợ kiểm thử khác nhau. Phần dưới đây sẽ trình bày các nhóm hàm hỗ trợ kiểm thử thường dùng của Jasmine.&lt;/p&gt;
+&lt;p&gt;Jasmine cung cấp nhiều hàm tiện ích hỗ trợ các khía cạnh khác nhau trong kiểm thử. Phần dưới đây sẽ trình bày các nhóm hàm hỗ trợ kiểm thử thường dùng của Jasmine.&lt;/p&gt;
 
 &lt;h4 id=&quot;khai-bo-spec-suite&quot;&gt;Khai báo Spec Suite&lt;/h4&gt;
 
@@ -202,16 +211,16 @@
 &lt;p&gt;Các hàm kỳ vọng cho phép chúng ta khẳng định &lt;em&gt;một biểu thức cần kiểm thử&lt;/em&gt; phải có giá trị &lt;em&gt;thỏa mãn&lt;/em&gt; một &lt;em&gt;yêu cầu&lt;/em&gt; nào đó.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;expect(x).toEqual(val): Khẳng định giá trị của đối tượng &lt;strong&gt;x&lt;/strong&gt; bằng với &lt;strong&gt;val&lt;/strong&gt; (nhưng không nhất thiết đồng nhất nhau).&lt;/li&gt;
-  &lt;li&gt;expect(x).toBe(obj): Khẳng định rằng đối tượng &lt;strong&gt;x&lt;/strong&gt; đồng nhất với &lt;strong&gt;obj&lt;/strong&gt; (2 đối tượng này là một).&lt;/li&gt;
-  &lt;li&gt;expect(x).toMatch(regexp): Khẳng định chuỗi &lt;strong&gt;x&lt;/strong&gt; khớp với biểu thức chính quy &lt;strong&gt;regexp&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;expect(x).toBeNull(): Khẳng định rằng biến &lt;strong&gt;x&lt;/strong&gt; chứa giá trị là &lt;strong&gt;null&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;expect(x).toBeTruthy(): Khẳng định rằng giá trị &lt;strong&gt;x&lt;/strong&gt; là &lt;strong&gt;true&lt;/strong&gt; hoặc ước lượng bằng &lt;strong&gt;true&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;expect(x).toBeFalsy(): Khẳng định rằng giá trị &lt;strong&gt;x&lt;/strong&gt; là &lt;strong&gt;false&lt;/strong&gt; hoặc ước lượng bằng &lt;strong&gt;false&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;expect(x).toContain(y): Khẳng định rằng &lt;strong&gt;x&lt;/strong&gt; là một chuỗi ký tự và &lt;strong&gt;x&lt;/strong&gt; chứa giá trị &lt;strong&gt;y&lt;/strong&gt; (chuỗi &lt;strong&gt;y&lt;/strong&gt; là một phần của chuỗi &lt;strong&gt;x&lt;/strong&gt;).&lt;/li&gt;
-  &lt;li&gt;expect(x).toBeGreaterThan(y): Khẳng định rằng &lt;strong&gt;x&lt;/strong&gt; lớn hơn &lt;strong&gt;y&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;expect(x).toBeDefined(): Khẳng định rằng biến &lt;strong&gt;x&lt;/strong&gt; đã được định nghĩa.&lt;/li&gt;
-  &lt;li&gt;expect(x).toBeUndefined(): Khẳng định rằng biến &lt;strong&gt;x&lt;/strong&gt; chưa được định nghĩa.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;expect(x).toEqual(val)&lt;/em&gt;: Khẳng định giá trị của đối tượng &lt;strong&gt;x&lt;/strong&gt; bằng với &lt;strong&gt;val&lt;/strong&gt; (nhưng không nhất thiết đồng nhất nhau).&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;expect(x).toBe(obj)&lt;/em&gt;: Khẳng định rằng đối tượng &lt;strong&gt;x&lt;/strong&gt; đồng nhất với &lt;strong&gt;obj&lt;/strong&gt; (2 đối tượng này là một).&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;expect(x).toMatch(regexp)&lt;/em&gt;: Khẳng định chuỗi &lt;strong&gt;x&lt;/strong&gt; khớp với biểu thức chính quy &lt;strong&gt;regexp&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;expect(x).toBeNull()&lt;/em&gt;: Khẳng định rằng biến &lt;strong&gt;x&lt;/strong&gt; chứa giá trị là &lt;strong&gt;null&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;expect(x).toBeTruthy()&lt;/em&gt;: Khẳng định rằng giá trị &lt;strong&gt;x&lt;/strong&gt; là &lt;strong&gt;true&lt;/strong&gt; hoặc ước lượng bằng &lt;strong&gt;true&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;expect(x).toBeFalsy()&lt;/em&gt;: Khẳng định rằng giá trị &lt;strong&gt;x&lt;/strong&gt; là &lt;strong&gt;false&lt;/strong&gt; hoặc ước lượng bằng &lt;strong&gt;false&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;expect(x).toContain(y)&lt;/em&gt;: Khẳng định rằng &lt;strong&gt;x&lt;/strong&gt; là một chuỗi ký tự và &lt;strong&gt;x&lt;/strong&gt; chứa giá trị &lt;strong&gt;y&lt;/strong&gt; (chuỗi &lt;strong&gt;y&lt;/strong&gt; là một phần của chuỗi &lt;strong&gt;x&lt;/strong&gt;).&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;expect(x).toBeGreaterThan(y)&lt;/em&gt;: Khẳng định rằng &lt;strong&gt;x&lt;/strong&gt; lớn hơn &lt;strong&gt;y&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;expect(x).toBeDefined()&lt;/em&gt;: Khẳng định rằng biến &lt;strong&gt;x&lt;/strong&gt; đã được định nghĩa.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;expect(x).toBeUndefined()&lt;/em&gt;: Khẳng định rằng biến &lt;strong&gt;x&lt;/strong&gt; chưa được định nghĩa.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;v-d-n-gin-v-unit-testing&quot;&gt;Ví dụ đơn giản về Unit Testing&lt;/h3&gt;
@@ -277,17 +286,136 @@
 
 &lt;h3 id=&quot;k-thut-gi-lp-trong-kim-th-angularjs&quot;&gt;Kỹ thuật giả lập trong kiểm thử AngularJS&lt;/h3&gt;
 
-&lt;p&gt;Trước khi tìm hiểu cách thức áp dụng kiểm thử đơn vị vào các thành phần của AngularJS, chúng ta cần hiểu rõ một kỹ thuật quan trọng trong lập trình kiểm thử: kỹ thuật giả lập (mocking).&lt;/p&gt;
+&lt;p&gt;Trước khi tìm hiểu cách thức áp dụng kiểm thử đơn vị vào các thành phần của AngularJS, chúng ta cần hiểu rõ một kỹ thuật quan trọng trong lập trình kiểm thử: kỹ thuật giả lập (mocking). Giả lập trong kiểm thử đơn vị ứng dụng AngularJS là sự kết hợp giữa các hàm Spy của Jasmine với module ngMocks của AngularJS.&lt;/p&gt;
 
-&lt;p&gt;(coming soon)&lt;/p&gt;
+&lt;h4 id=&quot;khai-bo-th-vin-angular-mocks&quot;&gt;Khai báo thư viện angular-mocks&lt;/h4&gt;
+
+&lt;p&gt;Để tạo các đối tượng giả dùng cho kiểm thử đơn vị trong AngularJS, chúng ta cần khai báo thư viện &lt;em&gt;angular-mocks&lt;/em&gt; bằng cách bổ sung khai báo tệp &lt;em&gt;angular-mocks.js&lt;/em&gt; trong cấu hình của Karma. Cần lưu ý thứ tự khai báo các tệp thư viện trong thuộc tính &lt;em&gt;files&lt;/em&gt; của tệp cấu hình Karma:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;//&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// file: karma-unit.conf.js&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// ...&lt;/span&gt;
+  
+    &lt;span class=&quot;c1&quot;&gt;// list of files / patterns to load in the browser&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;files&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+      &lt;span class=&quot;s1&quot;&gt;&amp;#39;main/lib/angular/angular.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;s1&quot;&gt;&amp;#39;main/lib/angular/angular-mocks.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  
+      &lt;span class=&quot;s1&quot;&gt;&amp;#39;main/js/*.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;s1&quot;&gt;&amp;#39;test/**/*Spec.js&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// .....&lt;/span&gt;
+
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Một khi đã khai báo thư viện &lt;em&gt;angular-mocks&lt;/em&gt;, chúng ta có thể viết lệnh tạo ngữ cảnh giả lập đối tượng cho module ứng dụng Angular cần kiểm thử.&lt;/p&gt;
+
+&lt;h4 id=&quot;gi-lp-module-ng-dng-c-kim-th&quot;&gt;Giả lập module ứng dụng được kiểm thử&lt;/h4&gt;
+
+&lt;p&gt;Chẳng hạn chúng ta cần kiểm thử đơn vị đối với Service có tên &lt;em&gt;myService&lt;/em&gt; trong module ứng dụng &lt;em&gt;myApp&lt;/em&gt;, khi đó chúng ta cần sử dụng hàm &lt;strong&gt;angular.mock.module()&lt;/strong&gt; tạo ngữ cảnh giả lập đối tượng cho &lt;em&gt;myApp&lt;/em&gt; ứng với từng lệnh kiểm thử &lt;strong&gt;it()&lt;/strong&gt; như sau:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myApp Unit Testing&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// Mock our &amp;#39;myApp&amp;#39; angular module&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myApp&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Unit testing 1&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+        &lt;span class=&quot;c1&quot;&gt;// ... &lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Unit testing 2&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+        &lt;span class=&quot;c1&quot;&gt;// ... &lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;thay-th-cc-dch-v-ph-thuc&quot;&gt;Thay thế các dịch vụ phụ thuộc&lt;/h4&gt;
+
+&lt;p&gt;Quá trình &lt;em&gt;kiểm thử đơn vị&lt;/em&gt; đòi hỏi phải cô lập thành phần đang được kiểm thử khỏi các thành phần phụ thuộc khác. Hàm &lt;em&gt;angular.mock.module()&lt;/em&gt; cho phép mã lệnh kiểm thử lấy service &lt;strong&gt;$provide&lt;/strong&gt; ra để định nghĩa lại (thay thế) các service phụ thuộc khác trước khi chạy hàm kiểm thử:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myApp Unit Testing&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// Mock our &amp;#39;myApp&amp;#39; angular module&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myApp&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$provide&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// sử dụng các hàm factory(), service(), value() của $provide&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}));&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Unit testing 1&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+        &lt;span class=&quot;c1&quot;&gt;// ... &lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Unit testing 2&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+        &lt;span class=&quot;c1&quot;&gt;// ... &lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Có thể tìm hiểu thêm về nội dung này trong phần bài viết “&lt;em&gt;Áp dụng Unit Testing cho các Service&lt;/em&gt;” bên dưới.&lt;/p&gt;
+
+&lt;h4 id=&quot;ch-nh-dch-v-cn-s-dng&quot;&gt;Chỉ định dịch vụ cần sử dụng&lt;/h4&gt;
+
+&lt;p&gt;Để kiểm thử các thành phần (Controller, Service, Filter, Directive), chúng ta cần tạo ra đối tượng cụ thể của thành phần đó, thay thế các dịch vụ phụ thuộc bằng các đối tượng giả lập, thực hiện các lời gọi hàm theo trình tự của kịch bản kiểm thử.&lt;/p&gt;
+
+&lt;p&gt;Để có thể tiếp cận các dịch vụ của AngularJS để sử dụng phục vụ quá trình kiểm thử (chẳng hạn tạo đối tượng thành phần cần được kiểm thử như mô tả ở trên), thư viện &lt;em&gt;angular-mocks&lt;/em&gt; cung cấp hàm &lt;em&gt;angular.mock.inject()&lt;/em&gt; như là một điểm giao tiếp để người viết mã lệnh kiểm thử có thể chỉ định các dịch vụ của AngularJs cần dùng. Ví dụ, để có thể tạo đối tượng để kiểm thử &lt;em&gt;myController&lt;/em&gt;, người lập trình có thể viết mã lệnh kiểm thử như sau:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;myController Unit testing #1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;controller&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;myApp&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;inject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$rootScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$controller&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$rootScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;controller&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$controller&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;myController&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;$scope&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}));&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;unit testing function&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// testing code using controller and mockScope variables&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Lưu ý về quy ước sử dụng dấu gạch dưới (underscore - &lt;em&gt;_&lt;/em&gt;) trong tên gọi của dịch vụ cung cấp bởi &lt;em&gt;angular.mock.inject()&lt;/em&gt;: Đôi khi chúng ta muốn đặt tên biến tham chiếu trùng với tên của dịch vụ để thuận tiện cho việc lập trình. Chẳng hạn, cách đặt tên biến someService sau có thể gây khó hiểu cho mã lệnh bên dưới:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myService Unit Testing&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;someService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;inject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;myService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;someService&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// &amp;lt;-- we can&amp;#39;t use the same name!&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}));&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// There&amp;#39;s a lot of code here ...&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;using someService&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// &amp;lt;-- this is more confusing: what is someService, huh?&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Thư viện &lt;em&gt;angular-mocks&lt;/em&gt; đưa ra quy ước dịch vụ truyền vào hàm &lt;em&gt;angular.mock.inject()&lt;/em&gt; có thể được bao trong cặp dấu gạch dưới, từ đó cho phép tên biến có thể trùng với tên dịch vụ. Khi đi tìm dịch vụ để truyền vào, &lt;em&gt;angular.mock.inject()&lt;/em&gt; sẽ tự động loại bỏ cặp dấu gạch dưới để xác định đúng tên của dịch vụ cần tìm.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myService Unit Testing&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &amp;lt;-- we can use the same name&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;inject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_myService_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;myService&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_myService_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}));&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// There&amp;#39;s a lot of code here ...&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;using myService&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// It&amp;#39;s ok. myService is myService&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;p-dng-unit-testing-cho-cc-controller&quot;&gt;Áp dụng Unit Testing cho các Controller&lt;/h3&gt;
 
 &lt;h4 id=&quot;ti-v-d-minh-ha&quot;&gt;Tải ví dụ minh họa&lt;/h4&gt;
 
-&lt;p&gt;Tải ví dụ minh họa “&lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-controller&quot;&gt;AngularJS Controller Unit Testing&lt;/a&gt;” theo địa chỉ dành cho &lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-controller.git&quot;&gt;git clone&lt;/a&gt; hoặc bản &lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-controller/archive/master.zip&quot;&gt;nén zip&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Sau khi tải xong ví dụ, chuyển vào thư mục &lt;em&gt;example-karma-unit-testing-controller&lt;/em&gt;, thực hiện lệnh sau để cài đặt &lt;strong&gt;karma&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;Tải ví dụ minh họa “&lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-controller&quot;&gt;AngularJS Controller Unit Testing&lt;/a&gt;” theo địa chỉ dành cho &lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-controller.git&quot;&gt;git clone&lt;/a&gt; hoặc bản &lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-controller/archive/master.zip&quot;&gt;nén zip&lt;/a&gt;. Sau khi tải xong ví dụ, chuyển vào thư mục &lt;em&gt;example-karma-unit-testing-controller&lt;/em&gt;, thực hiện lệnh sau để cài đặt &lt;strong&gt;karma&lt;/strong&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install karma karma-jasmine karma-chrome-launcher --save-dev&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -432,9 +560,7 @@
 
 &lt;h4 id=&quot;ti-v-d-minh-ha-1&quot;&gt;Tải ví dụ minh họa&lt;/h4&gt;
 
-&lt;p&gt;Tải ví dụ minh họa “&lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-service&quot;&gt;AngularJS Service Unit Testing&lt;/a&gt;” theo địa chỉ dành cho &lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-service.git&quot;&gt;git clone&lt;/a&gt; hoặc bản &lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-service/archive/master.zip&quot;&gt;nén zip&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Sau khi tải xong ví dụ, chuyển vào thư mục &lt;em&gt;example-karma-unit-testing-service&lt;/em&gt;, thực hiện lệnh sau để cài đặt &lt;strong&gt;karma&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;Tải ví dụ minh họa “&lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-service&quot;&gt;AngularJS Service Unit Testing&lt;/a&gt;” theo địa chỉ dành cho &lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-service.git&quot;&gt;git clone&lt;/a&gt; hoặc bản &lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-service/archive/master.zip&quot;&gt;nén zip&lt;/a&gt;. Sau khi tải xong ví dụ, chuyển vào thư mục &lt;em&gt;example-karma-unit-testing-service&lt;/em&gt;, thực hiện lệnh sau để cài đặt &lt;strong&gt;karma&lt;/strong&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install karma karma-jasmine karma-chrome-launcher --save-dev&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -497,9 +623,7 @@
 
 &lt;h4 id=&quot;ti-v-d-minh-ha-2&quot;&gt;Tải ví dụ minh họa&lt;/h4&gt;
 
-&lt;p&gt;Tải ví dụ minh họa “&lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-filter&quot;&gt;AngularJS Filter Unit Testing&lt;/a&gt;” theo địa chỉ dành cho &lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-filter.git&quot;&gt;git clone&lt;/a&gt; hoặc bản &lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-filter/archive/master.zip&quot;&gt;nén zip&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Sau khi tải xong ví dụ, chuyển vào thư mục &lt;em&gt;example-karma-unit-testing-filter&lt;/em&gt;, thực hiện lệnh sau để cài đặt &lt;strong&gt;karma&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;Tải ví dụ minh họa “&lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-filter&quot;&gt;AngularJS Filter Unit Testing&lt;/a&gt;” theo địa chỉ dành cho &lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-filter.git&quot;&gt;git clone&lt;/a&gt; hoặc bản &lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-filter/archive/master.zip&quot;&gt;nén zip&lt;/a&gt;. Sau khi tải xong ví dụ, chuyển vào thư mục &lt;em&gt;example-karma-unit-testing-filter&lt;/em&gt;, thực hiện lệnh sau để cài đặt &lt;strong&gt;karma&lt;/strong&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install karma karma-jasmine karma-chrome-launcher --save-dev&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -557,9 +681,7 @@
 
 &lt;h4 id=&quot;ti-v-d-minh-ha-3&quot;&gt;Tải ví dụ minh họa&lt;/h4&gt;
 
-&lt;p&gt;Tải ví dụ minh họa “&lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-directive&quot;&gt;AngularJS Directive Unit Testing&lt;/a&gt;” theo địa chỉ dành cho &lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-directive.git&quot;&gt;git clone&lt;/a&gt; hoặc bản &lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-directive/archive/master.zip&quot;&gt;nén zip&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Sau khi tải xong ví dụ, chuyển vào thư mục &lt;em&gt;example-karma-unit-testing-directive&lt;/em&gt;, thực hiện lệnh sau để cài đặt &lt;strong&gt;karma&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;Tải ví dụ minh họa “&lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-directive&quot;&gt;AngularJS Directive Unit Testing&lt;/a&gt;” theo địa chỉ dành cho &lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-directive.git&quot;&gt;git clone&lt;/a&gt; hoặc bản &lt;a href=&quot;https://github.com/pnhung177/example-karma-unit-testing-directive/archive/master.zip&quot;&gt;nén zip&lt;/a&gt;. Sau khi tải xong ví dụ, chuyển vào thư mục &lt;em&gt;example-karma-unit-testing-directive&lt;/em&gt;, thực hiện lệnh sau để cài đặt &lt;strong&gt;karma&lt;/strong&gt;:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install karma karma-jasmine karma-chrome-launcher --save-dev&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
@@ -598,9 +720,9 @@
     &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mockElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
-    &lt;span class=&quot;nx&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myApp&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myApp&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
 
-    &lt;span class=&quot;nx&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;inject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$compile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$rootScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;beforeEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mock&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;inject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$compile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$rootScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;nx&quot;&gt;mockScope&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$rootScope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
         &lt;span class=&quot;nx&quot;&gt;mockElement&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;angular&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
                 &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;lt;my-directive message=&amp;quot;note&amp;quot;&amp;gt;&amp;lt;/my-directive&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
@@ -615,6 +737,16 @@
         &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mockElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toContain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Welcome to Danang Javascript&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;ti-liu-tham-kho&quot;&gt;Tài liệu tham khảo&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.angularjs.org/guide/unit-testing&quot;&gt;AngularJS Documentation for unit-testing&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://andyshora.com/unit-testing-best-practices-angularjs.html&quot;&gt;Unit Testing Best Practices in AngularJS&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://karma-runner.github.io/0.12/intro/installation.html&quot;&gt;Karma Documentation - Installation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.angularjs.org/api/ngMock/function/angular.mock.module&quot;&gt;Function components in ngMock - angular.mock.module&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.angularjs.org/api/ngMock/function/angular.mock.inject&quot;&gt;Function components in ngMock - angular.mock.inject&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 
   
