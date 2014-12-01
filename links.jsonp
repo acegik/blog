@@ -143,11 +143,6 @@ callback([
   {
     "text": "Kiểm thử đơn vị (Unit Testing) trong AngularJS",
     "href": "/blog/javascript/angularjs/kiem-thu-don-vi-unit-testing-trong-angularjs.html"
-  } ,
-
-  {
-    "text": "Thực hành Unit testing để xây dựng ứng dụng AngularJS theo TDD",
-    "href": "/blog/javascript/angularjs/thuc-hanh-kiem-thu-don-vi-de-xay-dung-ung-dung-angularjs-theo-tdd.html"
   } 
 
 ])
