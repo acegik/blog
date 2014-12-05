@@ -1,6 +1,14 @@
 [
 	
 		{
+		  "title"      : "Thực hành Unit testing để xây dựng ứng dụng AngularJS theo TDD",
+		  "category"   : "javascriptangularjs",
+		  "url"        : "/blog/javascript/angularjs/thuc-hanh-kiem-thu-don-vi-de-xay-dung-ung-dung-angularjs-theo-tdd.html",
+		  "date"       : "2014-11-27 00:00:00 +0700",
+		  "shortdate"  : "November 27, 2014"
+		} ,
+	
+		{
 		  "title"      : "Kiểm thử đơn vị (Unit Testing) trong AngularJS",
 		  "category"   : "javascriptangularjs",
 		  "url"        : "/blog/javascript/angularjs/kiem-thu-don-vi-unit-testing-trong-angularjs.html",

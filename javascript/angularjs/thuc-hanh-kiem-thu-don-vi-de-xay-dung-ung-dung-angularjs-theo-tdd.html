@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>THựC HàNH UNIT TESTING để XâY DựNG ứNG DụNG ANGULARJS THEO TDD &vert; ACEGIK'S BLOG</title>
+<meta name="description" content="... when the sun comes up, you better be running!">
+<meta name="keywords" content="JavaScript, AngularJS">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/blog/images/logo.png">
+<meta name="twitter:title" content="Thực hành Unit testing để xây dựng ứng dụng AngularJS theo TDD">
+<meta name="twitter:description" content="... when the sun comes up, you better be running!">
+<meta name="twitter:creator" content="@pnhung177">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Thực hành Unit testing để xây dựng ứng dụng AngularJS theo TDD">
+<meta property="og:description" content="... when the sun comes up, you better be running!">
+<meta property="og:url" content="/blog/javascript/angularjs/thuc-hanh-kiem-thu-don-vi-de-xay-dung-ung-dung-angularjs-theo-tdd.html">
+<meta property="og:site_name" content="Acegik's Blog">
+<meta property="og:image" content="/blog/images/">
+
+
+
+
+
+<link rel="canonical" href="/blog/javascript/angularjs/thuc-hanh-kiem-thu-don-vi-de-xay-dung-ung-dung-angularjs-theo-tdd.html">
+<link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Acegik's Blog Feed">
+<link rel="author" href="https://plus.google.com/u/3/115458186421626071505?rel=author">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,600,300,800,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/blog/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/blog/assets/css/vendor/normalize.css">
+    <link rel="stylesheet" href="/blog/assets/css/vendor/foundation.min.css">
+    <link rel="stylesheet" href="/blog/assets/css/style.css">
+    <link rel="stylesheet" href="/blog/assets/css/post.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/blog/assets/js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+    
+
+
+
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/blog/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/blog/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/blog/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/blog/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/blog/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">  
+
+        <main id="summer-post-container-simple" class="summer-post-container-simple" role="main">
+            <header class="summer-post-header-simple">
+                <div class="summer-post-menu-header-simple">
+
+                    <a class="summer-blog-logo" href="/blog">
+                        <img src="/blog/images/logo.png" alt="Blog Logo" />
+                    </a>
+
+                <div class="summer-blog-menu">      
+    <div class="summer-mobile-menu show-for-small">
+        <a href="#"><i class="fa fa-bars"></i></a>
+    </div>
+    <ul class="summer-menu">
+        <li class="summer-mobile-close-btn show-for-small text-right">
+            <a href="#"><i class="fa fa-times"></i></a>
+        </li>
+
+            <li>
+                    <a href="/blog/">Trang bìa</a>
+                 </li>
+
+            <li>
+                    <a href="/blog/featured">Nổi bật</a>
+                 </li>
+
+            <li>
+                    <a href="/blog/categories">Danh mục</a>
+                 </li>
+
+            <li>
+                    <a href="/blog/about">Giới thiệu</a>
+                 </li>
+            
+           <li><a href="/blog/feed.xml" title="Atom/RSS feed"><i class="icon-rss"></i> Feed</a></li>
+    </ul>
+
+</div>
+            </div>
+
+                <div class="summer-post-title-simple row">
+                    <div class="small-12 columns">
+                        <div class="summer-post-meta-simple">
+                            <h1>Thực hành Unit testing để xây dựng ứng dụng AngularJS theo TDD</h1>
+                            <p>by <strong>pnhung177</strong> &#8212; on <a href="/blog/tags/index.html#JavaScript" data-toggle="tooltip" title="Posts tagged with JavaScript" rel="tag">JavaScript</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#AngularJS" data-toggle="tooltip" title="Posts tagged with AngularJS" rel="tag">AngularJS</a> &#8212; <strong><time datetime="2014-11-27T00:00:00+07:00">27/11/2014</time></strong></p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+        <article class="summer-post-content post tag-simple">
+            <div><p>Trong bài viết trước, tôi đã trình bày các kỹ thuật áp dụng Unit testing vào các thành phần AngularJS: Controller, Filter, Service và Directive thông qua các ví dụ minh họa đơn giản. Bài viết này sẽ đi sâu vào thực hành áp dụng Unit testing vào quá trình phát triển một ứng dụng AngularJS cụ thể, theo phương pháp TDD (Test Driven Development). </p>
+
+<p><img src="/blog/media/7bc61ac3-abb3-4fbd-9dd6-160baa709a6a/how-we-can-apply-tdd.png" alt="Áp dụng Unit testing vào phát triển ứng dụng như thế nào?" /></p>
+
+<section>
+  <header>
+    <h2>Nội dung trình bày</h2>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#p-dng-unit-testing-vo-pht-trin-ng-dng">Áp dụng Unit testing vào phát triển ứng dụng</a>    <ul>
+      <li><a href="#m-t-ng-dng-minh-ha">Mô tả ứng dụng minh họa</a></li>
+      <li><a href="#v-d-minh-ha-iu-g">Ví dụ minh họa điều gì?</a></li>
+    </ul>
+  </li>
+  <li><a href="#thc-hnh-pht-trin-ng-dng-minh-ha">Thực hành phát triển ứng dụng minh họa</a>    <ul>
+      <li><a href="#ti-m-ngun-v-d">Tải mã nguồn ví dụ</a></li>
+      <li><a href="#chuyn-i-cc-giai-on-m-ngun">Chuyển đổi các giai đoạn mã nguồn</a></li>
+      <li><a href="#cc-bc-thc-hin-xy-dng-v-d">Các bước thực hiện xây dựng ví dụ</a></li>
+    </ul>
+  </li>
+  <li><a href="#kt-lun">Kết luận</a></li>
+  <li><a href="#ti-liu-tham-kho">Tài liệu tham khảo</a></li>
+</ul>
+
+  </div>
+</section>
+
+<h2 id="p-dng-unit-testing-vo-pht-trin-ng-dng">Áp dụng Unit testing vào phát triển ứng dụng</h2>
+
+<h3 id="m-t-ng-dng-minh-ha">Mô tả ứng dụng minh họa</h3>
+
+<p>Giả sử chúng ta cần xây dựng chức năng quản lý sách (<em>bookmgr</em>) cho một ứng dụng chia sẻ sách trực tuyến (<em>bookspot</em>). Để tiện cho việc trình bày, chúng ta chỉ xây dựng chức năng quản lý sách rất đơn giản, bao gồm một danh sách liệt kê các đầu sách đang quản lý, mỗi đầu sách có 3 thông tin: tiêu đề, phân loại và giá tiền. Giao diện danh mục sách có dạng như sau:</p>
+
+<p><img src="/blog/media/7bc61ac3-abb3-4fbd-9dd6-160baa709a6a/bookspot-bookmgr-listform.png" alt="Giao diện chính của ví dụ" /></p>
+
+<p>Khi người dùng bấm vào nút <strong>Add</strong>, ứng dụng sẽ hiển thị Form nhập liệu rỗng để thêm mới một đầu sách:</p>
+
+<p><img src="/blog/media/7bc61ac3-abb3-4fbd-9dd6-160baa709a6a/bookspot-bookmgr-editform-create.png" alt="Giao diện thêm mới" /></p>
+
+<p>Nếu người dùng bấm vào nút <strong>Edit</strong> tương ứng một đầu sách, ứng dụng sẽ nạp thông tin đầu sách vào Form chỉnh sửa:</p>
+
+<p><img src="/blog/media/7bc61ac3-abb3-4fbd-9dd6-160baa709a6a/bookspot-bookmgr-editform-update.png" alt="Giao diện thêm mới" /></p>
+
+<p>Cuối cùng, khi người dùng bấm vào nút <strong>Delete</strong>, ứng dụng sẽ xóa đầu sách tương ứng khỏi danh sách.</p>
+
+<h3 id="v-d-minh-ha-iu-g">Ví dụ minh họa điều gì?</h3>
+
+<p>Với ví dụ này, tôi muốn nhấn mạnh đến vấn đề: “chúng ta hãy sử dụng Unit testing <em>song hành</em> trong suốt quá trình xây dựng ứng dụng bằng AngularJS”. Kiểm thử trước, không phải là viết hết mã lệnh kiểm thử rồi mới lập trình chức năng, mà cần hiểu theo nghĩa dùng mã lệnh kiểm thử xen kẽ với mã lệnh chức năng (nhưng tách biệt nhau) để làm rõ và điểu hướng (<em>drive</em>) từng chức năng cần lập trình.</p>
+
+<h2 id="thc-hnh-pht-trin-ng-dng-minh-ha">Thực hành phát triển ứng dụng minh họa</h2>
+
+<p>Ví dụ minh họa được tạo sẵn theo trình tự: tạo Unit testing đồng thời với quá trình phát triển chức năng của ứng dụng. Mỗi bước thực hiện được đánh dấu dưới dạng một <em>branch</em> trong cấu trúc mã nguồn <strong>Git</strong>. Các bạn không chỉ tải toàn bộ mã nguồn cuối cùng để chạy, mà còn có thể <em>checkout</em> từng bước của quá trình thực hiện để đối chiếu, so sánh và rút kinh nghiệm.</p>
+
+<h3 id="ti-m-ngun-v-d">Tải mã nguồn ví dụ</h3>
+
+<p>Tải ví dụ minh họa “<a href="https://github.com/pnhung177/example-angularjs-bookspot-form">AngularJS BookSpot SPA Example</a>” theo địa chỉ dành cho <a href="https://github.com/pnhung177/example-angularjs-bookspot-form.git">git clone</a> (Lưu ý các bạn đừng tải <a href="https://github.com/pnhung177/example-angularjs-bookspot-form/archive/master.zip">bản nén</a> vì bản nén chỉ chứa mã nguồn cuối cùng, trong khi chúng ta cần xem xét và so sánh mã nguồn tại các bước khác nhau trong quá trình phát triển ứng dụng). </p>
+
+<p><img src="/blog/media/7bc61ac3-abb3-4fbd-9dd6-160baa709a6a/git-clone.png" alt="Tải mã nguồn ví dụ" /></p>
+
+<p>Sau khi tải xong ví dụ bằng lệnh git clone, chuyển vào thư mục <em>example-angularjs-bookspot-form</em>, thực hiện lệnh <em>git fetch</em> để đồng bộ các <em>branch</em> từ <em>remote</em>:</p>
+
+<p><img src="/blog/media/7bc61ac3-abb3-4fbd-9dd6-160baa709a6a/git-fetch.png" alt="Đồng bộ branch từ Remote" /></p>
+
+<p>Xong lệnh này, mã nguồn ví dụ minh họa đã sẵn sàng. Chạy lệnh sau để cài đặt các gói thư viện cần dùng cho Unit testing:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install karma karma-jasmine karma-chrome-launcher --save-dev</code></pre></div>
+
+<p>Sau khi <strong>npm</strong> cài đặt xong các gói thư viện trên, chạy thử Unit testing bằng lệnh:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>karma start karma-unit.conf.js</code></pre></div>
+
+<p><img src="/blog/media/7bc61ac3-abb3-4fbd-9dd6-160baa709a6a/bookspot-karma-unit-testing-final.png" alt="Kết quả chạy Karma" /></p>
+
+<p>Mở một cửa sổ dòng lệnh khác, cũng chuyển vào thư mục <em>example-angularjs-bookspot-form</em>, sau đó cài đặt các gói thư viện cần dùng cho HTTP Server:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install connect serve-static --save-dev</code></pre></div>
+
+<p>Sau khi <strong>npm</strong> cài đặt xong các gói thư viện trên, chạy thử HTTP Server bằng lệnh:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>node server</code></pre></div>
+
+<p>Mở cửa sổ trình duyệt mới, mở trang web có địa chỉ http://localhost:3000, ta được giao diện sau:</p>
+
+<p><img src="/blog/media/7bc61ac3-abb3-4fbd-9dd6-160baa709a6a/bookspot-bookmgr-node-server.png" alt="Giao diện chính của ví dụ" /></p>
+
+<h3 id="chuyn-i-cc-giai-on-m-ngun">Chuyển đổi các giai đoạn mã nguồn</h3>
+
+<p>Kho mã nguồn <strong>Git</strong> cho phép đánh dấu mã nguồn tại một số thời điểm trong quá trình phát triển. Để thuận tiện cho việc theo dõi, tôi đã đánh dấu mã nguồn tại các bước thực hiện (sẽ được giải thích trong phần tiếp theo). Khi <strong>clone</strong> mã nguồn về, thư mục dự án sẽ chứa mã nguồn mới nhất. Tuy nhiên, các bạn có thể nạp lại mã nguồn tại một bước trong các bước đã được đánh dấu.</p>
+
+<p>Liệt kê danh sách các “đánh dấu” bằng lệnh <em>git branch -a</em> như sau:</p>
+
+<p><img src="/blog/media/7bc61ac3-abb3-4fbd-9dd6-160baa709a6a/git-show-branch-all.png" alt="Liệt kê danh sách đánh dấu mã nguồn" /></p>
+
+<p>Nạp mã nguồn tại một bước trong quá trình phát triển, chẳng hạn đổi mã nguồn về giai đoạn viết xong kiểm thử hàm createBook() dùng để tạo mới một đầu sách (mới viết lệnh kiểm thử, chưa viết chức năng hàm createBook() nên kiểm thử bị fail), ta sử dụng lệnh <em>git checkout createbook-fail</em> như sau:</p>
+
+<p><img src="/blog/media/7bc61ac3-abb3-4fbd-9dd6-160baa709a6a/git-checkout-createbook-fail.png" alt="Nạp mã nguồn tại một bước trong quá trình phát triển" /></p>
+
+<h3 id="cc-bc-thc-hin-xy-dng-v-d">Các bước thực hiện xây dựng ví dụ</h3>
+
+<p>Dưới đây là danh sách các nhãn đánh dấu các bước của quá trình phát triển ứng dụng minh họa. Các bạn hãy chạy Karma đồng thời <em>checkout</em> mã nguồn tuần tự theo các bước từ trên xuống và xem xét mã nguồn của các tệp <strong>bookmgr.js</strong> và <strong>bookmgr.Spec.js</strong>.</p>
+
+<ol>
+  <li>empty-project: Chuẩn bị thư mục dự án (chưa có các tệp <strong>bookmgr.js</strong>, <strong>bookmgr.Spec.js</strong> và <strong>index.html</strong>).</li>
+  <li>source-files: Tạo tệp mã nguồn javascript và html</li>
+  <li>listbooks-fail: Viết kiểm thử cho hàm listBooks()</li>
+  <li>listbooks-pass: Lập trình chức năng cho listBooks()</li>
+  <li>loadeditform-fail: Viết kiểm thử cho hàm loadEditForm()</li>
+  <li>loadeditform-pass: Lập trình chức năng cho loadEditForm()</li>
+  <li>editform-html: Bổ sung giao diện HTML</li>
+  <li>canceleditform-fail: Viết kiểm thử cho hàm cancelEditForm()</li>
+  <li>canceleditform-pass: Lập trình chức năng cho cancelEditForm()</li>
+  <li>saveeditform-fail1 &amp; saveeditform-fail2: Viết kiểm thử cho hàm saveEditForm()</li>
+  <li>saveeditform-pass: Lập trình chức năng cho saveEditForm()</li>
+  <li>createbook-fail: Viết kiểm thử cho hàm createBook()</li>
+  <li>createbook-pass: Lập trình chức năng cho createBook()</li>
+  <li>updatebook-fail: Viết kiểm thử cho hàm updateBook()</li>
+  <li>updatebook-pass: Lập trình chức năng cho updateBook()</li>
+  <li>deletebook-fail: Viết kiểm thử cho hàm deleteBook()</li>
+  <li>deletebook-pass: Lập trình chức năng cho deleteBook()</li>
+  <li>bootstrap-theme: Áp dụng Boostrap-Theme làm đẹp giao diện</li>
+</ol>
+
+<p>Tôi sẽ trình bày và giải thích tuần tự từng bước trong buổi Workshop. Trong bài viết này không tiện giải thích chi tiết, mong các bạn thông cảm.</p>
+
+<h2 id="kt-lun">Kết luận</h2>
+
+<p>Qua bài viết này, hy vọng các bạn trải nghiệm được phương pháp sử dụng Unit testing để phát triển ứng dụng AngularJS. Với cách làm này, bạn không cần phải liên tục nhìn vào giao diện của chức năng đang phát triển để kiểm tra tính đúng đắn của nó. Mặc dù việc viết mã lệnh kiểm thử có thể tạo cảm giác quá trình phát triển chậm chạp, tuy nhiên khi đã quen với cách làm này, bạn sẽ thấy đây là cách làm “<em>chậm mà chắc</em>”. Điều quan trọng là sau này khi bạn chỉnh sửa hoặc phát triển thêm tính năng vẫn có thể kiểm tra ngay các tính năng cũ vẫn hoạt động đúng thông qua Unit testing.</p>
+
+<p><strong>P/S</strong>: Bài tiếp theo sẽ phát triển tiếp chức năng kết nối dữ liệu trong RESTful WebService cho ví dụ minh họa trên.</p>
+
+<h2 id="ti-liu-tham-kho">Tài liệu tham khảo</h2>
+
+<ul>
+  <li><a href="https://docs.angularjs.org/guide/unit-testing">AngularJS Documentation for unit-testing</a></li>
+  <li><a href="http://andyshora.com/unit-testing-best-practices-angularjs.html">Unit Testing Best Practices in AngularJS</a></li>
+  <li><a href="http://karma-runner.github.io/0.12/intro/installation.html">Karma Documentation - Installation</a></li>
+  <li><a href="https://docs.angularjs.org/api/ngMock/function/angular.mock.module">Function components in ngMock - angular.mock.module</a></li>
+  <li><a href="https://docs.angularjs.org/api/ngMock/function/angular.mock.inject">Function components in ngMock - angular.mock.inject</a></li>
+  <li><a href="http://www.apress.com/downloadable/download/sample/sample_id/1527/">Mã nguồn sách Pro AngularJS - Adam Freeman</a></li>
+</ul>
+
+
+            </div>
+        </article>
+        <div class="cf"></div>
+        <div class="row text-center">
+            <section class="summer-post-share">
+                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Thực hành Unit testing để xây dựng ứng dụng AngularJS theo TDD&quot;%20/blog/javascript/angularjs/thuc-hanh-kiem-thu-don-vi-de-xay-dung-ung-dung-angularjs-theo-tdd.html%20via%20&#64;pnhung177"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a class="facebook-icon" href="https://www.facebook.com/sharer/sharer.php?u=/blog/javascript/angularjs/thuc-hanh-kiem-thu-don-vi-de-xay-dung-ung-dung-angularjs-theo-tdd.html"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a class="google-icon" href="https://plus.google.com/share?url=/blog/javascript/angularjs/thuc-hanh-kiem-thu-don-vi-de-xay-dung-ung-dung-angularjs-theo-tdd.html"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
+                    <i class="fa fa-google-plus"></i>
+                </a>
+            </section>
+        </div>
+        <div class="cf"></div>
+        
+            <div class="summer-author-info">
+                <div class="row">
+                    <section class="summer-post-author small-12 columns">
+                        
+                            <img src="/blog/images/avatars/pnhung177.png" class="summer-post-author-avatar" alt="Phạm Ngọc Hùng's photo">
+                        
+                        
+                            <span class="author-label">Author</span>
+                            <h1>Phạm Ngọc Hùng</h1>
+                        
+                        
+                            <p><a href="mailto:pnhung177@drupalex.net" class="author-website">pnhung177@drupalex.net</a></p>
+                        
+                        
+                            <p>... when the sun comes up, you better be running!</p>
+                        
+                    </section>
+                </div>
+            </div> 
+        
+        <div class="cf"></div>
+        
+        <section class="summer-disqus row">
+    <div class="small-12 columns">
+        <h1 class="summer-comments-header">Comments</h1>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'acegik'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</section>
+
+        <div class="cf"></div>
+
+    <footer class="summer-site-footer">
+    <div class="copyright">
+         <section>Bản quyền nội dung thuộc về <a href="/blog/about">Phạm Ngọc Hùng</a> &copy; 2014.</section>
+    </div>
+    <div class="social-icons">
+        
+        
+        <a href="http://twitter.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-twitter fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="https://plus.google.com/u/3/115458186421626071505">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-google-plus fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="http://github.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-github fa-stack-1x"></i>
+            </span>
+        </a>
+        
+        
+        <a href="http://facebook.com/pnhung177">
+            <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-facebook fa-stack-1x"></i>
+            </span>
+        </a>
+        
+    </div>
+    
+    <div class="cf"></div>
+</footer>
+ 
+</main>    
+    <script src="/blog/assets/js/vendor/modernizr.js"></script>
+    <script src="/blog/assets/js/foundation.min.js"></script>
+    <script src="/blog/assets/js/vendor/background-check.js"></script>
+    <script src="/blog/assets/js/vendor/post-header-animations.js"></script>
+    <script src="/blog/assets/js/summer.js"></script>
+
+    <script>
+      $(document).foundation();
+    </script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-54128248-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+</script>
+ 
+</body>
+</html>

@@ -9,13 +9,176 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://acegik.net/blog/feed.xml" />
 <link rel="alternate" type="text/html" href="http://acegik.net/blog/" />
-<updated>2014-12-01T21:28:31+07:00</updated>
+<updated>2014-12-05T11:03:54+07:00</updated>
 <id>http://acegik.net/blog/</id>
 <author>
   <name>Phạm Ngọc Hùng</name>
   <uri>http://acegik.net/blog/</uri>
   <email>pnhung177@drupalex.net</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Thực hành Unit testing để xây dựng ứng dụng AngularJS theo TDD]]></title>
+  <link rel="alternate" type="text/html" href="http://acegik.net/blog/javascript/angularjs/thuc-hanh-kiem-thu-don-vi-de-xay-dung-ung-dung-angularjs-theo-tdd.html"/>
+  <id>http://acegik.net/blog/javascript/angularjs/thuc-hanh-kiem-thu-don-vi-de-xay-dung-ung-dung-angularjs-theo-tdd</id>
+  <published>2014-11-27T00:00:00+07:00</published>
+  <updated>2014-11-27T00:00:00-00:00</updated>
+  
+  <author>
+    <name>Phạm Ngọc Hùng</name>
+    <uri>http://acegik.net/blog</uri>
+    <email>pnhung177@drupalex.net</email>
+  </author>
+  <category scheme="http://acegik.net/blog/tags/#JavaScript" term="JavaScript" /><category scheme="http://acegik.net/blog/tags/#AngularJS" term="AngularJS" />
+  <content type="html">
+  
+    &lt;p&gt;Trong bài viết trước, tôi đã trình bày các kỹ thuật áp dụng Unit testing vào các thành phần AngularJS: Controller, Filter, Service và Directive thông qua các ví dụ minh họa đơn giản. Bài viết này sẽ đi sâu vào thực hành áp dụng Unit testing vào quá trình phát triển một ứng dụng AngularJS cụ thể, theo phương pháp TDD (Test Driven Development). &lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/7bc61ac3-abb3-4fbd-9dd6-160baa709a6a/how-we-can-apply-tdd.png&quot; alt=&quot;Áp dụng Unit testing vào phát triển ứng dụng như thế nào?&quot; /&gt;&lt;/p&gt;
+
+&lt;section&gt;
+  &lt;header&gt;
+    &lt;h2&gt;Nội dung trình bày&lt;/h2&gt;
+  &lt;/header&gt;
+&lt;div id=&quot;drawer&quot;&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#p-dng-unit-testing-vo-pht-trin-ng-dng&quot;&gt;Áp dụng Unit testing vào phát triển ứng dụng&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#m-t-ng-dng-minh-ha&quot;&gt;Mô tả ứng dụng minh họa&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#v-d-minh-ha-iu-g&quot;&gt;Ví dụ minh họa điều gì?&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#thc-hnh-pht-trin-ng-dng-minh-ha&quot;&gt;Thực hành phát triển ứng dụng minh họa&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#ti-m-ngun-v-d&quot;&gt;Tải mã nguồn ví dụ&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#chuyn-i-cc-giai-on-m-ngun&quot;&gt;Chuyển đổi các giai đoạn mã nguồn&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#cc-bc-thc-hin-xy-dng-v-d&quot;&gt;Các bước thực hiện xây dựng ví dụ&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#kt-lun&quot;&gt;Kết luận&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ti-liu-tham-kho&quot;&gt;Tài liệu tham khảo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;h2 id=&quot;p-dng-unit-testing-vo-pht-trin-ng-dng&quot;&gt;Áp dụng Unit testing vào phát triển ứng dụng&lt;/h2&gt;
+
+&lt;h3 id=&quot;m-t-ng-dng-minh-ha&quot;&gt;Mô tả ứng dụng minh họa&lt;/h3&gt;
+
+&lt;p&gt;Giả sử chúng ta cần xây dựng chức năng quản lý sách (&lt;em&gt;bookmgr&lt;/em&gt;) cho một ứng dụng chia sẻ sách trực tuyến (&lt;em&gt;bookspot&lt;/em&gt;). Để tiện cho việc trình bày, chúng ta chỉ xây dựng chức năng quản lý sách rất đơn giản, bao gồm một danh sách liệt kê các đầu sách đang quản lý, mỗi đầu sách có 3 thông tin: tiêu đề, phân loại và giá tiền. Giao diện danh mục sách có dạng như sau:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/7bc61ac3-abb3-4fbd-9dd6-160baa709a6a/bookspot-bookmgr-listform.png&quot; alt=&quot;Giao diện chính của ví dụ&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Khi người dùng bấm vào nút &lt;strong&gt;Add&lt;/strong&gt;, ứng dụng sẽ hiển thị Form nhập liệu rỗng để thêm mới một đầu sách:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/7bc61ac3-abb3-4fbd-9dd6-160baa709a6a/bookspot-bookmgr-editform-create.png&quot; alt=&quot;Giao diện thêm mới&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Nếu người dùng bấm vào nút &lt;strong&gt;Edit&lt;/strong&gt; tương ứng một đầu sách, ứng dụng sẽ nạp thông tin đầu sách vào Form chỉnh sửa:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/7bc61ac3-abb3-4fbd-9dd6-160baa709a6a/bookspot-bookmgr-editform-update.png&quot; alt=&quot;Giao diện thêm mới&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Cuối cùng, khi người dùng bấm vào nút &lt;strong&gt;Delete&lt;/strong&gt;, ứng dụng sẽ xóa đầu sách tương ứng khỏi danh sách.&lt;/p&gt;
+
+&lt;h3 id=&quot;v-d-minh-ha-iu-g&quot;&gt;Ví dụ minh họa điều gì?&lt;/h3&gt;
+
+&lt;p&gt;Với ví dụ này, tôi muốn nhấn mạnh đến vấn đề: “chúng ta hãy sử dụng Unit testing &lt;em&gt;song hành&lt;/em&gt; trong suốt quá trình xây dựng ứng dụng bằng AngularJS”. Kiểm thử trước, không phải là viết hết mã lệnh kiểm thử rồi mới lập trình chức năng, mà cần hiểu theo nghĩa dùng mã lệnh kiểm thử xen kẽ với mã lệnh chức năng (nhưng tách biệt nhau) để làm rõ và điểu hướng (&lt;em&gt;drive&lt;/em&gt;) từng chức năng cần lập trình.&lt;/p&gt;
+
+&lt;h2 id=&quot;thc-hnh-pht-trin-ng-dng-minh-ha&quot;&gt;Thực hành phát triển ứng dụng minh họa&lt;/h2&gt;
+
+&lt;p&gt;Ví dụ minh họa được tạo sẵn theo trình tự: tạo Unit testing đồng thời với quá trình phát triển chức năng của ứng dụng. Mỗi bước thực hiện được đánh dấu dưới dạng một &lt;em&gt;branch&lt;/em&gt; trong cấu trúc mã nguồn &lt;strong&gt;Git&lt;/strong&gt;. Các bạn không chỉ tải toàn bộ mã nguồn cuối cùng để chạy, mà còn có thể &lt;em&gt;checkout&lt;/em&gt; từng bước của quá trình thực hiện để đối chiếu, so sánh và rút kinh nghiệm.&lt;/p&gt;
+
+&lt;h3 id=&quot;ti-m-ngun-v-d&quot;&gt;Tải mã nguồn ví dụ&lt;/h3&gt;
+
+&lt;p&gt;Tải ví dụ minh họa “&lt;a href=&quot;https://github.com/pnhung177/example-angularjs-bookspot-form&quot;&gt;AngularJS BookSpot SPA Example&lt;/a&gt;” theo địa chỉ dành cho &lt;a href=&quot;https://github.com/pnhung177/example-angularjs-bookspot-form.git&quot;&gt;git clone&lt;/a&gt; (Lưu ý các bạn đừng tải &lt;a href=&quot;https://github.com/pnhung177/example-angularjs-bookspot-form/archive/master.zip&quot;&gt;bản nén&lt;/a&gt; vì bản nén chỉ chứa mã nguồn cuối cùng, trong khi chúng ta cần xem xét và so sánh mã nguồn tại các bước khác nhau trong quá trình phát triển ứng dụng). &lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/7bc61ac3-abb3-4fbd-9dd6-160baa709a6a/git-clone.png&quot; alt=&quot;Tải mã nguồn ví dụ&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Sau khi tải xong ví dụ bằng lệnh git clone, chuyển vào thư mục &lt;em&gt;example-angularjs-bookspot-form&lt;/em&gt;, thực hiện lệnh &lt;em&gt;git fetch&lt;/em&gt; để đồng bộ các &lt;em&gt;branch&lt;/em&gt; từ &lt;em&gt;remote&lt;/em&gt;:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/7bc61ac3-abb3-4fbd-9dd6-160baa709a6a/git-fetch.png&quot; alt=&quot;Đồng bộ branch từ Remote&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Xong lệnh này, mã nguồn ví dụ minh họa đã sẵn sàng. Chạy lệnh sau để cài đặt các gói thư viện cần dùng cho Unit testing:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install karma karma-jasmine karma-chrome-launcher --save-dev&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Sau khi &lt;strong&gt;npm&lt;/strong&gt; cài đặt xong các gói thư viện trên, chạy thử Unit testing bằng lệnh:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;karma start karma-unit.conf.js&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/7bc61ac3-abb3-4fbd-9dd6-160baa709a6a/bookspot-karma-unit-testing-final.png&quot; alt=&quot;Kết quả chạy Karma&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Mở một cửa sổ dòng lệnh khác, cũng chuyển vào thư mục &lt;em&gt;example-angularjs-bookspot-form&lt;/em&gt;, sau đó cài đặt các gói thư viện cần dùng cho HTTP Server:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install connect serve-static --save-dev&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Sau khi &lt;strong&gt;npm&lt;/strong&gt; cài đặt xong các gói thư viện trên, chạy thử HTTP Server bằng lệnh:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;node server&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Mở cửa sổ trình duyệt mới, mở trang web có địa chỉ http://localhost:3000, ta được giao diện sau:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/7bc61ac3-abb3-4fbd-9dd6-160baa709a6a/bookspot-bookmgr-node-server.png&quot; alt=&quot;Giao diện chính của ví dụ&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;chuyn-i-cc-giai-on-m-ngun&quot;&gt;Chuyển đổi các giai đoạn mã nguồn&lt;/h3&gt;
+
+&lt;p&gt;Kho mã nguồn &lt;strong&gt;Git&lt;/strong&gt; cho phép đánh dấu mã nguồn tại một số thời điểm trong quá trình phát triển. Để thuận tiện cho việc theo dõi, tôi đã đánh dấu mã nguồn tại các bước thực hiện (sẽ được giải thích trong phần tiếp theo). Khi &lt;strong&gt;clone&lt;/strong&gt; mã nguồn về, thư mục dự án sẽ chứa mã nguồn mới nhất. Tuy nhiên, các bạn có thể nạp lại mã nguồn tại một bước trong các bước đã được đánh dấu.&lt;/p&gt;
+
+&lt;p&gt;Liệt kê danh sách các “đánh dấu” bằng lệnh &lt;em&gt;git branch -a&lt;/em&gt; như sau:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/7bc61ac3-abb3-4fbd-9dd6-160baa709a6a/git-show-branch-all.png&quot; alt=&quot;Liệt kê danh sách đánh dấu mã nguồn&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Nạp mã nguồn tại một bước trong quá trình phát triển, chẳng hạn đổi mã nguồn về giai đoạn viết xong kiểm thử hàm createBook() dùng để tạo mới một đầu sách (mới viết lệnh kiểm thử, chưa viết chức năng hàm createBook() nên kiểm thử bị fail), ta sử dụng lệnh &lt;em&gt;git checkout createbook-fail&lt;/em&gt; như sau:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/7bc61ac3-abb3-4fbd-9dd6-160baa709a6a/git-checkout-createbook-fail.png&quot; alt=&quot;Nạp mã nguồn tại một bước trong quá trình phát triển&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;cc-bc-thc-hin-xy-dng-v-d&quot;&gt;Các bước thực hiện xây dựng ví dụ&lt;/h3&gt;
+
+&lt;p&gt;Dưới đây là danh sách các nhãn đánh dấu các bước của quá trình phát triển ứng dụng minh họa. Các bạn hãy chạy Karma đồng thời &lt;em&gt;checkout&lt;/em&gt; mã nguồn tuần tự theo các bước từ trên xuống và xem xét mã nguồn của các tệp &lt;strong&gt;bookmgr.js&lt;/strong&gt; và &lt;strong&gt;bookmgr.Spec.js&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;empty-project: Chuẩn bị thư mục dự án (chưa có các tệp &lt;strong&gt;bookmgr.js&lt;/strong&gt;, &lt;strong&gt;bookmgr.Spec.js&lt;/strong&gt; và &lt;strong&gt;index.html&lt;/strong&gt;).&lt;/li&gt;
+  &lt;li&gt;source-files: Tạo tệp mã nguồn javascript và html&lt;/li&gt;
+  &lt;li&gt;listbooks-fail: Viết kiểm thử cho hàm listBooks()&lt;/li&gt;
+  &lt;li&gt;listbooks-pass: Lập trình chức năng cho listBooks()&lt;/li&gt;
+  &lt;li&gt;loadeditform-fail: Viết kiểm thử cho hàm loadEditForm()&lt;/li&gt;
+  &lt;li&gt;loadeditform-pass: Lập trình chức năng cho loadEditForm()&lt;/li&gt;
+  &lt;li&gt;editform-html: Bổ sung giao diện HTML&lt;/li&gt;
+  &lt;li&gt;canceleditform-fail: Viết kiểm thử cho hàm cancelEditForm()&lt;/li&gt;
+  &lt;li&gt;canceleditform-pass: Lập trình chức năng cho cancelEditForm()&lt;/li&gt;
+  &lt;li&gt;saveeditform-fail1 &amp;amp; saveeditform-fail2: Viết kiểm thử cho hàm saveEditForm()&lt;/li&gt;
+  &lt;li&gt;saveeditform-pass: Lập trình chức năng cho saveEditForm()&lt;/li&gt;
+  &lt;li&gt;createbook-fail: Viết kiểm thử cho hàm createBook()&lt;/li&gt;
+  &lt;li&gt;createbook-pass: Lập trình chức năng cho createBook()&lt;/li&gt;
+  &lt;li&gt;updatebook-fail: Viết kiểm thử cho hàm updateBook()&lt;/li&gt;
+  &lt;li&gt;updatebook-pass: Lập trình chức năng cho updateBook()&lt;/li&gt;
+  &lt;li&gt;deletebook-fail: Viết kiểm thử cho hàm deleteBook()&lt;/li&gt;
+  &lt;li&gt;deletebook-pass: Lập trình chức năng cho deleteBook()&lt;/li&gt;
+  &lt;li&gt;bootstrap-theme: Áp dụng Boostrap-Theme làm đẹp giao diện&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Tôi sẽ trình bày và giải thích tuần tự từng bước trong buổi Workshop. Trong bài viết này không tiện giải thích chi tiết, mong các bạn thông cảm.&lt;/p&gt;
+
+&lt;h2 id=&quot;kt-lun&quot;&gt;Kết luận&lt;/h2&gt;
+
+&lt;p&gt;Qua bài viết này, hy vọng các bạn trải nghiệm được phương pháp sử dụng Unit testing để phát triển ứng dụng AngularJS. Với cách làm này, bạn không cần phải liên tục nhìn vào giao diện của chức năng đang phát triển để kiểm tra tính đúng đắn của nó. Mặc dù việc viết mã lệnh kiểm thử có thể tạo cảm giác quá trình phát triển chậm chạp, tuy nhiên khi đã quen với cách làm này, bạn sẽ thấy đây là cách làm “&lt;em&gt;chậm mà chắc&lt;/em&gt;”. Điều quan trọng là sau này khi bạn chỉnh sửa hoặc phát triển thêm tính năng vẫn có thể kiểm tra ngay các tính năng cũ vẫn hoạt động đúng thông qua Unit testing.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;P/S&lt;/strong&gt;: Bài tiếp theo sẽ phát triển tiếp chức năng kết nối dữ liệu trong RESTful WebService cho ví dụ minh họa trên.&lt;/p&gt;
+
+&lt;h2 id=&quot;ti-liu-tham-kho&quot;&gt;Tài liệu tham khảo&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.angularjs.org/guide/unit-testing&quot;&gt;AngularJS Documentation for unit-testing&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://andyshora.com/unit-testing-best-practices-angularjs.html&quot;&gt;Unit Testing Best Practices in AngularJS&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://karma-runner.github.io/0.12/intro/installation.html&quot;&gt;Karma Documentation - Installation&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.angularjs.org/api/ngMock/function/angular.mock.module&quot;&gt;Function components in ngMock - angular.mock.module&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.angularjs.org/api/ngMock/function/angular.mock.inject&quot;&gt;Function components in ngMock - angular.mock.inject&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.apress.com/downloadable/download/sample/sample_id/1527/&quot;&gt;Mã nguồn sách Pro AngularJS - Adam Freeman&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+  
+  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/javascript/angularjs/thuc-hanh-kiem-thu-don-vi-de-xay-dung-ung-dung-angularjs-theo-tdd.html&quot;&gt;Thực hành Unit testing để xây dựng ứng dụng AngularJS theo TDD&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on November 27, 2014.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -4035,69 +4198,6 @@ CPU minf mjf xcal  intr ithr  csw icsw migr smtx  srw syscl  usr sys  wt idl
 
   
   &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java.html&quot;&gt;Các kỹ thuật dùng để cải tiến hiệu năng trong lập trình Java&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on June 15, 2014.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Các lệnh thông dụng dùng trong hệ điều hành Solaris 11]]></title>
-  <link rel="alternate" type="text/html" href="http://acegik.net/blog/os/solaris/cac-lenh-thong-dung-trong-he-dieu-hanh-solaris.html"/>
-  <id>http://acegik.net/blog/os/solaris/cac-lenh-thong-dung-trong-he-dieu-hanh-solaris</id>
-  <published>2014-05-29T00:00:00+07:00</published>
-  <updated>2014-05-29T00:00:00-00:00</updated>
-  
-  <author>
-    <name>Phạm Ngọc Hùng</name>
-    <uri>http://acegik.net/blog</uri>
-    <email>pnhung177@drupalex.net</email>
-  </author>
-  <category scheme="http://acegik.net/blog/tags/#Operating%20System" term="Operating System" /><category scheme="http://acegik.net/blog/tags/#Solaris%2011" term="Solaris 11" /><category scheme="http://acegik.net/blog/tags/#Command%20line" term="Command line" />
-  <content type="html">
-  
-    &lt;h2 id=&quot;hin-th-a-ch-ip&quot;&gt;Hiển thị địa chỉ IP&lt;/h2&gt;
-
-&lt;p&gt;Đối với Linux, địa chỉ IP có thể được hiển thị nhanh chóng bằng lệnh sau: &lt;em&gt;ifconfig&lt;/em&gt;. Trong Solaris 11, lệnh ifconfig bị xem là lạc hậu và được thay thế bằng lệnh &lt;em&gt;ipadm&lt;/em&gt;. Chúng ta vẫn có thể sử dụng &lt;em&gt;ifconfig&lt;/em&gt; để xem IP, nhưng phải sử dụng thêm tham số &lt;em&gt;-a&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/b8df782c-0623-445e-8b77-42991c51494c/ifconfig-and-ipadm.png&quot; alt=&quot;Hiển thị địa chỉ IP&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;hin-th-kin-trc-h-thng&quot;&gt;Hiển thị kiến trúc hệ thống&lt;/h2&gt;
-
-&lt;p&gt;Đôi khi chúng ta cần biết hệ điều này đang sử dụng là 32-bit hay 64-bit. Để làm được điều này, rất đơn giản, chúng ta sử dụng lệnh &lt;em&gt;arch&lt;/em&gt; như sau:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/b8df782c-0623-445e-8b77-42991c51494c/arch.png&quot; alt=&quot;Hiển thị địa chỉ IP&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;hin-th-hot-ng-ca-tin-trnh&quot;&gt;Hiển thị hoạt động của tiến trình&lt;/h2&gt;
-
-&lt;p&gt;Lệnh &lt;em&gt;top&lt;/em&gt; cung cấp thông tin về hoạt động đang diễn ra của các tiến trình trong thời gian thực. Nó hiển thị danh sách các tiến trình sử dụng CPU nhiều nhất, cũng như các thông tin thống kê chung về dung lượng CPU, bộ nhớ và bộ nhớ ảo, thời gian chạy, tải lượng trung bình (load average). Ngoài ra, lệnh top còn cho phép tùy chỉnh tiêu chí lọc và sắp xếp danh sách các tiến trình.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/b8df782c-0623-445e-8b77-42991c51494c/top.png&quot; alt=&quot;Hiển thị thông tin về tiến trình hoạt động&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;chuyn-i-user&quot;&gt;Chuyển đổi User&lt;/h2&gt;
-
-&lt;p&gt;Solaris không cho phép người dùng login trực tiếp bằng tài khoản &lt;em&gt;root&lt;/em&gt; (Superuser), mà phải login bằng một tài khoản thông thường, sau đó chuyển đổi (switch) trở thành Superuser. Để chuyển đổi tài khoản thành Superuser (hoặc chuyển sang vai trò người dùng khác), chúng ta sử dụng lệnh &lt;em&gt;su&lt;/em&gt; (switch user).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/b8df782c-0623-445e-8b77-42991c51494c/su.png&quot; alt=&quot;Chuyển đổi User bằng lệnh su&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Cần lưu ý sự khác nhau giữ &lt;em&gt;su ‘username’&lt;/em&gt; và &lt;em&gt;su - ‘username’&lt;/em&gt;. Nếu sử dụng &lt;em&gt;su -&lt;/em&gt; (hoặc đầy đủ là &lt;em&gt;su -l&lt;/em&gt;), lệnh &lt;em&gt;su&lt;/em&gt; sẽ thực hiện quá trình login đầy đủ vào user mới, tức là nó sẽ thiết lập lại môi trường (ngoại trừ một vài biến như &lt;em&gt;TERM&lt;/em&gt;, &lt;em&gt;DISPLAY&lt;/em&gt; và &lt;em&gt;XAUTHORITY&lt;/em&gt; trong một số hệ thống). Còn nếu chỉ sử dụng &lt;em&gt;su ‘username’&lt;/em&gt;, thì lệnh &lt;em&gt;su&lt;/em&gt; sẽ giữ nguyên môi trường, ngoại trừ biến &lt;em&gt;PATH&lt;/em&gt; được thiết lập lại theo user mới.&lt;/p&gt;
-
-&lt;h2 id=&quot;ci-t-gi-th-vin&quot;&gt;Cài đặt gói thư viện&lt;/h2&gt;
-
-&lt;p&gt;&lt;em&gt;pkg&lt;/em&gt; là công cụ dòng lệnh trong Solaris dùng để cài đặt gói thư viện mới. Để dùng lệnh này, chúng ta cần đăng nhập vào tài khoản &lt;em&gt;Superuser&lt;/em&gt; (thường là &lt;em&gt;root&lt;/em&gt;).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/b8df782c-0623-445e-8b77-42991c51494c/pkg-install.png&quot; alt=&quot;Chuyển thành SuperUser&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Ngoài chức năng cài đặt gói ứng dụng mới bằng lệnh &lt;em&gt;pkg install&lt;/em&gt; ở trên, chúng ta còn dùng lệnh &lt;em&gt;pkg&lt;/em&gt; để cập nhật các gói thư viện bằng lệnh &lt;em&gt;pkg update&lt;/em&gt; (Xem thêm trong tài liệu &lt;a href=&quot;http://docs.oracle.com/cd/E23824_01/html/E21802/gihhp.html&quot;&gt;Installing and Updating Packages&lt;/a&gt;), hoặc gỡ bỏ gói thư viện bằng lệnh &lt;em&gt;pkg uninstall&lt;/em&gt; (Xem trong tài liệu &lt;a href=&quot;http://docs.oracle.com/cd/E23824_01/html/E21802/gijmk.html&quot;&gt;Uninstalling Packages&lt;/a&gt;).&lt;/p&gt;
-
-&lt;h2 id=&quot;qun-l-th-mc-v-tp&quot;&gt;Quản lý thư mục và tệp&lt;/h2&gt;
-
-&lt;p&gt;&lt;em&gt;mc&lt;/em&gt; là công cụ giao diện Text mạnh mẽ, nhiều tính năng dùng để quản lý file-system trong các hệ thống Unix và Linux. Mặc dù thao tác trên &lt;em&gt;mc&lt;/em&gt; chậm hơn so việc việc dùng trực tiếp lệnh trên console, tuy nhiên &lt;em&gt;mc&lt;/em&gt; rất hữu dụng đối với những người mới làm quen khi làm việc bằng dòng lệnh với Unix và Linux nói chung, cần có giao diện trực quan để tương tác vì không nhớ lệnh.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/b8df782c-0623-445e-8b77-42991c51494c/mc.png&quot; alt=&quot;Quản lý filesystem bằng mc&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Tuy nhiên về lâu dài, người dùng cần sử dụng trực tiếp lệnh để thao tác nhanh hơn và tránh lệ thuộc vào &lt;em&gt;mc&lt;/em&gt;.&lt;/p&gt;
-
-
-  
-  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/os/solaris/cac-lenh-thong-dung-trong-he-dieu-hanh-solaris.html&quot;&gt;Các lệnh thông dụng dùng trong hệ điều hành Solaris 11&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on May 29, 2014.&lt;/p&gt;</content>
 </entry>
 
 </feed>
