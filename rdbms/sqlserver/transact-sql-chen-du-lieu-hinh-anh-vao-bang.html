@@ -35,16 +35,14 @@
 <meta name="MobileOptimized" content="320">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,600,300,800,700' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="/blog/assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/blog/assets/css/vendor/normalize.css">
-    <link rel="stylesheet" href="/blog/assets/css/vendor/foundation.min.css">
-    <link rel="stylesheet" href="/blog/assets/css/style.css">
-    <link rel="stylesheet" href="/blog/assets/css/post.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="/blog/assets/js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
-    
+<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,600,300,800,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/blog/assets/css/font-awesome.min.css">
+<link rel="stylesheet" href="/blog/assets/css/vendor/normalize.css">
+<link rel="stylesheet" href="/blog/assets/css/vendor/foundation.min.css">
+<link rel="stylesheet" href="/blog/assets/css/style.css">
+<link rel="stylesheet" href="/blog/assets/css/post.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/blog/assets/js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
 
 
 
@@ -65,22 +63,23 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/blog/images/apple-touch-icon-144x144-precomposed.png">
 
 </head>
-<body class="post-template" itemscope itemtype="http://schema.org/WebPage">  
+<body class="post-template" itemscope itemtype="http://schema.org/WebPage">
 
-        <main id="summer-post-container-simple" class="summer-post-container-simple" role="main">
-            <header class="summer-post-header-simple">
-                <div class="summer-post-menu-header-simple">
 
-                    <a class="summer-blog-logo" href="/blog">
+        <main id="cheryk-post-container-simple" class="cheryk-post-container-simple" role="main">
+            <header class="cheryk-post-header-simple">
+                <div class="cheryk-post-menu-header-simple">
+
+                    <a class="cheryk-blog-logo" href="/blog">
                         <img src="/blog/images/logo.png" alt="Blog Logo" />
                     </a>
 
-                <div class="summer-blog-menu">      
-    <div class="summer-mobile-menu show-for-small">
+                <div class="cheryk-blog-menu">      
+    <div class="cheryk-mobile-menu show-for-small">
         <a href="#"><i class="fa fa-bars"></i></a>
     </div>
-    <ul class="summer-menu">
-        <li class="summer-mobile-close-btn show-for-small text-right">
+    <ul class="cheryk-menu">
+        <li class="cheryk-mobile-close-btn show-for-small text-right">
             <a href="#"><i class="fa fa-times"></i></a>
         </li>
 
@@ -89,11 +88,11 @@
                  </li>
 
             <li>
-                    <a href="/blog/featured">Nổi bật</a>
+                    <a href="/blog/featured">Danh sách</a>
                  </li>
 
             <li>
-                    <a href="/blog/categories">Danh mục</a>
+                    <a href="/blog/categories">Phân loại</a>
                  </li>
 
             <li>
@@ -106,9 +105,9 @@
 </div>
             </div>
 
-                <div class="summer-post-title-simple row">
+                <div class="cheryk-post-title-simple row">
                     <div class="small-12 columns">
-                        <div class="summer-post-meta-simple">
+                        <div class="cheryk-post-meta-simple">
                             <h1>Transact-SQL: Chèn dữ liệu hình ảnh vào bảng</h1>
                             <p>by <strong>pnhung177</strong> &#8212; on <a href="/blog/tags/index.html#SQLServer" data-toggle="tooltip" title="Posts tagged with SQLServer" rel="tag">SQLServer</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#Transact-SQL" data-toggle="tooltip" title="Posts tagged with Transact-SQL" rel="tag">Transact-SQL</a> &#8212; <strong><time datetime="2008-07-23T00:00:00+07:00">23/07/2008</time></strong></p>
                         </div>
@@ -116,7 +115,7 @@
                 </div>
             </header>
 
-        <article class="summer-post-content post tag-simple">
+        <article class="cheryk-post-content post tag-simple">
             <div><p>Mặc dù không khuyến khích lưu trữ và truy vấn trực tiếp dữ liệu hình ảnh (picture) trong bảng (table) bên trong cơ sở dữ liệu, tuy nhiên nhiều ứng dụng vẫn muốn lưu trữ hình ảnh trong bảng để đảm bảo tính toán vẹn của dữ liệu. Các ứng dụng này sẽ cung cấp thêm chức năng tạo bản copy của hình ảnh vào một thư mục tạm để truy vấn nhanh chóng. Bài viết này giới thiệu cách thức lưu trữ hình ảnh vào trong bảng của CSDL SQL Server.</p>
 
 <h2 id="to-bng-d-liu-mu">Tạo bảng dữ liệu mẫu</h2>
@@ -158,9 +157,10 @@
 
             </div>
         </article>
+
         <div class="cf"></div>
         <div class="row text-center">
-            <section class="summer-post-share">
+            <section class="cheryk-post-share">
                 <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Transact-SQL: Chèn dữ liệu hình ảnh vào bảng&quot;%20/blog/rdbms/sqlserver/transact-sql-chen-du-lieu-hinh-anh-vao-bang.html%20via%20&#64;pnhung177"
                     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
                     <i class="fa fa-twitter"></i>
@@ -176,32 +176,28 @@
             </section>
         </div>
         <div class="cf"></div>
-        
-            <div class="summer-author-info">
+            <div class="cheryk-author-info">
                 <div class="row">
-                    <section class="summer-post-author small-12 columns">
+                    <section class="cheryk-post-author small-12 columns">
                         
-                            <img src="/blog/images/avatars/pnhung177.png" class="summer-post-author-avatar" alt="Phạm Ngọc Hùng's photo">
-                        
+                            <img src="/blog/images/avatars/pnhung177.png" class="cheryk-post-author-avatar" alt="Phạm Ngọc Hùng's photo">
                         
                             <span class="author-label">Author</span>
                             <h1>Phạm Ngọc Hùng</h1>
                         
-                        
                             <p><a href="mailto:pnhung177@drupalex.net" class="author-website">pnhung177@drupalex.net</a></p>
-                        
                         
                             <p>... when the sun comes up, you better be running!</p>
                         
                     </section>
                 </div>
             </div> 
-        
         <div class="cf"></div>
+
         
-        <section class="summer-disqus row">
+        <section class="cheryk-disqus row">
     <div class="small-12 columns">
-        <h1 class="summer-comments-header">Comments</h1>
+        <h1 class="cheryk-comments-header">Comments</h1>
         <div id="disqus_thread"></div>
         <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -226,11 +222,14 @@
     </div>
 </section>
 
-        <div class="cf"></div>
+         
+</main> 
 
-    <footer class="summer-site-footer">
+
+<div class="cf"></div>
+<footer class="cheryk-site-footer">
     <div class="copyright">
-         <section>Bản quyền nội dung thuộc về <a href="/blog/about">Phạm Ngọc Hùng</a> &copy; 2014.</section>
+         <section>Bản quyền nội dung thuộc về <a href="/blog/about">Phạm Ngọc Hùng</a> &copy; 2015.</section>
     </div>
     <div class="social-icons">
         
@@ -270,17 +269,17 @@
     
     <div class="cf"></div>
 </footer>
- 
-</main>    
-    <script src="/blog/assets/js/vendor/modernizr.js"></script>
-    <script src="/blog/assets/js/foundation.min.js"></script>
-    <script src="/blog/assets/js/vendor/background-check.js"></script>
-    <script src="/blog/assets/js/vendor/post-header-animations.js"></script>
-    <script src="/blog/assets/js/summer.js"></script>
 
-    <script>
-      $(document).foundation();
-    </script>
+<script src="/blog/assets/js/vendor/modernizr.js"></script>
+<script src="/blog/assets/js/foundation.min.js"></script>
+<script src="/blog/assets/js/vendor/background-check.js"></script>
+<script src="/blog/assets/js/vendor/post-header-animations.js"></script>
+<script src="/blog/assets/js/main.js"></script>
+
+<script>
+  $(document).foundation();
+</script>
+
 
 
 <!-- Asynchronous Google Analytics snippet -->
@@ -295,6 +294,8 @@
   ga('send', 'pageview');
 
 </script>
- 
+
+
+  
 </body>
 </html>

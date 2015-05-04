@@ -9,13 +9,101 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://acegik.net/blog/feed.xml" />
 <link rel="alternate" type="text/html" href="http://acegik.net/blog/" />
-<updated>2014-12-05T11:03:54+07:00</updated>
+<updated>2015-05-04T15:51:24+07:00</updated>
 <id>http://acegik.net/blog/</id>
 <author>
   <name>Phạm Ngọc Hùng</name>
   <uri>http://acegik.net/blog/</uri>
   <email>pnhung177@drupalex.net</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Simplify scheduling in Node.js with node-schedule]]></title>
+  <link rel="alternate" type="text/html" href="http://acegik.net/blog/javascript/nodejs/simplify-scheduling-in-nodejs-with-node-schedule.html"/>
+  <id>http://acegik.net/blog/javascript/nodejs/simplify-scheduling-in-nodejs-with-node-schedule</id>
+  <published>2015-04-30T00:00:00+07:00</published>
+  <updated>2015-04-30T00:00:00+07:00</updated>
+  <author>
+    <name>Phạm Ngọc Hùng</name>
+    <uri>http://acegik.net/blog</uri>
+    <email>pnhung177@drupalex.net</email>
+  </author>
+  <category scheme="http://acegik.net/blog/tags/#JavaScript" term="JavaScript" /><category scheme="http://acegik.net/blog/tags/#NodeJS" term="NodeJS" /><category scheme="http://acegik.net/blog/tags/#Scheduling" term="Scheduling" />
+  <content type="html">
+  
+    &lt;p&gt;There’re two ways using node-schedule: Cron-based scheduling (similar to Linux cron) or Date-based scheduling. Anyway, node-schedule is for time-based scheduling, not interval-based scheduling. If you only want to do something like “run this function every 5 minutes”, you’ll find &lt;strong&gt;setInterval&lt;/strong&gt; much easier to use, and far more appropriate.&lt;/p&gt;
+
+&lt;h2 id=&quot;use-node-schedule-in-cron-based-mode&quot;&gt;Use node-schedule in Cron-based mode&lt;/h2&gt;
+
+&lt;h2 id=&quot;use-node-schedule-in-date-based-mode&quot;&gt;Use node-schedule in Date-based mode&lt;/h2&gt;
+
+
+  
+  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/javascript/nodejs/simplify-scheduling-in-nodejs-with-node-schedule.html&quot;&gt;Simplify scheduling in Node.js with node-schedule&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on April 30, 2015.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Howto nest liquid template variables inside YAML front matter block]]></title>
+  <link rel="alternate" type="text/html" href="http://acegik.net/blog/ruby/jekyll/plugins/howto-nest-liquid-template-variables-inside-yaml-front-matter-block.html"/>
+  <id>http://acegik.net/blog/ruby/jekyll/plugins/howto-nest-liquid-template-variables-inside-yaml-front-matter-block</id>
+  <published>2015-02-11T00:00:00+07:00</published>
+  <updated>2015-02-11T00:00:00+07:00</updated>
+  <author>
+    <name>Phạm Ngọc Hùng</name>
+    <uri>http://acegik.net/blog</uri>
+    <email>pnhung177@drupalex.net</email>
+  </author>
+  <category scheme="http://acegik.net/blog/tags/#Jekyll" term="Jekyll" />
+  <content type="html">
+  
+    &lt;p&gt;In Jekyll, any liquid template file that contains a YAML front matter block will be processed by Jekyll. The front matter must be the first thing in the file (nothing before it) and must take the form of valid YAML declaration between triple-dashed lines. Inside front matter, you can define some variables (we call them page variables to separate with site variables that declared in the _config.yml file).&lt;/p&gt;
+
+&lt;p&gt;Here is a basic example of YAML front matter block:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;caption&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Introduction to Acegik Company&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;---&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;In one of these variables, if you want it’s value refer to an earlier variable, site.title for example, you expect to place &lt;em&gt;output markup&lt;/em&gt; Acegik’s Blog inside the string value as following:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;caption&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Introduction to {{ site.title }}&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;---&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;caption&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/h1&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Unfortunately, Jekyll will display exactly what you put. As a solution, you should create a simple Jekyll filter plugin which resolve the &lt;em&gt;output markup&lt;/em&gt; into text, by expand nested liquid-variables in the YAML front matter.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# file: _plugins/expand_nested_variable_filter.rb&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Jekyll&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;ExpandNestedVariableFilter&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;flatify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;no&quot;&gt;Liquid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Template&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vi&quot;&gt;@context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;no&quot;&gt;Liquid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Template&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;register_filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Jekyll&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;ExpandNestedVariableFilter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;After that, you can apply this filter to your post:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;caption&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Introduction to {{ site.title }}&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;---&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;caption&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flatify&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/h1&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Jekyll will evaluate this file and render some output like “&amp;lt;h1&amp;gt;Introduction to Acegik Company&amp;lt;/h1&amp;gt;”. The expansion works also for deeper nested structures - as long as the flatify filter is also specified on the inner liquid output-blocks.&lt;/p&gt;
+
+  
+  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/ruby/jekyll/plugins/howto-nest-liquid-template-variables-inside-yaml-front-matter-block.html&quot;&gt;Howto nest liquid template variables inside YAML front matter block&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on February 11, 2015.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -3937,267 +4025,6 @@ CPU minf mjf xcal  intr ithr  csw icsw migr smtx  srw syscl  usr sys  wt idl
 
   
   &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/jekyll/migration/gia-tu-wordpress.html&quot;&gt;Giã từ ... Wordpress&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on July 01, 2014.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Cải thiện từng bước tốc độ chương trình bằng Profiler]]></title>
-  <link rel="alternate" type="text/html" href="http://acegik.net/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html"/>
-  <id>http://acegik.net/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler</id>
-  <published>2014-06-19T00:00:00+07:00</published>
-  <updated>2014-06-19T00:00:00-00:00</updated>
-  
-  <author>
-    <name>Phạm Ngọc Hùng</name>
-    <uri>http://acegik.net/blog</uri>
-    <email>pnhung177@drupalex.net</email>
-  </author>
-  <category scheme="http://acegik.net/blog/tags/#Java%20Performance" term="Java Performance" /><category scheme="http://acegik.net/blog/tags/#Refactoring" term="Refactoring" /><category scheme="http://acegik.net/blog/tags/#Profiling" term="Profiling" />
-  <content type="html">
-  
-    &lt;p&gt;Trong bài viết này, thông qua một số ví dụ nhỏ, tôi muốn đề cập đến việc sử dụng các công cụ Profiler (tạm dịch là công cụ đo đạc hiệu năng) để cải thiện tốc độ của từng phần mã lệnh trong các phương thức, từ đó từng bước nâng cao tốc độ của toàn bộ chương trình.&lt;/p&gt;
-
-&lt;p&gt;Yêu cầu của ví dụ minh họa cho bài viết này là phát triển một hàm kiểm tra một chuỗi đầu vào có phải là địa chỉ email hợp lệ hay không? Netbeans được sử dụng để viết mã lệnh do có sẵn Profiler tích hợp bên trong. Nếu các bạn sử dụng các công cụ khác như Eclipse hoặc IntelliJ IDEA có thể cài đặt tích hợp thêm VisualVM vào các môi trường phát triển này.&lt;/p&gt;
-
-&lt;h2 id=&quot;pht-trin-chc-nng-theo-tdd&quot;&gt;Phát triển chức năng theo TDD&lt;/h2&gt;
-
-&lt;p&gt;Để lập trình chức năng đặt ra ở trên, chúng ta sẽ tạo một lớp đối tượng có tên là &lt;strong&gt;ValidationUtil&lt;/strong&gt;, trong đó có một hàm &lt;em&gt;verifyEmail(s)&lt;/em&gt; có chức năng kiểm tra chuỗi đầu vào &lt;em&gt;s&lt;/em&gt; có phải là một địa chỉ email hợp lệ hay không?&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ValidationUtil&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;verifyEmail&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;UnsupportedOperationException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Tạo lớp đối tượng &lt;strong&gt;ValidationUtilTest&lt;/strong&gt; trong thư mục &lt;em&gt;src/test/java&lt;/em&gt;, trong đó viết các hàm kiểm thử cho &lt;em&gt;verifyEmail()&lt;/em&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ValidationUtilTest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-
-    &lt;span class=&quot;nd&quot;&gt;@Test&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;test_valid_emails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sample_valid_emails&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&amp;quot;abc@example.com&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;abc01@example.com&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;a@example.com&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&amp;quot;too_long_email_address@sub.example.com&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
-
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;sample:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample_valid_emails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-			&lt;span class=&quot;n&quot;&gt;Assert&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;assertTrue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ValidationUtil&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;verifyEmail&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
-		&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    
-    &lt;span class=&quot;nd&quot;&gt;@Test&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;test_invalid_emails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sample_invalid_emails&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;#ABCDEF$&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Wrong Email&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;someone@abc&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&amp;quot;domain.only.vn&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;without#at.abc&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
-
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;sample:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample_invalid_emails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;Assert&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;assertFalse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ValidationUtil&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;verifyEmail&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Chạy kiểm thử &lt;strong&gt;ValidationUtilTest&lt;/strong&gt;, đương nhiên kết quả fail đối với cả hai hàm test. Lập trình thật nhanh chưa cần tối ưu chức năng của hàm &lt;em&gt;verifyEmail()&lt;/em&gt; để pass qua được các bộ test:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ValidationUtil&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMAIL_PATTERN_STRING&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-		&lt;span class=&quot;s&quot;&gt;&amp;quot;^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@&amp;quot;&lt;/span&gt;
-		&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-   
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;verifyEmail&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;matches&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMAIL_PATTERN_STRING&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Chạy kiểm thử lại &lt;strong&gt;ValidationUtilTest&lt;/strong&gt;, dựa trên kết quả test để tùy chỉnh mã lệnh cho đến khi &lt;strong&gt;pass&lt;/strong&gt; qua bộ test.&lt;/p&gt;
-
-&lt;h2 id=&quot;p-dng-profiling--ci-tin-tc-&quot;&gt;Áp dụng profiling để cải tiến tốc độ&lt;/h2&gt;
-
-&lt;p&gt;Nếu chỉ dừng lại tại đây, chúng ta đã phát triển xong chức năng kiểm tra tính hợp lệ của địa chỉ email, đáp ứng được bộ Test đặt ra. Tuy nhiên, do phát triển nhanh để pass qua bộ test, chúng ta chưa cân nhắc đến tốc độ. Sau khi đã đảm bảo pass qua Test, đây là thời điểm xem xét đến hiệu năng của đoạn mã lệnh vừa tạo ra.&lt;/p&gt;
-
-&lt;p&gt;Trong trường hợp ví dụ của chúng ta, có thể dễ dàng nhận ra hàm String.matches() không thực sự hiệu quả nếu được sử dụng với tần suất lớn, do mỗi lần gọi hàm chương trình đều tạo ra ngầm bên trong một đối tượng &lt;strong&gt;Pattern&lt;/strong&gt; để biên dịch mẫu &lt;em&gt;EMAIL_PATTERN_STRING&lt;/em&gt;, quá trình này khá tốn kém thời gian. Với nhận định trên, ta có thể cải tiến bằng cách tạo đối tượng &lt;strong&gt;Pattern&lt;/strong&gt; để biên dịch mẫu đối sánh &lt;em&gt;EMAIL_PATTERN_STRING&lt;/em&gt; một lần từ đầu trong lớp &lt;strong&gt;ValidationUtil&lt;/strong&gt;, sau đó mỗi lần kiểm tra không cần tạo lại nữa.&lt;/p&gt;
-
-&lt;p&gt;Để tiện cho việc so sánh, chúng ta tạo thêm một hàm &lt;em&gt;verifyEmail2()&lt;/em&gt; chứa đoạn mã cải tiến:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ValidationUtil&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMAIL_PATTERN_STRING&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-		&lt;span class=&quot;s&quot;&gt;&amp;quot;^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@&amp;quot;&lt;/span&gt;
-		&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;verifyEmail&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;matches&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMAIL_PATTERN_STRING&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Pattern&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMAIL_PATTERN&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;Pattern&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;compile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMAIL_PATTERN_STRING&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;verifyEmail2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;Matcher&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;matcher&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMAIL_PATTERN&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;matcher&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;matcher&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;matches&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Trong &lt;strong&gt;ValidationUtilTest&lt;/strong&gt; bổ sung thêm các đoạn mã lệnh kiểm thử hàm &lt;em&gt;verifyEmail2()&lt;/em&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ValidationUtilTest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-
-    &lt;span class=&quot;nd&quot;&gt;@Test&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;test_valid_emails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sample_valid_emails&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&amp;quot;abc@example.com&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;abc01@example.com&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;a@example.com&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&amp;quot;too_long_email_address@sub.example.com&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
-
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;sample:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample_valid_emails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;Assert&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;assertTrue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ValidationUtil&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;verifyEmail&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-        
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;sample:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample_valid_emails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;Assert&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;assertTrue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ValidationUtil&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;verifyEmail2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    
-    &lt;span class=&quot;nd&quot;&gt;@Test&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;test_invalid_emails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sample_invalid_emails&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;#ABCDEF$&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Wrong Email&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&amp;quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;};&lt;/span&gt;
-
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;sample:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample_invalid_emails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;Assert&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;assertFalse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ValidationUtil&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;verifyEmail&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;sample:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample_invalid_emails&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;Assert&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;assertFalse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ValidationUtil&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;verifyEmail2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Sau khi chạy kiểm thử lại &lt;strong&gt;ValidationUtilTest&lt;/strong&gt; để đảm bảo &lt;em&gt;verifyEmail2()&lt;/em&gt; pass qua bộ test, chúng ta chạy Profile cho file &lt;strong&gt;ValidationUtilTest&lt;/strong&gt; như sau:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/start-profiling-test-file.png&quot; alt=&quot;Hình 1. Kích hoạt Profiler để phân tích tệp Test&quot; /&gt; &lt;/p&gt;
-
-&lt;p&gt;Chọn chức năng cần đo đạc là CPU. Profiler sẽ yêu cầu thiết lập tùy chọn, hãy chọn Advanced &amp;gt; Edit Profiling Roots để xác định các phương thức cần đo đạc tốc độ như trong hình sau:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/edit-profiling-roots.png&quot; alt=&quot;Hình 2. Chọn các phương thức cần thực hiện đo đạc&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Sau khi đã thiết lập xong tùy chọn, click chuột vào &lt;strong&gt;Run&lt;/strong&gt; để chạy profiling. Khi kết thúc, Profiler hiển thị hộp thoại xác nhận có muốn ghi lại kết quả đã đo đạc không? hãy chọn &lt;strong&gt;Yes&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/take-a-snapshot-of-results.png&quot; alt=&quot;Hình 3. Xác nhận ghi lại kết quả đo đạc&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Profiler sẽ hiển thị cửa sổ kết quả như sau:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/56b16ac7-6789-4f43-bb7c-6bf8654e28cb/cpu-hotspot-results.png&quot; alt=&quot;Hình 4. Kết quả đo đạc tốc độ thực thi của các phương thức được chọn&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Nhìn vào kết quả đo đạc, ta có thể dễ dàng thấy cả 2 hàm &lt;em&gt;verifyEmail()&lt;/em&gt; và &lt;em&gt;verifyEmail2()&lt;/em&gt; đều thực thi &lt;em&gt;4004&lt;/em&gt; lần, tuy nhiên tổng thời gian thực thi của &lt;em&gt;verifyEmail()&lt;/em&gt; là 346ms, chiếm 70.9% tổng thời gian thực thi ứng dụng, trong khi hàm &lt;em&gt;verifyEmail2()&lt;/em&gt; chỉ mất tổng thời gian thực thi là 24.8ms, chiếm 5.1%. Như vậy, chúng ta có đủ cơ sở để thay hàm &lt;em&gt;verifyEmail()&lt;/em&gt; bởi hàm &lt;em&gt;verifyEmail2()&lt;/em&gt;. Việc này khá đơn giản, chỉ cần hoán đổi tên của 2 hàm trên.&lt;/p&gt;
-
-&lt;h2 id=&quot;kt-lun&quot;&gt;Kết luận&lt;/h2&gt;
-
-&lt;p&gt;Qua ví dụ trên, chúng ta có thể thấy Profiler là công cụ đắc lực trong việc đo đạc hiệu năng của các hàm, làm cơ sở để chọn lựa hàm có hiệu năng tốt hơn. Hơn nữa, kết hợp với Unit Testing sẽ giúp chúng ta cải thiện dần từng bước tốc độ từng phần của ứng dụng, từ đó góp phần cải tiến toàn bộ chương trình.&lt;/p&gt;
-
-&lt;p&gt;Các bạn có thể tải mã nguồn đầy đủ của &lt;a href=&quot;https://github.com/pnhung177/example-improve-running-time/archive/master.zip&quot;&gt;ví dụ minh họa&lt;/a&gt; để chạy thử.&lt;/p&gt;
-
-
-  
-  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/java/performance/cai-thien-tung-buoc-toc-do-chuong-trinh-bang-profiler.html&quot;&gt;Cải thiện từng bước tốc độ chương trình bằng Profiler&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on June 19, 2014.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Các kỹ thuật dùng để cải tiến hiệu năng trong lập trình Java]]></title>
-  <link rel="alternate" type="text/html" href="http://acegik.net/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java.html"/>
-  <id>http://acegik.net/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java</id>
-  <published>2014-06-15T00:00:00+07:00</published>
-  <updated>2014-06-15T00:00:00-00:00</updated>
-  
-  <author>
-    <name>Phạm Ngọc Hùng</name>
-    <uri>http://acegik.net/blog</uri>
-    <email>pnhung177@drupalex.net</email>
-  </author>
-  <category scheme="http://acegik.net/blog/tags/#Java" term="Java" /><category scheme="http://acegik.net/blog/tags/#Java%20Performance" term="Java Performance" />
-  <content type="html">
-  
-    &lt;p&gt;Một ứng dụng có thể hoạt động rất tốt trong môi trường phát triển, tuy nhiên sau khi triển khai vào môi trường thực tế (production environment), ứng dụng hoạt động ngày càng kém đi do có sự gia tăng của tải trọng (số lượng người dùng hoặc lượng dữ liệu tăng lên). Chính vì vậy, việc đánh giá tình trạng cũng như thực hiện các giải pháp cải tiến hiệu năng là rất quan trọng không chỉ trong quá trình phát triển mà còn trong toàn bộ vòng đời của ứng dụng.&lt;/p&gt;
-
-&lt;h2 id=&quot;hiu-nng-ca-ng-dng-l-g&quot;&gt;Hiệu năng của ứng dụng là gì?&lt;/h2&gt;
-
-&lt;p&gt;Hiệu năng của ứng dụng, là tính chất thể hiện mức độ hiệu quả trong việc thực thi mã lệnh của ứng dụng, được đặc trưng bởi số lượng công việc mà ứng dụng thực hiện được trong một khoảng thời gian và với một lượng tài nguyên máy tính xác định. Hiệu năng của ứng dụng được đánh giá thông qua một số các khía cạnh đặc trưng sau:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Vùng phủ bộ nhớ (Memory Footprint)&lt;/strong&gt;: là lượng bộ nhớ được sử dụng bởi ứng dụng (kể cả máy ảo Java (JVM) mà ứng dụng chạy trên đó). Trong ứng dụng Java, cần chú ý tình huống khi vùng phủ bộ nhớ tăng lên có tác động đến bộ nhớ ảo (Virtual Memory) không? Việc hoán đổi dữ liệu giữa bộ nhớ ảo và bộ nhớ vật lý (RAM) cần được hạn chế tối đa trong các ứng dụng Java. Thử hình dung trường hợp bộ thu dọn rác (Garbage Collector) thu hồi một khối lớn vùng nhớ heap đang nằm trong bộ nhớ ảo, việc quét xem các đối tượng có còn được tham chiếu hay không sẽ mất nhiều thời gian hơn rất nhiều so với trường hợp vùng nhớ heap đang nằm trong bộ nhớ vật lý.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Thời gian kích hoạt (Startup Time)&lt;/strong&gt;: là khoảng thời gian cần thiết để ứng dụng khởi động. Thời gian kích hoạt đối với các ứng dụng Client thường phải ngắn, càng ngắn càng tốt, điều này rất quan trọng do sự tác động trực tiếp đến tâm lý người sử dụng. Ngược lại, đối với các ứng dụng Server thời gian kích hoạt ít quan trọng hơn.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Khả năng mở rộng (Scalability)&lt;/strong&gt;: là mức độ ứng dụng vẫn còn đáp ứng tốt khi có sự gia tăng về tải trọng sử dụng (do số người dùng hoặc lượng dữ liệu tăng lên). Nếu thời gian phản hồi của ứng dụng tăng theo cấp số mũ của tải trọng, khi đó ta nói ứng dụng có khả năng mở rộng kém. Ngược lại, nếu thời gian phản hồi của ứng dụng tăng theo mức độ tuyến tính đối với tại trọng, khi đó ta nói ứng dụng có khả năng mở rộng tốt.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Khả năng sẵn sàng đáp ứng (Responsiveness)&lt;/strong&gt;: thể hiện ở mức độ nhanh chóng của ứng dụng trong việc phản hồi một yêu cầu dữ liệu.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Thông lượng (Throughput)&lt;/strong&gt;: của một ứng dụng là lượng tối đa công việc mà ứng dụng xử lý được trong một khoảng thời gian xác định.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Đây là các khía cạnh đặc trưng cho hiệu năng ứng dụng nói chung. Riêng với các ứng dụng Java, chúng ta tập trung nhiều hơn vào việc tối ưu hóa JVM để tăng &lt;em&gt;khả năng sẵn sàng đáp ứng&lt;/em&gt; và &lt;em&gt;thông lượng&lt;/em&gt;. Để làm được điều này, chúng ta cần phát hiện, xử lý, điều chỉnh các vấn đề hiệu năng nảy sinh trong ứng dụng Java. Các ứng dụng Java thường gặp phải các vấn đề hiệu năng thuộc các loại sau:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Rò rỉ bộ nhớ (Memory Leaks)&lt;/strong&gt;: là những tình huống xảy ra khi có các đối tượng hết sử dụng, không còn tham chiếu trỏ đến nhưng vẫn tồn tại trong bộ nhớ mà không bị thu dọn rác (Garbage Collector) thu hồi.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Cạnh tranh khóa (Lock contention)&lt;/strong&gt;: tình trạng xảy ra khi một thread cố giành lấy khóa (lock) đang bị chiếm giữ bởi một thread khác. Nếu càng nhiều thread phải dừng lại chờ trong thời gian kéo dài sẽ làm giảm hiệu năng của ứng dụng. Thiết lập cơ chế quản lý khóa càng mịn, thì tình trạng thread phải chờ để nhận khóa từ tiến trình khác càng ít xảy ra. &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Điều chỉnh kích cỡ vùng nhớ heap (Tuning heap size)&lt;/strong&gt;: kích cỡ vùng nhớ heap ảnh hưởng đến vấn đề hoán đổi dữ liệu giữa bộ nhớ ảo và bộ nhớ vật lý. Dành quá ít hoặc quá nhiều bộ nhớ cho vùng nhớ heap đều ảnh hưởng đến hiệu năng của ứng dụng.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Tối ưu hóa thu gom rác trong JVM (Optimizing JVM garbage collection)&lt;/strong&gt;: việc hiểu rõ cơ chế vận hành của bộ thu gom rác (Garbage Collector) và điều chỉnh cho phù hợp với đặc điểm của ứng dụng sẽ giúp cải thiện rất lớn đến hiệu năng của ứng dụng.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;qu-trnh-ci-tin-hiu-nng&quot;&gt;Quá trình cải tiến hiệu năng&lt;/h2&gt;
-
-&lt;p&gt;Cải tiến hiệu năng là quá trình thu thập thông tin về hiệu năng của ứng dụng, phân tích xác định nguyên nhân ảnh hưởng đến hiệu năng, từ đó chỉnh sửa mã nguồn hoặc điều chỉnh thông số của phần mềm để làm tăng hiệu năng của ứng dụng, đáp ứng được yêu cầu đưa ra. Quá trình cải tiến hiệu năng được thực hiện thông qua 3 hoạt động: Theo dõi hiệu năng&lt;sup id=&quot;fnref:performance_monitoring&quot;&gt;&lt;a href=&quot;#fn:performance_monitoring&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; (Performance monitoring), Đo đạc hiệu năng&lt;sup id=&quot;fnref:performance_profiling&quot;&gt;&lt;a href=&quot;#fn:performance_profiling&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; (Performance profiling) và Điều chỉnh hiệu năng (Performance tuning).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/java-performance-management.png&quot; alt=&quot;Chu trình cải tiến hiệu năng cho ứng dụng Java&quot; /&gt; &lt;/p&gt;
-
-&lt;h3 id=&quot;theo-di-hiu-nng&quot;&gt;Theo dõi hiệu năng&lt;/h3&gt;
-
-&lt;p&gt;&lt;em&gt;Theo dõi hiệu năng&lt;/em&gt; là một hành động quan sát và thu thập - một cách không can thiệp (nonintrusive) - dữ liệu hiệu năng từ một ứng dụng đang vận hành. Trong hầu hết các trường hợp, theo dõi thường là dạng hành động mang tính phòng ngừa và chủ động, được thực hiện trong tất cả các môi trường của ứng dụng: môi trường thực, môi trường giám định chất lượng, hoặc môi trường phát triển. Tuy nhiên, theo dõi cũng thường là bước đầu tiên trong các hành động phản ứng lại tình huống xuất hiện báo cáo có vấn đề về hiệu năng của ứng dụng từ người dùng hoặc những người có liên quan, nhưng không cung cấp đầy đủ thông tin hoặc những đầu mối đề tìm ra nguyên nhân gốc rễ vấn đề. Theo dõi giúp xác định và cách ly các vấn đề tiềm năng mà không ảnh hưởng nghiêm trọng đến sự sẵn sàng đáp ứng hoặc thông lượng của một ứng dụng hiện đang chạy.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/performance-monitoring-comparison.png&quot; alt=&quot;So sánh giữa Performance Monitoring với chẩn đoán lâm sàng&quot; /&gt; &lt;/p&gt;
-
-&lt;p&gt;Theo dõi hiệu năng tương tự như quá trình chẩn đoán bệnh trong y học: bác sỹ thực hiện các kiểm tra sơ bộ, đo các chỉ số sinh hiệu (huyết áp, nhịp tim, v.v.), tác động cơ học lên cơ thể bệnh nhân, yêu cầu bệnh nhân mô tả các triệu chứng, từ đó chẩn đoán và khoanh vùng các nghi vấn về tình trạng bệnh tật. Việc khám bệnh có thể được thực hiện theo định kỳ để phòng ngừa, trong môi trường sinh hoạt bệnh nhân (bác sỹ đến khám tại nhà) hoặc bệnh nhân tự đến gặp bác sỹ để yêu cầu được khám bệnh khi phát hiện có triệu chứng bị ốm.&lt;/p&gt;
-
-&lt;h3 id=&quot;o-c-hiu-nng&quot;&gt;Đo đạc hiệu năng&lt;/h3&gt;
-
-&lt;p&gt;&lt;em&gt;Đo đạc hiệu năng&lt;/em&gt; cũng là một hành động thu thập dữ liệu hiệu năng từ một ứng dụng đang vận hành. Tuy nhiên, khác với theo dõi hiệu năng, việc lập hồ sơ hiệu năng có thể tác động hoặc can thiệp nhiều hơn đến ứng dụng. Đo đạc hiệu năng thường tập trung có chủ đích vào phạm vi hẹp hơn so với theo dõi hiệu năng. Đo đạc rất hiếm khi được thực hiện trong môi trường thực, mà nó thường được thực hiện trong các môi trường giám định chất lượng, kiểm thử hoặc phát triển. Đo đạc thường chỉ xảy ra sau hoạt động theo dõi kết thúc hoặc khi những yêu cầu về hiệu năng được xác định rõ (well-defined).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/performance-profiling-comparison.png&quot; alt=&quot;So sánh giữa Performance Profiling với xét nghiệm cận lâm sàng&quot; /&gt; &lt;/p&gt;
-
-&lt;p&gt;Chúng ta có thể hình dung việc lập hồ sơ hiệu năng giống như quá trình xét nghiệm cận lâm sàng trong y học: sau khi đã chẩn đoán thông qua các triệu chứng lâm sàng, bác sỹ sẽ khoanh vùng căn bệnh và yêu cầu bệnh nhân thực hiện các xét nghiệm sâu hơn và cụ thể hơn. Ví dụ, sau khi khám và nghe mô tả của bệnh nhân: đau và hạn chế vận động cột sống, bả vai, ái phát từng đợt, thường sau khi vận động nhiều, bác sỹ chẩn đoán bệnh nhân bị loãng xương. Để xác định chính xác và chắc chắn hơn, bác sỹ sẽ chỉ định xét nghiệm cận lâm sàng: chụp X-Quang và đo chỉ số T-score. Với các thông tin thu được, bác sỹ có thể xác định nguyên nhân và đưa ra phát đồ điều trị bệnh.&lt;/p&gt;
-
-&lt;h3 id=&quot;iu-chnh-hiu-nng&quot;&gt;Điều chỉnh hiệu năng&lt;/h3&gt;
-
-&lt;p&gt;&lt;em&gt;Điều chỉnh hiệu năng&lt;/em&gt; là hoạt động chỉnh sửa mã nguồn hoặc thông số cấu hình của ứng dụng nhằm mục đích tăng cường khả năng sẵn sàng đáp ứng và nâng cao thông lượng của ứng dụng. Điều chỉnh hiệu năng thường được thực hiện sau các bước theo dõi hiệu năng và lập hồ sơ hiệu năng.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/283c1b8a-42bc-4ca8-a126-65308bbeff0b/performance-tuning-comparison.png&quot; alt=&quot;So sánh giữa Performance Tuning với điều trị bệnh&quot; /&gt; &lt;/p&gt;
-
-&lt;p&gt;Tương ứng trong y tế, đây là quá trình bác sỹ áp dụng các phác đồ điều trị cũng như những cán thiệp y học (phẫu thuật, tiêm/uống thuốc, vật lý trị liệu, v.v.) để khắc phục các nguyên nhân gây bệnh, từ đó phục hồi và tăng cường sức khỏe cho người bệnh.&lt;/p&gt;
-
-&lt;h2 id=&quot;kt-lun&quot;&gt;Kết luận&lt;/h2&gt;
-
-&lt;p&gt;Bài viết này&lt;sup id=&quot;fnref:PS&quot;&gt;&lt;a href=&quot;#fn:PS&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; trình bày khái niệm về hiệu năng của ứng dụng, các khía cạnh đặc trưng và các vấn đề liên quan đến hiệu năng trong ứng dụng Java. Bài viết cũng trình bày sơ lược 3 bước của quá trình cải tiến hiệu năng: theo dõi, đo đạc và hiệu chỉnh.&lt;/p&gt;
-
-&lt;div class=&quot;footnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:performance_monitoring&quot;&gt;
-      &lt;p&gt;Từ &lt;em&gt;monitoring&lt;/em&gt; có thể dịch thành các từ &lt;em&gt;giám sát&lt;/em&gt;, &lt;em&gt;quan sát&lt;/em&gt;, &lt;em&gt;theo dõi&lt;/em&gt;. Tôi chọn từ &lt;em&gt;theo dõi&lt;/em&gt;. &lt;a href=&quot;#fnref:performance_monitoring&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:performance_profiling&quot;&gt;
-      &lt;p&gt;Các bạn có thể tra từ điển từ &lt;em&gt;profiling&lt;/em&gt; có nghĩa &lt;em&gt;lập hồ sơ&lt;/em&gt;, &lt;em&gt;định hình&lt;/em&gt;. Ở đây tôi dịch là &lt;em&gt;đo đạc&lt;/em&gt; vì cảm thấy từ này hợp nghĩa nhất. &lt;a href=&quot;#fnref:performance_profiling&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:PS&quot;&gt;
-      &lt;p&gt;Bài viết này là bài mở đầu cho loạt bài viết về cải tiến hiệu năng cho ứng dụng Java (Java Performance).  &lt;a href=&quot;#fnref:PS&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;
-
-  
-  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/java/performance/cac-ky-thuat-dung-de-nang-cao-hieu-nang-trong-lap-trinh-java.html&quot;&gt;Các kỹ thuật dùng để cải tiến hiệu năng trong lập trình Java&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on June 15, 2014.&lt;/p&gt;</content>
 </entry>
 
 </feed>

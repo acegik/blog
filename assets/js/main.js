@@ -1,14 +1,14 @@
 'use strict';
 
-var summer = (function ($) {
+var cheryk = (function ($) {
 
-    var indexPostClass = '.summer-index-post',
-        mobileMenuButton = '.summer-mobile-menu a',
-        mobileMenuCloseButton = '.summer-mobile-close-btn',
-        mainMenu = '.summer-menu',
+    var indexPostClass = '.cheryk-index-post',
+        mobileMenuButton = '.cheryk-mobile-menu a',
+        mobileMenuCloseButton = '.cheryk-mobile-close-btn',
+        mainMenu = '.cheryk-menu',
         bgCheckClass = '.bg-check',
         postBgImages = '.bg-img img',
-        postCoverImg = '.summer-post-header .bg-img',
+        postCoverImg = '.cheryk-post-header .bg-img',
 
     // post animations on homepage
     indexPostAnimate = function () {
@@ -54,7 +54,7 @@ var summer = (function ($) {
         }
     },
 
-    // summer javascripts initialization
+    // cheryk javascripts initialization
     init = function () {
         indexPostAnimate();
         $(window).on('scroll', function() {
@@ -73,5 +73,5 @@ var summer = (function ($) {
 })(jQuery);
 
 (function () {
-    summer.init();
+    cheryk.init();
 })();

@@ -34,11 +34,19 @@
     </url>
     
     <url>
+        <loc>http://acegik.net/blog/assets/css/post.css</loc>
+    </url>
+    
+    <url>
         <loc>http://acegik.net/blog/search.json</loc>
     </url>
     
     <url>
         <loc>http://acegik.net/blog/sitemap.xml</loc>
+    </url>
+    
+    <url>
+        <loc>http://acegik.net/blog/assets/css/style.css</loc>
     </url>
     
     <url>
@@ -65,7 +73,19 @@
         <loc>http://acegik.net/blog/page6/index.html</loc>
     </url>
     
+    <url>
+        <loc>http://acegik.net/blog/page7/index.html</loc>
+    </url>
+    
 
+    
+    <url>
+        <loc>http://acegik.net/blog/javascript/nodejs/simplify-scheduling-in-nodejs-with-node-schedule.html</loc>
+    </url>
+    
+    <url>
+        <loc>http://acegik.net/blog/ruby/jekyll/plugins/howto-nest-liquid-template-variables-inside-yaml-front-matter-block.html</loc>
+    </url>
     
     <url>
         <loc>http://acegik.net/blog/javascript/angularjs/thuc-hanh-kiem-thu-don-vi-de-xay-dung-ung-dung-angularjs-theo-tdd.html</loc>

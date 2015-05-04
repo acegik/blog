@@ -148,6 +148,16 @@ callback([
   {
     "text": "Thực hành Unit testing để xây dựng ứng dụng AngularJS theo TDD",
     "href": "/blog/javascript/angularjs/thuc-hanh-kiem-thu-don-vi-de-xay-dung-ung-dung-angularjs-theo-tdd.html"
+  } ,
+
+  {
+    "text": "Howto nest liquid template variables inside YAML front matter block",
+    "href": "/blog/ruby/jekyll/plugins/howto-nest-liquid-template-variables-inside-yaml-front-matter-block.html"
+  } ,
+
+  {
+    "text": "Simplify scheduling in Node.js with node-schedule",
+    "href": "/blog/javascript/nodejs/simplify-scheduling-in-nodejs-with-node-schedule.html"
   } 
 
 ])

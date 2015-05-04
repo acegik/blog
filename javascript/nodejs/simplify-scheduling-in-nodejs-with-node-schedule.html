@@ -2,23 +2,23 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>GIã Từ ... WORDPRESS &vert; ACEGIK'S BLOG</title>
+<title>SIMPLIFY SCHEDULING IN NODE.JS WITH NODE-SCHEDULE &vert; ACEGIK'S BLOG</title>
 <meta name="description" content="... when the sun comes up, you better be running!">
-<meta name="keywords" content="jekyll, wordpress, markdown">
+<meta name="keywords" content="JavaScript, NodeJS, Scheduling">
 
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="/blog/images/logo.png">
-<meta name="twitter:title" content="Giã từ ... Wordpress">
+<meta name="twitter:title" content="Simplify scheduling in Node.js with node-schedule">
 <meta name="twitter:description" content="... when the sun comes up, you better be running!">
 <meta name="twitter:creator" content="@pnhung177">
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Giã từ ... Wordpress">
+<meta property="og:title" content="Simplify scheduling in Node.js with node-schedule">
 <meta property="og:description" content="... when the sun comes up, you better be running!">
-<meta property="og:url" content="/blog/jekyll/migration/gia-tu-wordpress.html">
+<meta property="og:url" content="/blog/javascript/nodejs/simplify-scheduling-in-nodejs-with-node-schedule.html">
 <meta property="og:site_name" content="Acegik's Blog">
 <meta property="og:image" content="/blog/images/">
 
@@ -26,7 +26,7 @@
 
 
 
-<link rel="canonical" href="/blog/jekyll/migration/gia-tu-wordpress.html">
+<link rel="canonical" href="/blog/javascript/nodejs/simplify-scheduling-in-nodejs-with-node-schedule.html">
 <link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Acegik's Blog Feed">
 <link rel="author" href="https://plus.google.com/u/3/115458186421626071505?rel=author">
 
@@ -108,54 +108,19 @@
                 <div class="cheryk-post-title-simple row">
                     <div class="small-12 columns">
                         <div class="cheryk-post-meta-simple">
-                            <h1>Giã từ ... Wordpress</h1>
-                            <p>by <strong>pnhung177</strong> &#8212; on <a href="/blog/tags/index.html#jekyll" data-toggle="tooltip" title="Posts tagged with jekyll" rel="tag">jekyll</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#wordpress" data-toggle="tooltip" title="Posts tagged with wordpress" rel="tag">wordpress</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#markdown" data-toggle="tooltip" title="Posts tagged with markdown" rel="tag">markdown</a> &#8212; <strong><time datetime="2014-07-01T00:00:00+07:00">01/07/2014</time></strong></p>
+                            <h1>Simplify scheduling in Node.js with node-schedule</h1>
+                            <p>by <strong>pnhung177</strong> &#8212; on <a href="/blog/tags/index.html#JavaScript" data-toggle="tooltip" title="Posts tagged with JavaScript" rel="tag">JavaScript</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#NodeJS" data-toggle="tooltip" title="Posts tagged with NodeJS" rel="tag">NodeJS</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#Scheduling" data-toggle="tooltip" title="Posts tagged with Scheduling" rel="tag">Scheduling</a> &#8212; <strong><time datetime="2015-04-30T00:00:00+07:00">30/04/2015</time></strong></p>
                         </div>
                     </div>
                 </div>
             </header>
 
         <article class="cheryk-post-content post tag-simple">
-            <div><p>Trong các công cụ tạo blog, có lẽ wordress là công cụ hàng đầu trên thế giới hiện nay. Wordpress là CMS mã nguồn mở bằng PHP được sử dụng rộng rãi không chỉ để viết blog mà còn dùng cho các trang web bán hàng, nền tảng để xây dựng các ứng dụng dưới dạng các plugin. So với Joomla và Drupal, Wordpress có phần nổi trội hơn về tính đơn giản, số lượng plugin nhiều cũng như sự dễ dùng của nó.</p>
+            <div><p>There’re two ways using node-schedule: Cron-based scheduling (similar to Linux cron) or Date-based scheduling. Anyway, node-schedule is for time-based scheduling, not interval-based scheduling. If you only want to do something like “run this function every 5 minutes”, you’ll find <strong>setInterval</strong> much easier to use, and far more appropriate.</p>
 
-<p>Mặc dù đã gắn bó với Wordpress một thời gian dài (và khá hài lòng với CMS này), tuy nhiên cuối cùng tôi cũng giã từ để chuyển blog của mình sang một “nền tảng” khác là Jekyll. Tại sao là Jekyll? Dưới đây là một số lý do:</p>
+<h2 id="use-node-schedule-in-cron-based-mode">Use node-schedule in Cron-based mode</h2>
 
-<ul>
-  <li>Đầu tiên phải kể đến là cách Jekyll tạo bài viết: người viết bài chỉ cần soạn thảo bài viết theo định dạng <a href="http://daringfireball.net/projects/markdown/">Markdown</a> hoặc <a href="http://en.wikipedia.org/wiki/Textile_(markup_language)">Textile</a>, sau đó sử dụng Jekyll để biên dịch thành trang web tĩnh.</li>
-  <li>Blog tạo ra bằng Jekyll là trang web tĩnh, không cần đến CSDL, không cần đến engine xử lý ngôn ngữ lập trình như PHP, Java, .NET,v.v. nên trang web nhẹ, nhanh, dễ dàng triển khai, cập nhật.</li>
-  <li>Do blog có thể biên dịch thành trang web tĩnh, nên không kén chọn web-host để lưu trữ, có thể sử dụng github để lưu trữ trang web.</li>
-</ul>
-
-<p>Với những ai đồng quan điểm với tôi và có ý đồ chuyển blog từ Wordpress sang Jekyll, tôi chia sẻ một số kinh nghiệm dưới đây.</p>
-
-<h2 id="bc-tch-bi-vit-t-wordpress">Bóc tách bài viết từ Wordpress</h2>
-
-<p>Giả sử bạn đã có trang web hoặc blog trên wordpress. Việc chuyển đổi bài viết từ wordpress qua Jekyll được thực hiện theo các bước sau:</p>
-
-<ul>
-  <li>Cài đặt plugin <a href="http://wordpress.org/plugins/disqus-comment-system/">Disqus Comment System</a> và thực hiện di chuyển các bình luận nội bộ trong Wordpress sang Disqus.</li>
-  <li>Cài đặt plugin chuyển đổi <a href="https://github.com/benbalter/wordpress-to-jekyll-exporter">Wordpress to Jekyll Exporter</a> để chuyển đổi bài viết và các thông tin khác (converts all posts, pages, taxonomies, metadata, and settings to Markdown and YAML which can be dropped into Jekyll) từ Wordpress sang Jekyll.</li>
-  <li>Phần hình ảnh cần chuyển đổi bằng tay. Trước tiên bạn chép các tệp hình ảnh từ Wordpress vào thư mục chứa hình ảnh của Jekyll, sau đó sử dụng công cụ Find &amp; Replace dựa trên RegExp để tìm và thay thế đường dẫn thư mục hình ảnh trong các bài viết.</li>
-</ul>
-
-<p>Việc này áp dụng không chỉ với wordpress mà cả với các CMS khác.</p>
-
-<h2 id="xut-bn-bi-vit-bng-jekyll">Xuất bản bài viết bằng Jekyll</h2>
-
-<p>Nếu bạn muốn giữ lại themes cũ, hãy dành một chút thời gian để chỉnh sửa giao diện phù hợp với Jekyll. Nếu không, bạn có thể chọn các themes có sẵn, chẳng hạn như từ <a href="http://themes.jekyllbootstrap.com/">kho theme của Jekyllbootstrap</a>. Thông thường, bạn chuyển vào thư mục gốc của mã nguồn Jekyll của trang web, chỉnh sửa thông số cấu hình trong tệp <em>_config.yml</em>, sau đó sử dụng Jekyll để biên dịch thành một trang web tĩnh và upload trang web tĩnh này lên web-host riêng của bạn hoặc lên github. Các bạn có thể tìm hiểu chi tiết và đầy đủ về Jekyll từ trang tài liệu <a href="http://jekyllrb.com/docs/home/">Jekyll Documentation</a> của công cụ này.</p>
-
-<h2 id="kt-lun">Kết luận</h2>
-
-<p>Với các nhà phát triển ứng dụng, có lẽ Jekyll hoặc các công cụ tương tự phù hợp hơn Wordpress trong việc viết blog. Do thường xuyên viết tài liệu bằng Markdown, Textile nên việc viết blog bằng Jekyll sẽ thấy quen thuộc, dễ kiểm soát hơn. Chưa kể đến tốc độ và những thuận lợi mà trang web tĩnh mang lại.</p>
-
-<h2 id="ti-liu-tham-kho">Tài liệu tham khảo</h2>
-
-<ol>
-  <li><a href="http://jekyllrb.com/docs/home/">Tài liệu hướng dẫn sử dụng Jekyll</a></li>
-  <li><a href="http://wordpress.org/plugins/disqus-comment-system/">Disqus plugin cho Wordpress</a></li>
-  <li><a href="https://github.com/benbalter/wordpress-to-jekyll-exporter">Wordpress to Jekyll Exporter</a></li>
-  <li><a href="http://themes.jekyllbootstrap.com/">Jekyllbootstrap Themes</a></li>
-</ol>
+<h2 id="use-node-schedule-in-date-based-mode">Use node-schedule in Date-based mode</h2>
 
 
             </div>
@@ -164,15 +129,15 @@
         <div class="cf"></div>
         <div class="row text-center">
             <section class="cheryk-post-share">
-                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Giã từ ... Wordpress&quot;%20/blog/jekyll/migration/gia-tu-wordpress.html%20via%20&#64;pnhung177"
+                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Simplify scheduling in Node.js with node-schedule&quot;%20/blog/javascript/nodejs/simplify-scheduling-in-nodejs-with-node-schedule.html%20via%20&#64;pnhung177"
                     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
                     <i class="fa fa-twitter"></i>
                 </a>
-                <a class="facebook-icon" href="https://www.facebook.com/sharer/sharer.php?u=/blog/jekyll/migration/gia-tu-wordpress.html"
+                <a class="facebook-icon" href="https://www.facebook.com/sharer/sharer.php?u=/blog/javascript/nodejs/simplify-scheduling-in-nodejs-with-node-schedule.html"
                     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
                     <i class="fa fa-facebook"></i>
                 </a>
-                <a class="google-icon" href="https://plus.google.com/share?url=/blog/jekyll/migration/gia-tu-wordpress.html"
+                <a class="google-icon" href="https://plus.google.com/share?url=/blog/javascript/nodejs/simplify-scheduling-in-nodejs-with-node-schedule.html"
                    onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
                     <i class="fa fa-google-plus"></i>
                 </a>

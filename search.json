@@ -1,6 +1,22 @@
 [
 	
 		{
+		  "title"      : "Simplify scheduling in Node.js with node-schedule",
+		  "category"   : "javascriptnodejs",
+		  "url"        : "/blog/javascript/nodejs/simplify-scheduling-in-nodejs-with-node-schedule.html",
+		  "date"       : "2015-04-30 00:00:00 +0700",
+		  "shortdate"  : "April 30, 2015"
+		} ,
+	
+		{
+		  "title"      : "Howto nest liquid template variables inside YAML front matter block",
+		  "category"   : "rubyjekyllplugins",
+		  "url"        : "/blog/ruby/jekyll/plugins/howto-nest-liquid-template-variables-inside-yaml-front-matter-block.html",
+		  "date"       : "2015-02-11 00:00:00 +0700",
+		  "shortdate"  : "February 11, 2015"
+		} ,
+	
+		{
 		  "title"      : "Thực hành Unit testing để xây dựng ứng dụng AngularJS theo TDD",
 		  "category"   : "javascriptangularjs",
 		  "url"        : "/blog/javascript/angularjs/thuc-hanh-kiem-thu-don-vi-de-xay-dung-ung-dung-angularjs-theo-tdd.html",

@@ -2,23 +2,23 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>GIã Từ ... WORDPRESS &vert; ACEGIK'S BLOG</title>
+<title>HOWTO NEST LIQUID TEMPLATE VARIABLES INSIDE YAML FRONT MATTER BLOCK &vert; ACEGIK'S BLOG</title>
 <meta name="description" content="... when the sun comes up, you better be running!">
-<meta name="keywords" content="jekyll, wordpress, markdown">
+<meta name="keywords" content="Jekyll">
 
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="/blog/images/logo.png">
-<meta name="twitter:title" content="Giã từ ... Wordpress">
+<meta name="twitter:title" content="Howto nest liquid template variables inside YAML front matter block">
 <meta name="twitter:description" content="... when the sun comes up, you better be running!">
 <meta name="twitter:creator" content="@pnhung177">
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Giã từ ... Wordpress">
+<meta property="og:title" content="Howto nest liquid template variables inside YAML front matter block">
 <meta property="og:description" content="... when the sun comes up, you better be running!">
-<meta property="og:url" content="/blog/jekyll/migration/gia-tu-wordpress.html">
+<meta property="og:url" content="/blog/ruby/jekyll/plugins/howto-nest-liquid-template-variables-inside-yaml-front-matter-block.html">
 <meta property="og:site_name" content="Acegik's Blog">
 <meta property="og:image" content="/blog/images/">
 
@@ -26,7 +26,7 @@
 
 
 
-<link rel="canonical" href="/blog/jekyll/migration/gia-tu-wordpress.html">
+<link rel="canonical" href="/blog/ruby/jekyll/plugins/howto-nest-liquid-template-variables-inside-yaml-front-matter-block.html">
 <link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Acegik's Blog Feed">
 <link rel="author" href="https://plus.google.com/u/3/115458186421626071505?rel=author">
 
@@ -108,55 +108,56 @@
                 <div class="cheryk-post-title-simple row">
                     <div class="small-12 columns">
                         <div class="cheryk-post-meta-simple">
-                            <h1>Giã từ ... Wordpress</h1>
-                            <p>by <strong>pnhung177</strong> &#8212; on <a href="/blog/tags/index.html#jekyll" data-toggle="tooltip" title="Posts tagged with jekyll" rel="tag">jekyll</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#wordpress" data-toggle="tooltip" title="Posts tagged with wordpress" rel="tag">wordpress</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#markdown" data-toggle="tooltip" title="Posts tagged with markdown" rel="tag">markdown</a> &#8212; <strong><time datetime="2014-07-01T00:00:00+07:00">01/07/2014</time></strong></p>
+                            <h1>Howto nest liquid template variables inside YAML front matter block</h1>
+                            <p>by <strong>pnhung177</strong> &#8212; on <a href="/blog/tags/index.html#Jekyll" data-toggle="tooltip" title="Posts tagged with Jekyll" rel="tag">Jekyll</a> &#8212; <strong><time datetime="2015-02-11T00:00:00+07:00">11/02/2015</time></strong></p>
                         </div>
                     </div>
                 </div>
             </header>
 
         <article class="cheryk-post-content post tag-simple">
-            <div><p>Trong các công cụ tạo blog, có lẽ wordress là công cụ hàng đầu trên thế giới hiện nay. Wordpress là CMS mã nguồn mở bằng PHP được sử dụng rộng rãi không chỉ để viết blog mà còn dùng cho các trang web bán hàng, nền tảng để xây dựng các ứng dụng dưới dạng các plugin. So với Joomla và Drupal, Wordpress có phần nổi trội hơn về tính đơn giản, số lượng plugin nhiều cũng như sự dễ dùng của nó.</p>
+            <div><p>In Jekyll, any liquid template file that contains a YAML front matter block will be processed by Jekyll. The front matter must be the first thing in the file (nothing before it) and must take the form of valid YAML declaration between triple-dashed lines. Inside front matter, you can define some variables (we call them page variables to separate with site variables that declared in the _config.yml file).</p>
 
-<p>Mặc dù đã gắn bó với Wordpress một thời gian dài (và khá hài lòng với CMS này), tuy nhiên cuối cùng tôi cũng giã từ để chuyển blog của mình sang một “nền tảng” khác là Jekyll. Tại sao là Jekyll? Dưới đây là một số lý do:</p>
+<p>Here is a basic example of YAML front matter block:</p>
 
-<ul>
-  <li>Đầu tiên phải kể đến là cách Jekyll tạo bài viết: người viết bài chỉ cần soạn thảo bài viết theo định dạng <a href="http://daringfireball.net/projects/markdown/">Markdown</a> hoặc <a href="http://en.wikipedia.org/wiki/Textile_(markup_language)">Textile</a>, sau đó sử dụng Jekyll để biên dịch thành trang web tĩnh.</li>
-  <li>Blog tạo ra bằng Jekyll là trang web tĩnh, không cần đến CSDL, không cần đến engine xử lý ngôn ngữ lập trình như PHP, Java, .NET,v.v. nên trang web nhẹ, nhanh, dễ dàng triển khai, cập nhật.</li>
-  <li>Do blog có thể biên dịch thành trang web tĩnh, nên không kén chọn web-host để lưu trữ, có thể sử dụng github để lưu trữ trang web.</li>
-</ul>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">---</span>
+<span class="ss">layout</span><span class="p">:</span> <span class="n">post</span>
+<span class="ss">caption</span><span class="p">:</span> <span class="s2">&quot;Introduction to Acegik Company&quot;</span>
+<span class="o">---</span></code></pre></div>
 
-<p>Với những ai đồng quan điểm với tôi và có ý đồ chuyển blog từ Wordpress sang Jekyll, tôi chia sẻ một số kinh nghiệm dưới đây.</p>
+<p>In one of these variables, if you want it’s value refer to an earlier variable, site.title for example, you expect to place <em>output markup</em> Acegik’s Blog inside the string value as following:</p>
 
-<h2 id="bc-tch-bi-vit-t-wordpress">Bóc tách bài viết từ Wordpress</h2>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">---</span>
+<span class="ss">layout</span><span class="p">:</span> <span class="n">post</span>
+<span class="ss">caption</span><span class="p">:</span> <span class="s2">&quot;Introduction to {{ site.title }}&quot;</span>
+<span class="o">---</span>
 
-<p>Giả sử bạn đã có trang web hoặc blog trên wordpress. Việc chuyển đổi bài viết từ wordpress qua Jekyll được thực hiện theo các bước sau:</p>
+<span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">page</span><span class="o">.</span><span class="n">caption</span> <span class="p">}}</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span></code></pre></div>
 
-<ul>
-  <li>Cài đặt plugin <a href="http://wordpress.org/plugins/disqus-comment-system/">Disqus Comment System</a> và thực hiện di chuyển các bình luận nội bộ trong Wordpress sang Disqus.</li>
-  <li>Cài đặt plugin chuyển đổi <a href="https://github.com/benbalter/wordpress-to-jekyll-exporter">Wordpress to Jekyll Exporter</a> để chuyển đổi bài viết và các thông tin khác (converts all posts, pages, taxonomies, metadata, and settings to Markdown and YAML which can be dropped into Jekyll) từ Wordpress sang Jekyll.</li>
-  <li>Phần hình ảnh cần chuyển đổi bằng tay. Trước tiên bạn chép các tệp hình ảnh từ Wordpress vào thư mục chứa hình ảnh của Jekyll, sau đó sử dụng công cụ Find &amp; Replace dựa trên RegExp để tìm và thay thế đường dẫn thư mục hình ảnh trong các bài viết.</li>
-</ul>
+<p>Unfortunately, Jekyll will display exactly what you put. As a solution, you should create a simple Jekyll filter plugin which resolve the <em>output markup</em> into text, by expand nested liquid-variables in the YAML front matter.</p>
 
-<p>Việc này áp dụng không chỉ với wordpress mà cả với các CMS khác.</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># file: _plugins/expand_nested_variable_filter.rb</span>
 
-<h2 id="xut-bn-bi-vit-bng-jekyll">Xuất bản bài viết bằng Jekyll</h2>
+<span class="k">module</span> <span class="nn">Jekyll</span>
+  <span class="k">module</span> <span class="nn">ExpandNestedVariableFilter</span>
+    <span class="k">def</span> <span class="nf">flatify</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
+      <span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">input</span><span class="p">)</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="vi">@context</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
 
-<p>Nếu bạn muốn giữ lại themes cũ, hãy dành một chút thời gian để chỉnh sửa giao diện phù hợp với Jekyll. Nếu không, bạn có thể chọn các themes có sẵn, chẳng hạn như từ <a href="http://themes.jekyllbootstrap.com/">kho theme của Jekyllbootstrap</a>. Thông thường, bạn chuyển vào thư mục gốc của mã nguồn Jekyll của trang web, chỉnh sửa thông số cấu hình trong tệp <em>_config.yml</em>, sau đó sử dụng Jekyll để biên dịch thành một trang web tĩnh và upload trang web tĩnh này lên web-host riêng của bạn hoặc lên github. Các bạn có thể tìm hiểu chi tiết và đầy đủ về Jekyll từ trang tài liệu <a href="http://jekyllrb.com/docs/home/">Jekyll Documentation</a> của công cụ này.</p>
+<span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="o">.</span><span class="n">register_filter</span><span class="p">(</span><span class="no">Jekyll</span><span class="o">::</span><span class="no">ExpandNestedVariableFilter</span><span class="p">)</span></code></pre></div>
 
-<h2 id="kt-lun">Kết luận</h2>
+<p>After that, you can apply this filter to your post:</p>
 
-<p>Với các nhà phát triển ứng dụng, có lẽ Jekyll hoặc các công cụ tương tự phù hợp hơn Wordpress trong việc viết blog. Do thường xuyên viết tài liệu bằng Markdown, Textile nên việc viết blog bằng Jekyll sẽ thấy quen thuộc, dễ kiểm soát hơn. Chưa kể đến tốc độ và những thuận lợi mà trang web tĩnh mang lại.</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">---</span>
+<span class="ss">layout</span><span class="p">:</span> <span class="n">post</span>
+<span class="ss">caption</span><span class="p">:</span> <span class="s2">&quot;Introduction to {{ site.title }}&quot;</span>
+<span class="o">---</span>
 
-<h2 id="ti-liu-tham-kho">Tài liệu tham khảo</h2>
+<span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">page</span><span class="o">.</span><span class="n">caption</span> <span class="o">|</span> <span class="n">flatify</span> <span class="p">}}</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span></code></pre></div>
 
-<ol>
-  <li><a href="http://jekyllrb.com/docs/home/">Tài liệu hướng dẫn sử dụng Jekyll</a></li>
-  <li><a href="http://wordpress.org/plugins/disqus-comment-system/">Disqus plugin cho Wordpress</a></li>
-  <li><a href="https://github.com/benbalter/wordpress-to-jekyll-exporter">Wordpress to Jekyll Exporter</a></li>
-  <li><a href="http://themes.jekyllbootstrap.com/">Jekyllbootstrap Themes</a></li>
-</ol>
-
+<p>Jekyll will evaluate this file and render some output like “&lt;h1&gt;Introduction to Acegik Company&lt;/h1&gt;”. The expansion works also for deeper nested structures - as long as the flatify filter is also specified on the inner liquid output-blocks.</p>
 
             </div>
         </article>
@@ -164,15 +165,15 @@
         <div class="cf"></div>
         <div class="row text-center">
             <section class="cheryk-post-share">
-                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Giã từ ... Wordpress&quot;%20/blog/jekyll/migration/gia-tu-wordpress.html%20via%20&#64;pnhung177"
+                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Howto nest liquid template variables inside YAML front matter block&quot;%20/blog/ruby/jekyll/plugins/howto-nest-liquid-template-variables-inside-yaml-front-matter-block.html%20via%20&#64;pnhung177"
                     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
                     <i class="fa fa-twitter"></i>
                 </a>
-                <a class="facebook-icon" href="https://www.facebook.com/sharer/sharer.php?u=/blog/jekyll/migration/gia-tu-wordpress.html"
+                <a class="facebook-icon" href="https://www.facebook.com/sharer/sharer.php?u=/blog/ruby/jekyll/plugins/howto-nest-liquid-template-variables-inside-yaml-front-matter-block.html"
                     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
                     <i class="fa fa-facebook"></i>
                 </a>
-                <a class="google-icon" href="https://plus.google.com/share?url=/blog/jekyll/migration/gia-tu-wordpress.html"
+                <a class="google-icon" href="https://plus.google.com/share?url=/blog/ruby/jekyll/plugins/howto-nest-liquid-template-variables-inside-yaml-front-matter-block.html"
                    onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
                     <i class="fa fa-google-plus"></i>
                 </a>
