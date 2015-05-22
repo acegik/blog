@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>HOWTO NEST LIQUID TEMPLATE VARIABLES INSIDE YAML FRONT MATTER BLOCK &vert; ACEGIK'S BLOG</title>
 <meta name="description" content="... when the sun comes up, you better be running!">
-<meta name="keywords" content="Jekyll">
+<meta name="keywords" content="Jekyll, english">
 
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary">
@@ -62,6 +62,17 @@
 <!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/blog/images/apple-touch-icon-144x144-precomposed.png">
 
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Acegik - sidebar -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2558234225933836"
+     data-ad-slot="3073080904"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 </head>
 <body class="post-template" itemscope itemtype="http://schema.org/WebPage">
 
@@ -109,7 +120,7 @@
                     <div class="small-12 columns">
                         <div class="cheryk-post-meta-simple">
                             <h1>Howto nest liquid template variables inside YAML front matter block</h1>
-                            <p>by <strong>pnhung177</strong> &#8212; on <a href="/blog/tags/index.html#Jekyll" data-toggle="tooltip" title="Posts tagged with Jekyll" rel="tag">Jekyll</a> &#8212; <strong><time datetime="2015-02-11T00:00:00+07:00">11/02/2015</time></strong></p>
+                            <p>by <strong>pnhung177</strong> &#8212; on <a href="/blog/tags/index.html#Jekyll" data-toggle="tooltip" title="Posts tagged with Jekyll" rel="tag">Jekyll</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#english" data-toggle="tooltip" title="Posts tagged with english" rel="tag">english</a> &#8212; <strong><time datetime="2015-02-11T00:00:00+07:00">11/02/2015</time></strong></p>
                         </div>
                     </div>
                 </div>
@@ -123,7 +134,11 @@
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">---</span>
 <span class="ss">layout</span><span class="p">:</span> <span class="n">post</span>
 <span class="ss">caption</span><span class="p">:</span> <span class="s2">&quot;Introduction to Acegik Company&quot;</span>
-<span class="o">---</span></code></pre></div>
+<span class="o">---</span>
+
+<span class="no">Title</span> <span class="n">here</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+
+<span class="no">Content</span> <span class="n">here</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span></code></pre></div>
 
 <p>In one of these variables, if you want it’s value refer to an earlier variable, site.title for example, you expect to place <em>output markup</em> Acegik’s Blog inside the string value as following:</p>
 
@@ -134,7 +149,7 @@
 
 <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">page</span><span class="o">.</span><span class="n">caption</span> <span class="p">}}</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span></code></pre></div>
 
-<p>Unfortunately, Jekyll will display exactly what you put. As a solution, you should create a simple Jekyll filter plugin which resolve the <em>output markup</em> into text, by expand nested liquid-variables in the YAML front matter.</p>
+<p>Unfortunately, Jekyll will display exactly what you put in page variables. As a solution, you should create a simple Jekyll filter plugin which resolve the <em>output markup</em> into text, by expand nested liquid-variables in the YAML front matter.</p>
 
 <div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1"># file: _plugins/expand_nested_variable_filter.rb</span>
 
@@ -157,7 +172,7 @@
 
 <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="p">{{</span> <span class="n">page</span><span class="o">.</span><span class="n">caption</span> <span class="o">|</span> <span class="n">flatify</span> <span class="p">}}</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span></code></pre></div>
 
-<p>Jekyll will evaluate this file and render some output like “&lt;h1&gt;Introduction to Acegik Company&lt;/h1&gt;”. The expansion works also for deeper nested structures - as long as the flatify filter is also specified on the inner liquid output-blocks.</p>
+<p>Jekyll will process this file and render some output like “&lt;h1&gt;Introduction to Acegik Company&lt;/h1&gt;”. The expansion works also for deeper nested structures - as long as the <strong>flatify</strong> filter is also specified on the inner liquid output-blocks.</p>
 
             </div>
         </article>

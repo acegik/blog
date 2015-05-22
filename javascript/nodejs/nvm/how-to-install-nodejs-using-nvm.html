@@ -2,23 +2,23 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>SIMPLIFY SCHEDULING IN NODE.JS WITH NODE-SCHEDULE &vert; ACEGIK'S BLOG</title>
+<title>HOW TO INSTALL NODEJS ON UBUNTU USING NVM &vert; ACEGIK'S BLOG</title>
 <meta name="description" content="... when the sun comes up, you better be running!">
-<meta name="keywords" content="JavaScript, NodeJS, Scheduling">
+<meta name="keywords" content="nodejs, install, nvm, ubuntu">
 
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="/blog/images/logo.png">
-<meta name="twitter:title" content="Simplify scheduling in Node.js with node-schedule">
+<meta name="twitter:title" content="How to install Nodejs on Ubuntu using NVM">
 <meta name="twitter:description" content="... when the sun comes up, you better be running!">
 <meta name="twitter:creator" content="@pnhung177">
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Simplify scheduling in Node.js with node-schedule">
+<meta property="og:title" content="How to install Nodejs on Ubuntu using NVM">
 <meta property="og:description" content="... when the sun comes up, you better be running!">
-<meta property="og:url" content="/blog/javascript/nodejs/simplify-scheduling-in-nodejs-with-node-schedule.html">
+<meta property="og:url" content="/blog/javascript/nodejs/nvm/how-to-install-nodejs-using-nvm.html">
 <meta property="og:site_name" content="Acegik's Blog">
 <meta property="og:image" content="/blog/images/">
 
@@ -26,7 +26,7 @@
 
 
 
-<link rel="canonical" href="/blog/javascript/nodejs/simplify-scheduling-in-nodejs-with-node-schedule.html">
+<link rel="canonical" href="/blog/javascript/nodejs/nvm/how-to-install-nodejs-using-nvm.html">
 <link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Acegik's Blog Feed">
 <link rel="author" href="https://plus.google.com/u/3/115458186421626071505?rel=author">
 
@@ -61,6 +61,17 @@
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/blog/images/apple-touch-icon-114x114-precomposed.png">
 <!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/blog/images/apple-touch-icon-144x144-precomposed.png">
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Acegik - sidebar -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2558234225933836"
+     data-ad-slot="3073080904"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 </head>
 <body class="post-template" itemscope itemtype="http://schema.org/WebPage">
@@ -108,19 +119,58 @@
                 <div class="cheryk-post-title-simple row">
                     <div class="small-12 columns">
                         <div class="cheryk-post-meta-simple">
-                            <h1>Simplify scheduling in Node.js with node-schedule</h1>
-                            <p>by <strong>pnhung177</strong> &#8212; on <a href="/blog/tags/index.html#JavaScript" data-toggle="tooltip" title="Posts tagged with JavaScript" rel="tag">JavaScript</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#NodeJS" data-toggle="tooltip" title="Posts tagged with NodeJS" rel="tag">NodeJS</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#Scheduling" data-toggle="tooltip" title="Posts tagged with Scheduling" rel="tag">Scheduling</a> &#8212; <strong><time datetime="2015-04-30T00:00:00+07:00">30/04/2015</time></strong></p>
+                            <h1>How to install Nodejs on Ubuntu using NVM</h1>
+                            <p>by <strong>pnhung177</strong> &#8212; on <a href="/blog/tags/index.html#nodejs" data-toggle="tooltip" title="Posts tagged with nodejs" rel="tag">nodejs</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#install" data-toggle="tooltip" title="Posts tagged with install" rel="tag">install</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#nvm" data-toggle="tooltip" title="Posts tagged with nvm" rel="tag">nvm</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#ubuntu" data-toggle="tooltip" title="Posts tagged with ubuntu" rel="tag">ubuntu</a> &#8212; <strong><time datetime="2015-01-07T00:00:00+07:00">07/01/2015</time></strong></p>
                         </div>
                     </div>
                 </div>
             </header>
 
         <article class="cheryk-post-content post tag-simple">
-            <div><p>There’re two ways using node-schedule: Cron-based scheduling (similar to Linux cron) or Date-based scheduling. Anyway, node-schedule is for time-based scheduling, not interval-based scheduling. If you only want to do something like “run this function every 5 minutes”, you’ll find <strong>setInterval</strong> much easier to use, and far more appropriate.</p>
+            <div><p>NVM, which stands for “Node.js version manager”, is a tool for managing multiple version of Node.js on an OS, especially for developer. Using nvm, you can install multiple, self-contained versions of Node.js which will allow you to control your environment easier by switching between them. NVM provides you more convenient way to manage and set up your Node.js environment. It will give you on-demand access to the newest versions of Node.js, and also allow you to target previous releases that your application may depend on.</p>
 
-<h2 id="use-node-schedule-in-cron-based-mode">Use node-schedule in Cron-based mode</h2>
+<p>To install NVM, you can clone the nvm repository from the project’s GitHub page:</p>
 
-<h2 id="use-node-schedule-in-date-based-mode">Use node-schedule in Date-based mode</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git clone https://github.com/creationix/nvm.git ~/.nvm</code></pre></div>
+
+<p>Then, we need to add the necessary lines to your ~/.profile file to activate nvm path:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;source ~/.nvm/nvm.sh&quot;</span> &gt;&gt; ~/.profile</code></pre></div>
+
+<p>To gain access to the nvm functionality, you’ll need to log out and log in back again, or you can source the ~/.profile file to refresh the current session:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span><span class="nb">source</span> ~/.profile</code></pre></div>
+
+<p>If you want to see what versions of Node.js are available to install:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>nvm ls-remote</code></pre></div>
+
+<p>To install Node.js v0.11.16, you just run:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>nvm install 0.11.16</code></pre></div>
+
+<p>If you have multiple Node.js versions, you can see what is installed by typing:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>nvm ls</code></pre></div>
+
+<p>You can explicitly tell nvm to use the version we just installed by typing:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>nvm use 0.11.16</code></pre></div>
+
+<p>To find out the version currently being used by the shell, you run:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>node -v
+v.0.11.16</code></pre></div>
+
+<p>Now you can use this version of Node.js as default on your system. To set a default Node version to be used in any new shell, use the alias default:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>nvm <span class="nb">alias </span>default 0.11.16</code></pre></div>
+
+<p>In different projects you’re using different Node.js versions, then you must go to the project folder, select proper Node.js version with nvm use <version> command. For convinient, similar to bower, you can create in project root folder a file named .nvmrc, with content:</version></p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">v0.11.16</code></pre></div>
+
+<p>And after that you just need to run “nvm use” and nvm get version from this file.</p>
 
 
             </div>
@@ -129,15 +179,15 @@
         <div class="cf"></div>
         <div class="row text-center">
             <section class="cheryk-post-share">
-                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Simplify scheduling in Node.js with node-schedule&quot;%20/blog/javascript/nodejs/simplify-scheduling-in-nodejs-with-node-schedule.html%20via%20&#64;pnhung177"
+                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;How to install Nodejs on Ubuntu using NVM&quot;%20/blog/javascript/nodejs/nvm/how-to-install-nodejs-using-nvm.html%20via%20&#64;pnhung177"
                     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
                     <i class="fa fa-twitter"></i>
                 </a>
-                <a class="facebook-icon" href="https://www.facebook.com/sharer/sharer.php?u=/blog/javascript/nodejs/simplify-scheduling-in-nodejs-with-node-schedule.html"
+                <a class="facebook-icon" href="https://www.facebook.com/sharer/sharer.php?u=/blog/javascript/nodejs/nvm/how-to-install-nodejs-using-nvm.html"
                     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
                     <i class="fa fa-facebook"></i>
                 </a>
-                <a class="google-icon" href="https://plus.google.com/share?url=/blog/javascript/nodejs/simplify-scheduling-in-nodejs-with-node-schedule.html"
+                <a class="google-icon" href="https://plus.google.com/share?url=/blog/javascript/nodejs/nvm/how-to-install-nodejs-using-nvm.html"
                    onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
                     <i class="fa fa-google-plus"></i>
                 </a>
