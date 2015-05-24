@@ -9,13 +9,76 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://acegik.net/blog/feed.xml" />
 <link rel="alternate" type="text/html" href="http://acegik.net/blog/" />
-<updated>2015-05-22T13:34:09+07:00</updated>
+<updated>2015-05-24T16:35:12+07:00</updated>
 <id>http://acegik.net/blog/</id>
 <author>
   <name>Phạm Ngọc Hùng</name>
   <uri>http://acegik.net/blog/</uri>
   <email>pnhung177@drupalex.net</email>
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[Hosting a private NPM registry with Sinopia]]></title>
+  <link rel="alternate" type="text/html" href="http://acegik.net/blog/javascript/nodejs/npm/hosting-a-private-npm-registry-with-sinopia.html"/>
+  <id>http://acegik.net/blog/javascript/nodejs/npm/hosting-a-private-npm-registry-with-sinopia</id>
+  <published>2015-05-10T00:00:00+07:00</published>
+  <updated>2015-05-10T00:00:00+07:00</updated>
+  <author>
+    <name>Phạm Ngọc Hùng</name>
+    <uri>http://acegik.net/blog</uri>
+    <email>pnhung177@drupalex.net</email>
+  </author>
+  <category scheme="http://acegik.net/blog/tags/#JavaScript" term="JavaScript" /><category scheme="http://acegik.net/blog/tags/#Nodejs" term="Nodejs" /><category scheme="http://acegik.net/blog/tags/#Npmjs" term="Npmjs" />
+  <content type="html">
+  
+    &lt;p&gt;NPM (npmjs) is the package manager for Nodejs. By default, npm modules are deployed and retrieved over the Internet from the public package registry maintained on http://npmjs.org. A private npm registry can be used to upload your own packages as well as third-party packages. Hosting a private NPM registry for your own is very helpful when you would like to share the code only among members in your team (but not entire the world). You can develop and maintain all your private projects and their reused modules as private node packages.&lt;/p&gt;
+
+&lt;p&gt;Sinopia is a private/caching NPM registry server that you can setup with zero configuration.&lt;/p&gt;
+
+&lt;h2 id=&quot;install-and-configure-sinopia&quot;&gt;Install and Configure Sinopia&lt;/h2&gt;
+
+&lt;p&gt;Using npm to install Sinopia as global nodejs component in your server:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;sudo npm install -g sinopia&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You can change the Sinopia settings in &lt;strong&gt;~/.config/sinopia/config.yaml&lt;/strong&gt; file. Starting Sinopia as following:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;sinopia&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;By default, Sinopia server is listening on the port 4873. Your should configure your npm to use this port:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;registry http://localhost:4873/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now, each time you install a new package, npm will ask Sinopia (through registry localhost:4873) instead of default registry for retrieving and installing the package. For example:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;sudo npm install -g hexo-cli&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This package (hexo-cli) and all dependent packages are retrieved as the following:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/media/a6319fd8-21fb-4e8f-a1c8-e15bd35132d1/install-hexo-cli-using-sinopia.png&quot; alt=&quot;The packages are retrieved through private npm registry&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The last, if you want to switch to default registry, you can use this command:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;registry https://registry.npmjs.org/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;running-sinopia-as-a-daemon&quot;&gt;Running Sinopia as a daemon&lt;/h2&gt;
+
+&lt;p&gt;Thanks to &lt;a href=&quot;https://github.com/ramiel/sinopia-scripts&quot;&gt;Fabrizio Ruggeri’s Script&lt;/a&gt;, you can make Sinopia server run as a daemon.&lt;/p&gt;
+
+&lt;h2 id=&quot;other-solutions&quot;&gt;Other solutions&lt;/h2&gt;
+
+&lt;p&gt;Repository managers with support for private npm registries:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://books.sonatype.com/nexus-book/reference/npm-private-registries.html&quot;&gt;Sonatype Nexus&lt;/a&gt;: From version 2.10, Sonatype Nexus supports private npm registries.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.jfrog.com/confluence/display/RTF/Npm+Repositories&quot;&gt;Artifactory&lt;/a&gt;: From version 3.2, Artifactory fully supports npm repositories.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+  
+  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/javascript/nodejs/npm/hosting-a-private-npm-registry-with-sinopia.html&quot;&gt;Hosting a private NPM registry with Sinopia&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on May 10, 2015.&lt;/p&gt;</content>
+</entry>
 
 
 <entry>
@@ -4006,68 +4069,6 @@ CPU minf mjf xcal  intr ithr  csw icsw migr smtx  srw syscl  usr sys  wt idl
 
   
   &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/java/performance/theo-doi-hieu-nang-cua-he-dieu-hanh.html&quot;&gt;Theo dõi hiệu năng của hệ điều hành&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on July 02, 2014.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Giã từ ... Wordpress]]></title>
-  <link rel="alternate" type="text/html" href="http://acegik.net/blog/jekyll/migration/gia-tu-wordpress.html"/>
-  <id>http://acegik.net/blog/jekyll/migration/gia-tu-wordpress</id>
-  <published>2014-07-01T00:00:00+07:00</published>
-  <updated>2014-07-01T00:00:00-00:00</updated>
-  
-  <author>
-    <name>Phạm Ngọc Hùng</name>
-    <uri>http://acegik.net/blog</uri>
-    <email>pnhung177@drupalex.net</email>
-  </author>
-  <category scheme="http://acegik.net/blog/tags/#jekyll" term="jekyll" /><category scheme="http://acegik.net/blog/tags/#wordpress" term="wordpress" /><category scheme="http://acegik.net/blog/tags/#markdown" term="markdown" />
-  <content type="html">
-  
-    &lt;p&gt;Trong các công cụ tạo blog, có lẽ wordress là công cụ hàng đầu trên thế giới hiện nay. Wordpress là CMS mã nguồn mở bằng PHP được sử dụng rộng rãi không chỉ để viết blog mà còn dùng cho các trang web bán hàng, nền tảng để xây dựng các ứng dụng dưới dạng các plugin. So với Joomla và Drupal, Wordpress có phần nổi trội hơn về tính đơn giản, số lượng plugin nhiều cũng như sự dễ dùng của nó.&lt;/p&gt;
-
-&lt;p&gt;Mặc dù đã gắn bó với Wordpress một thời gian dài (và khá hài lòng với CMS này), tuy nhiên cuối cùng tôi cũng giã từ để chuyển blog của mình sang một “nền tảng” khác là Jekyll. Tại sao là Jekyll? Dưới đây là một số lý do:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Đầu tiên phải kể đến là cách Jekyll tạo bài viết: người viết bài chỉ cần soạn thảo bài viết theo định dạng &lt;a href=&quot;http://daringfireball.net/projects/markdown/&quot;&gt;Markdown&lt;/a&gt; hoặc &lt;a href=&quot;http://en.wikipedia.org/wiki/Textile_(markup_language)&quot;&gt;Textile&lt;/a&gt;, sau đó sử dụng Jekyll để biên dịch thành trang web tĩnh.&lt;/li&gt;
-  &lt;li&gt;Blog tạo ra bằng Jekyll là trang web tĩnh, không cần đến CSDL, không cần đến engine xử lý ngôn ngữ lập trình như PHP, Java, .NET,v.v. nên trang web nhẹ, nhanh, dễ dàng triển khai, cập nhật.&lt;/li&gt;
-  &lt;li&gt;Do blog có thể biên dịch thành trang web tĩnh, nên không kén chọn web-host để lưu trữ, có thể sử dụng github để lưu trữ trang web.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Với những ai đồng quan điểm với tôi và có ý đồ chuyển blog từ Wordpress sang Jekyll, tôi chia sẻ một số kinh nghiệm dưới đây.&lt;/p&gt;
-
-&lt;h2 id=&quot;bc-tch-bi-vit-t-wordpress&quot;&gt;Bóc tách bài viết từ Wordpress&lt;/h2&gt;
-
-&lt;p&gt;Giả sử bạn đã có trang web hoặc blog trên wordpress. Việc chuyển đổi bài viết từ wordpress qua Jekyll được thực hiện theo các bước sau:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Cài đặt plugin &lt;a href=&quot;http://wordpress.org/plugins/disqus-comment-system/&quot;&gt;Disqus Comment System&lt;/a&gt; và thực hiện di chuyển các bình luận nội bộ trong Wordpress sang Disqus.&lt;/li&gt;
-  &lt;li&gt;Cài đặt plugin chuyển đổi &lt;a href=&quot;https://github.com/benbalter/wordpress-to-jekyll-exporter&quot;&gt;Wordpress to Jekyll Exporter&lt;/a&gt; để chuyển đổi bài viết và các thông tin khác (converts all posts, pages, taxonomies, metadata, and settings to Markdown and YAML which can be dropped into Jekyll) từ Wordpress sang Jekyll.&lt;/li&gt;
-  &lt;li&gt;Phần hình ảnh cần chuyển đổi bằng tay. Trước tiên bạn chép các tệp hình ảnh từ Wordpress vào thư mục chứa hình ảnh của Jekyll, sau đó sử dụng công cụ Find &amp;amp; Replace dựa trên RegExp để tìm và thay thế đường dẫn thư mục hình ảnh trong các bài viết.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Việc này áp dụng không chỉ với wordpress mà cả với các CMS khác.&lt;/p&gt;
-
-&lt;h2 id=&quot;xut-bn-bi-vit-bng-jekyll&quot;&gt;Xuất bản bài viết bằng Jekyll&lt;/h2&gt;
-
-&lt;p&gt;Nếu bạn muốn giữ lại themes cũ, hãy dành một chút thời gian để chỉnh sửa giao diện phù hợp với Jekyll. Nếu không, bạn có thể chọn các themes có sẵn, chẳng hạn như từ &lt;a href=&quot;http://themes.jekyllbootstrap.com/&quot;&gt;kho theme của Jekyllbootstrap&lt;/a&gt;. Thông thường, bạn chuyển vào thư mục gốc của mã nguồn Jekyll của trang web, chỉnh sửa thông số cấu hình trong tệp &lt;em&gt;_config.yml&lt;/em&gt;, sau đó sử dụng Jekyll để biên dịch thành một trang web tĩnh và upload trang web tĩnh này lên web-host riêng của bạn hoặc lên github. Các bạn có thể tìm hiểu chi tiết và đầy đủ về Jekyll từ trang tài liệu &lt;a href=&quot;http://jekyllrb.com/docs/home/&quot;&gt;Jekyll Documentation&lt;/a&gt; của công cụ này.&lt;/p&gt;
-
-&lt;h2 id=&quot;kt-lun&quot;&gt;Kết luận&lt;/h2&gt;
-
-&lt;p&gt;Với các nhà phát triển ứng dụng, có lẽ Jekyll hoặc các công cụ tương tự phù hợp hơn Wordpress trong việc viết blog. Do thường xuyên viết tài liệu bằng Markdown, Textile nên việc viết blog bằng Jekyll sẽ thấy quen thuộc, dễ kiểm soát hơn. Chưa kể đến tốc độ và những thuận lợi mà trang web tĩnh mang lại.&lt;/p&gt;
-
-&lt;h2 id=&quot;ti-liu-tham-kho&quot;&gt;Tài liệu tham khảo&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;http://jekyllrb.com/docs/home/&quot;&gt;Tài liệu hướng dẫn sử dụng Jekyll&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://wordpress.org/plugins/disqus-comment-system/&quot;&gt;Disqus plugin cho Wordpress&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/benbalter/wordpress-to-jekyll-exporter&quot;&gt;Wordpress to Jekyll Exporter&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://themes.jekyllbootstrap.com/&quot;&gt;Jekyllbootstrap Themes&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-
-  
-  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/jekyll/migration/gia-tu-wordpress.html&quot;&gt;Giã từ ... Wordpress&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on July 01, 2014.&lt;/p&gt;</content>
 </entry>
 
 </feed>

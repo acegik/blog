@@ -2,23 +2,23 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>TRANSACT-SQL: CHèN Dữ LIệU HìNH ảNH VàO BảNG &vert; ACEGIK'S BLOG</title>
+<title>HOSTING A PRIVATE NPM REGISTRY WITH SINOPIA &vert; ACEGIK'S BLOG</title>
 <meta name="description" content="... when the sun comes up, you better be running!">
-<meta name="keywords" content="SQLServer, Transact-SQL">
+<meta name="keywords" content="JavaScript, Nodejs, Npmjs">
 
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="/blog/images/logo.png">
-<meta name="twitter:title" content="Transact-SQL: Chèn dữ liệu hình ảnh vào bảng">
+<meta name="twitter:title" content="Hosting a private NPM registry with Sinopia">
 <meta name="twitter:description" content="... when the sun comes up, you better be running!">
 <meta name="twitter:creator" content="@pnhung177">
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Transact-SQL: Chèn dữ liệu hình ảnh vào bảng">
+<meta property="og:title" content="Hosting a private NPM registry with Sinopia">
 <meta property="og:description" content="... when the sun comes up, you better be running!">
-<meta property="og:url" content="/blog/rdbms/sqlserver/transact-sql-chen-du-lieu-hinh-anh-vao-bang.html">
+<meta property="og:url" content="/blog/javascript/nodejs/npm/hosting-a-private-npm-registry-with-sinopia.html">
 <meta property="og:site_name" content="Acegik's Blog">
 <meta property="og:image" content="/blog/images/">
 
@@ -26,7 +26,7 @@
 
 
 
-<link rel="canonical" href="/blog/rdbms/sqlserver/transact-sql-chen-du-lieu-hinh-anh-vao-bang.html">
+<link rel="canonical" href="/blog/javascript/nodejs/npm/hosting-a-private-npm-registry-with-sinopia.html">
 <link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title="Acegik's Blog Feed">
 <link rel="author" href="https://plus.google.com/u/3/115458186421626071505?rel=author">
 
@@ -108,51 +108,56 @@
                 <div class="cheryk-post-title-simple row">
                     <div class="small-12 columns">
                         <div class="cheryk-post-meta-simple">
-                            <h1>Transact-SQL: Chèn dữ liệu hình ảnh vào bảng</h1>
-                            <p>by <strong>pnhung177</strong> &#8212; on <a href="/blog/tags/index.html#SQLServer" data-toggle="tooltip" title="Posts tagged with SQLServer" rel="tag">SQLServer</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#Transact-SQL" data-toggle="tooltip" title="Posts tagged with Transact-SQL" rel="tag">Transact-SQL</a> &#8212; <strong><time datetime="2008-07-23T00:00:00+07:00">23/07/2008</time></strong></p>
+                            <h1>Hosting a private NPM registry with Sinopia</h1>
+                            <p>by <strong>pnhung177</strong> &#8212; on <a href="/blog/tags/index.html#JavaScript" data-toggle="tooltip" title="Posts tagged with JavaScript" rel="tag">JavaScript</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#Nodejs" data-toggle="tooltip" title="Posts tagged with Nodejs" rel="tag">Nodejs</a>&nbsp;&comma;&nbsp;<a href="/blog/tags/index.html#Npmjs" data-toggle="tooltip" title="Posts tagged with Npmjs" rel="tag">Npmjs</a> &#8212; <strong><time datetime="2015-05-10T00:00:00+07:00">10/05/2015</time></strong></p>
                         </div>
                     </div>
                 </div>
             </header>
 
         <article class="cheryk-post-content post tag-simple">
-            <div><p>Mặc dù không khuyến khích lưu trữ và truy vấn trực tiếp dữ liệu hình ảnh (picture) trong bảng (table) bên trong cơ sở dữ liệu, tuy nhiên nhiều ứng dụng vẫn muốn lưu trữ hình ảnh trong bảng để đảm bảo tính toán vẹn của dữ liệu. Các ứng dụng này sẽ cung cấp thêm chức năng tạo bản copy của hình ảnh vào một thư mục tạm để truy vấn nhanh chóng. Bài viết này giới thiệu cách thức lưu trữ hình ảnh vào trong bảng của CSDL SQL Server.</p>
+            <div><p>NPM (npmjs) is the package manager for Nodejs. By default, npm modules are deployed and retrieved over the Internet from the public package registry maintained on http://npmjs.org. A private npm registry can be used to upload your own packages as well as third-party packages. Hosting a private NPM registry for your own is very helpful when you would like to share the code only among members in your team (but not entire the world). You can develop and maintain all your private projects and their reused modules as private node packages.</p>
 
-<h2 id="to-bng-d-liu-mu">Tạo bảng dữ liệu mẫu</h2>
+<p>Sinopia is a private/caching NPM registry server that you can setup with zero configuration.</p>
 
-<p>Đầu tiên, tạo bảng dữ liệu lưu thông tin về nhân viên (Employees) như sau:</p>
+<h2 id="install-and-configure-sinopia">Install and Configure Sinopia</h2>
 
-<p><img src="/blog/media/0060bd1b-be60-4561-bcdd-d2b326edfb7c/create-table.png" alt="Tạo bảng dữ liệu" /></p>
+<p>Using npm to install Sinopia as global nodejs component in your server:</p>
 
-<h2 id="chn-th-mt-bn-ghi">Chèn thử một bản ghi</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sudo npm install -g sinopia</code></pre></div>
 
-<p>Sử dụng câu lệnh INSERT để chèn thử một bản ghi vào trong bảng Employees:</p>
+<p>You can change the Sinopia settings in <strong>~/.config/sinopia/config.yaml</strong> file. Starting Sinopia as following:</p>
 
-<p><img src="/blog/media/0060bd1b-be60-4561-bcdd-d2b326edfb7c/insert-image.png" alt="Sử dụng lệnh Insert chèn ảnh" /></p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sinopia</code></pre></div>
 
-<p>Sử dụng truy vấn để kiểm tra kết quả:</p>
+<p>By default, Sinopia server is listening on the port 4873. Your should configure your npm to use this port:</p>
 
-<p><img src="/blog/media/0060bd1b-be60-4561-bcdd-d2b326edfb7c/insert-verify-by-select.png" alt="Kiểm tra kết quả Insert" /></p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm <span class="nb">set </span>registry http://localhost:4873/</code></pre></div>
 
-<p>Kết quả chèn:</p>
+<p>Now, each time you install a new package, npm will ask Sinopia (through registry localhost:4873) instead of default registry for retrieving and installing the package. For example:</p>
 
-<p><img src="/blog/media/0060bd1b-be60-4561-bcdd-d2b326edfb7c/insert-result.png" alt="Kết quả chèn bằng Insert" /></p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>sudo npm install -g hexo-cli</code></pre></div>
 
-<h2 id="to-procedure-chn-bn-ghi">Tạo PROCEDURE chèn bản ghi</h2>
+<p>This package (hexo-cli) and all dependent packages are retrieved as the following:</p>
 
-<p>Để thuận tiện cho việc sử dụng, ta tạo một STORED PROCEDURE để chèn thêm bản ghi (có chứa tệp ảnh) vào:</p>
+<p><img src="/blog/media/a6319fd8-21fb-4e8f-a1c8-e15bd35132d1/install-hexo-cli-using-sinopia.png" alt="The packages are retrieved through private npm registry" /></p>
 
-<p><img src="/blog/media/0060bd1b-be60-4561-bcdd-d2b326edfb7c/procedure-define.png" alt="Tạo Procedure" /></p>
+<p>The last, if you want to switch to default registry, you can use this command:</p>
 
-<p>Lưu ý: Vì hàm OPENROWSET không cho phép đối số là biến (variable, ví dụ @a, @filename,…) nên ta phải tạo ra câu lệnh SQL để thêm các đối số vào, sau đó dùng EXEC() để gián tiếp thực thi câu lệnh chèn.</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm <span class="nb">set </span>registry https://registry.npmjs.org/</code></pre></div>
 
-<p>Sử dụng PROCEDURE trên để chèn thử một bản ghi:</p>
+<h2 id="running-sinopia-as-a-daemon">Running Sinopia as a daemon</h2>
 
-<p><img src="/blog/media/0060bd1b-be60-4561-bcdd-d2b326edfb7c/procedure-execute.png" alt="Sử dụng Procedure" /></p>
+<p>Thanks to <a href="https://github.com/ramiel/sinopia-scripts">Fabrizio Ruggeri’s Script</a>, you can make Sinopia server run as a daemon.</p>
 
-<p>Kết quả thu được:</p>
+<h2 id="other-solutions">Other solutions</h2>
 
-<p><img src="/blog/media/0060bd1b-be60-4561-bcdd-d2b326edfb7c/procedure-result.png" alt="Kết quả thực thi Procedure" /></p>
+<p>Repository managers with support for private npm registries:</p>
+
+<ul>
+  <li><a href="http://books.sonatype.com/nexus-book/reference/npm-private-registries.html">Sonatype Nexus</a>: From version 2.10, Sonatype Nexus supports private npm registries.</li>
+  <li><a href="https://www.jfrog.com/confluence/display/RTF/Npm+Repositories">Artifactory</a>: From version 3.2, Artifactory fully supports npm repositories.</li>
+</ul>
 
 
             </div>
@@ -161,15 +166,15 @@
         <div class="cf"></div>
         <div class="row text-center">
             <section class="cheryk-post-share">
-                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Transact-SQL: Chèn dữ liệu hình ảnh vào bảng&quot;%20/blog/rdbms/sqlserver/transact-sql-chen-du-lieu-hinh-anh-vao-bang.html%20via%20&#64;pnhung177"
+                <a class="twitter-icon" href="https://twitter.com/intent/tweet?text=&quot;Hosting a private NPM registry with Sinopia&quot;%20/blog/javascript/nodejs/npm/hosting-a-private-npm-registry-with-sinopia.html%20via%20&#64;pnhung177"
                     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" title="Share on Twitter">
                     <i class="fa fa-twitter"></i>
                 </a>
-                <a class="facebook-icon" href="https://www.facebook.com/sharer/sharer.php?u=/blog/rdbms/sqlserver/transact-sql-chen-du-lieu-hinh-anh-vao-bang.html"
+                <a class="facebook-icon" href="https://www.facebook.com/sharer/sharer.php?u=/blog/javascript/nodejs/npm/hosting-a-private-npm-registry-with-sinopia.html"
                     onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" title="Share on Facebook">
                     <i class="fa fa-facebook"></i>
                 </a>
-                <a class="google-icon" href="https://plus.google.com/share?url=/blog/rdbms/sqlserver/transact-sql-chen-du-lieu-hinh-anh-vao-bang.html"
+                <a class="google-icon" href="https://plus.google.com/share?url=/blog/javascript/nodejs/npm/hosting-a-private-npm-registry-with-sinopia.html"
                    onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;" title="Share on Google+">
                     <i class="fa fa-google-plus"></i>
                 </a>

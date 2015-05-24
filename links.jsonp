@@ -158,6 +158,11 @@ callback([
   {
     "text": "Howto nest liquid template variables inside YAML front matter block",
     "href": "/blog/ruby/jekyll/plugins/howto-nest-liquid-template-variables-inside-yaml-front-matter-block.html"
+  } ,
+
+  {
+    "text": "Hosting a private NPM registry with Sinopia",
+    "href": "/blog/javascript/nodejs/npm/hosting-a-private-npm-registry-with-sinopia.html"
   } 
 
 ])
