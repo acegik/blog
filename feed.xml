@@ -9,7 +9,7 @@
 <generator uri="https://github.com/mojombo/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://acegik.net/blog/feed.xml" />
 <link rel="alternate" type="text/html" href="http://acegik.net/blog/" />
-<updated>2015-05-24T16:35:12+07:00</updated>
+<updated>2015-06-10T09:24:08+07:00</updated>
 <id>http://acegik.net/blog/</id>
 <author>
   <name>Phạm Ngọc Hùng</name>
@@ -78,6 +78,57 @@
 
   
   &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/javascript/nodejs/npm/hosting-a-private-npm-registry-with-sinopia.html&quot;&gt;Hosting a private NPM registry with Sinopia&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on May 10, 2015.&lt;/p&gt;</content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[How to install Nodejs for all users on Ubuntu using NVM]]></title>
+  <link rel="alternate" type="text/html" href="http://acegik.net/blog/javascript/nodejs/nvm/how-to-install-nodejs-for-all-users-on-ubuntu-using-nvm.html"/>
+  <id>http://acegik.net/blog/javascript/nodejs/nvm/how-to-install-nodejs-for-all-users-on-ubuntu-using-nvm</id>
+  <published>2015-02-19T00:00:00+07:00</published>
+  <updated>2015-02-19T00:00:00+07:00</updated>
+  <author>
+    <name>Phạm Ngọc Hùng</name>
+    <uri>http://acegik.net/blog</uri>
+    <email>pnhung177@drupalex.net</email>
+  </author>
+  <category scheme="http://acegik.net/blog/tags/#nodejs" term="nodejs" /><category scheme="http://acegik.net/blog/tags/#install" term="install" /><category scheme="http://acegik.net/blog/tags/#nvm" term="nvm" /><category scheme="http://acegik.net/blog/tags/#ubuntu" term="ubuntu" />
+  <content type="html">
+  
+    &lt;p&gt;In previous post “How to install Nodejs on Ubuntu using NVM”, I have introduced the way to setup Node.js environment using NVM (Nodejs Version Manager). Usually, nvm is used to setup development environment, so it will be installed in individual user account.&lt;/p&gt;
+
+&lt;p&gt;However, sometime you want to install Nodejs for all users, example for testing deployment in different users or roles. You also want to switch Nodejs to run in many different versions. The solution is to install NVM in /opt/nvm as root. The directory “/opt/nvm” seemed like an appropriate location.&lt;/p&gt;
+
+&lt;p&gt;Clone the nvm source code into /opt/nvm directory:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# git clone git@github.com:creationix/nvm.git /opt/nvm&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Created the directory /usr/local/nvm. This is where the downloads will go ($NVM_DIR):&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# mkdir /usr/local/nvm&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Create the directory /usr/local/node. This is where the NPM global stuff will go:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# mkdir /usr/local/node&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Created a file called nvm.sh in /etc/profile.d with the following contents:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;NVM_DIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/nvm
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;NPM_CONFIG_PREFIX&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/node
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;/usr/local/node/bin:$PATH&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; /opt/nvm/nvm.sh&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Re-login to a shell session, then set the default node version:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# nvm install 0.10.37&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# nvm alias default 0.10.37&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The node binaries should now be in the PATH for all users the next time you login to a shell session. NPM will install global things to the /usr/local/node prefix.&lt;/p&gt;
+
+
+  
+  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/javascript/nodejs/nvm/how-to-install-nodejs-for-all-users-on-ubuntu-using-nvm.html&quot;&gt;How to install Nodejs for all users on Ubuntu using NVM&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on February 19, 2015.&lt;/p&gt;</content>
 </entry>
 
 
@@ -3866,209 +3917,6 @@ Configuration file: /path/to/your/jekyll/blog/folder/_config.yml
 
   
   &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/java/jvm/tong-quan-ve-jvm-cac-thanh-phan-cua-hotspot-vm.html&quot;&gt;Tổng quan về JVM: các thành phần của HotSpot VM&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on July 03, 2014.&lt;/p&gt;</content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Theo dõi hiệu năng của hệ điều hành]]></title>
-  <link rel="alternate" type="text/html" href="http://acegik.net/blog/java/performance/theo-doi-hieu-nang-cua-he-dieu-hanh.html"/>
-  <id>http://acegik.net/blog/java/performance/theo-doi-hieu-nang-cua-he-dieu-hanh</id>
-  <published>2014-07-02T00:00:00+07:00</published>
-  <updated>2014-06-23T00:00:00-00:00</updated>
-  
-  <author>
-    <name>Phạm Ngọc Hùng</name>
-    <uri>http://acegik.net/blog</uri>
-    <email>pnhung177@drupalex.net</email>
-  </author>
-  <category scheme="http://acegik.net/blog/tags/#Java" term="Java" /><category scheme="http://acegik.net/blog/tags/#Java%20Performance" term="Java Performance" />
-  <content type="html">
-  
-    &lt;p&gt;Theo dõi hiệu năng của hệ điều hành (HĐH) mà ứng dụng được chạy trên đó là bước đầu tiên trong quá trình cải tiến hiệu năng của ứng dụng.&lt;/p&gt;
-
-&lt;h2 id=&quot;ti-sao-cn-phi-theo-di-hiu-nng-ca-hh&quot;&gt;Tại sao cần phải theo dõi hiệu năng của HĐH&lt;/h2&gt;
-
-&lt;p&gt;Chúng ta quan sát hệ điều hành để có được cảm nhận về vấn đề hiệu năng đang phát sinh. Nói cách khác, chúng ta thăm dò xem ứng dụng có bộc lộ ra triệu chứng nào cho thấy hiệu năng kém không? Căn cứ vào triệu chứng quan sát được, chúng ta có thể xác định các bước hành động tiếp theo trong việc chẩn đoán các vấn đề hiệu năng. Theo dõi hiệu năng hệ điều hành được thực hiện thông qua các hoạt động theo dõi sau:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Theo dõi hoạt động của CPU&lt;/li&gt;
-  &lt;li&gt;Theo dõi hoạt động vào/ra mạng&lt;/li&gt;
-  &lt;li&gt;Theo dõi hoạt động vào/ra ổ đĩa&lt;/li&gt;
-  &lt;li&gt;Theo dõi hoạt động của bộ nhớ ảo&lt;/li&gt;
-  &lt;li&gt;Theo dõi hoạt động của các tiến trình &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;theo-di-hot-ng-ca-cpu&quot;&gt;Theo dõi hoạt động của CPU&lt;/h2&gt;
-
-&lt;h3 id=&quot;cc-ch-s-o-c-v-s-dng-cpu&quot;&gt;Các chỉ số đo đạc về sử dụng CPU&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;em&gt;User CPU time&lt;/em&gt;: Là lượng thời gian CPU dành cho tiến trình chạy các tác vụ của riêng nó (chạy ngoài kernel của hệ điều hành).&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;System CPU time&lt;/em&gt;: Là lượng thời gian CPU dùng để khai thác tài nguyên, chạy trong kernel của hệ điều hành.&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;Idle CPU time&lt;/em&gt;: Là lượng thời gian CPU không được sử dụng.&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;Voluntary context switch&lt;/em&gt;: Tiến trình tự nguyện nhường lại CPU sau khi chạy hết thời gian dự kiến của nó hoặc nó yêu cầu sử dụng tài nguyên hiện không khả dụng.&lt;/li&gt;
-  &lt;li&gt;&lt;em&gt;Involuntary context switch&lt;/em&gt;: Tiến trình bị gián đoạn và nhường lại CPU trước khi hoàn tất thời gian chạy theo lịch trình của nó do hệ thống xác định một tiến trình ưu tiên cao hơn cần thực thi.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Việc theo dõi hoạt động của CPU cần được xem xét thêm nếu các chỉ số đo đạc thể hiện:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Giá trị &lt;em&gt;System time&lt;/em&gt; cao: chỉ ra rằng có một lượng lớn chu kỳ chạy của CPU được sử dụng trong kernel của hệ điều hành. Giá trị này cũng chỉ ra rằng có thể đã xảy ra tình huống tranh giành tài nguyên trong hệ thống. Việc giảm lượng thời gian thực thi mã lệnh trong kernel sẽ làm tăng thời lượng thực thi tác vụ của riêng ứng dụng (tăng &lt;em&gt;User time&lt;/em&gt;).&lt;/li&gt;
-  &lt;li&gt;Giá trị &lt;em&gt;VCX&lt;/em&gt; cao: có thể là do &lt;em&gt;sự tương tranh&lt;/em&gt; giữa các hàm hoặc khối đồng bộ (synchronized method/block) hoặc các khóa (lock) của Java Concurrency API.&lt;/li&gt;
-  &lt;li&gt;Giá trị &lt;em&gt;ICX&lt;/em&gt; cao: cần phải xem xét do thao tác &lt;em&gt;context switch&lt;/em&gt; rất tốn kém - thứ nhất mỗi một &lt;em&gt;context switch&lt;/em&gt; tiêu tốn một lượng lớn xung nhịp CPU (CPU clock cycle); thứ hai, &lt;em&gt;context switch&lt;/em&gt; có thể khiến cho phải nạp dữ liệu từ bộ nhớ vào thanh ghi thay vì từ CPU cache, việc này cũng tiêu tốn lượng xung nhịp CPU lớn. Do đó, ứng dụng phát sinh giá trị &lt;em&gt;ICX&lt;/em&gt; cao cũng cần phải được xem xét về các vấn đề hiệu năng.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;cng-c-theo-di-v-s-dng-cpu&quot;&gt;Công cụ theo dõi về sử dụng CPU&lt;/h3&gt;
-
-&lt;h4 id=&quot;prstat-solaris&quot;&gt;prstat (Solaris)&lt;/h4&gt;
-
-&lt;p&gt;Công cụ &lt;strong&gt;prstat&lt;/strong&gt; là phần mềm dòng lệnh có chức năng khảo sát hoạt động của các tiến trình đang chạy trên hệ thống và hiển thị báo cáo thống kê dựa trên tùy chọn về thông tin muốn kết xuất và thứ tự sắp xếp. &lt;strong&gt;prstat&lt;/strong&gt; cung cấp các tùy chọn cho phép chỉ khảo sát trên một số các tiến trình xác định bởi PID, UID, CPU ID, v.v. Mặc định, &lt;strong&gt;prstat&lt;/strong&gt; hiển thị toàn bộ thời gian sử dụng CPU đo được trên mỗi tiến trình.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/prstat-without-args.png&quot; alt=&quot;Công cụ prstat: lời gọi không tham số&quot; /&gt; &lt;/p&gt;
-
-&lt;p&gt;Để hiển thị thông tin trạng thái chi tiết (có chứa thông tin &lt;strong&gt;VCX&lt;/strong&gt; và &lt;strong&gt;IVCX&lt;/strong&gt;), chúng ta có thể sử dụng &lt;strong&gt;prstat&lt;/strong&gt; với tham số &lt;strong&gt;-m&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/prstat-with--m.png&quot; alt=&quot;Công cụ prstat: với tham số -m&quot; /&gt; &lt;/p&gt;
-
-&lt;p&gt;Để hiển thị thông tin về từng tiến trình con (lightweight process), chúng ta sử dụng tham số &lt;strong&gt;-L&lt;/strong&gt;. Tương tự ví dụ trên, để hiển thị thông tin trạng thái chi tiết với từng tiến trình con, chúng ta kết hợp hai tham số &lt;strong&gt;-Lm&lt;/strong&gt; như sau:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/prstat-with--Lm.png&quot; alt=&quot;Công cụ prstat: với tham số -Lm&quot; /&gt; &lt;/p&gt;
-
-&lt;h4 id=&quot;cpubar-solaris&quot;&gt;cpubar (Solaris)&lt;/h4&gt;
-
-&lt;p&gt;Công cụ giao diện đồ họa hiển thị thông tin thống kê tổng quan về hoạt động của CPU, các tiến trình, tình trạng sử dụng bộ nhớ.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/cpubar.png&quot; alt=&quot;Công cụ giao diện đồ họa cpubar&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Đối với CPU, màu Xanh lá cây (User time), Đỏ (System tile), Xanh da trời (Idle time).&lt;/p&gt;
-
-&lt;h4 id=&quot;vmstat-linux--solaris&quot;&gt;vmstat (Linux &amp;amp; Solaris)&lt;/h4&gt;
-
-&lt;p&gt;Công cụ &lt;strong&gt;vmstat&lt;/strong&gt; là phần mềm dòng lệnh dùng để hiển thị lên màn hình console các thông số về sử dụng CPU trong nhiều lần cách quãng liên tiếp. Mỗi thông số đọc được trong một lần đọc được gọi là mẫu chọn (sample). Những mẫu chọn này cung cấp một cái nhìn tổng quan về tỉ lệ phần trăm &lt;em&gt;user time&lt;/em&gt; (us), &lt;em&gt;system time&lt;/em&gt; (sy) và &lt;em&gt;idle time&lt;/em&gt; (id).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/vmstat-solaris.png&quot; alt=&quot;Công cụ dòng lệnh vmstat&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;mpstat-linux--solaris&quot;&gt;mpstat (Linux &amp;amp; Solaris)&lt;/h4&gt;
-
-&lt;p&gt;Công cụ &lt;strong&gt;mpstat&lt;/strong&gt; là phần mềm dòng lệnh dùng để hiển thị thống kê về hoạt động của bộ vi xử lý (micro-processor). &lt;strong&gt;mpstat&lt;/strong&gt; trên &lt;a href=&quot;http://linux.die.net/man/1/mpstat&quot;&gt;Linux&lt;/a&gt; và &lt;a href=&quot;http://docs.oracle.com/cd/E23824_01/html/821-1462/mpstat-1m.html&quot;&gt;Solaris&lt;/a&gt; có một chút khác biệt ở thông tin hiển thị.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/mpstat-solaris.png&quot; alt=&quot;Công cụ dòng lệnh mpstat&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Kết quả chạy lệnh trên Linux:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;mpstat
-Linux 3.2.0-63-generic-pae &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;drupalex-ubuntu&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 	10/13/2014 	_i686_	&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; CPU&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-
-02:31:55 PM  CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest   %idle
-02:31:55 PM  all   27.67    0.02    7.02    2.38    0.02    0.09    0.00    0.00   62.80&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Kết quả chạy lệnh trên Solaris 11:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;mpstat
-CPU minf mjf xcal  intr ithr  csw icsw migr smtx  srw syscl  usr sys  wt idl
-  &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;    &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;    &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;329&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;121&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;169&lt;/span&gt;    &lt;span class=&quot;m&quot;&gt;6&lt;/span&gt;    &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;    &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;    &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;406&lt;/span&gt;    &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;  98&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;theo-di-network-io&quot;&gt;Theo dõi Network I/O&lt;/h2&gt;
-
-&lt;h3 id=&quot;thng-tin-cn-bit-v-network-io&quot;&gt;Thông tin cần biết về Network I/O&lt;/h3&gt;
-
-&lt;p&gt;Nếu một ứng dụng có sử dụng mạng (hoặc ổ đĩa), ta dễ dàng nhận ra hiệu năng đạt được tốt nhất khi giảm thiểu số lượng truy cập mạng (hoặc ổ đĩa). Vì vậy, nếu một ứng dụng truy cập mạng hay ổ đĩa, hãy suy xét xem ứng dụng tạo ra có truy cập quá nhiều mạng hoặc ổ đĩa không? Giám sát các ứng dụng truy cập mạng sẽ cung cấp cho bạn một “cảm giác” về lượng truy cập mạng có quá nhiều hay không?&lt;/p&gt;
-
-&lt;h3 id=&quot;cng-c-theo-di-network-io&quot;&gt;Công cụ theo dõi Network I/O&lt;/h3&gt;
-
-&lt;h4 id=&quot;tcptop-solaris&quot;&gt;tcptop (Solaris)&lt;/h4&gt;
-
-&lt;p&gt;Công cụ dòng lệnh &lt;em&gt;tcptop&lt;/em&gt; hiển thị thông tin thống kê về lưu lượng truy cập mạng của từng tiến trình trong hệ thống. Nó chỉ ra rằng, người dùng nào đang chạy cái gì và sử dụng bao nhiêu thông lượng mạng.&lt;/p&gt;
-
-&lt;h4 id=&quot;nicstat-solaris&quot;&gt;nicstat (Solaris)&lt;/h4&gt;
-
-&lt;p&gt;Công cụ dòng lệnh &lt;em&gt;nicstat&lt;/em&gt; hiển thị thông tin thống kê về lưu lượng mạng (network trafic), tính theo Kbyte, số lượng Packet hoặc dung lượng trung bình. &lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/nicstat-solaris.png&quot; alt=&quot;Công cụ dòng lệnh nicstat&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Các trường thông tin hiển thị bao gồm:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Int (Interface): tên của giao diện mạng.&lt;/li&gt;
-  &lt;li&gt;rKB/s (read Kbytes/s): tốc độ đọc mạng tính theo Kilobyte.&lt;/li&gt;
-  &lt;li&gt;wKB/s (write Kbytes/s): tốc độ ghi mạng tính theo Kilobyte.&lt;/li&gt;
-  &lt;li&gt;rPk/s (read Packets/s): tốc độ đọc mạng tính theo số lượng Packet / giây.&lt;/li&gt;
-  &lt;li&gt;wPk/s (write Packets/s): tốc độ ghi mạng tính theo số lượng Packet / giây.&lt;/li&gt;
-  &lt;li&gt;rAvs (read Average size, bytes): kích thước đọc trung bình, tính theo số byte.&lt;/li&gt;
-  &lt;li&gt;wAvs (write Average size, bytes): kích thước ghi trung bình, tính theo số byte.&lt;/li&gt;
-  &lt;li&gt;%Util (%Utilisation (r+w/ifspeed)): tính bằng số lượng byte được chuyển chia cho tốc độ của Interface (nếu xác định được tốc độ Interface).&lt;/li&gt;
-  &lt;li&gt;Sat (Saturation): độ bão hòa được xác định bằng cách đếm số lượng lỗi đọc/ghi phát sinh bởi Interface chạy ở mức bão hòa.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;theo-di-disk-io&quot;&gt;Theo dõi Disk I/O&lt;/h2&gt;
-
-&lt;h3 id=&quot;thng-tin-cn-bit-v-disk-io&quot;&gt;Thông tin cần biết về Disk I/O&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Số lượng các lần truy cập ổ đĩa: Mỗi lần truy cập ổ đĩa là một hoạt động tốn kém đối với hệ thống, quá trình gửi - chờ - nhận kết quả (&lt;em&gt;Round Trip Time&lt;/em&gt;) của thao tác đọc dữ liệu từ ổ đĩa rất tốn kém thời gian. Do đó chúng ta mong muốn tối thiểu hóa số lần truy cập ổ đĩa để đọc dữ liệu.&lt;/li&gt;
-  &lt;li&gt;Độ trễ và độ trễ trung bình: là khoảng thời gian cần có để lấy dữ liệu từ ỗ đĩa.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;cng-c-theo-di-disk-io&quot;&gt;Công cụ theo dõi Disk I/O&lt;/h3&gt;
-
-&lt;h4 id=&quot;iostat-linux--solaris&quot;&gt;iostat (Linux &amp;amp; Solaris)&lt;/h4&gt;
-
-&lt;p&gt;Công cụ dòng lệnh &lt;em&gt;iostat&lt;/em&gt; được sử dụng để thống kê các thông số vào / ra của các thiết bị lưu trữ.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/iostat-solaris.png&quot; alt=&quot;Công cụ iostat trong Solaris&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/iostat-linux.png&quot; alt=&quot;Công cụ iostat trong Linux&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;iotop-linux--solaris&quot;&gt;iotop (Linux &amp;amp; Solaris)&lt;/h4&gt;
-
-&lt;p&gt;Công cụ &lt;strong&gt;iotop&lt;/strong&gt; là phần mềm dòng lệnh, có chức năng theo dõi thông tin về quá trình vào ra (I/O) ổ đĩa từ hệ điều hành (nhân Linux từ 2.6.20) và hiển thị thông tin dưới dạng bảng liệt kê lượng truy cập vào ra ổ đĩa thực hiện bởi các tiến trình.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/iotop-linux.png&quot; alt=&quot;Công cụ iotop&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;theo-di-virtual-memory&quot;&gt;Theo dõi Virtual Memory&lt;/h2&gt;
-
-&lt;h3 id=&quot;theo-di-virtual-memory--lm-g&quot;&gt;Theo dõi Virtual Memory để làm gì?&lt;/h3&gt;
-
-&lt;p&gt;Quan sát quá trình phân trang (paging) trong bộ nhớ ảo để xác định tình trạng hoán chuyển (swapping) bộ nhớ của các tiến trình. Đối với chương trình Java, việc hoán chuyển vùng nhớ Heap từ bộ nhớ (Memory/RAM) vào vùng nhớ ảo (Virtual Memory/HarDisk) sẽ làm giảm hiểu năng rất lớn, là do chức năng thu dọn bộ nhớ trong chương trình Java thường xuyên quét qua vùng nhớ Heap để xác định và thu hồi các đối tượng không còn sử dụng nữa. Nếu vùng nhớ Heap bị chia cắt, hoặc bị chuyển vào Virtual Memory thì quá trình thu dọn bộ nhớ sẽ thực hiện rất chậm. Chính vì vậy, chúng ta cần theo dõi các tiến trình Java để xác định xem có sự hoán chuyển bộ nhớ hay không, từ đó có các giải pháp điều chỉnh để tăng hiệu năng.&lt;/p&gt;
-
-&lt;h3 id=&quot;cng-c-theo-di-virtual-memory&quot;&gt;Công cụ theo dõi Virtual Memory&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;vmstat (Solaris &amp;amp; Linux)&lt;/li&gt;
-  &lt;li&gt;prstat (Solaris)&lt;/li&gt;
-  &lt;li&gt;top (Linux)&lt;/li&gt;
-  &lt;li&gt;Performance Monitor (Windows)&lt;/li&gt;
-  &lt;li&gt;DTrace (Solaris)&lt;/li&gt;
-  &lt;li&gt;cpubar (Solaris – Performance Tools CD)&lt;/li&gt;
-  &lt;li&gt;meminfo (Solaris – Performance Tools CD)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;theo-di-pages-inout-trong-solaris&quot;&gt;Theo dõi pages in/out trong Solaris&lt;/h3&gt;
-
-&lt;p&gt;Sử dụng công cụ &lt;strong&gt;vmstat&lt;/strong&gt;, ta có thể theo dõi được các thông số &lt;em&gt;pages in&lt;/em&gt;, &lt;em&gt;pages out&lt;/em&gt; và &lt;em&gt;page scan rate&lt;/em&gt;. &lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/vmstat-solaris.png&quot; alt=&quot;Phân tích bằng vmstat trong Solaris&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Khi hệ thống bắt đầu thực hiện hoán chuyển dữ liệu vào &lt;em&gt;virtual memory&lt;/em&gt;, các giá trị &lt;em&gt;page in&lt;/em&gt;, &lt;em&gt;page out&lt;/em&gt; và &lt;em&gt;scan rate&lt;/em&gt; đều tăng. Khi hệ thống thực hiện &lt;em&gt;page in&lt;/em&gt; và &lt;em&gt;page out&lt;/em&gt; mà không phát sinh hoạt động &lt;em&gt;scan rate&lt;/em&gt;, hoặc có một số thay đổi &lt;em&gt;scan rate&lt;/em&gt; nhỏ và sớm kết thúc, là được.&lt;/p&gt;
-
-&lt;h3 id=&quot;theo-di-pages-inout-trong-linux&quot;&gt;Theo dõi pages in/out trong Linux&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/blog/media/06026ff9-a2c1-46a0-9e2b-e4bb9afbc429/vmstat-linux.png&quot; alt=&quot;Phân tích bằng vmstat trong Linux&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;x-l-vn--swapping-memory&quot;&gt;Xử lý vấn đề Swapping Memory&lt;/h3&gt;
-
-&lt;p&gt;Đối với ứng dụng Java, việc vùng nhớ Heap bị hoán chuyển vào Virtual Memory sẽ khiến hiệu năng chương trình giảm nghiêm trọng. Khi phát hiện hệ thống phải swapping memory nhiều, có thể xử lý bằng các cách sau:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Phân tích và xác định và giảm kích thước phù hợp cho vùng Java Heap.&lt;/li&gt;
-  &lt;li&gt;Thêm dung lượng bộ nhớ vật lý (cắm thêm RAM).&lt;/li&gt;
-  &lt;li&gt;Giảm bớt số lượng ứng dụng đang chạy trên máy tính.&lt;/li&gt;
-  &lt;li&gt;Kết hợp các phương án trên.&lt;/li&gt;
-&lt;/ul&gt;
-
-
-  
-  &lt;p&gt;&lt;a href=&quot;http://acegik.net/blog/java/performance/theo-doi-hieu-nang-cua-he-dieu-hanh.html&quot;&gt;Theo dõi hiệu năng của hệ điều hành&lt;/a&gt; was originally published by Phạm Ngọc Hùng at &lt;a href=&quot;http://acegik.net/blog&quot;&gt;Acegik's Blog&lt;/a&gt; on July 02, 2014.&lt;/p&gt;</content>
 </entry>
 
 </feed>
